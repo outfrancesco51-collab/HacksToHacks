@@ -1,0 +1,12 @@
+{
+    "TITLE": "HACKS TO HACKS",
+    "PRESS_ENTER": "> ENTERを押してシステムにアクセス _",
+    "MAP_TITLE": "グローバルマップ",
+    "PRESS_H_BANK": "> 'H'を押して銀行ハッキングを開始",
+    "NODE_DETECTED": "脆弱なノードを検出",
+    "HACKING_IN_PROGRESS": "銀行ハッキング進行中...",
+    "INSERT_PAYLOAD": "> ペイロードを挿入 (ESCでキャンセル)",
+    "OBJECTIVE_FUNDS": "目標：資金移動",
+    "TUTORIAL_SYSKAREN_1": "またユーザーね。よく聞きなさい、私はSYS-KAREN。早くして、私にはもっと重要なプロセスがあるのよ。",
+    "NAME_PROMPT": "エイリアスを入力してください:"
+}

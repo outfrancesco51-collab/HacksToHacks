@@ -3,7 +3,7 @@ echo Creazione directory bin...
 if not exist bin mkdir bin
 
 echo Compilazione in corso...
-gcc -Wall -Iraylib/include src/main.c -o bin/HacksToHacks.exe -Lraylib/lib -lraylib -lgdi32 -lwinmm
+gcc -Wall -Iraylib/include src/main.c src/cJSON.c src/tween.c -o bin/HacksToHacks.exe -Lraylib/lib -lraylib -lgdi32 -lwinmm
 
 if %ERRORLEVEL% == 0 (
     echo Compilazione completata con successo!

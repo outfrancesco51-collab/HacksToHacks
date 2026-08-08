@@ -4,9 +4,9 @@ LDFLAGS = -Lraylib/lib -lraylib -lgdi32 -lwinmm
 
 all: bin/HacksToHacks.exe
 
-bin/HacksToHacks.exe: src/main.c
-	if not exist bin mkdir bin
-	$(CC) $(CFLAGS) src/main.c -o bin/HacksToHacks.exe $(LDFLAGS)
+bin/HacksToHacks.exe: src/main.c src/cJSON.c src/tween.c
+	if not exist bin mkdir -p bin
+	$(CC) $(CFLAGS) src/main.c src/cJSON.c src/tween.c -o bin/HacksToHacks.exe $(LDFLAGS)
 
 clean:
-	if exist bin rmdir /s /q bin
+	if exist bin rm -rf bin
