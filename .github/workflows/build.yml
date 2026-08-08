@@ -1,0 +1,62 @@
+name: Build and Deploy (WebAssembly & Windows)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Emscripten
+      uses: mymindstorm/setup-emsdk@v12
+
+    - name: Install Raylib Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
+
+    - name: Clone Raylib
+      run: |
+        git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
+        cd raylib-src/src
+        make PLATFORM=PLATFORM_WEB -B
+
+    - name: Build WebAssembly Project
+      run: |
+        mkdir -p build_web
+        emcc src/main.c -o build_web/index.html -Os -Wall raylib-src/src/libraylib.a -Iraylib-src/src -Lraylib-src/src -s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=67108864 -s FORCE_FILESYSTEM=1 --preload-file assets -DPLATFORM_WEB
+      
+    - name: Upload Web Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: web-build
+        path: build_web/
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build_web
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build with Make
+      run: |
+        mingw32-make
+      
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-build
+        path: bin/HacksToHacks.exe

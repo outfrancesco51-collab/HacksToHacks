@@ -1,0 +1,12 @@
+/venv/
+/raylib/
+/bin/
+/build_web/
+*.exe
+*.o
+*.a
+stb_image.h
+stb_image_write.h
+split_images.c
+split_images.py
+*.zip
