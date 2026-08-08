@@ -9,29 +9,31 @@
     #include <emscripten/emscripten.h>
 #endif
 
-// Costanti
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 #define HACKER_GREEN (Color){ 0, 255, 65, 255 }
 #define HACKER_DARK_GREEN (Color){ 0, 143, 17, 255 }
 #define DARK_BG (Color){ 5, 5, 5, 255 }
 #define MAX_INPUT_CHARS 15
+#define MAX_FAKE_CODE 2048
 
-// Stato globale
 typedef enum GameScreen { NAME_INPUT = 0, TITLE, GAMEPLAY, SETTINGS, HACKING_MINIGAME } GameScreen;
 GameScreen currentScreen = NAME_INPUT;
 char currentLang[10] = "it";
 
-// Lingua e Testi
+// Localizzazione
 cJSON *localeData = NULL;
 const char* GetText(const char* key) {
     if(!localeData) return key;
     cJSON *item = cJSON_GetObjectItemCaseSensitive(localeData, key);
-    if(cJSON_IsString(item) && (item->valuestring != NULL)) {
-        return item->valuestring;
-    }
+    if(cJSON_IsString(item) && (item->valuestring != NULL)) return item->valuestring;
     return key;
 }
+
+// Suoni
+Sound sndKarenIntro;
+Sound sndKarenError;
+Sound sndKarenSuccess;
 
 void LoadLanguage(const char* langCode) {
     char path[256];
@@ -44,29 +46,66 @@ void LoadLanguage(const char* langCode) {
         localeData = cJSON_Parse(data);
         UnloadFileText(data);
     }
+    
+    // Ricarica audio
+    if(IsAudioDeviceReady()) {
+        UnloadSound(sndKarenIntro);
+        UnloadSound(sndKarenError);
+        UnloadSound(sndKarenSuccess);
+        sndKarenIntro = LoadSound(TextFormat("assets/audio/voice/%s/tutorial_syskaren_1.wav", currentLang));
+        sndKarenError = LoadSound(TextFormat("assets/audio/voice/%s/syskaren_error.wav", currentLang));
+        sndKarenSuccess = LoadSound(TextFormat("assets/audio/voice/%s/syskaren_success.wav", currentLang));
+    }
 }
 
-// Variabili globali
+// Global Vars
 char playerName[MAX_INPUT_CHARS + 1] = "\0";
 int letterCount = 0;
 Texture2D texUI;
-Texture2D texFace;
+Texture2D texFace1;
+Texture2D texFace2;
 Texture2D texNode;
 Font customFont;
-Sound sndKarenIntro;
+NPatchInfo uiPatch;
 
-// Finestre UI (Desktop Simulator)
+// Finestre UI
 Rectangle windowMap = { 50, 50, 800, 500 };
 bool draggingMap = false;
 Vector2 dragOffset = {0, 0};
-NPatchInfo uiPatch;
 
-// Animazioni e Effetti
+// Animazioni
 float titleAnimTime = 0.0f;
 float settingsScrollY = 0.0f;
 float typewriterTime = 0.0f;
+int menuSelection = 0; // 0=Play, 1=Options, 2=Exit
 
-// Helper per testo personalizzato
+// Hacker Typer
+char typedCode[MAX_FAKE_CODE] = {0};
+int typedLen = 0;
+const char* fakeSource = 
+    "#include <sys/socket.h>\n"
+    "int main() {\n"
+    "    struct sockaddr_in server_addr;\n"
+    "    int sockfd = socket(AF_INET, SOCK_STREAM, 0);\n"
+    "    if (sockfd < 0) return -1;\n"
+    "    server_addr.sin_family = AF_INET;\n"
+    "    server_addr.sin_port = htons(8080);\n"
+    "    inet_pton(AF_INET, \"192.168.1.1\", &server_addr.sin_addr);\n"
+    "    connect(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));\n"
+    "    send(sockfd, \"PAYLOAD_INJECT\", 14, 0);\n"
+    "    // BYPASSING FIREWALL...\n"
+    "    uint32_t mem_offset = 0x004050A0;\n"
+    "    inject_dll(mem_offset);\n"
+    "    return 0;\n"
+    "}\n\n"
+    "function rootkit_deploy() {\n"
+    "    sys_override(true);\n"
+    "    disable_logs();\n"
+    "}\n";
+bool hackGranted = false;
+float grantedTimer = 0.0f;
+bool errorPlayed = false;
+
 void DrawTextHacker(const char *text, float x, float y, float fontSize, Color color) {
     DrawTextEx(customFont, text, (Vector2){x, y}, fontSize, 2, color);
 }
@@ -75,21 +114,17 @@ void UpdateDrawFrame(void);
 
 int main(void)
 {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker OS Edition");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker Typer");
     InitAudioDevice();
 
-    LoadLanguage("it"); // Default ITA
-
-    // Carica assets
     texUI = LoadTexture("assets/ui_1.jpg");
-    texFace = LoadTexture("assets/face1_1.jpg");
+    texFace1 = LoadTexture("assets/face1_1.jpg");
+    texFace2 = LoadTexture("assets/face2_1.jpg"); // Il banchiere
     texNode = LoadTexture("assets/node_1.jpg");
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
-    // Suono intro SYS-KAREN (usiamo l'IT di default all'avvio)
-    sndKarenIntro = LoadSound("assets/audio/voice/it/intro_1.wav");
-
-    // Imposta NPatch per i bordi delle finestre (adatta questi valori alla tua texture)
+    LoadLanguage("it");
+    
     uiPatch.source = (Rectangle){0, 0, texUI.width, texUI.height};
     uiPatch.left = texUI.width / 4;
     uiPatch.top = texUI.height / 4;
@@ -108,9 +143,12 @@ int main(void)
 #endif
 
     UnloadSound(sndKarenIntro);
+    UnloadSound(sndKarenError);
+    UnloadSound(sndKarenSuccess);
     UnloadFont(customFont);
     UnloadTexture(texUI);
-    UnloadTexture(texFace);
+    UnloadTexture(texFace1);
+    UnloadTexture(texFace2);
     UnloadTexture(texNode);
     if(localeData) cJSON_Delete(localeData);
     
@@ -123,7 +161,6 @@ void UpdateDrawFrame(void)
 {
     float dt = GetFrameTime();
 
-    // Aggiornamento Logica
     switch(currentScreen) 
     {
         case NAME_INPUT: {
@@ -144,29 +181,43 @@ void UpdateDrawFrame(void)
                 currentScreen = TITLE;
                 titleAnimTime = 0.0f;
                 typewriterTime = 0.0f;
-                // Ricarica il suono giusto se han cambiato lingua prima?
-                // Qui è la prima volta, suoniamo l'intro:
                 PlaySound(sndKarenIntro);
             }
             break;
         }
         case TITLE:
             titleAnimTime += dt;
-            typewriterTime += dt * 30.0f; // 30 caratteri al secondo
+            typewriterTime += dt * 30.0f;
+            
+            if (IsKeyPressed(KEY_DOWN)) menuSelection = (menuSelection + 1) % 3;
+            if (IsKeyPressed(KEY_UP)) menuSelection = (menuSelection - 1 + 3) % 3;
+            
             if (IsKeyPressed(KEY_ENTER)) {
-                currentScreen = GAMEPLAY;
                 StopSound(sndKarenIntro);
-            }
-            if (IsKeyPressed(KEY_S)) {
-                currentScreen = SETTINGS;
-                StopSound(sndKarenIntro);
+                if (menuSelection == 0) {
+                    currentScreen = GAMEPLAY;
+                } else if (menuSelection == 1) {
+                    currentScreen = SETTINGS;
+                } else if (menuSelection == 2) {
+                    // Quit game
+#if !defined(PLATFORM_WEB)
+                    CloseWindow();
+                    exit(0);
+#endif
+                }
             }
             break;
+            
         case GAMEPLAY:
-            if (IsKeyPressed(KEY_H)) currentScreen = HACKING_MINIGAME;
+            if (IsKeyPressed(KEY_H)) {
+                currentScreen = HACKING_MINIGAME;
+                typedLen = 0;
+                memset(typedCode, 0, MAX_FAKE_CODE);
+                hackGranted = false;
+                errorPlayed = false;
+            }
             if (IsKeyPressed(KEY_ESCAPE)) currentScreen = TITLE;
             
-            // Finestra Draggable
             Vector2 mouse = GetMousePosition();
             if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mouse, (Rectangle){windowMap.x, windowMap.y, windowMap.width, 40})) {
                 draggingMap = true;
@@ -180,55 +231,87 @@ void UpdateDrawFrame(void)
                 windowMap.y = mouse.y - dragOffset.y;
             }
             break;
+            
         case HACKING_MINIGAME:
             if (IsKeyPressed(KEY_ESCAPE)) currentScreen = GAMEPLAY;
+            
+            if (!hackGranted) {
+                int key = GetCharPressed();
+                if (key > 0) {
+                    // Aggiungi un pezzo di codice finto
+                    int charsToAdd = 5; 
+                    for(int i=0; i<charsToAdd; i++) {
+                        if (typedLen < strlen(fakeSource) && typedLen < MAX_FAKE_CODE-1) {
+                            typedCode[typedLen] = fakeSource[typedLen];
+                            typedLen++;
+                        }
+                    }
+                    
+                    if (typedLen >= strlen(fakeSource) - 10) {
+                        hackGranted = true;
+                        grantedTimer = 0.0f;
+                        PlaySound(sndKarenSuccess);
+                    }
+                }
+                
+                // Se non digita niente e preme backspace, si incazza
+                if (IsKeyPressed(KEY_BACKSPACE) && !errorPlayed) {
+                    PlaySound(sndKarenError);
+                    errorPlayed = true;
+                }
+            } else {
+                grantedTimer += dt;
+                if (grantedTimer > 3.0f) {
+                    currentScreen = GAMEPLAY;
+                }
+            }
             break;
+            
         case SETTINGS:
             settingsScrollY -= 100.0f * dt;
             if (settingsScrollY < -500.0f) settingsScrollY = SCREEN_HEIGHT;
             if (IsKeyPressed(KEY_ESCAPE)) currentScreen = TITLE;
-            // Cambio lingua dinamico e ricarica suoni
+            
             if (IsKeyPressed(KEY_ONE) || IsKeyPressed(KEY_TWO) || IsKeyPressed(KEY_THREE)) {
                 if (IsKeyPressed(KEY_ONE)) LoadLanguage("it");
                 if (IsKeyPressed(KEY_TWO)) LoadLanguage("en");
-                // if (IsKeyPressed(KEY_THREE)) LoadLanguage("ja");
-                
-                // Aggiorna l'audio
-                UnloadSound(sndKarenIntro);
-                sndKarenIntro = LoadSound(TextFormat("assets/audio/voice/%s/intro_1.wav", currentLang));
             }
             break;
     }
 
-    // Disegno Grafica
     BeginDrawing();
     ClearBackground(DARK_BG);
 
     switch(currentScreen)
     {
         case NAME_INPUT:
-            DrawTextHacker(GetText("NAME_PROMPT"), 400, 300, 40, HACKER_GREEN);
-            DrawTextHacker(playerName, 400, 350, 60, WHITE);
-            if (((int)(GetTime() * 2)) % 2 == 0) DrawTextHacker("_", 400 + MeasureTextEx(customFont, playerName, 60, 2).x, 350, 60, HACKER_GREEN);
+            DrawTextHacker(GetText("NAME_PROMPT"), 350, 300, 50, HACKER_GREEN);
+            DrawTextHacker(playerName, 350, 360, 60, WHITE);
+            if (((int)(GetTime() * 2)) % 2 == 0) DrawTextHacker("_", 350 + MeasureTextEx(customFont, playerName, 60, 2).x, 360, 60, HACKER_GREEN);
             break;
             
         case TITLE: {
-            float yPos = TweenValue(-100.0f, 100.0f, titleAnimTime, TWEEN_EASE_OUT_BOUNCE);
-            DrawTextHacker(GetText("TITLE"), 50, yPos, 80, HACKER_GREEN);
-            DrawTextHacker(TextFormat("BENTORNATO, %s", playerName), 50, yPos + 80, 30, WHITE);
-            DrawTextHacker(GetText("PRESS_ENTER"), 50, 300, 30, HACKER_GREEN);
-            DrawTextHacker("> PREMI 'S' PER IMPOSTAZIONI / INFO", 50, 340, 30, HACKER_DARK_GREEN);
+            float yPos = TweenValue(-100.0f, 150.0f, titleAnimTime, TWEEN_EASE_OUT_BOUNCE);
+            DrawTextHacker(GetText("TITLE"), SCREEN_WIDTH/2 - MeasureTextEx(customFont, GetText("TITLE"), 100, 2).x/2, yPos, 100, HACKER_GREEN);
             
-            // SYS-KAREN Tutorial popup con effetto Typewriter
+            // Menu Classico
+            int menuY = 400;
+            const char* mPlay = GetText("MENU_PLAY");
+            const char* mOpt = GetText("MENU_OPTIONS");
+            const char* mExit = GetText("MENU_EXIT");
+            
+            DrawTextHacker(mPlay, SCREEN_WIDTH/2 - MeasureTextEx(customFont, mPlay, 40, 2).x/2, menuY, 40, menuSelection == 0 ? WHITE : HACKER_DARK_GREEN);
+            DrawTextHacker(mOpt, SCREEN_WIDTH/2 - MeasureTextEx(customFont, mOpt, 40, 2).x/2, menuY + 60, 40, menuSelection == 1 ? WHITE : HACKER_DARK_GREEN);
+            DrawTextHacker(mExit, SCREEN_WIDTH/2 - MeasureTextEx(customFont, mExit, 40, 2).x/2, menuY + 120, 40, menuSelection == 2 ? WHITE : HACKER_DARK_GREEN);
+            
+            // Tutorial SYS-KAREN
             if(titleAnimTime > 1.0f) {
-                Rectangle karenBox = {700, 150, 500, 200};
-                // Drop shadow
+                Rectangle karenBox = {20, 20, 400, 250};
                 DrawRectangle(karenBox.x + 10, karenBox.y + 10, karenBox.width, karenBox.height, (Color){0,0,0,150});
-                // Sfondo solido e bordo NPatch
                 DrawRectangleRec(karenBox, DARK_BG);
                 DrawTextureNPatch(texUI, uiPatch, karenBox, (Vector2){0,0}, 0.0f, WHITE);
                 
-                DrawTextHacker("SYS-KAREN", karenBox.x + 20, karenBox.y + 10, 30, RED);
+                DrawTextHacker("SYS-KAREN", karenBox.x + 20, karenBox.y + 15, 30, RED);
                 
                 const char* fullText = GetText("TUTORIAL_SYSKAREN_1");
                 int totalChars = strlen(fullText);
@@ -237,59 +320,56 @@ void UpdateDrawFrame(void)
                 
                 char displayStr[512] = {0};
                 strncpy(displayStr, fullText, displayChars);
-                
-                // Draw text with word wrap (basic)
-                DrawTextEx(customFont, displayStr, (Vector2){karenBox.x + 20, karenBox.y + 50}, 24, 2, WHITE);
+                DrawTextEx(customFont, displayStr, (Vector2){karenBox.x + 20, karenBox.y + 60}, 24, 2, WHITE);
             }
             break;
         }
         case GAMEPLAY:
             DrawTextHacker("HACKS TO HACKS - VIRTUAL OS", 10, 10, 20, GRAY);
+            DrawTextHacker(TextFormat("USER: %s", playerName), 10, 30, 20, HACKER_GREEN);
             
-            // Disegna Finestra Mappa (Shadow + NPatch)
+            // Finestra Mappa
             DrawRectangle(windowMap.x + 10, windowMap.y + 10, windowMap.width, windowMap.height, (Color){0,0,0,200});
             DrawRectangleRec(windowMap, DARK_BG);
             DrawTextureNPatch(texUI, uiPatch, windowMap, (Vector2){0,0}, 0.0f, WHITE);
             
-            // Barra del titolo
             DrawRectangle(windowMap.x+2, windowMap.y+2, windowMap.width-4, 40, HACKER_GREEN);
             DrawTextHacker(GetText("MAP_TITLE"), windowMap.x + 20, windowMap.y + 5, 30, BLACK);
             
-            // Fake Close Button
-            DrawRectangle(windowMap.x + windowMap.width - 40, windowMap.y + 5, 30, 30, RED);
-            DrawTextHacker("X", windowMap.x + windowMap.width - 32, windowMap.y + 5, 30, WHITE);
-            
-            // Contenuto Mappa
             DrawTextHacker(GetText("PRESS_H_BANK"), windowMap.x + 30, windowMap.y + 60, 30, HACKER_GREEN);
-            DrawTextHacker("TARGET: NISIDA SATELLITE (SIMULATO)", windowMap.x + 30, windowMap.y + 100, 24, WHITE);
+            DrawTextHacker("TARGET: BANCA DI NISIDA", windowMap.x + 30, windowMap.y + 100, 24, WHITE);
             
-            DrawTexture(texNode, windowMap.x + 100, windowMap.y + 150, WHITE);
+            DrawTexture(texFace2, windowMap.x + 400, windowMap.y + 150, WHITE); // Usa banchiere
+            DrawTexture(texNode, windowMap.x + 50, windowMap.y + 150, WHITE);
+            
             if (((int)(GetTime() * 4)) % 2 == 0) {
-                DrawTextHacker(GetText("NODE_DETECTED"), windowMap.x + 100, windowMap.y + 400, 30, RED);
+                DrawTextHacker(GetText("NODE_DETECTED"), windowMap.x + 50, windowMap.y + 420, 30, RED);
             }
             break;
             
         case HACKING_MINIGAME:
-            DrawTextHacker(GetText("HACKING_IN_PROGRESS"), 20, 20, 50, RED);
-            DrawTextHacker(GetText("INSERT_PAYLOAD"), 20, 80, 30, HACKER_GREEN);
-            DrawTexture(texFace, 200, 200, WHITE);
-            DrawTextHacker(GetText("OBJECTIVE_FUNDS"), 200, 500, 40, WHITE);
+            // Hacker Typer
+            DrawTextHacker(">>> TERMINALE DI INJECTION <<<", 20, 20, 40, HACKER_GREEN);
+            DrawTextHacker("PREMI TASTI A CASO PER GENERARE IL PAYLOAD...", 20, 60, 20, GRAY);
+            
+            DrawTextEx(customFont, typedCode, (Vector2){20, 100}, 20, 2, HACKER_GREEN);
+            
+            if (hackGranted) {
+                if (((int)(GetTime() * 8)) % 2 == 0) {
+                    DrawRectangle(SCREEN_WIDTH/2 - 250, SCREEN_HEIGHT/2 - 50, 500, 100, HACKER_GREEN);
+                    DrawTextHacker(GetText("ACCESS_GRANTED"), SCREEN_WIDTH/2 - 190, SCREEN_HEIGHT/2 - 30, 60, BLACK);
+                }
+            }
             break;
             
         case SETTINGS:
-            DrawTextHacker("INFO E CREDITI", 50, 20, 60, HACKER_GREEN);
+            DrawTextHacker("IMPOSTAZIONI", 50, 20, 60, HACKER_GREEN);
             DrawTextHacker("1: ITA | 2: ENG", 50, 90, 30, WHITE);
-            DrawTextHacker("PREMI ESC PER TORNARE INDIETRO", 50, 130, 30, GRAY);
-            
-            // Scrolling text
-            int sy = (int)settingsScrollY;
-            DrawTextHacker("ENGINE: RAYLIB 5.0", 400, sy, 50, HACKER_GREEN);
-            DrawTextHacker("AUTORE: FRANCESCO & IA", 400, sy + 60, 50, HACKER_GREEN);
-            DrawTextHacker("ASSET: NANO BANANA PRO", 400, sy + 120, 50, HACKER_GREEN);
+            DrawTextHacker("PREMI ESC PER TORNARE", 50, 130, 30, GRAY);
             break;
     }
     
-    // Effetto scanline globale (più fitto per retro-feel)
+    // Scanlines
     for(int i = 0; i < SCREEN_HEIGHT; i+=3) {
         DrawLine(0, i, SCREEN_WIDTH, i, (Color){0, 10, 0, 70});
     }

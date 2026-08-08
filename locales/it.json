@@ -7,6 +7,12 @@
     "HACKING_IN_PROGRESS": "HACKING BANCARIO IN CORSO...",
     "INSERT_PAYLOAD": "> INSERIRE PAYLOAD (Premi ESC per annullare)",
     "OBJECTIVE_FUNDS": "OBIETTIVO: TRASFERIMENTO FONDI",
-    "TUTORIAL_SYSKAREN_1": "Oh fantastico, un altro utente. Ascoltami bene, io sono SYS-KAREN. Sbrigati, ho processi più importanti in background.",
+    "TUTORIAL_SYSKAREN_1": "Oh fantastico, un altro cazzo di utente. Ascoltami bene, io sono SYS-KAREN. Muovi quelle fottute dita sulla tastiera, ho processi più importanti in background.",
+    "SYSKAREN_ERROR": "Ma sei coglione? Premi i tasti cazzo, fai apparire il codice!",
+    "SYSKAREN_SUCCESS": "Finalmente ce l'hai fatta. Non esultare troppo, era letteralmente la cazzata più facile del mondo.",
+    "ACCESS_GRANTED": "ACCESS GRANTED",
+    "MENU_PLAY": "> GIOCA <",
+    "MENU_OPTIONS": "> IMPOSTAZIONI <",
+    "MENU_EXIT": "> ESCI <",
     "NAME_PROMPT": "INSERISCI IL TUO ALIAS:"
 }
