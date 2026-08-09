@@ -34,7 +34,7 @@ async def main():
             os.makedirs(os.path.join(AUDIO_DIR, "it"), exist_ok=True)
             for k in keys_to_generate:
                 if k in data:
-                    out_path = os.path.join(AUDIO_DIR, "it", f"{k.lower()}.wav")
+                    out_path = os.path.join(AUDIO_DIR, "it", f"{k.lower()}.mp3")
                     # Sweet voice modulation for SUCCESS
                     if k == "SYSKAREN_SUCCESS":
                         await generate_audio(data[k], VOICE_IT, out_path, rate="-15%", pitch="+10Hz")
@@ -49,7 +49,7 @@ async def main():
             os.makedirs(os.path.join(AUDIO_DIR, "en"), exist_ok=True)
             for k in keys_to_generate:
                 if k in data:
-                    out_path = os.path.join(AUDIO_DIR, "en", f"{k.lower()}.wav")
+                    out_path = os.path.join(AUDIO_DIR, "en", f"{k.lower()}.mp3")
                     if k == "SYSKAREN_SUCCESS":
                         await generate_audio(data[k], VOICE_EN, out_path, rate="-15%", pitch="+10Hz")
                     else:

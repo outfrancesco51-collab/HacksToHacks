@@ -47,13 +47,14 @@ void LoadLanguage(const char* langCode) {
         UnloadFileText(data);
     }
     
-    if(IsAudioDeviceReady()) {
-        UnloadSound(sndKarenIntro);
-        UnloadSound(sndKarenError);
-        UnloadSound(sndKarenSuccess);
-        sndKarenIntro = LoadSound(TextFormat("assets/audio/voice/%s/tutorial_syskaren_1.wav", currentLang));
-        sndKarenError = LoadSound(TextFormat("assets/audio/voice/%s/syskaren_error.wav", currentLang));
-        sndKarenSuccess = LoadSound(TextFormat("assets/audio/voice/%s/syskaren_success.wav", currentLang));
+    if (IsSoundReady(sndKarenIntro)) UnloadSound(sndKarenIntro);
+    if (IsSoundReady(sndKarenError)) UnloadSound(sndKarenError);
+    if (IsSoundReady(sndKarenSuccess)) UnloadSound(sndKarenSuccess);
+    
+    if (strcmp(langCode, "it") == 0 || strcmp(langCode, "en") == 0) {
+        sndKarenIntro = LoadSound(TextFormat("assets/audio/voice/%s/tutorial_syskaren_1.mp3", currentLang));
+        sndKarenError = LoadSound(TextFormat("assets/audio/voice/%s/syskaren_error.mp3", currentLang));
+        sndKarenSuccess = LoadSound(TextFormat("assets/audio/voice/%s/syskaren_success.mp3", currentLang));
     }
 }
 
@@ -131,11 +132,11 @@ int main(void)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker Typer");
     InitAudioDevice();
 
-    texUI = LoadTexture("assets/ui_1.jpg");
-    texNode = LoadTexture("assets/node_1.jpg");
-    texBank = LoadTexture("assets/face2_1.jpg"); 
-    texCCTV = LoadTexture("assets/target_cctv.jpg");
-    texPC = LoadTexture("assets/target_pc.jpg");
+    texUI = LoadTexture("assets/ui_1.png");
+    texNode = LoadTexture("assets/node_1.png");
+    texBank = LoadTexture("assets/face2_1.png"); 
+    texCCTV = LoadTexture("assets/target_cctv.png");
+    texPC = LoadTexture("assets/target_pc.png");
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
     LoadLanguage("it");
