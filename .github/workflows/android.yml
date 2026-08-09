@@ -1,0 +1,53 @@
+name: Android APK Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    - name: Download Raylib and setup Android project
+      run: |
+        git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-repo
+        cp -r raylib-repo/projects/VSCode/Android raylib-android
+        # Copy source files to raylib-android/src
+        cp src/main.c raylib-android/src/
+        cp src/cJSON.c raylib-android/src/
+        cp src/tween.c raylib-android/src/
+        cp src/*.h raylib-android/src/ || true
+        # Copy assets
+        rm -rf raylib-android/assets/*
+        cp -r assets/* raylib-android/assets/
+        cp -r locales raylib-android/assets/locales
+        
+    - name: Build APK using Makefile
+      run: |
+        cd raylib-android
+        export ANDROID_NDK=$ANDROID_NDK_LATEST_HOME
+        export ANDROID_HOME=$ANDROID_SDK_ROOT
+        export ANDROID_BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/33.0.0
+        # Modify Makefile to build our C files instead of just raylib_game.c
+        sed -i 's/PROJECT_NAME ?= raylib_game/PROJECT_NAME ?= HacksToHacks/' Makefile
+        sed -i 's/PROJECT_SOURCE_FILES ?= raylib_game.c/PROJECT_SOURCE_FILES ?= main.c cJSON.c tween.c/' Makefile
+        # Point RAYLIB_PATH to the downloaded raylib repo
+        sed -i 's|RAYLIB_PATH ?= ../../..|RAYLIB_PATH ?= ../../raylib-repo|' Makefile
+        make
+        
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: HacksToHacks-Android-APK
+        path: raylib-android/HacksToHacks.apk

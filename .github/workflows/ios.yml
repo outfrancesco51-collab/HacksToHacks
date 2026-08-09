@@ -1,0 +1,35 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure CMake
+      run: cmake -B build -G Xcode -DCMAKE_SYSTEM_NAME=iOS "-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO -DCMAKE_IOS_INSTALL_COMBINED=YES
+
+    - name: Build
+      run: cmake --build build --config Release
+
+    - name: Create Payload and IPA
+      run: |
+        mkdir -p Payload
+        cp -r build/Release-iphoneos/HacksToHacks.app Payload/
+        # Copy assets into the app bundle manually just in case
+        cp -r assets Payload/HacksToHacks.app/
+        cp -r locales Payload/HacksToHacks.app/
+        zip -r HacksToHacks.ipa Payload
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: HacksToHacks-iOS-IPA
+        path: HacksToHacks.ipa
