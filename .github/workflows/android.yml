@@ -17,34 +17,57 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '11'
+        java-version: '17'
 
     - name: Download Raylib and setup Android project
       run: |
         git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-repo
-        cp -r raylib-repo/projects/VSCode/Android raylib-android
-        # Copy source files to raylib-android/src
+        mkdir raylib-android
+        cp raylib-repo/projects/VSCode/Makefile raylib-android/
+        cp raylib-repo/projects/VSCode/Makefile.Android raylib-android/
+        
+        # Create src and copy files
+        mkdir -p raylib-android/src
         cp src/main.c raylib-android/src/
         cp src/cJSON.c raylib-android/src/
         cp src/tween.c raylib-android/src/
         cp src/*.h raylib-android/src/ || true
+        
         # Copy assets
-        rm -rf raylib-android/assets/*
+        mkdir -p raylib-android/assets
         cp -r assets/* raylib-android/assets/
         cp -r locales raylib-android/assets/locales
         
-    - name: Build APK using Makefile
+    - name: Build APK
       run: |
         cd raylib-android
         export ANDROID_NDK=$ANDROID_NDK_LATEST_HOME
         export ANDROID_HOME=$ANDROID_SDK_ROOT
-        export ANDROID_BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/33.0.0
-        # Modify Makefile to build our C files instead of just raylib_game.c
-        sed -i 's/PROJECT_NAME ?= raylib_game/PROJECT_NAME ?= HacksToHacks/' Makefile
-        sed -i 's/PROJECT_SOURCE_FILES ?= raylib_game.c/PROJECT_SOURCE_FILES ?= main.c cJSON.c tween.c/' Makefile
-        # Point RAYLIB_PATH to the downloaded raylib repo
-        sed -i 's|RAYLIB_PATH ?= ../../..|RAYLIB_PATH ?= ../../raylib-repo|' Makefile
-        make
+        
+        # Find latest build tools
+        LATEST_BUILD_TOOLS=$(ls -1 $ANDROID_SDK_ROOT/build-tools | sort -r | head -n 1)
+        export ANDROID_BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/$LATEST_BUILD_TOOLS
+        
+        # Modify Makefile.Android for modern NDK
+        sed -i 's/PROJECT_NAME \?= raylib_game/PROJECT_NAME \?= HacksToHacks/' Makefile
+        sed -i 's/PROJECT_SOURCE_FILES \?= raylib_game.c/PROJECT_SOURCE_FILES \?= main.c cJSON.c tween.c/' Makefile
+        sed -i 's|RAYLIB_PATH \?= ../../..|RAYLIB_PATH \?= ../../raylib-repo|' Makefile
+        
+        # Fix toolchain path for NDK r25+
+        sed -i 's|ANDROID_TOOLCHAIN       = .*|ANDROID_TOOLCHAIN       = $(ANDROID_NDK)/toolchains/llvm/prebuilt/linux-x86_64|' Makefile.Android
+        sed -i 's|CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-clang|CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android21-clang|' Makefile.Android
+        sed -i 's|CC = $(ANDROID_TOOLCHAIN)/bin/arm-linux-androideabi-clang|CC = $(ANDROID_TOOLCHAIN)/bin/armv7a-linux-androideabi21-clang|' Makefile.Android
+        sed -i 's|AR = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-ar|AR = $(ANDROID_TOOLCHAIN)/bin/llvm-ar|' Makefile.Android
+        sed -i 's|AR = $(ANDROID_TOOLCHAIN)/bin/arm-linux-androideabi-ar|AR = $(ANDROID_TOOLCHAIN)/bin/llvm-ar|' Makefile.Android
+        
+        # Ensure javac compiles to a target supported by dx/d8
+        sed -i 's|javac -verbose|javac -source 1.8 -target 1.8 -verbose|' Makefile.Android
+        
+        # Use d8 instead of dx since dx was removed in build-tools 31+
+        sed -i 's|$(ANDROID_BUILD_TOOLS)/dx|$(ANDROID_BUILD_TOOLS)/d8|' Makefile.Android
+        sed -i 's|--dex --output=$(PROJECT_BUILD_PATH)/bin/classes.dex $(PROJECT_BUILD_PATH)/obj|$(PROJECT_BUILD_PATH)/obj/*.class --output $(PROJECT_BUILD_PATH)/bin/|' Makefile.Android
+        
+        make PLATFORM=PLATFORM_ANDROID
         
     - name: Upload APK
       uses: actions/upload-artifact@v4
