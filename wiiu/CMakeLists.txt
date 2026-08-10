@@ -55,6 +55,7 @@ target_link_libraries(HacksToHacks_WiiU PRIVATE
 )
 
 # ─── WUT helpers → generates .rpx from ELF ───────────────────────────────────
+find_package(WUT REQUIRED)
 include(WUT)
 wut_create_rpx(HacksToHacks_WiiU)
 
