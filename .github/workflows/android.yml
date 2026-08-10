@@ -21,13 +21,10 @@ jobs:
 
     - name: Install Android NDK and Build Tools
       run: |
-        # Accept licenses
-        yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
-        # Install required build tools and NDK
+        yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
         $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "platforms;android-33" "build-tools;34.0.0" "ndk;25.2.9519653"
         echo "NDK_HOME=$ANDROID_SDK_ROOT/ndk/25.2.9519653" >> $GITHUB_ENV
         echo "ANDROID_BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/34.0.0" >> $GITHUB_ENV
-        echo "KEYSTORE_PATH=$HOME/debug.keystore" >> $GITHUB_ENV
 
     - name: Generate debug keystore
       run: |
@@ -42,61 +39,49 @@ jobs:
       run: |
         git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
 
-    - name: Compile raylib for Android (arm64-v8a)
+    - name: Compile raylib for Android arm64
       run: |
-        export NDK=$NDK_HOME
-        export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
-        export CC=$TOOLCHAIN/bin/aarch64-linux-android21-clang
-        export AR=$TOOLCHAIN/bin/llvm-ar
-
-        mkdir -p raylib-android-lib
-        # Compile raylib sources manually
-        RAYLIB_SRC="raylib-src/src"
-        C_FILES="rcore.c rshapes.c rtextures.c rtext.c rmodels.c raudio.c utils.c"
+        NDK=$NDK_HOME
+        TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
+        CC=$TOOLCHAIN/bin/aarch64-linux-android21-clang
+        AR=$TOOLCHAIN/bin/llvm-ar
+        RAYLIB_SRC=raylib-src/src
         INCLUDES="-I$RAYLIB_SRC -I$NDK/sysroot/usr/include -I$NDK/sysroot/usr/include/aarch64-linux-android"
-        DEFINES="-DPLATFORM_ANDROID -DGRAPHICS_API_OPENGL_ES2 -DANDROID -D__ANDROID__ -D_ANDROID_API__=21"
+        DEFINES="-DPLATFORM_ANDROID -DGRAPHICS_API_OPENGL_ES2 -DANDROID -D__ANDROID_API__=21"
         CFLAGS="-std=c99 -O2 -fPIC $DEFINES $INCLUDES"
-
-        for f in $C_FILES; do
+        mkdir -p raylib-android-lib
+        for f in rcore.c rshapes.c rtextures.c rtext.c rmodels.c raudio.c utils.c; do
           $CC $CFLAGS -c $RAYLIB_SRC/$f -o raylib-android-lib/${f%.c}.o
         done
         $AR rcs raylib-android-lib/libraylib.a raylib-android-lib/*.o
-        echo "Raylib compiled for Android arm64-v8a"
+        echo "Raylib compiled OK"
 
     - name: Compile game sources for Android
       run: |
-        export NDK=$NDK_HOME
-        export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
-        export CC=$TOOLCHAIN/bin/aarch64-linux-android21-clang
-        export LD=$TOOLCHAIN/bin/aarch64-linux-android21-clang
-
-        RAYLIB_SRC="raylib-src/src"
+        NDK=$NDK_HOME
+        TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
+        CC=$TOOLCHAIN/bin/aarch64-linux-android21-clang
+        LD=$TOOLCHAIN/bin/aarch64-linux-android21-clang
+        RAYLIB_SRC=raylib-src/src
         INCLUDES="-Isrc -I$RAYLIB_SRC -I$NDK/sysroot/usr/include -I$NDK/sysroot/usr/include/aarch64-linux-android"
-        DEFINES="-DPLATFORM_ANDROID -DGRAPHICS_API_OPENGL_ES2 -DANDROID -D__ANDROID__ -D_ANDROID_API__=21"
+        DEFINES="-DPLATFORM_ANDROID -DGRAPHICS_API_OPENGL_ES2 -DANDROID -D__ANDROID_API__=21"
         CFLAGS="-std=c11 -O2 -fPIC $DEFINES $INCLUDES"
         LIBS="-Lraylib-android-lib -lraylib -llog -landroid -lEGL -lGLESv2 -lOpenSLES -lm -lc"
-
         mkdir -p out-android
-        $CC $CFLAGS -c src/main.c -o out-android/main.o
-        $CC $CFLAGS -c src/cJSON.c -o out-android/cJSON.o
-        $CC $CFLAGS -c src/tween.c -o out-android/tween.o
+        $CC $CFLAGS -c src/main.c   -o out-android/main.o
+        $CC $CFLAGS -c src/cJSON.c  -o out-android/cJSON.o
+        $CC $CFLAGS -c src/tween.c  -o out-android/tween.o
         $LD -shared -o out-android/libmain.so out-android/main.o out-android/cJSON.o out-android/tween.o $LIBS
-        echo "Game compiled as shared library"
+        echo "Game shared lib compiled OK"
 
-    - name: Package APK manually
+    - name: Write AndroidManifest.xml
       run: |
-        NDK=$NDK_HOME
-        BUILD_TOOLS=$ANDROID_BUILD_TOOLS
-
-        mkdir -p apk-build/lib/arm64-v8a
-        mkdir -p apk-build/assets
+        mkdir -p apk-build/lib/arm64-v8a apk-build/assets
         cp out-android/libmain.so apk-build/lib/arm64-v8a/
-        cp -r assets/* apk-build/assets/ || true
-        cp -r locales apk-build/assets/locales || true
-
-        # Generate a minimal AndroidManifest.xml
-        cat > apk-build/AndroidManifest.xml << 'EOF'
-<?xml version="1.0" encoding="utf-8"?>
+        cp -r assets/* apk-build/assets/ 2>/dev/null || true
+        cp -r locales   apk-build/assets/locales 2>/dev/null || true
+        python3 - << 'PYEOF'
+        manifest = '''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hackstohacks.game"
     android:versionCode="1"
@@ -116,41 +101,41 @@ jobs:
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
-</manifest>
-EOF
+</manifest>'''
+        with open('apk-build/AndroidManifest.xml', 'w') as f:
+            f.write(manifest)
+        print('Manifest written OK')
+        PYEOF
 
-        # Compile resources with aapt2
-        $BUILD_TOOLS/aapt2 compile --dir apk-build/res -o apk-build/compiled.flata 2>/dev/null || true
+    - name: Package and sign APK
+      run: |
+        BUILD_TOOLS=$ANDROID_BUILD_TOOLS
+        PLATFORM_JAR=$ANDROID_SDK_ROOT/platforms/android-33/android.jar
 
-        # Link APK
-        $BUILD_TOOLS/aapt2 link apk-build/compiled.flata \
-          --manifest apk-build/AndroidManifest.xml \
-          -I $ANDROID_SDK_ROOT/platforms/android-33/android.jar \
-          -o apk-build/unsigned.apk \
-          --min-sdk-version 21 \
-          --target-sdk-version 33 || \
-        # Fallback: use aapt (v1) if aapt2 link fails
-        $BUILD_TOOLS/aapt package -f -M apk-build/AndroidManifest.xml \
-          -I $ANDROID_SDK_ROOT/platforms/android-33/android.jar \
+        # Link APK with aapt (v1) - simpler and more reliable for no-resource APKs
+        $BUILD_TOOLS/aapt package -f \
+          -M apk-build/AndroidManifest.xml \
+          -I $PLATFORM_JAR \
           -F apk-build/unsigned.apk
 
-        # Add native lib and assets
+        # Add native lib and assets to APK (zip)
         cd apk-build
-        zip -r unsigned.apk lib/ assets/ || true
+        zip -r unsigned.apk lib/ assets/
         cd ..
 
-        # Align and sign
+        # Zipalign
         $BUILD_TOOLS/zipalign -f 4 apk-build/unsigned.apk apk-build/aligned.apk
 
+        # Sign
         $BUILD_TOOLS/apksigner sign \
-          --ks $KEYSTORE_PATH \
+          --ks $HOME/debug.keystore \
           --ks-key-alias hackskey \
           --ks-pass pass:android \
           --key-pass pass:android \
           --out HacksToHacks.apk \
           apk-build/aligned.apk
 
-        echo "APK built and signed!"
+        echo "APK signed OK: $(du -sh HacksToHacks.apk)"
 
     - name: Upload APK
       uses: actions/upload-artifact@v4

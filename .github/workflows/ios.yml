@@ -17,29 +17,33 @@ jobs:
       run: |
         cmake -B build -G Xcode \
           -DCMAKE_SYSTEM_NAME=iOS \
-          "-DCMAKE_OSX_ARCHITECTURES=arm64" \
+          -DCMAKE_OSX_ARCHITECTURES=arm64 \
           -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 \
-          -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO \
+          -DPLATFORM=iOS \
+          -DGRAPHICS=GRAPHICS_API_OPENGL_ES2 \
           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-          -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED=NO \
-          -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY="" \
           -DBUILD_EXAMPLES=OFF \
           -DBUILD_SHARED_LIBS=OFF
 
     - name: Build for iOS
       run: |
-        cmake --build build --config Release --sdk iphoneos
+        cmake --build build --config Release -- -sdk iphoneos
 
     - name: Create IPA
       run: |
         APP_PATH=$(find build -name "*.app" -type d | head -n 1)
-        echo "Found app at: $APP_PATH"
+        echo "Found app bundle: $APP_PATH"
+        if [ -z "$APP_PATH" ]; then
+          echo "ERROR: No .app found!"
+          find build -type d | head -20
+          exit 1
+        fi
         mkdir -p Payload
         cp -r "$APP_PATH" Payload/
-        # Copy assets
-        cp -r assets Payload/HacksToHacks.app/ || true
-        cp -r locales Payload/HacksToHacks.app/ || true
+        cp -r assets Payload/HacksToHacks.app/ 2>/dev/null || true
+        cp -r locales Payload/HacksToHacks.app/ 2>/dev/null || true
         zip -r HacksToHacks.ipa Payload
+        echo "IPA created: $(du -sh HacksToHacks.ipa)"
 
     - name: Upload IPA
       uses: actions/upload-artifact@v4
