@@ -68,7 +68,7 @@ int SDL3_PlatformInit(const char *title, int w, int h)
     SDL_GL_MakeCurrent(sdl_window, sdl_glctx);
     SDL_GL_SetSwapInterval(1); // vsync
 
-    printf("[SDL3] Window created (%dx%d) — SDL %s\n",
+    printf("[SDL3] Window created (%dx%d) — SDL %d\n",
            w, h, SDL_GetVersion());
     return 1;
 }

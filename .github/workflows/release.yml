@@ -49,6 +49,12 @@ jobs:
           CC="xcrun -sdk iphoneos clang"
           AR="xcrun -sdk iphoneos ar"
           RL_SRC=raylib-src/src
+          
+          # Fix for rlgl.h looking for <GLES2/gl2.h> instead of <OpenGLES/ES2/gl.h> on iOS
+          mkdir -p $RL_SRC/GLES2
+          echo '#include <OpenGLES/ES2/gl.h>' > $RL_SRC/GLES2/gl2.h
+          echo '#include <OpenGLES/ES2/glext.h>' > $RL_SRC/GLES2/gl2ext.h
+          
           CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK \
             -DPLATFORM_IOS -DGRAPHICS_API_OPENGL_ES2 -O2 -fPIC \
             -I$RL_SRC -mios-version-min=13.0"
@@ -243,6 +249,10 @@ jobs:
             -DBUILD_SHARED_LIBS=OFF \
             -DBUILD_EXAMPLES=OFF
           cmake --build raylib-build --config Release -j$(nproc)
+          # Fix symbol collision between raylib and SDL3
+          objcopy --redefine-sym MatrixIdentity=RaylibMatrixIdentity \
+                  --redefine-sym MatrixMultiply=RaylibMatrixMultiply \
+                  raylib-build/raylib/libraylib.a
           echo "RAYLIB_BUILD=$PWD/raylib-build" >> $GITHUB_ENV
 
       - name: Compile game with SDL3 backend
@@ -330,10 +340,7 @@ jobs:
           dkp-pacman -S --noconfirm --needed \
             wiiu-dev \
             wiiu-sdl2 \
-            wiiu-sdl2_ttf \
-            wiiu-freetype \
-            wiiu-libpng \
-            wiiu-zlib
+            wiiu-sdl2_ttf
 
       - name: Build Wii U RPX via CMake
         run: |
