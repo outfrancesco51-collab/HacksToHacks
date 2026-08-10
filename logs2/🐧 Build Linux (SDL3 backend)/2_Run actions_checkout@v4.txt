@@ -1,0 +1,74 @@
+﻿2026-08-10T17:41:02.6114898Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:41:02.6124343Z ##[group]Run actions/checkout@v4
+2026-08-10T17:41:02.6125177Z with:
+2026-08-10T17:41:02.6125726Z   repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:41:02.6129926Z   token: ***
+2026-08-10T17:41:02.6130399Z   ssh-strict: true
+2026-08-10T17:41:02.6130869Z   ssh-user: git
+2026-08-10T17:41:02.6131342Z   persist-credentials: true
+2026-08-10T17:41:02.6131860Z   clean: true
+2026-08-10T17:41:02.6132329Z   sparse-checkout-cone-mode: true
+2026-08-10T17:41:02.6132901Z   fetch-depth: 1
+2026-08-10T17:41:02.6133413Z   fetch-tags: false
+2026-08-10T17:41:02.6133889Z   show-progress: true
+2026-08-10T17:41:02.6134401Z   lfs: false
+2026-08-10T17:41:02.6134833Z   submodules: false
+2026-08-10T17:41:02.6135364Z   set-safe-directory: true
+2026-08-10T17:41:02.6136068Z   allow-unsafe-pr-checkout: false
+2026-08-10T17:41:02.6136951Z ##[endgroup]
+2026-08-10T17:41:02.7167899Z Syncing repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:41:02.7170992Z ##[group]Getting Git version info
+2026-08-10T17:41:02.7172344Z Working directory is '/home/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T17:41:02.7174207Z [command]/usr/bin/git version
+2026-08-10T17:41:02.8667012Z git version 2.54.0
+2026-08-10T17:41:02.8689427Z ##[endgroup]
+2026-08-10T17:41:02.8711952Z Temporarily overriding HOME='/home/runner/work/_temp/ed135910-9afc-49de-a612-7b6742a3f4f6' before making global git config changes
+2026-08-10T17:41:02.8714195Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T17:41:02.8717689Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:41:02.8910692Z Deleting the contents of '/home/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T17:41:02.8915304Z ##[group]Initializing the repository
+2026-08-10T17:41:02.8920857Z [command]/usr/bin/git init /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:41:02.9400194Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-10T17:41:02.9402309Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-10T17:41:02.9404207Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-10T17:41:02.9405499Z hint: call:
+2026-08-10T17:41:02.9406326Z hint:
+2026-08-10T17:41:02.9407362Z hint: 	git config --global init.defaultBranch <name>
+2026-08-10T17:41:02.9408120Z hint:
+2026-08-10T17:41:02.9408800Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-10T17:41:02.9409878Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-10T17:41:02.9410776Z hint:
+2026-08-10T17:41:02.9411597Z hint: 	git branch -m <name>
+2026-08-10T17:41:02.9412326Z hint:
+2026-08-10T17:41:02.9412996Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-10T17:41:02.9414165Z Initialized empty Git repository in /home/runner/work/HacksToHacks/HacksToHacks/.git/
+2026-08-10T17:41:02.9417720Z [command]/usr/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:41:02.9618596Z ##[endgroup]
+2026-08-10T17:41:02.9619626Z ##[group]Disabling automatic garbage collection
+2026-08-10T17:41:02.9622883Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-10T17:41:02.9659486Z ##[endgroup]
+2026-08-10T17:41:02.9660367Z ##[group]Setting up auth
+2026-08-10T17:41:02.9667652Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T17:41:02.9705775Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T17:41:03.1668632Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T17:41:03.1713737Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T17:41:03.1970489Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T17:41:03.2011620Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T17:41:03.2239413Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-10T17:41:03.2281632Z ##[endgroup]
+2026-08-10T17:41:03.2282606Z ##[group]Fetching the repository
+2026-08-10T17:41:03.2292380Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +31b98cb933cab73656c11148efbf029f1e80de28:refs/remotes/origin/main
+2026-08-10T17:41:04.1369128Z From https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:41:04.1372297Z  * [new ref]         31b98cb933cab73656c11148efbf029f1e80de28 -> origin/main
+2026-08-10T17:41:04.1522324Z ##[endgroup]
+2026-08-10T17:41:04.1524081Z ##[group]Determining the checkout info
+2026-08-10T17:41:04.1525682Z ##[endgroup]
+2026-08-10T17:41:04.1529699Z [command]/usr/bin/git sparse-checkout disable
+2026-08-10T17:41:04.1624467Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-10T17:41:04.1659171Z ##[group]Checking out the ref
+2026-08-10T17:41:04.1663513Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T17:41:04.2581719Z Switched to a new branch 'main'
+2026-08-10T17:41:04.2587972Z branch 'main' set up to track 'origin/main'.
+2026-08-10T17:41:04.2598131Z ##[endgroup]
+2026-08-10T17:41:04.2643737Z [command]/usr/bin/git log -1 --format=%H
+2026-08-10T17:41:04.2671358Z 31b98cb933cab73656c11148efbf029f1e80de28

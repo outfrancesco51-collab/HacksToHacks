@@ -1,0 +1,61 @@
+﻿2026-08-10T17:50:04.5289426Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:50:04.5301349Z ##[group]Run actions/checkout@v4
+2026-08-10T17:50:04.5302069Z with:
+2026-08-10T17:50:04.5302586Z   repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:04.5309233Z   token: ***
+2026-08-10T17:50:04.5309900Z   ssh-strict: true
+2026-08-10T17:50:04.5310651Z   ssh-user: git
+2026-08-10T17:50:04.5311405Z   persist-credentials: true
+2026-08-10T17:50:04.5312267Z   clean: true
+2026-08-10T17:50:04.5313024Z   sparse-checkout-cone-mode: true
+2026-08-10T17:50:04.5313818Z   fetch-depth: 1
+2026-08-10T17:50:04.5314440Z   fetch-tags: false
+2026-08-10T17:50:04.5315111Z   show-progress: true
+2026-08-10T17:50:04.5315821Z   lfs: false
+2026-08-10T17:50:04.5316517Z   submodules: false
+2026-08-10T17:50:04.5317341Z   set-safe-directory: true
+2026-08-10T17:50:04.5318183Z   allow-unsafe-pr-checkout: false
+2026-08-10T17:50:04.5319367Z ##[endgroup]
+2026-08-10T17:50:04.7280951Z Syncing repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:04.7282980Z ##[group]Getting Git version info
+2026-08-10T17:50:04.7283946Z Working directory is 'D:\a\HacksToHacks\HacksToHacks'
+2026-08-10T17:50:04.8008938Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-08-10T17:50:05.1406257Z git version 2.55.0.windows.3
+2026-08-10T17:50:05.1451388Z ##[endgroup]
+2026-08-10T17:50:05.1497705Z Temporarily overriding HOME='D:\a\_temp\5a3b1747-52a1-41b5-a117-f6cc8ba482c5' before making global git config changes
+2026-08-10T17:50:05.1499558Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T17:50:05.1501265Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\HacksToHacks\HacksToHacks
+2026-08-10T17:50:05.2108709Z Deleting the contents of 'D:\a\HacksToHacks\HacksToHacks'
+2026-08-10T17:50:05.2114903Z ##[group]Initializing the repository
+2026-08-10T17:50:05.2124103Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\HacksToHacks\HacksToHacks
+2026-08-10T17:50:05.3040928Z Initialized empty Git repository in D:/a/HacksToHacks/HacksToHacks/.git/
+2026-08-10T17:50:05.3090239Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:05.3691925Z ##[endgroup]
+2026-08-10T17:50:05.3693506Z ##[group]Disabling automatic garbage collection
+2026-08-10T17:50:05.3701911Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-08-10T17:50:05.4008384Z ##[endgroup]
+2026-08-10T17:50:05.4010210Z ##[group]Setting up auth
+2026-08-10T17:50:05.4020023Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T17:50:05.4325717Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-08-10T17:50:06.8546480Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T17:50:06.8855048Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-08-10T17:50:07.4065728Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T17:50:07.4373141Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-08-10T17:50:07.9591307Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-08-10T17:50:07.9908681Z ##[endgroup]
+2026-08-10T17:50:07.9909216Z ##[group]Fetching the repository
+2026-08-10T17:50:07.9922396Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5972df36c5aab613a4c8a398c1a318310a2d10ac:refs/remotes/origin/main
+2026-08-10T17:50:09.6188163Z From https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:09.6189173Z  * [new ref]         5972df36c5aab613a4c8a398c1a318310a2d10ac -> origin/main
+2026-08-10T17:50:09.6235888Z ##[endgroup]
+2026-08-10T17:50:09.6236528Z ##[group]Determining the checkout info
+2026-08-10T17:50:09.6238928Z ##[endgroup]
+2026-08-10T17:50:09.6249103Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-08-10T17:50:09.6732852Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-08-10T17:50:09.7060858Z ##[group]Checking out the ref
+2026-08-10T17:50:09.7071039Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T17:50:09.9822244Z Switched to a new branch 'main'
+2026-08-10T17:50:09.9880177Z branch 'main' set up to track 'origin/main'.
+2026-08-10T17:50:09.9968761Z ##[endgroup]
+2026-08-10T17:50:10.0358107Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-08-10T17:50:10.0649993Z 5972df36c5aab613a4c8a398c1a318310a2d10ac

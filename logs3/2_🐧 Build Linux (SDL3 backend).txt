@@ -1,0 +1,2129 @@
+﻿2026-08-10T17:50:07.3787928Z Current runner version: '2.336.0'
+2026-08-10T17:50:07.3815236Z ##[group]Runner Image Provisioner
+2026-08-10T17:50:07.3816065Z Hosted Compute Agent
+2026-08-10T17:50:07.3816774Z Version: 20260707.563
+2026-08-10T17:50:07.3817416Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-08-10T17:50:07.3818180Z Build Date: 2026-07-07T19:33:50Z
+2026-08-10T17:50:07.3818946Z Worker ID: {3e832316-e4fc-455d-bee0-7340162f8c8c}
+2026-08-10T17:50:07.3819707Z Azure Region: northcentralus
+2026-08-10T17:50:07.3820401Z ##[endgroup]
+2026-08-10T17:50:07.3821797Z ##[group]Operating System
+2026-08-10T17:50:07.3822433Z Ubuntu
+2026-08-10T17:50:07.3823103Z 24.04.4
+2026-08-10T17:50:07.3823635Z LTS
+2026-08-10T17:50:07.3824201Z ##[endgroup]
+2026-08-10T17:50:07.3825137Z ##[group]Runner Image
+2026-08-10T17:50:07.3825753Z Image: ubuntu-24.04
+2026-08-10T17:50:07.3826425Z Version: 20260720.247.2
+2026-08-10T17:50:07.3827763Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-10T17:50:07.3829355Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+2026-08-10T17:50:07.3830323Z ##[endgroup]
+2026-08-10T17:50:07.3831481Z ##[group]GITHUB_TOKEN Permissions
+2026-08-10T17:50:07.3833984Z Contents: write
+2026-08-10T17:50:07.3835212Z Metadata: read
+2026-08-10T17:50:07.3835786Z ##[endgroup]
+2026-08-10T17:50:07.3837931Z Secret source: Actions
+2026-08-10T17:50:07.3839511Z Prepare workflow directory
+2026-08-10T17:50:07.4262516Z Prepare all required actions
+2026-08-10T17:50:07.4329100Z Getting action download info
+2026-08-10T17:50:07.6477869Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-10T17:50:07.9985116Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-10T17:50:08.2487140Z Complete job name: 🐧 Build Linux (SDL3 backend)
+2026-08-10T17:50:08.3378850Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:50:08.3387880Z ##[group]Run actions/checkout@v4
+2026-08-10T17:50:08.3388583Z with:
+2026-08-10T17:50:08.3389101Z   repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:08.3393348Z   token: ***
+2026-08-10T17:50:08.3393794Z   ssh-strict: true
+2026-08-10T17:50:08.3394234Z   ssh-user: git
+2026-08-10T17:50:08.3394859Z   persist-credentials: true
+2026-08-10T17:50:08.3395360Z   clean: true
+2026-08-10T17:50:08.3395796Z   sparse-checkout-cone-mode: true
+2026-08-10T17:50:08.3396315Z   fetch-depth: 1
+2026-08-10T17:50:08.3396734Z   fetch-tags: false
+2026-08-10T17:50:08.3397163Z   show-progress: true
+2026-08-10T17:50:08.3397598Z   lfs: false
+2026-08-10T17:50:08.3398064Z   submodules: false
+2026-08-10T17:50:08.3398516Z   set-safe-directory: true
+2026-08-10T17:50:08.3399023Z   allow-unsafe-pr-checkout: false
+2026-08-10T17:50:08.3399724Z ##[endgroup]
+2026-08-10T17:50:08.4476857Z Syncing repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:08.4478719Z ##[group]Getting Git version info
+2026-08-10T17:50:08.4479447Z Working directory is '/home/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T17:50:08.4480507Z [command]/usr/bin/git version
+2026-08-10T17:50:08.4570921Z git version 2.54.0
+2026-08-10T17:50:08.4596156Z ##[endgroup]
+2026-08-10T17:50:08.4615170Z Temporarily overriding HOME='/home/runner/work/_temp/fbedf6ac-c363-482b-83b7-7ce12f2eb103' before making global git config changes
+2026-08-10T17:50:08.4616852Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T17:50:08.4618233Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:50:08.4668970Z Deleting the contents of '/home/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T17:50:08.4675015Z ##[group]Initializing the repository
+2026-08-10T17:50:08.4681983Z [command]/usr/bin/git init /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:50:08.4778444Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-10T17:50:08.4780060Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-10T17:50:08.4781531Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-10T17:50:08.4782646Z hint: call:
+2026-08-10T17:50:08.4783251Z hint:
+2026-08-10T17:50:08.4784032Z hint: 	git config --global init.defaultBranch <name>
+2026-08-10T17:50:08.4795367Z hint:
+2026-08-10T17:50:08.4796333Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-10T17:50:08.4798146Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-10T17:50:08.4799296Z hint:
+2026-08-10T17:50:08.4799942Z hint: 	git branch -m <name>
+2026-08-10T17:50:08.4800649Z hint:
+2026-08-10T17:50:08.4801598Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-10T17:50:08.4803186Z Initialized empty Git repository in /home/runner/work/HacksToHacks/HacksToHacks/.git/
+2026-08-10T17:50:08.4806325Z [command]/usr/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:08.4846115Z ##[endgroup]
+2026-08-10T17:50:08.4847286Z ##[group]Disabling automatic garbage collection
+2026-08-10T17:50:08.4850484Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-10T17:50:08.4885374Z ##[endgroup]
+2026-08-10T17:50:08.4886755Z ##[group]Setting up auth
+2026-08-10T17:50:08.4894725Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T17:50:08.4933051Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T17:50:08.5290127Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T17:50:08.5333730Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T17:50:08.5706969Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T17:50:08.5746274Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T17:50:08.5989668Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-10T17:50:08.6031438Z ##[endgroup]
+2026-08-10T17:50:08.6032202Z ##[group]Fetching the repository
+2026-08-10T17:50:08.6043518Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5972df36c5aab613a4c8a398c1a318310a2d10ac:refs/remotes/origin/main
+2026-08-10T17:50:10.6379184Z From https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:10.6381421Z  * [new ref]         5972df36c5aab613a4c8a398c1a318310a2d10ac -> origin/main
+2026-08-10T17:50:10.6415155Z ##[endgroup]
+2026-08-10T17:50:10.6416943Z ##[group]Determining the checkout info
+2026-08-10T17:50:10.6418943Z ##[endgroup]
+2026-08-10T17:50:10.6424780Z [command]/usr/bin/git sparse-checkout disable
+2026-08-10T17:50:10.6475153Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-10T17:50:10.6510404Z ##[group]Checking out the ref
+2026-08-10T17:50:10.6514870Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T17:50:10.7465162Z Switched to a new branch 'main'
+2026-08-10T17:50:10.7467416Z branch 'main' set up to track 'origin/main'.
+2026-08-10T17:50:10.7481316Z ##[endgroup]
+2026-08-10T17:50:10.7529667Z [command]/usr/bin/git log -1 --format=%H
+2026-08-10T17:50:10.7560142Z 5972df36c5aab613a4c8a398c1a318310a2d10ac
+2026-08-10T17:50:10.7820319Z ##[group]Run sudo apt-get update
+2026-08-10T17:50:10.7821788Z [36;1msudo apt-get update[0m
+2026-08-10T17:50:10.7822877Z [36;1msudo apt-get install -y \[0m
+2026-08-10T17:50:10.7824047Z [36;1m  build-essential cmake git \[0m
+2026-08-10T17:50:10.7825582Z [36;1m  libgl1-mesa-dev libglu1-mesa-dev \[0m
+2026-08-10T17:50:10.7826913Z [36;1m  libasound2-dev libpulse-dev \[0m
+2026-08-10T17:50:10.7828635Z [36;1m  libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev \[0m
+2026-08-10T17:50:10.7830449Z [36;1m  libwayland-dev libxkbcommon-dev \[0m
+2026-08-10T17:50:10.7831721Z [36;1m  libdecor-0-dev pkg-config[0m
+2026-08-10T17:50:10.7886391Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:50:10.7887447Z ##[endgroup]
+2026-08-10T17:50:10.8887141Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-08-10T17:50:10.9101946Z Get:6 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+2026-08-10T17:50:10.9204216Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-08-10T17:50:10.9208077Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-08-10T17:50:10.9227752Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-08-10T17:50:10.9285707Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-08-10T17:50:10.9306762Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-08-10T17:50:10.9900652Z Get:8 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [2375 B]
+2026-08-10T17:50:11.0216653Z Get:9 https://dl.google.com/linux/chrome-stable/deb stable InRelease [2548 B]
+2026-08-10T17:50:11.0986479Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [316 kB]
+2026-08-10T17:50:11.1062006Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main all Packages [643 B]
+2026-08-10T17:50:11.1086442Z Get:12 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.2 kB]
+2026-08-10T17:50:11.1111142Z Get:13 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [275 kB]
+2026-08-10T17:50:11.1559873Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1187 kB]
+2026-08-10T17:50:11.1638435Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [281 kB]
+2026-08-10T17:50:11.1663776Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [180 kB]
+2026-08-10T17:50:11.1683091Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1682 kB]
+2026-08-10T17:50:11.1772505Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [335 kB]
+2026-08-10T17:50:11.1805681Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-08-10T17:50:11.1866107Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1416 kB]
+2026-08-10T17:50:11.1936262Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [321 kB]
+2026-08-10T17:50:11.1961693Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [45.4 kB]
+2026-08-10T17:50:11.1975902Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [12.3 kB]
+2026-08-10T17:50:11.2480368Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-08-10T17:50:11.2502455Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5776 B]
+2026-08-10T17:50:11.2513994Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [31.0 kB]
+2026-08-10T17:50:11.2530892Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-08-10T17:50:11.2948283Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [927 kB]
+2026-08-10T17:50:11.2998236Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [201 kB]
+2026-08-10T17:50:11.3026587Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.3 kB]
+2026-08-10T17:50:11.3046506Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1200 kB]
+2026-08-10T17:50:11.3128085Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [239 kB]
+2026-08-10T17:50:11.3156688Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.2 kB]
+2026-08-10T17:50:11.3175860Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1320 kB]
+2026-08-10T17:50:11.3247440Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [302 kB]
+2026-08-10T17:50:11.3271192Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [40.3 kB]
+2026-08-10T17:50:11.3283808Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [10.6 kB]
+2026-08-10T17:50:11.3974151Z Get:38 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1407 B]
+2026-08-10T17:50:15.7148221Z Fetched 11.3 MB in 1s (7950 kB/s)
+2026-08-10T17:50:16.4381007Z Reading package lists...
+2026-08-10T17:50:16.4707921Z Reading package lists...
+2026-08-10T17:50:16.6658305Z Building dependency tree...
+2026-08-10T17:50:16.6665089Z Reading state information...
+2026-08-10T17:50:16.8319505Z git is already the newest version (1:2.54.0-0ppa1~ubuntu24.04.1).
+2026-08-10T17:50:16.8320265Z git set to manually installed.
+2026-08-10T17:50:16.8320838Z pkg-config is already the newest version (1.8.1-2build1).
+2026-08-10T17:50:16.8321458Z The following additional packages will be installed:
+2026-08-10T17:50:16.8322349Z   cmake-data libasyncns0 libblkid-dev libdecor-0-0 libdecor-0-plugin-1-gtk
+2026-08-10T17:50:16.8323231Z   libegl-dev libegl-mesa0 libegl1 libflac12t64 libgirepository-2.0-0 libgl-dev
+2026-08-10T17:50:16.8324277Z   libgles-dev libgles1 libgles2 libglib2.0-dev libglib2.0-dev-bin libglu1-mesa
+2026-08-10T17:50:16.8325512Z   libglvnd-core-dev libglvnd-dev libglx-dev libjsoncpp25 libmount-dev
+2026-08-10T17:50:16.8326286Z   libmp3lame0 libmpg123-0t64 libopengl-dev libopengl0 libopus0
+2026-08-10T17:50:16.8327021Z   libpthread-stubs0-dev libpulse-mainloop-glib0 libpulse0 librhash0
+2026-08-10T17:50:16.8327838Z   libselinux1-dev libsepol-dev libsndfile1 libvorbisenc2 libwayland-bin
+2026-08-10T17:50:16.8328627Z   libwayland-server0 libxau-dev libxcb1-dev libxdmcp-dev libxext-dev
+2026-08-10T17:50:16.8333309Z   libxfixes-dev libxrender-dev uuid-dev x11proto-dev xorg-sgml-doctools
+2026-08-10T17:50:16.8343598Z   xtrans-dev
+2026-08-10T17:50:16.8344092Z Suggested packages:
+2026-08-10T17:50:16.8345034Z   cmake-doc cmake-format elpa-cmake-mode ninja-build libasound2-doc
+2026-08-10T17:50:16.8345930Z   gir1.2-glib-2.0-dev libglib2.0-doc libgdk-pixbuf2.0-bin libxml2-utils
+2026-08-10T17:50:16.8346777Z   opus-tools pulseaudio libwayland-doc libx11-doc libxcb-doc libxext-doc
+2026-08-10T17:50:16.8813604Z The following NEW packages will be installed:
+2026-08-10T17:50:16.8815416Z   build-essential cmake cmake-data libasound2-dev libasyncns0 libblkid-dev
+2026-08-10T17:50:16.8816267Z   libdecor-0-0 libdecor-0-dev libdecor-0-plugin-1-gtk libegl-dev libegl-mesa0
+2026-08-10T17:50:16.8817056Z   libegl1 libflac12t64 libgirepository-2.0-0 libgl-dev libgl1-mesa-dev
+2026-08-10T17:50:16.8817828Z   libgles-dev libgles1 libgles2 libglib2.0-dev libglib2.0-dev-bin libglu1-mesa
+2026-08-10T17:50:16.8818623Z   libglu1-mesa-dev libglvnd-core-dev libglvnd-dev libglx-dev libjsoncpp25
+2026-08-10T17:50:16.8819206Z   libmount-dev libmp3lame0 libmpg123-0t64 libopengl-dev libopengl0 libopus0
+2026-08-10T17:50:16.8819775Z   libpthread-stubs0-dev libpulse-dev libpulse-mainloop-glib0 libpulse0
+2026-08-10T17:50:16.8820618Z   librhash0 libselinux1-dev libsepol-dev libsndfile1 libvorbisenc2
+2026-08-10T17:50:16.8821159Z   libwayland-bin libwayland-dev libwayland-server0 libx11-dev libxau-dev
+2026-08-10T17:50:16.8822425Z   libxcb1-dev libxcursor-dev libxdmcp-dev libxext-dev libxfixes-dev libxi-dev
+2026-08-10T17:50:16.8825532Z   libxinerama-dev libxkbcommon-dev libxrandr-dev libxrender-dev uuid-dev
+2026-08-10T17:50:16.8826277Z   x11proto-dev xorg-sgml-doctools xtrans-dev
+2026-08-10T17:50:16.9033171Z 0 upgraded, 61 newly installed, 0 to remove and 97 not upgraded.
+2026-08-10T17:50:16.9033767Z Need to get 20.9 MB of archives.
+2026-08-10T17:50:16.9034118Z After this operation, 83.0 MB of additional disk space will be used.
+2026-08-10T17:50:16.9035282Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-08-10T17:50:16.9687004Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4928 B]
+2026-08-10T17:50:16.9942961Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-08-10T17:50:17.0769116Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-08-10T17:50:17.1280540Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-08-10T17:50:17.2526027Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-08-10T17:50:17.3937790Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libasound2-dev amd64 1.2.11-1ubuntu0.3 [115 kB]
+2026-08-10T17:50:17.4195093Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libasyncns0 amd64 0.8-6build4 [11.3 kB]
+2026-08-10T17:50:17.4439941Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libdecor-0-0 amd64 0.2.2-1build2 [16.5 kB]
+2026-08-10T17:50:17.4688746Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwayland-server0 amd64 1.22.0-2.1build1 [33.9 kB]
+2026-08-10T17:50:17.4937547Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwayland-bin amd64 1.22.0-2.1build1 [20.6 kB]
+2026-08-10T17:50:17.5187886Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwayland-dev amd64 1.22.0-2.1build1 [71.3 kB]
+2026-08-10T17:50:17.5442008Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libdecor-0-dev amd64 0.2.2-1build2 [5726 B]
+2026-08-10T17:50:17.5692688Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libdecor-0-plugin-1-gtk amd64 0.2.2-1build2 [22.2 kB]
+2026-08-10T17:50:17.6015376Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libegl-mesa0 amd64 25.2.8-0ubuntu0.24.04.2 [117 kB]
+2026-08-10T17:50:17.6197231Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libegl1 amd64 1.7.0-1build1 [28.7 kB]
+2026-08-10T17:50:17.6448990Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xorg-sgml-doctools all 1:1.11-1.1 [10.9 kB]
+2026-08-10T17:50:17.6704500Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 x11proto-dev all 2023.2-1 [602 kB]
+2026-08-10T17:50:17.7007474Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxau-dev amd64 1:1.0.9-1build6 [9570 B]
+2026-08-10T17:50:17.7688906Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxdmcp-dev amd64 1:1.1.3-0ubuntu6 [26.5 kB]
+2026-08-10T17:50:17.7940657Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xtrans-dev all 1.4.0-1 [68.9 kB]
+2026-08-10T17:50:17.8194305Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpthread-stubs0-dev amd64 0.4-1build3 [4746 B]
+2026-08-10T17:50:17.8443707Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcb1-dev amd64 1.15-1ubuntu2 [85.8 kB]
+2026-08-10T17:50:17.8699550Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libx11-dev amd64 2:1.8.7-1build1 [732 kB]
+2026-08-10T17:50:17.9020013Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglx-dev amd64 1.7.0-1build1 [14.2 kB]
+2026-08-10T17:50:17.9269923Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgl-dev amd64 1.7.0-1build1 [102 kB]
+2026-08-10T17:50:17.9525558Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libegl-dev amd64 1.7.0-1build1 [18.2 kB]
+2026-08-10T17:50:17.9772739Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libflac12t64 amd64 1.4.3+ds-2.1ubuntu2 [197 kB]
+2026-08-10T17:50:18.0039191Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgirepository-2.0-0 amd64 2.80.0-6ubuntu3.8 [73.6 kB]
+2026-08-10T17:50:18.0296797Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgles1 amd64 1.7.0-1build1 [11.6 kB]
+2026-08-10T17:50:18.0544426Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgles2 amd64 1.7.0-1build1 [17.1 kB]
+2026-08-10T17:50:18.0793681Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgles-dev amd64 1.7.0-1build1 [50.5 kB]
+2026-08-10T17:50:18.1046788Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-dev-bin amd64 2.80.0-6ubuntu3.8 [138 kB]
+2026-08-10T17:50:18.1306462Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 uuid-dev amd64 2.39.3-9ubuntu6.5 [33.5 kB]
+2026-08-10T17:50:18.1556637Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid-dev amd64 2.39.3-9ubuntu6.5 [204 kB]
+2026-08-10T17:50:18.1829261Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libsepol-dev amd64 3.5-2build1 [384 kB]
+2026-08-10T17:50:18.2100862Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libselinux1-dev amd64 3.5-2ubuntu2.1 [164 kB]
+2026-08-10T17:50:18.2367631Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount-dev amd64 2.39.3-9ubuntu6.5 [14.9 kB]
+2026-08-10T17:50:18.3046896Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-dev amd64 2.80.0-6ubuntu3.8 [1860 kB]
+2026-08-10T17:50:18.3466318Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopengl0 amd64 1.7.0-1build1 [32.8 kB]
+2026-08-10T17:50:18.3723481Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglu1-mesa amd64 9.0.2-1.1build1 [152 kB]
+2026-08-10T17:50:18.3984790Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopengl-dev amd64 1.7.0-1build1 [3454 B]
+2026-08-10T17:50:18.4230992Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglu1-mesa-dev amd64 9.0.2-1.1build1 [237 kB]
+2026-08-10T17:50:18.4498009Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libmp3lame0 amd64 3.100-6build1 [142 kB]
+2026-08-10T17:50:18.4755875Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpg123-0t64 amd64 1.32.5-1ubuntu1.1 [169 kB]
+2026-08-10T17:50:18.5027989Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopus0 amd64 1.4-1build1 [208 kB]
+2026-08-10T17:50:18.5295232Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libvorbisenc2 amd64 1.3.7-1build3 [80.8 kB]
+2026-08-10T17:50:18.5550025Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libsndfile1 amd64 1.2.2-1ubuntu5.24.04.1 [209 kB]
+2026-08-10T17:50:18.5813008Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpulse0 amd64 1:16.1+dfsg1-2ubuntu10.1 [292 kB]
+2026-08-10T17:50:18.6086905Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpulse-mainloop-glib0 amd64 1:16.1+dfsg1-2ubuntu10.1 [12.2 kB]
+2026-08-10T17:50:18.6335187Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libpulse-dev amd64 1:16.1+dfsg1-2ubuntu10.1 [75.6 kB]
+2026-08-10T17:50:18.6587194Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxrender-dev amd64 1:0.9.10-1.1build1 [26.3 kB]
+2026-08-10T17:50:18.6836977Z Get:53 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxfixes-dev amd64 1:6.0.0-2build1 [12.1 kB]
+2026-08-10T17:50:18.7086664Z Get:54 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcursor-dev amd64 1:1.2.1-1build1 [31.8 kB]
+2026-08-10T17:50:18.7335598Z Get:55 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxext-dev amd64 2:1.3.4-1build2 [83.5 kB]
+2026-08-10T17:50:18.7592063Z Get:56 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxi-dev amd64 2:1.8.1-1build1 [194 kB]
+2026-08-10T17:50:18.7861328Z Get:57 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxinerama-dev amd64 2:1.1.4-3build1 [7988 B]
+2026-08-10T17:50:18.8534789Z Get:58 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxkbcommon-dev amd64 1.6.0-1build1 [56.3 kB]
+2026-08-10T17:50:18.8786651Z Get:59 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxrandr-dev amd64 2:1.5.2-2build1 [26.4 kB]
+2026-08-10T17:50:18.9038247Z Get:60 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglvnd-core-dev amd64 1.7.0-1build1 [13.6 kB]
+2026-08-10T17:50:18.9289100Z Get:61 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglvnd-dev amd64 1.7.0-1build1 [3198 B]
+2026-08-10T17:50:18.9534297Z Get:62 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgl1-mesa-dev amd64 25.2.8-0ubuntu0.24.04.2 [22.7 kB]
+2026-08-10T17:50:19.2775998Z Fetched 20.9 MB in 2s (10.1 MB/s)
+2026-08-10T17:50:19.3009694Z Selecting previously unselected package build-essential.
+2026-08-10T17:50:19.3241536Z (Reading database ... 
+2026-08-10T17:50:19.3241995Z (Reading database ... 5%
+2026-08-10T17:50:19.3242412Z (Reading database ... 10%
+2026-08-10T17:50:19.3242853Z (Reading database ... 15%
+2026-08-10T17:50:19.3243189Z (Reading database ... 20%
+2026-08-10T17:50:19.3243532Z (Reading database ... 25%
+2026-08-10T17:50:19.3243826Z (Reading database ... 30%
+2026-08-10T17:50:19.3244102Z (Reading database ... 35%
+2026-08-10T17:50:19.3244386Z (Reading database ... 40%
+2026-08-10T17:50:19.3244843Z (Reading database ... 45%
+2026-08-10T17:50:19.3245150Z (Reading database ... 50%
+2026-08-10T17:50:19.3274008Z (Reading database ... 55%
+2026-08-10T17:50:19.4371795Z (Reading database ... 60%
+2026-08-10T17:50:19.6426061Z (Reading database ... 65%
+2026-08-10T17:50:19.7913765Z (Reading database ... 70%
+2026-08-10T17:50:19.9446493Z (Reading database ... 75%
+2026-08-10T17:50:20.0914361Z (Reading database ... 80%
+2026-08-10T17:50:20.3567400Z (Reading database ... 85%
+2026-08-10T17:50:20.5075262Z (Reading database ... 90%
+2026-08-10T17:50:20.6565960Z (Reading database ... 95%
+2026-08-10T17:50:20.6566312Z (Reading database ... 100%
+2026-08-10T17:50:20.6566675Z (Reading database ... 202954 files and directories currently installed.)
+2026-08-10T17:50:20.6613463Z Preparing to unpack .../00-build-essential_12.10ubuntu1_amd64.deb ...
+2026-08-10T17:50:20.6639314Z Unpacking build-essential (12.10ubuntu1) ...
+2026-08-10T17:50:20.6858262Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-08-10T17:50:20.6988327Z Preparing to unpack .../01-libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-08-10T17:50:20.7008272Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-08-10T17:50:20.7241142Z Selecting previously unselected package librhash0:amd64.
+2026-08-10T17:50:20.7372595Z Preparing to unpack .../02-librhash0_1.4.3-3build1_amd64.deb ...
+2026-08-10T17:50:20.7382079Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-08-10T17:50:20.7620657Z Selecting previously unselected package cmake-data.
+2026-08-10T17:50:20.7754300Z Preparing to unpack .../03-cmake-data_3.28.3-1build7_all.deb ...
+2026-08-10T17:50:20.7826568Z Unpacking cmake-data (3.28.3-1build7) ...
+2026-08-10T17:50:21.2971370Z Selecting previously unselected package cmake.
+2026-08-10T17:50:21.3118912Z Preparing to unpack .../04-cmake_3.28.3-1build7_amd64.deb ...
+2026-08-10T17:50:21.3126402Z Unpacking cmake (3.28.3-1build7) ...
+2026-08-10T17:50:21.4826226Z Selecting previously unselected package libasound2-dev:amd64.
+2026-08-10T17:50:21.4960465Z Preparing to unpack .../05-libasound2-dev_1.2.11-1ubuntu0.3_amd64.deb ...
+2026-08-10T17:50:21.4991984Z Unpacking libasound2-dev:amd64 (1.2.11-1ubuntu0.3) ...
+2026-08-10T17:50:21.5327171Z Selecting previously unselected package libasyncns0:amd64.
+2026-08-10T17:50:21.5460306Z Preparing to unpack .../06-libasyncns0_0.8-6build4_amd64.deb ...
+2026-08-10T17:50:21.5469139Z Unpacking libasyncns0:amd64 (0.8-6build4) ...
+2026-08-10T17:50:21.5684444Z Selecting previously unselected package libdecor-0-0:amd64.
+2026-08-10T17:50:21.5814819Z Preparing to unpack .../07-libdecor-0-0_0.2.2-1build2_amd64.deb ...
+2026-08-10T17:50:21.5822570Z Unpacking libdecor-0-0:amd64 (0.2.2-1build2) ...
+2026-08-10T17:50:21.6039306Z Selecting previously unselected package libwayland-server0:amd64.
+2026-08-10T17:50:21.6172120Z Preparing to unpack .../08-libwayland-server0_1.22.0-2.1build1_amd64.deb ...
+2026-08-10T17:50:21.6180499Z Unpacking libwayland-server0:amd64 (1.22.0-2.1build1) ...
+2026-08-10T17:50:21.6394135Z Selecting previously unselected package libwayland-bin.
+2026-08-10T17:50:21.6527770Z Preparing to unpack .../09-libwayland-bin_1.22.0-2.1build1_amd64.deb ...
+2026-08-10T17:50:21.6535340Z Unpacking libwayland-bin (1.22.0-2.1build1) ...
+2026-08-10T17:50:21.6743707Z Selecting previously unselected package libwayland-dev:amd64.
+2026-08-10T17:50:21.6875038Z Preparing to unpack .../10-libwayland-dev_1.22.0-2.1build1_amd64.deb ...
+2026-08-10T17:50:21.6883988Z Unpacking libwayland-dev:amd64 (1.22.0-2.1build1) ...
+2026-08-10T17:50:21.7140528Z Selecting previously unselected package libdecor-0-dev:amd64.
+2026-08-10T17:50:21.7272095Z Preparing to unpack .../11-libdecor-0-dev_0.2.2-1build2_amd64.deb ...
+2026-08-10T17:50:21.7280802Z Unpacking libdecor-0-dev:amd64 (0.2.2-1build2) ...
+2026-08-10T17:50:21.7493606Z Selecting previously unselected package libdecor-0-plugin-1-gtk:amd64.
+2026-08-10T17:50:21.7627502Z Preparing to unpack .../12-libdecor-0-plugin-1-gtk_0.2.2-1build2_amd64.deb ...
+2026-08-10T17:50:21.7635685Z Unpacking libdecor-0-plugin-1-gtk:amd64 (0.2.2-1build2) ...
+2026-08-10T17:50:21.7859674Z Selecting previously unselected package libegl-mesa0:amd64.
+2026-08-10T17:50:21.7993757Z Preparing to unpack .../13-libegl-mesa0_25.2.8-0ubuntu0.24.04.2_amd64.deb ...
+2026-08-10T17:50:21.8002495Z Unpacking libegl-mesa0:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+2026-08-10T17:50:21.8253255Z Selecting previously unselected package libegl1:amd64.
+2026-08-10T17:50:21.8388786Z Preparing to unpack .../14-libegl1_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:21.8397715Z Unpacking libegl1:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:21.8614306Z Selecting previously unselected package xorg-sgml-doctools.
+2026-08-10T17:50:21.8752072Z Preparing to unpack .../15-xorg-sgml-doctools_1%3a1.11-1.1_all.deb ...
+2026-08-10T17:50:21.8768209Z Unpacking xorg-sgml-doctools (1:1.11-1.1) ...
+2026-08-10T17:50:21.9101824Z Selecting previously unselected package x11proto-dev.
+2026-08-10T17:50:21.9236668Z Preparing to unpack .../16-x11proto-dev_2023.2-1_all.deb ...
+2026-08-10T17:50:21.9245062Z Unpacking x11proto-dev (2023.2-1) ...
+2026-08-10T17:50:21.9823676Z Selecting previously unselected package libxau-dev:amd64.
+2026-08-10T17:50:21.9957519Z Preparing to unpack .../17-libxau-dev_1%3a1.0.9-1build6_amd64.deb ...
+2026-08-10T17:50:21.9967412Z Unpacking libxau-dev:amd64 (1:1.0.9-1build6) ...
+2026-08-10T17:50:22.0200372Z Selecting previously unselected package libxdmcp-dev:amd64.
+2026-08-10T17:50:22.0331908Z Preparing to unpack .../18-libxdmcp-dev_1%3a1.1.3-0ubuntu6_amd64.deb ...
+2026-08-10T17:50:22.0341725Z Unpacking libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+2026-08-10T17:50:22.0559201Z Selecting previously unselected package xtrans-dev.
+2026-08-10T17:50:22.0692720Z Preparing to unpack .../19-xtrans-dev_1.4.0-1_all.deb ...
+2026-08-10T17:50:22.0702966Z Unpacking xtrans-dev (1.4.0-1) ...
+2026-08-10T17:50:22.0962533Z Selecting previously unselected package libpthread-stubs0-dev:amd64.
+2026-08-10T17:50:22.1097036Z Preparing to unpack .../20-libpthread-stubs0-dev_0.4-1build3_amd64.deb ...
+2026-08-10T17:50:22.1105355Z Unpacking libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+2026-08-10T17:50:22.1313251Z Selecting previously unselected package libxcb1-dev:amd64.
+2026-08-10T17:50:22.1449622Z Preparing to unpack .../21-libxcb1-dev_1.15-1ubuntu2_amd64.deb ...
+2026-08-10T17:50:22.1457632Z Unpacking libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+2026-08-10T17:50:22.1700807Z Selecting previously unselected package libx11-dev:amd64.
+2026-08-10T17:50:22.1835661Z Preparing to unpack .../22-libx11-dev_2%3a1.8.7-1build1_amd64.deb ...
+2026-08-10T17:50:22.1844954Z Unpacking libx11-dev:amd64 (2:1.8.7-1build1) ...
+2026-08-10T17:50:22.2159088Z Selecting previously unselected package libglx-dev:amd64.
+2026-08-10T17:50:22.2294309Z Preparing to unpack .../23-libglx-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.2302688Z Unpacking libglx-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.2517507Z Selecting previously unselected package libgl-dev:amd64.
+2026-08-10T17:50:22.2651918Z Preparing to unpack .../24-libgl-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.2660232Z Unpacking libgl-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.2912705Z Selecting previously unselected package libegl-dev:amd64.
+2026-08-10T17:50:22.3048258Z Preparing to unpack .../25-libegl-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.3057897Z Unpacking libegl-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.3293591Z Selecting previously unselected package libflac12t64:amd64.
+2026-08-10T17:50:22.3430114Z Preparing to unpack .../26-libflac12t64_1.4.3+ds-2.1ubuntu2_amd64.deb ...
+2026-08-10T17:50:22.3438345Z Unpacking libflac12t64:amd64 (1.4.3+ds-2.1ubuntu2) ...
+2026-08-10T17:50:22.3670725Z Selecting previously unselected package libgirepository-2.0-0:amd64.
+2026-08-10T17:50:22.3824996Z Preparing to unpack .../27-libgirepository-2.0-0_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-08-10T17:50:22.3832766Z Unpacking libgirepository-2.0-0:amd64 (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:22.4048224Z Selecting previously unselected package libgles1:amd64.
+2026-08-10T17:50:22.4182098Z Preparing to unpack .../28-libgles1_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.4188712Z Unpacking libgles1:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.4396904Z Selecting previously unselected package libgles2:amd64.
+2026-08-10T17:50:22.4528045Z Preparing to unpack .../29-libgles2_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.4536270Z Unpacking libgles2:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.4739256Z Selecting previously unselected package libgles-dev:amd64.
+2026-08-10T17:50:22.4869135Z Preparing to unpack .../30-libgles-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.4876140Z Unpacking libgles-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.5117445Z Selecting previously unselected package libglib2.0-dev-bin.
+2026-08-10T17:50:22.5250288Z Preparing to unpack .../31-libglib2.0-dev-bin_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-08-10T17:50:22.5256835Z Unpacking libglib2.0-dev-bin (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:22.5598820Z Selecting previously unselected package uuid-dev:amd64.
+2026-08-10T17:50:22.5734078Z Preparing to unpack .../32-uuid-dev_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-08-10T17:50:22.5740800Z Unpacking uuid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-08-10T17:50:22.5964018Z Selecting previously unselected package libblkid-dev:amd64.
+2026-08-10T17:50:22.6097913Z Preparing to unpack .../33-libblkid-dev_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-08-10T17:50:22.6104261Z Unpacking libblkid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-08-10T17:50:22.6338792Z Selecting previously unselected package libsepol-dev:amd64.
+2026-08-10T17:50:22.6472606Z Preparing to unpack .../34-libsepol-dev_3.5-2build1_amd64.deb ...
+2026-08-10T17:50:22.6478891Z Unpacking libsepol-dev:amd64 (3.5-2build1) ...
+2026-08-10T17:50:22.6781877Z Selecting previously unselected package libselinux1-dev:amd64.
+2026-08-10T17:50:22.6915180Z Preparing to unpack .../35-libselinux1-dev_3.5-2ubuntu2.1_amd64.deb ...
+2026-08-10T17:50:22.6921022Z Unpacking libselinux1-dev:amd64 (3.5-2ubuntu2.1) ...
+2026-08-10T17:50:22.7349478Z Selecting previously unselected package libmount-dev:amd64.
+2026-08-10T17:50:22.7483502Z Preparing to unpack .../36-libmount-dev_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-08-10T17:50:22.7490159Z Unpacking libmount-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-08-10T17:50:22.7689651Z Selecting previously unselected package libglib2.0-dev:amd64.
+2026-08-10T17:50:22.7822320Z Preparing to unpack .../37-libglib2.0-dev_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-08-10T17:50:22.7828623Z Unpacking libglib2.0-dev:amd64 (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:22.8899118Z Selecting previously unselected package libopengl0:amd64.
+2026-08-10T17:50:22.9036843Z Preparing to unpack .../38-libopengl0_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.9044865Z Unpacking libopengl0:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.9256287Z Selecting previously unselected package libglu1-mesa:amd64.
+2026-08-10T17:50:22.9391226Z Preparing to unpack .../39-libglu1-mesa_9.0.2-1.1build1_amd64.deb ...
+2026-08-10T17:50:22.9398875Z Unpacking libglu1-mesa:amd64 (9.0.2-1.1build1) ...
+2026-08-10T17:50:22.9621015Z Selecting previously unselected package libopengl-dev:amd64.
+2026-08-10T17:50:22.9763811Z Preparing to unpack .../40-libopengl-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:22.9771286Z Unpacking libopengl-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:22.9972911Z Selecting previously unselected package libglu1-mesa-dev:amd64.
+2026-08-10T17:50:23.0108922Z Preparing to unpack .../41-libglu1-mesa-dev_9.0.2-1.1build1_amd64.deb ...
+2026-08-10T17:50:23.0117047Z Unpacking libglu1-mesa-dev:amd64 (9.0.2-1.1build1) ...
+2026-08-10T17:50:23.0362991Z Selecting previously unselected package libmp3lame0:amd64.
+2026-08-10T17:50:23.0498782Z Preparing to unpack .../42-libmp3lame0_3.100-6build1_amd64.deb ...
+2026-08-10T17:50:23.0506740Z Unpacking libmp3lame0:amd64 (3.100-6build1) ...
+2026-08-10T17:50:23.0733310Z Selecting previously unselected package libmpg123-0t64:amd64.
+2026-08-10T17:50:23.0869268Z Preparing to unpack .../43-libmpg123-0t64_1.32.5-1ubuntu1.1_amd64.deb ...
+2026-08-10T17:50:23.0877460Z Unpacking libmpg123-0t64:amd64 (1.32.5-1ubuntu1.1) ...
+2026-08-10T17:50:23.1111920Z Selecting previously unselected package libopus0:amd64.
+2026-08-10T17:50:23.1251649Z Preparing to unpack .../44-libopus0_1.4-1build1_amd64.deb ...
+2026-08-10T17:50:23.1266434Z Unpacking libopus0:amd64 (1.4-1build1) ...
+2026-08-10T17:50:23.1498227Z Selecting previously unselected package libvorbisenc2:amd64.
+2026-08-10T17:50:23.1635864Z Preparing to unpack .../45-libvorbisenc2_1.3.7-1build3_amd64.deb ...
+2026-08-10T17:50:23.1643452Z Unpacking libvorbisenc2:amd64 (1.3.7-1build3) ...
+2026-08-10T17:50:23.1881441Z Selecting previously unselected package libsndfile1:amd64.
+2026-08-10T17:50:23.2018601Z Preparing to unpack .../46-libsndfile1_1.2.2-1ubuntu5.24.04.1_amd64.deb ...
+2026-08-10T17:50:23.2025581Z Unpacking libsndfile1:amd64 (1.2.2-1ubuntu5.24.04.1) ...
+2026-08-10T17:50:23.2268917Z Selecting previously unselected package libpulse0:amd64.
+2026-08-10T17:50:23.2403351Z Preparing to unpack .../47-libpulse0_1%3a16.1+dfsg1-2ubuntu10.1_amd64.deb ...
+2026-08-10T17:50:23.2469269Z Unpacking libpulse0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-08-10T17:50:23.2718765Z Selecting previously unselected package libpulse-mainloop-glib0:amd64.
+2026-08-10T17:50:23.2852328Z Preparing to unpack .../48-libpulse-mainloop-glib0_1%3a16.1+dfsg1-2ubuntu10.1_amd64.deb ...
+2026-08-10T17:50:23.2859514Z Unpacking libpulse-mainloop-glib0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-08-10T17:50:23.3058281Z Selecting previously unselected package libpulse-dev:amd64.
+2026-08-10T17:50:23.3191036Z Preparing to unpack .../49-libpulse-dev_1%3a16.1+dfsg1-2ubuntu10.1_amd64.deb ...
+2026-08-10T17:50:23.3199270Z Unpacking libpulse-dev:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-08-10T17:50:23.3484994Z Selecting previously unselected package libxrender-dev:amd64.
+2026-08-10T17:50:23.3622172Z Preparing to unpack .../50-libxrender-dev_1%3a0.9.10-1.1build1_amd64.deb ...
+2026-08-10T17:50:23.3629295Z Unpacking libxrender-dev:amd64 (1:0.9.10-1.1build1) ...
+2026-08-10T17:50:23.3837975Z Selecting previously unselected package libxfixes-dev:amd64.
+2026-08-10T17:50:23.3972980Z Preparing to unpack .../51-libxfixes-dev_1%3a6.0.0-2build1_amd64.deb ...
+2026-08-10T17:50:23.3983883Z Unpacking libxfixes-dev:amd64 (1:6.0.0-2build1) ...
+2026-08-10T17:50:23.4188619Z Selecting previously unselected package libxcursor-dev:amd64.
+2026-08-10T17:50:23.4323878Z Preparing to unpack .../52-libxcursor-dev_1%3a1.2.1-1build1_amd64.deb ...
+2026-08-10T17:50:23.4331384Z Unpacking libxcursor-dev:amd64 (1:1.2.1-1build1) ...
+2026-08-10T17:50:23.4586490Z Selecting previously unselected package libxext-dev:amd64.
+2026-08-10T17:50:23.4719044Z Preparing to unpack .../53-libxext-dev_2%3a1.3.4-1build2_amd64.deb ...
+2026-08-10T17:50:23.4725111Z Unpacking libxext-dev:amd64 (2:1.3.4-1build2) ...
+2026-08-10T17:50:23.5018394Z Selecting previously unselected package libxi-dev:amd64.
+2026-08-10T17:50:23.5154341Z Preparing to unpack .../54-libxi-dev_2%3a1.8.1-1build1_amd64.deb ...
+2026-08-10T17:50:23.5160990Z Unpacking libxi-dev:amd64 (2:1.8.1-1build1) ...
+2026-08-10T17:50:23.5471842Z Selecting previously unselected package libxinerama-dev:amd64.
+2026-08-10T17:50:23.5608443Z Preparing to unpack .../55-libxinerama-dev_2%3a1.1.4-3build1_amd64.deb ...
+2026-08-10T17:50:23.5615481Z Unpacking libxinerama-dev:amd64 (2:1.1.4-3build1) ...
+2026-08-10T17:50:23.5837177Z Selecting previously unselected package libxkbcommon-dev:amd64.
+2026-08-10T17:50:23.5973839Z Preparing to unpack .../56-libxkbcommon-dev_1.6.0-1build1_amd64.deb ...
+2026-08-10T17:50:23.5981152Z Unpacking libxkbcommon-dev:amd64 (1.6.0-1build1) ...
+2026-08-10T17:50:23.6203362Z Selecting previously unselected package libxrandr-dev:amd64.
+2026-08-10T17:50:23.6340343Z Preparing to unpack .../57-libxrandr-dev_2%3a1.5.2-2build1_amd64.deb ...
+2026-08-10T17:50:23.6355907Z Unpacking libxrandr-dev:amd64 (2:1.5.2-2build1) ...
+2026-08-10T17:50:23.6576342Z Selecting previously unselected package libglvnd-core-dev:amd64.
+2026-08-10T17:50:23.6711853Z Preparing to unpack .../58-libglvnd-core-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:23.6719486Z Unpacking libglvnd-core-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.6926357Z Selecting previously unselected package libglvnd-dev:amd64.
+2026-08-10T17:50:23.7060966Z Preparing to unpack .../59-libglvnd-dev_1.7.0-1build1_amd64.deb ...
+2026-08-10T17:50:23.7068647Z Unpacking libglvnd-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.7271000Z Selecting previously unselected package libgl1-mesa-dev:amd64.
+2026-08-10T17:50:23.7408303Z Preparing to unpack .../60-libgl1-mesa-dev_25.2.8-0ubuntu0.24.04.2_amd64.deb ...
+2026-08-10T17:50:23.7416220Z Unpacking libgl1-mesa-dev:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+2026-08-10T17:50:23.7880973Z Setting up libglib2.0-dev-bin (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:23.9577263Z Setting up libwayland-server0:amd64 (1.22.0-2.1build1) ...
+2026-08-10T17:50:23.9593448Z Setting up libglvnd-core-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.9610025Z Setting up libgirepository-2.0-0:amd64 (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:23.9626416Z Setting up libxkbcommon-dev:amd64 (1.6.0-1build1) ...
+2026-08-10T17:50:23.9642590Z Setting up libmpg123-0t64:amd64 (1.32.5-1ubuntu1.1) ...
+2026-08-10T17:50:23.9660321Z Setting up libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+2026-08-10T17:50:23.9676125Z Setting up libopengl0:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.9692283Z Setting up xtrans-dev (1.4.0-1) ...
+2026-08-10T17:50:23.9709302Z Setting up libwayland-bin (1.22.0-2.1build1) ...
+2026-08-10T17:50:23.9725343Z Setting up libegl-mesa0:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+2026-08-10T17:50:23.9742770Z Setting up libgles2:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.9759099Z Setting up uuid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-08-10T17:50:23.9774510Z Setting up libgles1:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.9792030Z Setting up libopus0:amd64 (1.4-1build1) ...
+2026-08-10T17:50:23.9809743Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-08-10T17:50:23.9836988Z Setting up libsepol-dev:amd64 (3.5-2build1) ...
+2026-08-10T17:50:23.9853215Z Setting up libasyncns0:amd64 (0.8-6build4) ...
+2026-08-10T17:50:23.9870119Z Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-08-10T17:50:23.9886047Z Setting up libegl1:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:23.9920437Z Setting up libdecor-0-0:amd64 (0.2.2-1build2) ...
+2026-08-10T17:50:23.9938334Z Setting up build-essential (12.10ubuntu1) ...
+2026-08-10T17:50:23.9958219Z Setting up xorg-sgml-doctools (1:1.11-1.1) ...
+2026-08-10T17:50:23.9975920Z Setting up cmake-data (3.28.3-1build7) ...
+2026-08-10T17:50:24.0043324Z Setting up libglu1-mesa:amd64 (9.0.2-1.1build1) ...
+2026-08-10T17:50:24.0060249Z Setting up libflac12t64:amd64 (1.4.3+ds-2.1ubuntu2) ...
+2026-08-10T17:50:24.0077593Z Setting up libopengl-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:24.0093711Z Setting up libasound2-dev:amd64 (1.2.11-1ubuntu0.3) ...
+2026-08-10T17:50:24.0121804Z Setting up libdecor-0-plugin-1-gtk:amd64 (0.2.2-1build2) ...
+2026-08-10T17:50:24.0142562Z Setting up libmp3lame0:amd64 (3.100-6build1) ...
+2026-08-10T17:50:24.0163620Z Setting up libvorbisenc2:amd64 (1.3.7-1build3) ...
+2026-08-10T17:50:24.0181148Z Setting up libblkid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-08-10T17:50:24.0198907Z Setting up libselinux1-dev:amd64 (3.5-2ubuntu2.1) ...
+2026-08-10T17:50:24.0218135Z Setting up libwayland-dev:amd64 (1.22.0-2.1build1) ...
+2026-08-10T17:50:24.0235288Z Setting up libdecor-0-dev:amd64 (0.2.2-1build2) ...
+2026-08-10T17:50:24.0251322Z Setting up cmake (3.28.3-1build7) ...
+2026-08-10T17:50:24.0271209Z Setting up libsndfile1:amd64 (1.2.2-1ubuntu5.24.04.1) ...
+2026-08-10T17:50:24.0287029Z Setting up libmount-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-08-10T17:50:24.0304360Z Setting up libpulse0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-08-10T17:50:24.0373803Z Setting up libglib2.0-dev:amd64 (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:24.0389781Z Setting up libpulse-mainloop-glib0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-08-10T17:50:24.0535931Z Processing triggers for sgml-base (1.31) ...
+2026-08-10T17:50:24.0728145Z Setting up x11proto-dev (2023.2-1) ...
+2026-08-10T17:50:24.0747712Z Setting up libxau-dev:amd64 (1:1.0.9-1build6) ...
+2026-08-10T17:50:24.0772283Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-08-10T17:50:24.1495047Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-08-10T17:50:24.1515679Z Not building database; man-db/auto-update is not 'true'.
+2026-08-10T17:50:24.1527483Z Setting up libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+2026-08-10T17:50:24.1551221Z Processing triggers for libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.8) ...
+2026-08-10T17:50:24.1698573Z Setting up libpulse-dev:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+2026-08-10T17:50:24.1738766Z Setting up libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+2026-08-10T17:50:24.1770151Z Setting up libx11-dev:amd64 (2:1.8.7-1build1) ...
+2026-08-10T17:50:24.1795815Z Setting up libxfixes-dev:amd64 (1:6.0.0-2build1) ...
+2026-08-10T17:50:24.1821915Z Setting up libxext-dev:amd64 (2:1.3.4-1build2) ...
+2026-08-10T17:50:24.1851241Z Setting up libglx-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:24.1875572Z Setting up libxi-dev:amd64 (2:1.8.1-1build1) ...
+2026-08-10T17:50:24.1894209Z Setting up libxrender-dev:amd64 (1:0.9.10-1.1build1) ...
+2026-08-10T17:50:24.1916489Z Setting up libgl-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:24.1938864Z Setting up libegl-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:24.1958031Z Setting up libxcursor-dev:amd64 (1:1.2.1-1build1) ...
+2026-08-10T17:50:24.1982483Z Setting up libxrandr-dev:amd64 (2:1.5.2-2build1) ...
+2026-08-10T17:50:24.2008661Z Setting up libglu1-mesa-dev:amd64 (9.0.2-1.1build1) ...
+2026-08-10T17:50:24.2029963Z Setting up libxinerama-dev:amd64 (2:1.1.4-3build1) ...
+2026-08-10T17:50:24.2058791Z Setting up libgles-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:24.2081073Z Setting up libglvnd-dev:amd64 (1.7.0-1build1) ...
+2026-08-10T17:50:24.2105285Z Setting up libgl1-mesa-dev:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+2026-08-10T17:50:24.8092541Z 
+2026-08-10T17:50:24.8093241Z Running kernel seems to be up-to-date.
+2026-08-10T17:50:24.8093629Z 
+2026-08-10T17:50:24.8093794Z No services need to be restarted.
+2026-08-10T17:50:24.8094061Z 
+2026-08-10T17:50:24.8094221Z No containers need to be restarted.
+2026-08-10T17:50:24.8094485Z 
+2026-08-10T17:50:24.8094849Z No user sessions are running outdated binaries.
+2026-08-10T17:50:24.8095171Z 
+2026-08-10T17:50:24.8095464Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-08-10T17:50:25.7755519Z ##[group]Run git clone --depth 1 --branch release-3.2.16 https://github.com/libsdl-org/SDL.git SDL3-src
+2026-08-10T17:50:25.7756490Z [36;1mgit clone --depth 1 --branch release-3.2.16 https://github.com/libsdl-org/SDL.git SDL3-src[0m
+2026-08-10T17:50:25.7756995Z [36;1mcmake -S SDL3-src -B SDL3-build \[0m
+2026-08-10T17:50:25.7757305Z [36;1m  -DCMAKE_BUILD_TYPE=Release \[0m
+2026-08-10T17:50:25.7757587Z [36;1m  -DSDL_STATIC=OFF \[0m
+2026-08-10T17:50:25.7757846Z [36;1m  -DSDL_SHARED=ON \[0m
+2026-08-10T17:50:25.7758134Z [36;1m  -DCMAKE_INSTALL_PREFIX=$PWD/SDL3-install[0m
+2026-08-10T17:50:25.7758503Z [36;1mcmake --build SDL3-build --config Release -j$(nproc)[0m
+2026-08-10T17:50:25.7758844Z [36;1mcmake --install SDL3-build[0m
+2026-08-10T17:50:25.7759192Z [36;1mecho "SDL3_DIR=$PWD/SDL3-install/lib/cmake/SDL3" >> $GITHUB_ENV[0m
+2026-08-10T17:50:25.7759613Z [36;1mecho "SDL3_INC=$PWD/SDL3-install/include" >> $GITHUB_ENV[0m
+2026-08-10T17:50:25.7760041Z [36;1mecho "SDL3_LIB=$PWD/SDL3-install/lib" >> $GITHUB_ENV[0m
+2026-08-10T17:50:25.7808885Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:50:25.7809150Z ##[endgroup]
+2026-08-10T17:50:25.7889000Z Cloning into 'SDL3-src'...
+2026-08-10T17:50:27.9994902Z Note: switching to 'c9a6709bd21750f1ad9597be21abace78c6378c9'.
+2026-08-10T17:50:27.9995382Z 
+2026-08-10T17:50:27.9995696Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-08-10T17:50:27.9996452Z changes and commit them, and you can discard any commits you make in this
+2026-08-10T17:50:27.9997212Z state without impacting any branches by switching back to a branch.
+2026-08-10T17:50:27.9997658Z 
+2026-08-10T17:50:27.9997952Z If you want to create a new branch to retain commits you create, you may
+2026-08-10T17:50:27.9998653Z do so (now or later) by using -c with the switch command. Example:
+2026-08-10T17:50:27.9999060Z 
+2026-08-10T17:50:27.9999222Z   git switch -c <new-branch-name>
+2026-08-10T17:50:27.9999492Z 
+2026-08-10T17:50:27.9999725Z Or undo this operation with:
+2026-08-10T17:50:27.9999992Z 
+2026-08-10T17:50:28.0000118Z   git switch -
+2026-08-10T17:50:28.0000306Z 
+2026-08-10T17:50:28.0000636Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-08-10T17:50:28.0001144Z 
+2026-08-10T17:50:29.8295405Z -- The C compiler identification is GNU 13.3.0
+2026-08-10T17:50:29.9816976Z -- Detecting C compiler ABI info
+2026-08-10T17:50:30.2357192Z -- Detecting C compiler ABI info - done
+2026-08-10T17:50:30.2534230Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-08-10T17:50:30.3025696Z -- Detecting C compile features
+2026-08-10T17:50:30.3032253Z -- Detecting C compile features - done
+2026-08-10T17:50:30.5580552Z -- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
+2026-08-10T17:50:30.5736000Z -- Detecting Target CPU Architecture
+2026-08-10T17:50:38.0504467Z -- Detecting Target CPU Architecture - X64
+2026-08-10T17:50:38.0588476Z -- Performing Test HAVE_GCC_WALL
+2026-08-10T17:50:38.1136189Z -- Performing Test HAVE_GCC_WALL - Success
+2026-08-10T17:50:38.1144251Z -- Performing Test HAVE_GCC_WUNDEF
+2026-08-10T17:50:38.1688383Z -- Performing Test HAVE_GCC_WUNDEF - Success
+2026-08-10T17:50:38.1697097Z -- Performing Test HAVE_GCC_WFLOAT_CONVERSION
+2026-08-10T17:50:38.2240222Z -- Performing Test HAVE_GCC_WFLOAT_CONVERSION - Success
+2026-08-10T17:50:38.2248571Z -- Performing Test HAVE_GCC_NO_STRICT_ALIASING
+2026-08-10T17:50:38.2784014Z -- Performing Test HAVE_GCC_NO_STRICT_ALIASING - Success
+2026-08-10T17:50:38.2792947Z -- Performing Test HAVE_GCC_WDOCUMENTATION
+2026-08-10T17:50:38.3084800Z -- Performing Test HAVE_GCC_WDOCUMENTATION - Failed
+2026-08-10T17:50:38.3093290Z -- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND
+2026-08-10T17:50:38.3459480Z -- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND - Failed
+2026-08-10T17:50:38.3468852Z -- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS
+2026-08-10T17:50:38.3859038Z -- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS - Failed
+2026-08-10T17:50:38.3867405Z -- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS
+2026-08-10T17:50:38.4207298Z -- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS - Failed
+2026-08-10T17:50:38.4215191Z -- Performing Test HAVE_GCC_WSHADOW
+2026-08-10T17:50:38.4883033Z -- Performing Test HAVE_GCC_WSHADOW - Success
+2026-08-10T17:50:38.4891873Z -- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS
+2026-08-10T17:50:38.5438196Z -- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS - Success
+2026-08-10T17:50:38.5446801Z -- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH
+2026-08-10T17:50:38.6002821Z -- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH - Success
+2026-08-10T17:50:38.6011565Z -- Performing Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS
+2026-08-10T17:50:38.6602104Z -- Performing Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS - Success
+2026-08-10T17:50:38.6633114Z -- Looking for __GLIBC__
+2026-08-10T17:50:38.7351233Z -- Looking for __GLIBC__ - found
+2026-08-10T17:50:38.7355844Z -- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT
+2026-08-10T17:50:38.8113376Z -- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT - Success
+2026-08-10T17:50:38.8118851Z -- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS
+2026-08-10T17:50:39.0154755Z -- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS - Success
+2026-08-10T17:50:39.0156600Z -- Performing Test HAVE_GCC_FVISIBILITY
+2026-08-10T17:50:39.0804518Z -- Performing Test HAVE_GCC_FVISIBILITY - Success
+2026-08-10T17:50:39.0813711Z -- Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED
+2026-08-10T17:50:39.1344064Z -- Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED - Success
+2026-08-10T17:50:39.1347593Z -- Performing Test COMPILER_SUPPORTS_MMX
+2026-08-10T17:50:39.2213832Z -- Performing Test COMPILER_SUPPORTS_MMX - Success
+2026-08-10T17:50:39.2216308Z -- Performing Test COMPILER_SUPPORTS_SSE
+2026-08-10T17:50:39.3076031Z -- Performing Test COMPILER_SUPPORTS_SSE - Success
+2026-08-10T17:50:39.3078275Z -- Performing Test COMPILER_SUPPORTS_SSE2
+2026-08-10T17:50:39.3745194Z -- Performing Test COMPILER_SUPPORTS_SSE2 - Success
+2026-08-10T17:50:39.3747866Z -- Performing Test COMPILER_SUPPORTS_SSE3
+2026-08-10T17:50:39.6009035Z -- Performing Test COMPILER_SUPPORTS_SSE3 - Success
+2026-08-10T17:50:39.6011629Z -- Performing Test COMPILER_SUPPORTS_SSE4_1
+2026-08-10T17:50:39.6904144Z -- Performing Test COMPILER_SUPPORTS_SSE4_1 - Success
+2026-08-10T17:50:39.6906864Z -- Performing Test COMPILER_SUPPORTS_SSE4_2
+2026-08-10T17:50:39.7634854Z -- Performing Test COMPILER_SUPPORTS_SSE4_2 - Success
+2026-08-10T17:50:39.7636883Z -- Performing Test COMPILER_SUPPORTS_AVX
+2026-08-10T17:50:40.1630607Z -- Performing Test COMPILER_SUPPORTS_AVX - Success
+2026-08-10T17:50:40.1632852Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-08-10T17:50:40.4456393Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-08-10T17:50:40.4458583Z -- Performing Test COMPILER_SUPPORTS_AVX512F
+2026-08-10T17:50:40.7056807Z -- Performing Test COMPILER_SUPPORTS_AVX512F - Success
+2026-08-10T17:50:40.7113295Z -- Looking for alloca.h
+2026-08-10T17:50:40.7670192Z -- Looking for alloca.h - found
+2026-08-10T17:50:40.7671896Z -- Looking for float.h
+2026-08-10T17:50:40.8221932Z -- Looking for float.h - found
+2026-08-10T17:50:40.8222944Z -- Looking for iconv.h
+2026-08-10T17:50:40.8823751Z -- Looking for iconv.h - found
+2026-08-10T17:50:40.8824907Z -- Looking for inttypes.h
+2026-08-10T17:50:40.9415672Z -- Looking for inttypes.h - found
+2026-08-10T17:50:40.9416746Z -- Looking for limits.h
+2026-08-10T17:50:41.0009353Z -- Looking for limits.h - found
+2026-08-10T17:50:41.0010420Z -- Looking for malloc.h
+2026-08-10T17:50:41.0618518Z -- Looking for malloc.h - found
+2026-08-10T17:50:41.0619802Z -- Looking for math.h
+2026-08-10T17:50:41.1398242Z -- Looking for math.h - found
+2026-08-10T17:50:41.1399698Z -- Looking for memory.h
+2026-08-10T17:50:41.1983029Z -- Looking for memory.h - found
+2026-08-10T17:50:41.1984004Z -- Looking for signal.h
+2026-08-10T17:50:41.2655184Z -- Looking for signal.h - found
+2026-08-10T17:50:41.2656238Z -- Looking for stdarg.h
+2026-08-10T17:50:41.3224291Z -- Looking for stdarg.h - found
+2026-08-10T17:50:41.3225886Z -- Looking for stdbool.h
+2026-08-10T17:50:41.3796626Z -- Looking for stdbool.h - found
+2026-08-10T17:50:41.3797601Z -- Looking for stddef.h
+2026-08-10T17:50:41.4371142Z -- Looking for stddef.h - found
+2026-08-10T17:50:41.4372107Z -- Looking for stdint.h
+2026-08-10T17:50:41.4959382Z -- Looking for stdint.h - found
+2026-08-10T17:50:41.4960406Z -- Looking for stdio.h
+2026-08-10T17:50:41.5559721Z -- Looking for stdio.h - found
+2026-08-10T17:50:41.5560567Z -- Looking for stdlib.h
+2026-08-10T17:50:41.6180427Z -- Looking for stdlib.h - found
+2026-08-10T17:50:41.6181275Z -- Looking for string.h
+2026-08-10T17:50:41.6762243Z -- Looking for string.h - found
+2026-08-10T17:50:41.6763335Z -- Looking for strings.h
+2026-08-10T17:50:41.7340284Z -- Looking for strings.h - found
+2026-08-10T17:50:41.7341319Z -- Looking for sys/types.h
+2026-08-10T17:50:41.7930842Z -- Looking for sys/types.h - found
+2026-08-10T17:50:41.7931880Z -- Looking for time.h
+2026-08-10T17:50:41.8528616Z -- Looking for time.h - found
+2026-08-10T17:50:41.8529768Z -- Looking for wchar.h
+2026-08-10T17:50:41.9130156Z -- Looking for wchar.h - found
+2026-08-10T17:50:41.9132371Z -- Looking for pow in m
+2026-08-10T17:50:41.9820273Z -- Looking for pow in m - found
+2026-08-10T17:50:41.9825936Z -- Looking for abs
+2026-08-10T17:50:42.0763259Z -- Looking for abs - found
+2026-08-10T17:50:42.0766148Z -- Looking for acos
+2026-08-10T17:50:42.1687279Z -- Looking for acos - found
+2026-08-10T17:50:42.1691946Z -- Looking for acosf
+2026-08-10T17:50:42.2609986Z -- Looking for acosf - found
+2026-08-10T17:50:42.2612651Z -- Looking for asin
+2026-08-10T17:50:42.3533001Z -- Looking for asin - found
+2026-08-10T17:50:42.3535884Z -- Looking for asinf
+2026-08-10T17:50:42.4456870Z -- Looking for asinf - found
+2026-08-10T17:50:42.4459472Z -- Looking for atan
+2026-08-10T17:50:42.5374905Z -- Looking for atan - found
+2026-08-10T17:50:42.5377447Z -- Looking for atan2
+2026-08-10T17:50:42.6292556Z -- Looking for atan2 - found
+2026-08-10T17:50:42.6295434Z -- Looking for atan2f
+2026-08-10T17:50:42.7216226Z -- Looking for atan2f - found
+2026-08-10T17:50:42.7219268Z -- Looking for atanf
+2026-08-10T17:50:42.8134407Z -- Looking for atanf - found
+2026-08-10T17:50:42.8137424Z -- Looking for atof
+2026-08-10T17:50:42.9031835Z -- Looking for atof - found
+2026-08-10T17:50:42.9035314Z -- Looking for atoi
+2026-08-10T17:50:42.9931042Z -- Looking for atoi - found
+2026-08-10T17:50:42.9934052Z -- Looking for bcopy
+2026-08-10T17:50:43.0829130Z -- Looking for bcopy - found
+2026-08-10T17:50:43.0831978Z -- Looking for ceil
+2026-08-10T17:50:43.1751736Z -- Looking for ceil - found
+2026-08-10T17:50:43.1755188Z -- Looking for ceilf
+2026-08-10T17:50:43.2688369Z -- Looking for ceilf - found
+2026-08-10T17:50:43.2690999Z -- Looking for copysign
+2026-08-10T17:50:43.3598915Z -- Looking for copysign - found
+2026-08-10T17:50:43.3602100Z -- Looking for copysignf
+2026-08-10T17:50:43.4510058Z -- Looking for copysignf - found
+2026-08-10T17:50:43.4512993Z -- Looking for cos
+2026-08-10T17:50:43.5426260Z -- Looking for cos - found
+2026-08-10T17:50:43.5429166Z -- Looking for cosf
+2026-08-10T17:50:43.6349075Z -- Looking for cosf - found
+2026-08-10T17:50:43.6352018Z -- Looking for _Exit
+2026-08-10T17:50:43.7263244Z -- Looking for _Exit - found
+2026-08-10T17:50:43.7265726Z -- Looking for exp
+2026-08-10T17:50:43.8192200Z -- Looking for exp - found
+2026-08-10T17:50:43.8194457Z -- Looking for expf
+2026-08-10T17:50:43.9114500Z -- Looking for expf - found
+2026-08-10T17:50:43.9117363Z -- Looking for fabs
+2026-08-10T17:50:44.0081839Z -- Looking for fabs - found
+2026-08-10T17:50:44.0084082Z -- Looking for fabsf
+2026-08-10T17:50:44.1004375Z -- Looking for fabsf - found
+2026-08-10T17:50:44.1006907Z -- Looking for floor
+2026-08-10T17:50:44.1918091Z -- Looking for floor - found
+2026-08-10T17:50:44.1920602Z -- Looking for floorf
+2026-08-10T17:50:44.2832897Z -- Looking for floorf - found
+2026-08-10T17:50:44.2835391Z -- Looking for fmod
+2026-08-10T17:50:44.3751457Z -- Looking for fmod - found
+2026-08-10T17:50:44.3754065Z -- Looking for fmodf
+2026-08-10T17:50:44.4673113Z -- Looking for fmodf - found
+2026-08-10T17:50:44.4675896Z -- Looking for fopen64
+2026-08-10T17:50:44.5563897Z -- Looking for fopen64 - found
+2026-08-10T17:50:44.5566412Z -- Looking for fseeko
+2026-08-10T17:50:44.6457673Z -- Looking for fseeko - found
+2026-08-10T17:50:44.6460309Z -- Looking for fseeko64
+2026-08-10T17:50:44.7354246Z -- Looking for fseeko64 - found
+2026-08-10T17:50:44.7356700Z -- Looking for getenv
+2026-08-10T17:50:44.8257178Z -- Looking for getenv - found
+2026-08-10T17:50:44.8259646Z -- Looking for _i64toa
+2026-08-10T17:50:44.8847622Z -- Looking for _i64toa - not found
+2026-08-10T17:50:44.8850129Z -- Looking for index
+2026-08-10T17:50:44.9748088Z -- Looking for index - found
+2026-08-10T17:50:44.9750411Z -- Looking for itoa
+2026-08-10T17:50:45.0337671Z -- Looking for itoa - not found
+2026-08-10T17:50:45.0339899Z -- Looking for log
+2026-08-10T17:50:45.1259221Z -- Looking for log - found
+2026-08-10T17:50:45.1261592Z -- Looking for log10
+2026-08-10T17:50:45.2178962Z -- Looking for log10 - found
+2026-08-10T17:50:45.2181271Z -- Looking for log10f
+2026-08-10T17:50:45.3096175Z -- Looking for log10f - found
+2026-08-10T17:50:45.3113735Z -- Looking for logf
+2026-08-10T17:50:45.4001573Z -- Looking for logf - found
+2026-08-10T17:50:45.4004024Z -- Looking for lround
+2026-08-10T17:50:45.4920075Z -- Looking for lround - found
+2026-08-10T17:50:45.4922598Z -- Looking for lroundf
+2026-08-10T17:50:45.5838331Z -- Looking for lroundf - found
+2026-08-10T17:50:45.5840697Z -- Looking for _ltoa
+2026-08-10T17:50:45.6423721Z -- Looking for _ltoa - not found
+2026-08-10T17:50:45.6426411Z -- Looking for malloc
+2026-08-10T17:50:45.7323830Z -- Looking for malloc - found
+2026-08-10T17:50:45.7326428Z -- Looking for memcmp
+2026-08-10T17:50:45.8213161Z -- Looking for memcmp - found
+2026-08-10T17:50:45.8216057Z -- Looking for memcpy
+2026-08-10T17:50:45.9109850Z -- Looking for memcpy - found
+2026-08-10T17:50:45.9112606Z -- Looking for memmove
+2026-08-10T17:50:45.9992023Z -- Looking for memmove - found
+2026-08-10T17:50:45.9994390Z -- Looking for memset
+2026-08-10T17:50:46.0878300Z -- Looking for memset - found
+2026-08-10T17:50:46.0880706Z -- Looking for modf
+2026-08-10T17:50:46.1788147Z -- Looking for modf - found
+2026-08-10T17:50:46.1790898Z -- Looking for modff
+2026-08-10T17:50:46.2695260Z -- Looking for modff - found
+2026-08-10T17:50:46.2697727Z -- Looking for pow
+2026-08-10T17:50:46.3611775Z -- Looking for pow - found
+2026-08-10T17:50:46.3614697Z -- Looking for powf
+2026-08-10T17:50:46.4521097Z -- Looking for powf - found
+2026-08-10T17:50:46.4523693Z -- Looking for putenv
+2026-08-10T17:50:46.5406082Z -- Looking for putenv - found
+2026-08-10T17:50:46.5408550Z -- Looking for rindex
+2026-08-10T17:50:46.6285150Z -- Looking for rindex - found
+2026-08-10T17:50:46.6287689Z -- Looking for round
+2026-08-10T17:50:46.7213200Z -- Looking for round - found
+2026-08-10T17:50:46.7215888Z -- Looking for roundf
+2026-08-10T17:50:46.8118269Z -- Looking for roundf - found
+2026-08-10T17:50:46.8120929Z -- Looking for scalbn
+2026-08-10T17:50:46.9039757Z -- Looking for scalbn - found
+2026-08-10T17:50:46.9042621Z -- Looking for scalbnf
+2026-08-10T17:50:46.9943485Z -- Looking for scalbnf - found
+2026-08-10T17:50:46.9946328Z -- Looking for setenv
+2026-08-10T17:50:47.0840284Z -- Looking for setenv - found
+2026-08-10T17:50:47.0842789Z -- Looking for sin
+2026-08-10T17:50:47.1753536Z -- Looking for sin - found
+2026-08-10T17:50:47.1756504Z -- Looking for sinf
+2026-08-10T17:50:47.2658762Z -- Looking for sinf - found
+2026-08-10T17:50:47.2661227Z -- Looking for sqr
+2026-08-10T17:50:47.3237946Z -- Looking for sqr - not found
+2026-08-10T17:50:47.3240425Z -- Looking for sqrt
+2026-08-10T17:50:47.4148917Z -- Looking for sqrt - found
+2026-08-10T17:50:47.4151815Z -- Looking for sqrtf
+2026-08-10T17:50:47.5066634Z -- Looking for sqrtf - found
+2026-08-10T17:50:47.5069259Z -- Looking for sscanf
+2026-08-10T17:50:47.5950654Z -- Looking for sscanf - found
+2026-08-10T17:50:47.5953128Z -- Looking for strchr
+2026-08-10T17:50:47.6837428Z -- Looking for strchr - found
+2026-08-10T17:50:47.6840392Z -- Looking for strcmp
+2026-08-10T17:50:47.7734811Z -- Looking for strcmp - found
+2026-08-10T17:50:47.7737414Z -- Looking for strlcat
+2026-08-10T17:50:47.8620452Z -- Looking for strlcat - found
+2026-08-10T17:50:47.8622903Z -- Looking for strlcpy
+2026-08-10T17:50:47.9511531Z -- Looking for strlcpy - found
+2026-08-10T17:50:47.9514161Z -- Looking for strlen
+2026-08-10T17:50:48.0400051Z -- Looking for strlen - found
+2026-08-10T17:50:48.0402598Z -- Looking for strncmp
+2026-08-10T17:50:48.1287441Z -- Looking for strncmp - found
+2026-08-10T17:50:48.1289861Z -- Looking for strnlen
+2026-08-10T17:50:48.2171329Z -- Looking for strnlen - found
+2026-08-10T17:50:48.2173929Z -- Looking for strpbrk
+2026-08-10T17:50:48.3061600Z -- Looking for strpbrk - found
+2026-08-10T17:50:48.3064153Z -- Looking for strrchr
+2026-08-10T17:50:48.3953389Z -- Looking for strrchr - found
+2026-08-10T17:50:48.3956083Z -- Looking for strstr
+2026-08-10T17:50:48.4857177Z -- Looking for strstr - found
+2026-08-10T17:50:48.4860013Z -- Looking for strnstr
+2026-08-10T17:50:48.5442938Z -- Looking for strnstr - not found
+2026-08-10T17:50:48.5445755Z -- Looking for strtod
+2026-08-10T17:50:48.6353139Z -- Looking for strtod - found
+2026-08-10T17:50:48.6356092Z -- Looking for strtok_r
+2026-08-10T17:50:48.7245966Z -- Looking for strtok_r - found
+2026-08-10T17:50:48.7249020Z -- Looking for strtol
+2026-08-10T17:50:48.8143409Z -- Looking for strtol - found
+2026-08-10T17:50:48.8146297Z -- Looking for strtoll
+2026-08-10T17:50:48.9031996Z -- Looking for strtoll - found
+2026-08-10T17:50:48.9034825Z -- Looking for strtoul
+2026-08-10T17:50:48.9921355Z -- Looking for strtoul - found
+2026-08-10T17:50:48.9925786Z -- Looking for strtoull
+2026-08-10T17:50:49.0818436Z -- Looking for strtoull - found
+2026-08-10T17:50:49.0821107Z -- Looking for tan
+2026-08-10T17:50:49.1742331Z -- Looking for tan - found
+2026-08-10T17:50:49.1745485Z -- Looking for tanf
+2026-08-10T17:50:49.2658855Z -- Looking for tanf - found
+2026-08-10T17:50:49.2661356Z -- Looking for trunc
+2026-08-10T17:50:49.3574426Z -- Looking for trunc - found
+2026-08-10T17:50:49.3577300Z -- Looking for truncf
+2026-08-10T17:50:49.4484141Z -- Looking for truncf - found
+2026-08-10T17:50:49.4487260Z -- Looking for unsetenv
+2026-08-10T17:50:49.5371309Z -- Looking for unsetenv - found
+2026-08-10T17:50:49.5374723Z -- Looking for vsnprintf
+2026-08-10T17:50:49.6262782Z -- Looking for vsnprintf - found
+2026-08-10T17:50:49.6265829Z -- Looking for vsscanf
+2026-08-10T17:50:49.7164296Z -- Looking for vsscanf - found
+2026-08-10T17:50:49.7167308Z -- Looking for wcsnlen
+2026-08-10T17:50:49.8045548Z -- Looking for wcsnlen - found
+2026-08-10T17:50:49.8048419Z -- Looking for wcscmp
+2026-08-10T17:50:49.8929522Z -- Looking for wcscmp - found
+2026-08-10T17:50:49.8932415Z -- Looking for wcsdup
+2026-08-10T17:50:49.9823188Z -- Looking for wcsdup - found
+2026-08-10T17:50:49.9826111Z -- Looking for wcslcat
+2026-08-10T17:50:50.0715095Z -- Looking for wcslcat - found
+2026-08-10T17:50:50.0717839Z -- Looking for wcslcpy
+2026-08-10T17:50:50.1608848Z -- Looking for wcslcpy - found
+2026-08-10T17:50:50.1612069Z -- Looking for wcslen
+2026-08-10T17:50:50.2506846Z -- Looking for wcslen - found
+2026-08-10T17:50:50.2509514Z -- Looking for wcsncmp
+2026-08-10T17:50:50.3395762Z -- Looking for wcsncmp - found
+2026-08-10T17:50:50.3398608Z -- Looking for wcsstr
+2026-08-10T17:50:50.4282598Z -- Looking for wcsstr - found
+2026-08-10T17:50:50.4285814Z -- Looking for wcstol
+2026-08-10T17:50:50.5173455Z -- Looking for wcstol - found
+2026-08-10T17:50:50.5176311Z -- Looking for strcasestr
+2026-08-10T17:50:50.6060581Z -- Looking for strcasestr - found
+2026-08-10T17:50:50.6063831Z -- Performing Test LIBC_HAS_ISINF
+2026-08-10T17:50:50.7288827Z -- Performing Test LIBC_HAS_ISINF - Success
+2026-08-10T17:50:50.7290033Z -- Performing Test LIBC_ISINF_HANDLES_FLOAT
+2026-08-10T17:50:50.8012947Z -- Performing Test LIBC_ISINF_HANDLES_FLOAT - Success
+2026-08-10T17:50:50.8013812Z -- Performing Test LIBC_HAS_ISINFF
+2026-08-10T17:50:50.8737986Z -- Performing Test LIBC_HAS_ISINFF - Success
+2026-08-10T17:50:50.8739454Z -- Performing Test LIBC_HAS_ISNAN
+2026-08-10T17:50:50.9454830Z -- Performing Test LIBC_HAS_ISNAN - Success
+2026-08-10T17:50:50.9455973Z -- Performing Test LIBC_ISNAN_HANDLES_FLOAT
+2026-08-10T17:50:51.0172706Z -- Performing Test LIBC_ISNAN_HANDLES_FLOAT - Success
+2026-08-10T17:50:51.0173555Z -- Performing Test LIBC_HAS_ISNANF
+2026-08-10T17:50:51.0895764Z -- Performing Test LIBC_HAS_ISNANF - Success
+2026-08-10T17:50:51.0898913Z -- Looking for fdatasync
+2026-08-10T17:50:51.1486033Z -- Looking for fdatasync - found
+2026-08-10T17:50:51.1488434Z -- Looking for gethostname
+2026-08-10T17:50:51.2090602Z -- Looking for gethostname - found
+2026-08-10T17:50:51.2092901Z -- Looking for getpagesize
+2026-08-10T17:50:51.2683790Z -- Looking for getpagesize - found
+2026-08-10T17:50:51.2686160Z -- Looking for sigaction
+2026-08-10T17:50:51.3296254Z -- Looking for sigaction - found
+2026-08-10T17:50:51.3298412Z -- Looking for setjmp
+2026-08-10T17:50:51.3869547Z -- Looking for setjmp - found
+2026-08-10T17:50:51.3872374Z -- Looking for nanosleep
+2026-08-10T17:50:51.4448598Z -- Looking for nanosleep - found
+2026-08-10T17:50:51.4451149Z -- Looking for gmtime_r
+2026-08-10T17:50:51.5035194Z -- Looking for gmtime_r - found
+2026-08-10T17:50:51.5037814Z -- Looking for localtime_r
+2026-08-10T17:50:51.5622082Z -- Looking for localtime_r - found
+2026-08-10T17:50:51.5624700Z -- Looking for nl_langinfo
+2026-08-10T17:50:51.6253741Z -- Looking for nl_langinfo - found
+2026-08-10T17:50:51.6256563Z -- Looking for sysconf
+2026-08-10T17:50:51.6866257Z -- Looking for sysconf - found
+2026-08-10T17:50:51.6868609Z -- Looking for sysctlbyname
+2026-08-10T17:50:51.7226908Z -- Looking for sysctlbyname - not found
+2026-08-10T17:50:51.7229321Z -- Looking for getauxval
+2026-08-10T17:50:51.7876153Z -- Looking for getauxval - found
+2026-08-10T17:50:51.7878595Z -- Looking for elf_aux_info
+2026-08-10T17:50:51.8213786Z -- Looking for elf_aux_info - not found
+2026-08-10T17:50:51.8215894Z -- Looking for poll
+2026-08-10T17:50:51.8845740Z -- Looking for poll - found
+2026-08-10T17:50:51.8847907Z -- Looking for memfd_create
+2026-08-10T17:50:51.9447434Z -- Looking for memfd_create - found
+2026-08-10T17:50:51.9449384Z -- Looking for posix_fallocate
+2026-08-10T17:50:52.0049950Z -- Looking for posix_fallocate - found
+2026-08-10T17:50:52.0051735Z -- Performing Test ICONV_IN_LIBC
+2026-08-10T17:50:52.0613985Z -- Performing Test ICONV_IN_LIBC - Success
+2026-08-10T17:50:52.0615751Z -- Performing Test ICONV_IN_LIBICONV
+2026-08-10T17:50:52.1065969Z -- Performing Test ICONV_IN_LIBICONV - Failed
+2026-08-10T17:50:52.1068604Z -- Performing Test HAVE_SA_SIGACTION
+2026-08-10T17:50:52.1686637Z -- Performing Test HAVE_SA_SIGACTION - Success
+2026-08-10T17:50:52.1688610Z -- Performing Test HAVE_ST_MTIM
+2026-08-10T17:50:52.2299314Z -- Performing Test HAVE_ST_MTIM - Success
+2026-08-10T17:50:52.2343208Z -- Looking for dlopen
+2026-08-10T17:50:52.2918024Z -- Looking for dlopen - found
+2026-08-10T17:50:52.2921203Z -- Performing Test HAVE_O_CLOEXEC
+2026-08-10T17:50:52.3501496Z -- Performing Test HAVE_O_CLOEXEC - Success
+2026-08-10T17:50:52.3629210Z -- Found ALSA: /usr/lib/x86_64-linux-gnu/libasound.so (found version "1.2.11")
+2026-08-10T17:50:52.3639352Z -- dynamic libasound -> libasound.so.2
+2026-08-10T17:50:52.3646301Z -- Checking for module 'jack'
+2026-08-10T17:50:52.5150088Z --   Package 'jack', required by 'virtual:world', not found
+2026-08-10T17:50:52.5158534Z -- Checking for module 'libpipewire-0.3>=0.3.44'
+2026-08-10T17:50:52.5209753Z --   Package 'libpipewire-0.3', required by 'virtual:world', not found
+2026-08-10T17:50:52.5216945Z -- Checking for module 'libpulse>=0.9.15'
+2026-08-10T17:50:52.5309011Z --   Found libpulse, version 16.1
+2026-08-10T17:50:52.5542207Z -- dynamic libpulse -> libpulse.so.0
+2026-08-10T17:50:52.5548768Z -- Checking for module 'sndio'
+2026-08-10T17:50:52.5597783Z --   Package 'sndio', required by 'virtual:world', not found
+2026-08-10T17:50:52.6208281Z -- Found X11: /usr/include
+2026-08-10T17:50:52.6275746Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+2026-08-10T17:50:52.6886320Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+2026-08-10T17:50:52.6887489Z -- Looking for gethostbyname
+2026-08-10T17:50:52.7442360Z -- Looking for gethostbyname - found
+2026-08-10T17:50:52.7442852Z -- Looking for connect
+2026-08-10T17:50:52.7995965Z -- Looking for connect - found
+2026-08-10T17:50:52.7996432Z -- Looking for remove
+2026-08-10T17:50:52.8549464Z -- Looking for remove - found
+2026-08-10T17:50:52.8549926Z -- Looking for shmat
+2026-08-10T17:50:52.9108082Z -- Looking for shmat - found
+2026-08-10T17:50:52.9133931Z -- dynamic libX11 -> libX11.so.6
+2026-08-10T17:50:52.9142388Z -- dynamic libXext -> libXext.so.6
+2026-08-10T17:50:52.9151004Z -- dynamic libXcursor -> libXcursor.so.1
+2026-08-10T17:50:52.9158556Z -- dynamic libXi -> libXi.so.6
+2026-08-10T17:50:52.9165954Z -- dynamic libXfixes -> libXfixes.so.3
+2026-08-10T17:50:52.9173256Z -- dynamic libXrandr -> libXrandr.so.2
+2026-08-10T17:50:52.9180408Z -- dynamic libXrender -> libXrender.so.1
+2026-08-10T17:50:52.9207210Z -- Looking for shmat
+2026-08-10T17:50:52.9798042Z -- Looking for shmat - found
+2026-08-10T17:50:52.9800602Z -- Performing Test HAVE_XGENERICEVENT
+2026-08-10T17:50:53.0500836Z -- Performing Test HAVE_XGENERICEVENT - Success
+2026-08-10T17:50:53.0503129Z -- Looking for XkbLookupKeySym
+2026-08-10T17:50:53.1221091Z -- Looking for XkbLookupKeySym - found
+2026-08-10T17:50:53.1223734Z -- Performing Test HAVE_XINPUT2_MULTITOUCH
+2026-08-10T17:50:53.1884814Z -- Performing Test HAVE_XINPUT2_MULTITOUCH - Success
+2026-08-10T17:50:53.1886266Z -- Performing Test HAVE_XFIXES_H
+2026-08-10T17:50:53.2531478Z -- Performing Test HAVE_XFIXES_H - Success
+2026-08-10T17:50:53.2656333Z -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+2026-08-10T17:50:53.2661472Z -- Performing Test HAVE_OPENGL_EGL
+2026-08-10T17:50:53.3249685Z -- Performing Test HAVE_OPENGL_EGL - Success
+2026-08-10T17:50:53.3257808Z -- Checking for module 'libdrm'
+2026-08-10T17:50:53.3308696Z --   Package 'libdrm', required by 'virtual:world', not found
+2026-08-10T17:50:53.3315808Z -- Checking for module 'gbm'
+2026-08-10T17:50:53.3364044Z --   Package 'gbm', required by 'virtual:world', not found
+2026-08-10T17:50:53.3368125Z -- Performing Test HAVE_OPENGL_GLX
+2026-08-10T17:50:53.4232718Z -- Performing Test HAVE_OPENGL_GLX - Success
+2026-08-10T17:50:53.4234799Z -- Performing Test HAVE_OPENGL
+2026-08-10T17:50:53.5009737Z -- Performing Test HAVE_OPENGL - Success
+2026-08-10T17:50:53.5012118Z -- Performing Test HAVE_OPENGLES_V1
+2026-08-10T17:50:53.5606501Z -- Performing Test HAVE_OPENGLES_V1 - Success
+2026-08-10T17:50:53.5607377Z -- Performing Test HAVE_OPENGLES_V2
+2026-08-10T17:50:53.6231333Z -- Performing Test HAVE_OPENGLES_V2 - Success
+2026-08-10T17:50:53.6239673Z -- Checking for modules 'wayland-client>=1.18;wayland-egl;wayland-cursor;egl;xkbcommon>=0.5.0'
+2026-08-10T17:50:53.6403140Z --   Found wayland-client, version 1.22.0
+2026-08-10T17:50:53.6481118Z --   Found wayland-egl, version 18.1.0
+2026-08-10T17:50:53.6555408Z --   Found wayland-cursor, version 1.22.0
+2026-08-10T17:50:53.6629079Z --   Found egl, version 1.5
+2026-08-10T17:50:53.6705204Z --   Found xkbcommon, version 1.6.0
+2026-08-10T17:50:53.7032217Z -- dynamic libwayland-client -> libwayland-client.so.0
+2026-08-10T17:50:53.7041973Z -- dynamic libwayland-egl -> libwayland-egl.so.1
+2026-08-10T17:50:53.7050746Z -- dynamic libwayland-cursor -> libwayland-cursor.so.0
+2026-08-10T17:50:53.7059384Z -- dynamic libxkbcommon -> libxkbcommon.so.0
+2026-08-10T17:50:53.7067311Z -- Checking for module 'libdecor-0'
+2026-08-10T17:50:53.7165191Z --   Found libdecor-0, version 0.2.2
+2026-08-10T17:50:53.7411075Z -- dynamic libdecor-0 -> libdecor-0.so.0
+2026-08-10T17:50:53.7417821Z -- Performing Test HAVE_LINUX_INPUT_H
+2026-08-10T17:50:53.8393688Z -- Performing Test HAVE_LINUX_INPUT_H - Success
+2026-08-10T17:50:53.8394877Z -- Performing Test HAVE_INPUT_KD
+2026-08-10T17:50:53.9375973Z -- Performing Test HAVE_INPUT_KD - Success
+2026-08-10T17:50:53.9377018Z -- Performing Test HAVE_LINUX_VIDEODEV2_H
+2026-08-10T17:50:54.1230428Z -- Performing Test HAVE_LINUX_VIDEODEV2_H - Success
+2026-08-10T17:50:54.1233957Z -- Looking for libudev.h
+2026-08-10T17:50:54.1503772Z -- Looking for libudev.h - not found
+2026-08-10T17:50:54.1505748Z -- Looking for sys/inotify.h
+2026-08-10T17:50:54.2076207Z -- Looking for sys/inotify.h - found
+2026-08-10T17:50:54.2078654Z -- Looking for inotify_init
+2026-08-10T17:50:54.2648658Z -- Looking for inotify_init - found
+2026-08-10T17:50:54.2651314Z -- Looking for inotify_init1
+2026-08-10T17:50:54.3221551Z -- Looking for inotify_init1 - found
+2026-08-10T17:50:54.3224806Z -- Checking for one of the modules 'dbus-1;dbus'
+2026-08-10T17:50:54.3336783Z -- Checking for one of the modules 'ibus-1.0;ibus'
+2026-08-10T17:50:54.3446295Z -- Checking for one of the modules 'liburing-ffi'
+2026-08-10T17:50:54.3507180Z -- Performing Test LIBC_HAS_WORKING_LIBUNWIND
+2026-08-10T17:50:54.3778774Z -- Performing Test LIBC_HAS_WORKING_LIBUNWIND - Failed
+2026-08-10T17:50:54.3781938Z -- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND
+2026-08-10T17:50:54.4047231Z -- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND - Failed
+2026-08-10T17:50:54.4054492Z -- Checking for modules 'libunwind;libunwind-generic'
+2026-08-10T17:50:54.4105280Z --   Package 'libunwind', required by 'virtual:world', not found
+2026-08-10T17:50:54.4151568Z --   Package 'libunwind-generic', required by 'virtual:world', not found
+2026-08-10T17:50:54.4211971Z -- Checking for module 'libusb-1.0>=1.0.16'
+2026-08-10T17:50:54.4261546Z --   Package 'libusb-1.0', required by 'virtual:world', not found
+2026-08-10T17:50:54.4292073Z -- Could NOT find LibUSB (missing: LibUSB_LIBRARY LibUSB_INCLUDE_PATH) (found version "LibUSB_VERSION-NOTFOUND")
+2026-08-10T17:50:54.4298821Z -- Performing Test HAVE_PTHREADS
+2026-08-10T17:50:54.4921859Z -- Performing Test HAVE_PTHREADS - Success
+2026-08-10T17:50:54.4926168Z -- Performing Test HAVE_RECURSIVE_MUTEXES
+2026-08-10T17:50:54.5539655Z -- Performing Test HAVE_RECURSIVE_MUTEXES - Success
+2026-08-10T17:50:54.5540980Z -- Performing Test HAVE_PTHREADS_SEM
+2026-08-10T17:50:54.6157828Z -- Performing Test HAVE_PTHREADS_SEM - Success
+2026-08-10T17:50:54.6159069Z -- Performing Test COMPILER_HAS_SEM_TIMEDWAIT
+2026-08-10T17:50:54.6820086Z -- Performing Test COMPILER_HAS_SEM_TIMEDWAIT - Success
+2026-08-10T17:50:54.6822077Z -- Looking for pthread.h
+2026-08-10T17:50:54.7430738Z -- Looking for pthread.h - found
+2026-08-10T17:50:54.7431809Z -- Looking for pthread_np.h
+2026-08-10T17:50:54.7701871Z -- Looking for pthread_np.h - not found
+2026-08-10T17:50:54.7703738Z -- Performing Test HAVE_PTHREAD_SETNAME_NP
+2026-08-10T17:50:54.8307843Z -- Performing Test HAVE_PTHREAD_SETNAME_NP - Success
+2026-08-10T17:50:54.8312400Z -- Looking for clock_gettime in c
+2026-08-10T17:50:54.8888640Z -- Looking for clock_gettime in c - found
+2026-08-10T17:50:54.8902949Z -- Performing Test HAVE_ENABLE_NEW_DTAGS
+2026-08-10T17:50:54.9447623Z -- Performing Test HAVE_ENABLE_NEW_DTAGS - Success
+2026-08-10T17:50:54.9455290Z -- Performing Test HAVE_POSIX_SPAWN
+2026-08-10T17:50:55.0090986Z -- Performing Test HAVE_POSIX_SPAWN - Success
+2026-08-10T17:50:55.0860899Z -- 
+2026-08-10T17:50:55.0861352Z -- SDL3 was configured with the following options:
+2026-08-10T17:50:55.0861784Z -- 
+2026-08-10T17:50:55.0862045Z -- Platform: Linux-6.17.0-1020-azure
+2026-08-10T17:50:55.0862396Z -- 64-bit:   TRUE
+2026-08-10T17:50:55.0862688Z -- Compiler: /usr/bin/cc
+2026-08-10T17:50:55.0863020Z -- Revision: SDL3-3.2.16-release-3.2.16
+2026-08-10T17:50:55.0863374Z -- Vendor:   
+2026-08-10T17:50:55.0863623Z -- 
+2026-08-10T17:50:55.0863858Z -- Subsystems:
+2026-08-10T17:50:55.0864114Z --   Audio:    ON
+2026-08-10T17:50:55.0864368Z --   Video:    ON
+2026-08-10T17:50:55.0864853Z --   GPU:      ON
+2026-08-10T17:50:55.0865100Z --   Render:   ON
+2026-08-10T17:50:55.0865378Z --   Camera:   ON
+2026-08-10T17:50:55.0865667Z --   Joystick: ON
+2026-08-10T17:50:55.0865961Z --   Haptic:   ON
+2026-08-10T17:50:55.0866240Z --   Hidapi:   ON
+2026-08-10T17:50:55.0867064Z --   Power:    ON
+2026-08-10T17:50:55.0867432Z --   Sensor:   ON
+2026-08-10T17:50:55.0867757Z --   Dialog:   ON
+2026-08-10T17:50:55.0868270Z -- 
+2026-08-10T17:50:55.0868541Z -- Options:
+2026-08-10T17:50:55.0876043Z --   SDL_ALSA                    (Wanted: ON): ON
+2026-08-10T17:50:55.0876683Z --   SDL_ALSA_SHARED             (Wanted: ON): ON
+2026-08-10T17:50:55.0877260Z --   SDL_ALTIVEC                 (Wanted: OFF): OFF
+2026-08-10T17:50:55.0877909Z --   SDL_ARMNEON                 (Wanted: OFF): OFF
+2026-08-10T17:50:55.0878566Z --   SDL_ASAN                    (Wanted: OFF): OFF
+2026-08-10T17:50:55.0879323Z --   SDL_ASSEMBLY                (Wanted: ON): ON
+2026-08-10T17:50:55.0880016Z --   SDL_ASSERTIONS              (Wanted: auto): auto
+2026-08-10T17:50:55.0880700Z --   SDL_AVX                     (Wanted: ON): ON
+2026-08-10T17:50:55.0881432Z --   SDL_AVX2                    (Wanted: ON): ON
+2026-08-10T17:50:55.0882123Z --   SDL_AVX512F                 (Wanted: ON): ON
+2026-08-10T17:50:55.0882862Z --   SDL_BACKGROUNDING_SIGNAL    (Wanted: OFF): OFF
+2026-08-10T17:50:55.0883513Z --   SDL_CCACHE                  (Wanted: OFF): OFF
+2026-08-10T17:50:55.0884169Z --   SDL_CLANG_TIDY              (Wanted: OFF): OFF
+2026-08-10T17:50:55.0885115Z --   SDL_CLOCK_GETTIME           (Wanted: ON): ON
+2026-08-10T17:50:55.0895307Z --   SDL_COCOA                   (Wanted: OFF): OFF
+2026-08-10T17:50:55.0895802Z --   SDL_DBUS                    (Wanted: ON): OFF
+2026-08-10T17:50:55.0896277Z --   SDL_DEPS_SHARED             (Wanted: ON): OFF
+2026-08-10T17:50:55.0896760Z --   SDL_DIRECTX                 (Wanted: OFF): OFF
+2026-08-10T17:50:55.0897241Z --   SDL_DISKAUDIO               (Wanted: ON): ON
+2026-08-10T17:50:55.0897693Z --   SDL_DUMMYAUDIO              (Wanted: ON): ON
+2026-08-10T17:50:55.0898145Z --   SDL_DUMMYCAMERA             (Wanted: ON): ON
+2026-08-10T17:50:55.0898596Z --   SDL_DUMMYVIDEO              (Wanted: ON): ON
+2026-08-10T17:50:55.0899051Z --   SDL_EXAMPLES                (Wanted: OFF): OFF
+2026-08-10T17:50:55.0899539Z --   SDL_EXAMPLES_LINK_SHARED    (Wanted: ON): OFF
+2026-08-10T17:50:55.0900025Z --   SDL_FOREGROUNDING_SIGNAL    (Wanted: OFF): OFF
+2026-08-10T17:50:55.0900509Z --   SDL_GCC_ATOMICS             (Wanted: ON): ON
+2026-08-10T17:50:55.0900978Z --   SDL_GPU_DXVK                (Wanted: OFF): OFF
+2026-08-10T17:50:55.0901434Z --   SDL_HIDAPI                  (Wanted: ON): ON
+2026-08-10T17:50:55.0901899Z --   SDL_HIDAPI_JOYSTICK         (Wanted: ON): ON
+2026-08-10T17:50:55.0902362Z --   SDL_HIDAPI_LIBUSB           (Wanted: ON): OFF
+2026-08-10T17:50:55.0902833Z --   SDL_HIDAPI_LIBUSB_SHARED    (Wanted: ON): OFF
+2026-08-10T17:50:55.0903290Z --   SDL_IBUS                    (Wanted: ON): OFF
+2026-08-10T17:50:55.0903733Z --   SDL_INSTALL                 (Wanted: ON): OFF
+2026-08-10T17:50:55.0904193Z --   SDL_INSTALL_TESTS           (Wanted: OFF): OFF
+2026-08-10T17:50:55.0904802Z --   SDL_JACK                    (Wanted: ON): OFF
+2026-08-10T17:50:55.0905263Z --   SDL_JACK_SHARED             (Wanted: ON): OFF
+2026-08-10T17:50:55.0905712Z --   SDL_KMSDRM                  (Wanted: ON): OFF
+2026-08-10T17:50:55.0906165Z --   SDL_KMSDRM_SHARED           (Wanted: ON): OFF
+2026-08-10T17:50:55.0906628Z --   SDL_LASX                    (Wanted: OFF): OFF
+2026-08-10T17:50:55.0907125Z --   SDL_LIBC                    (Wanted: ON): ON
+2026-08-10T17:50:55.0907680Z --   SDL_LIBICONV                (Wanted: OFF): OFF
+2026-08-10T17:50:55.0908137Z --   SDL_LIBUDEV                 (Wanted: ON): OFF
+2026-08-10T17:50:55.0908588Z --   SDL_LIBURING                (Wanted: ON): OFF
+2026-08-10T17:50:55.0909035Z --   SDL_LSX                     (Wanted: OFF): OFF
+2026-08-10T17:50:55.0909481Z --   SDL_METAL                   (Wanted: OFF): OFF
+2026-08-10T17:50:55.0909935Z --   SDL_MMX                     (Wanted: ON): ON
+2026-08-10T17:50:55.0910380Z --   SDL_OFFSCREEN               (Wanted: ON): ON
+2026-08-10T17:50:55.0910831Z --   SDL_OPENGL                  (Wanted: ON): ON
+2026-08-10T17:50:55.0911675Z --   SDL_OPENGLES                (Wanted: ON): ON
+2026-08-10T17:50:55.0912132Z --   SDL_OPENVR                  (Wanted: OFF): OFF
+2026-08-10T17:50:55.0912585Z --   SDL_OSS                     (Wanted: OFF): OFF
+2026-08-10T17:50:55.0913213Z --   SDL_PIPEWIRE                (Wanted: ON): OFF
+2026-08-10T17:50:55.0913683Z --   SDL_PIPEWIRE_SHARED         (Wanted: ON): OFF
+2026-08-10T17:50:55.0914138Z --   SDL_PTHREADS                (Wanted: ON): ON
+2026-08-10T17:50:55.0914874Z --   SDL_PTHREADS_SEM            (Wanted: ON): ON
+2026-08-10T17:50:55.0915341Z --   SDL_PULSEAUDIO              (Wanted: ON): ON
+2026-08-10T17:50:55.0915810Z --   SDL_PULSEAUDIO_SHARED       (Wanted: ON): ON
+2026-08-10T17:50:55.0916274Z --   SDL_RENDER_D3D              (Wanted: OFF): OFF
+2026-08-10T17:50:55.0916734Z --   SDL_RENDER_D3D11            (Wanted: OFF): OFF
+2026-08-10T17:50:55.0917191Z --   SDL_RENDER_D3D12            (Wanted: OFF): OFF
+2026-08-10T17:50:55.0917646Z --   SDL_RENDER_GPU              (Wanted: ON): ON
+2026-08-10T17:50:55.0918115Z --   SDL_RENDER_METAL            (Wanted: ON): OFF
+2026-08-10T17:50:55.0925335Z --   SDL_RENDER_VULKAN           (Wanted: ON): ON
+2026-08-10T17:50:55.0935291Z --   SDL_ROCKCHIP                (Wanted: OFF): OFF
+2026-08-10T17:50:55.0935830Z --   SDL_RPATH                   (Wanted: ON): ON
+2026-08-10T17:50:55.0936316Z --   SDL_RPI                     (Wanted: OFF): OFF
+2026-08-10T17:50:55.0936798Z --   SDL_SNDIO                   (Wanted: ON): OFF
+2026-08-10T17:50:55.0937219Z --   SDL_SNDIO_SHARED            (Wanted: ON): OFF
+2026-08-10T17:50:55.0937510Z --   SDL_SSE                     (Wanted: ON): ON
+2026-08-10T17:50:55.0937797Z --   SDL_SSE2                    (Wanted: ON): ON
+2026-08-10T17:50:55.0938083Z --   SDL_SSE3                    (Wanted: ON): ON
+2026-08-10T17:50:55.0938361Z --   SDL_SSE4_1                  (Wanted: ON): ON
+2026-08-10T17:50:55.0938631Z --   SDL_SSE4_2                  (Wanted: ON): ON
+2026-08-10T17:50:55.0938908Z --   SDL_SYSTEM_ICONV            (Wanted: ON): ON
+2026-08-10T17:50:55.0939205Z --   SDL_TESTS                   (Wanted: OFF): OFF
+2026-08-10T17:50:55.0939504Z --   SDL_TESTS_LINK_SHARED       (Wanted: ON): OFF
+2026-08-10T17:50:55.0939807Z --   SDL_UNINSTALL               (Wanted: ON): OFF
+2026-08-10T17:50:55.0940100Z --   SDL_VIRTUAL_JOYSTICK        (Wanted: ON): ON
+2026-08-10T17:50:55.0940393Z --   SDL_VIVANTE                 (Wanted: OFF): OFF
+2026-08-10T17:50:55.0940679Z --   SDL_VULKAN                  (Wanted: ON): ON
+2026-08-10T17:50:55.0940964Z --   SDL_WASAPI                  (Wanted: OFF): OFF
+2026-08-10T17:50:55.0941248Z --   SDL_WAYLAND                 (Wanted: ON): ON
+2026-08-10T17:50:55.0941528Z --   SDL_WAYLAND_LIBDECOR        (Wanted: ON): ON
+2026-08-10T17:50:55.0941815Z --   SDL_WAYLAND_LIBDECOR_SHARED (Wanted: ON): ON
+2026-08-10T17:50:55.0942099Z --   SDL_WAYLAND_SHARED          (Wanted: ON): ON
+2026-08-10T17:50:55.0942383Z --   SDL_X11                     (Wanted: ON): ON
+2026-08-10T17:50:55.0942667Z --   SDL_X11_SHARED              (Wanted: ON): ON
+2026-08-10T17:50:55.0942947Z --   SDL_X11_XCURSOR             (Wanted: ON): ON
+2026-08-10T17:50:55.0943225Z --   SDL_X11_XDBE                (Wanted: ON): ON
+2026-08-10T17:50:55.0943554Z --   SDL_X11_XFIXES              (Wanted: ON): ON
+2026-08-10T17:50:55.0944000Z --   SDL_X11_XINPUT              (Wanted: ON): ON
+2026-08-10T17:50:55.0944419Z --   SDL_X11_XRANDR              (Wanted: ON): ON
+2026-08-10T17:50:55.0944824Z --   SDL_X11_XSCRNSAVER          (Wanted: ON): OFF
+2026-08-10T17:50:55.0945109Z --   SDL_X11_XSHAPE              (Wanted: ON): ON
+2026-08-10T17:50:55.0945389Z --   SDL_X11_XSYNC               (Wanted: ON): ON
+2026-08-10T17:50:55.0945672Z --   SDL_XINPUT                  (Wanted: OFF): OFF
+2026-08-10T17:50:55.0945933Z -- 
+2026-08-10T17:50:55.0946124Z --  Build Shared Library: ON
+2026-08-10T17:50:55.0946367Z --  Build Static Library: OFF
+2026-08-10T17:50:55.0946584Z -- 
+2026-08-10T17:50:55.0946822Z -- If something was not detected, although the libraries
+2026-08-10T17:50:55.0947366Z -- were installed, then make sure you have set the
+2026-08-10T17:50:55.0947741Z -- CMAKE_C_FLAGS and CMAKE_PREFIX_PATH CMake variables correctly.
+2026-08-10T17:50:55.0948068Z -- 
+2026-08-10T17:50:55.0948385Z -- Configuring done (26.4s)
+2026-08-10T17:50:55.1634196Z -- Generating done (0.1s)
+2026-08-10T17:50:55.1647603Z -- Build files have been written to: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-build
+2026-08-10T17:50:55.2137055Z [  0%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_assert.c.o
+2026-08-10T17:50:55.2138144Z [  0%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_common.c.o
+2026-08-10T17:50:55.2140433Z [  0%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_atan2.c.o
+2026-08-10T17:50:55.2141436Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_compare.c.o
+2026-08-10T17:50:55.3545924Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_crc32.c.o
+2026-08-10T17:50:55.3745784Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_font.c.o
+2026-08-10T17:50:55.4646087Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_fuzzer.c.o
+2026-08-10T17:50:55.4943476Z [  2%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_harness.c.o
+2026-08-10T17:50:55.6851851Z [  3%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_exp.c.o
+2026-08-10T17:50:55.7535717Z [  3%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_log.c.o
+2026-08-10T17:50:55.7625722Z [  3%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_fmod.c.o
+2026-08-10T17:50:55.8615808Z [  3%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_log.c.o
+2026-08-10T17:50:55.9055734Z [  3%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_md5.c.o
+2026-08-10T17:50:56.1275925Z [  4%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_memory.c.o
+2026-08-10T17:50:56.2075704Z [  4%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_log10.c.o
+2026-08-10T17:50:56.2735806Z [  4%] Linking C static library libSDL3_test.a
+2026-08-10T17:50:56.3265907Z [  5%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_pow.c.o
+2026-08-10T17:50:56.3965707Z [  5%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_rem_pio2.c.o
+2026-08-10T17:50:56.4025224Z [  5%] Built target SDL3_test
+2026-08-10T17:50:56.4055231Z [  5%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_sqrt.c.o
+2026-08-10T17:50:56.7355752Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_cos.c.o
+2026-08-10T17:50:56.9185903Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_rem_pio2.c.o
+2026-08-10T17:50:56.9355437Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_sin.c.o
+2026-08-10T17:50:56.9605494Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_tan.c.o
+2026-08-10T17:50:57.2618162Z [  7%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_atan.c.o
+2026-08-10T17:50:57.4504095Z [  7%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_copysign.c.o
+2026-08-10T17:50:57.5296513Z [  7%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_cos.c.o
+2026-08-10T17:50:57.6451277Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_fabs.c.o
+2026-08-10T17:50:57.7935850Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_floor.c.o
+2026-08-10T17:50:57.9715781Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isinf.c.o
+2026-08-10T17:50:58.0575903Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isinff.c.o
+2026-08-10T17:50:58.1605811Z [  9%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isnan.c.o
+2026-08-10T17:50:58.3265860Z [  9%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isnanf.c.o
+2026-08-10T17:50:58.4915705Z [  9%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_modf.c.o
+2026-08-10T17:50:58.5755933Z [ 10%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_scalbn.c.o
+2026-08-10T17:50:58.6831635Z [ 10%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_sin.c.o
+2026-08-10T17:50:58.8455766Z [ 10%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_tan.c.o
+2026-08-10T17:50:59.2898263Z [ 11%] Linking C static library libSDL_uclibc.a
+2026-08-10T17:50:59.3940582Z [ 11%] Built target SDL_uclibc
+2026-08-10T17:50:59.4042151Z [ 11%] Generating wayland-generated-protocols/xdg-toplevel-icon-v1-client-protocol.h
+2026-08-10T17:50:59.4047483Z [ 11%] Generating wayland-generated-protocols/alpha-modifier-v1-client-protocol.h
+2026-08-10T17:50:59.4065790Z [ 11%] Generating wayland-generated-protocols/color-management-v1-client-protocol.h
+2026-08-10T17:50:59.4080439Z [ 12%] Generating wayland-generated-protocols/cursor-shape-v1-client-protocol.h
+2026-08-10T17:50:59.4102173Z [ 12%] Generating wayland-generated-protocols/fractional-scale-v1-client-protocol.h
+2026-08-10T17:50:59.4136177Z [ 13%] Generating wayland-generated-protocols/idle-inhibit-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4155420Z [ 13%] Generating wayland-generated-protocols/frog-color-management-v1-client-protocol.h
+2026-08-10T17:50:59.4173792Z [ 13%] Generating wayland-generated-protocols/input-timestamps-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4175831Z [ 13%] Generating wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4179495Z [ 14%] Generating wayland-generated-protocols/pointer-constraints-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4199692Z [ 14%] Generating wayland-generated-protocols/primary-selection-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4217682Z [ 14%] Generating wayland-generated-protocols/relative-pointer-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4245482Z [ 14%] Generating wayland-generated-protocols/tablet-v2-client-protocol.h
+2026-08-10T17:50:59.4266258Z [ 15%] Generating wayland-generated-protocols/text-input-unstable-v3-client-protocol.h
+2026-08-10T17:50:59.4267391Z [ 15%] Generating wayland-generated-protocols/viewporter-client-protocol.h
+2026-08-10T17:50:59.4295802Z [ 15%] Generating wayland-generated-protocols/wayland-client-protocol.h
+2026-08-10T17:50:59.4316205Z [ 16%] Generating wayland-generated-protocols/xdg-activation-v1-client-protocol.h
+2026-08-10T17:50:59.4328065Z [ 16%] Generating wayland-generated-protocols/xdg-decoration-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4332674Z [ 16%] Generating wayland-generated-protocols/xdg-dialog-v1-client-protocol.h
+2026-08-10T17:50:59.4396819Z [ 16%] Generating wayland-generated-protocols/xdg-foreign-unstable-v2-client-protocol.h
+2026-08-10T17:50:59.4398260Z [ 16%] Generating wayland-generated-protocols/xdg-shell-client-protocol.h
+2026-08-10T17:50:59.4399452Z [ 17%] Generating wayland-generated-protocols/xdg-output-unstable-v1-client-protocol.h
+2026-08-10T17:50:59.4443280Z [ 17%] Generating wayland-generated-protocols/xdg-toplevel-icon-v1-protocol.c
+2026-08-10T17:50:59.4445276Z [ 17%] Generating wayland-generated-protocols/alpha-modifier-v1-protocol.c
+2026-08-10T17:50:59.4474058Z [ 17%] Generating wayland-generated-protocols/color-management-v1-protocol.c
+2026-08-10T17:50:59.4475903Z [ 17%] Generating wayland-generated-protocols/cursor-shape-v1-protocol.c
+2026-08-10T17:50:59.4502960Z [ 18%] Generating wayland-generated-protocols/fractional-scale-v1-protocol.c
+2026-08-10T17:50:59.4503912Z [ 18%] Generating wayland-generated-protocols/frog-color-management-v1-protocol.c
+2026-08-10T17:50:59.4540028Z [ 18%] Generating wayland-generated-protocols/idle-inhibit-unstable-v1-protocol.c
+2026-08-10T17:50:59.4555553Z [ 19%] Generating wayland-generated-protocols/input-timestamps-unstable-v1-protocol.c
+2026-08-10T17:50:59.4567234Z [ 19%] Generating wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-protocol.c
+2026-08-10T17:50:59.4568908Z [ 19%] Generating wayland-generated-protocols/pointer-constraints-unstable-v1-protocol.c
+2026-08-10T17:50:59.4615927Z [ 19%] Generating wayland-generated-protocols/primary-selection-unstable-v1-protocol.c
+2026-08-10T17:50:59.4625665Z [ 20%] Generating wayland-generated-protocols/relative-pointer-unstable-v1-protocol.c
+2026-08-10T17:50:59.4645714Z [ 20%] Generating wayland-generated-protocols/tablet-v2-protocol.c
+2026-08-10T17:50:59.4648302Z [ 20%] Generating wayland-generated-protocols/text-input-unstable-v3-protocol.c
+2026-08-10T17:50:59.4678732Z [ 21%] Generating wayland-generated-protocols/viewporter-protocol.c
+2026-08-10T17:50:59.4685432Z [ 21%] Generating wayland-generated-protocols/wayland-protocol.c
+2026-08-10T17:50:59.4687426Z [ 21%] Generating wayland-generated-protocols/xdg-activation-v1-protocol.c
+2026-08-10T17:50:59.4712720Z [ 21%] Generating wayland-generated-protocols/xdg-decoration-unstable-v1-protocol.c
+2026-08-10T17:50:59.4751099Z [ 21%] Generating wayland-generated-protocols/xdg-foreign-unstable-v2-protocol.c
+2026-08-10T17:50:59.4753651Z [ 22%] Generating wayland-generated-protocols/xdg-dialog-v1-protocol.c
+2026-08-10T17:50:59.4785471Z [ 22%] Generating wayland-generated-protocols/xdg-output-unstable-v1-protocol.c
+2026-08-10T17:50:59.4791707Z [ 23%] Generating wayland-generated-protocols/xdg-shell-protocol.c
+2026-08-10T17:50:59.4995873Z [ 24%] Building C object CMakeFiles/SDL3-shared.dir/cmake_pch.h.gch
+2026-08-10T17:50:59.5005354Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/dynapi/SDL_dynapi.c.o
+2026-08-10T17:51:00.3022928Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_assert.c.o
+2026-08-10T17:51:00.3023688Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL.c.o
+2026-08-10T17:51:00.3024344Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_error.c.o
+2026-08-10T17:51:00.3735677Z [ 26%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_guid.c.o
+2026-08-10T17:51:00.4205972Z [ 26%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_hashtable.c.o
+2026-08-10T17:51:00.4655684Z [ 26%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_hints.c.o
+2026-08-10T17:51:00.5365951Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_list.c.o
+2026-08-10T17:51:00.6002292Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_log.c.o
+2026-08-10T17:51:00.6101282Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_properties.c.o
+2026-08-10T17:51:00.6265807Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_utils.c.o
+2026-08-10T17:51:00.7995906Z [ 28%] Building C object CMakeFiles/SDL3-shared.dir/src/atomic/SDL_atomic.c.o
+2026-08-10T17:51:00.8236028Z [ 28%] Building C object CMakeFiles/SDL3-shared.dir/src/atomic/SDL_spinlock.c.o
+2026-08-10T17:51:00.8765741Z [ 28%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audio.c.o
+2026-08-10T17:51:00.8865586Z [ 29%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audiocvt.c.o
+2026-08-10T17:51:00.9162036Z [ 29%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audiodev.c.o
+2026-08-10T17:51:00.9675948Z [ 29%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audioqueue.c.o
+2026-08-10T17:51:01.1825854Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audioresample.c.o
+2026-08-10T17:51:01.5115972Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audiotypecvt.c.o
+2026-08-10T17:51:01.6275960Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_mixer.c.o
+2026-08-10T17:51:01.8155776Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_wave.c.o
+2026-08-10T17:51:02.0200048Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/camera/SDL_camera.c.o
+2026-08-10T17:51:02.2616004Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/core/SDL_core_unsupported.c.o
+2026-08-10T17:51:02.3375838Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/cpuinfo/SDL_cpuinfo.c.o
+2026-08-10T17:51:02.4410449Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_categories.c.o
+2026-08-10T17:51:02.4814457Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_clipboardevents.c.o
+2026-08-10T17:51:02.5266008Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_displayevents.c.o
+2026-08-10T17:51:02.5435909Z [ 32%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_dropevents.c.o
+2026-08-10T17:51:02.5475818Z [ 32%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_events.c.o
+2026-08-10T17:51:02.6145428Z [ 32%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_eventwatch.c.o
+2026-08-10T17:51:02.6735810Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keyboard.c.o
+2026-08-10T17:51:02.7065544Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keymap.c.o
+2026-08-10T17:51:02.8925974Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keysym_to_keycode.c.o
+2026-08-10T17:51:02.9545665Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keysym_to_scancode.c.o
+2026-08-10T17:51:03.0235798Z [ 34%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_mouse.c.o
+2026-08-10T17:51:03.0755942Z [ 34%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_pen.c.o
+2026-08-10T17:51:03.1465869Z [ 34%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_quit.c.o
+2026-08-10T17:51:03.2355731Z [ 35%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_scancode_tables.c.o
+2026-08-10T17:51:03.2916074Z [ 35%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_touch.c.o
+2026-08-10T17:51:03.3015882Z [ 35%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_windowevents.c.o
+2026-08-10T17:51:03.4245742Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/events/imKStoUCS.c.o
+2026-08-10T17:51:03.4855998Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/filesystem/SDL_filesystem.c.o
+2026-08-10T17:51:03.5035942Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/gpu/SDL_gpu.c.o
+2026-08-10T17:51:03.5585847Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/haptic/SDL_haptic.c.o
+2026-08-10T17:51:03.6745888Z [ 37%] Building C object CMakeFiles/SDL3-shared.dir/src/hidapi/SDL_hidapi.c.o
+2026-08-10T17:51:03.8096497Z [ 37%] Building C object CMakeFiles/SDL3-shared.dir/src/io/SDL_asyncio.c.o
+2026-08-10T17:51:03.8471418Z [ 37%] Building C object CMakeFiles/SDL3-shared.dir/src/io/SDL_iostream.c.o
+2026-08-10T17:51:03.9715810Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/io/generic/SDL_asyncio_generic.c.o
+2026-08-10T17:51:04.0775843Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/SDL_gamepad.c.o
+2026-08-10T17:51:04.1186023Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/SDL_joystick.c.o
+2026-08-10T17:51:04.3625830Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/SDL_steam_virtual_gamepad.c.o
+2026-08-10T17:51:04.4875907Z [ 39%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/controller_type.c.o
+2026-08-10T17:51:04.5476021Z [ 39%] Building C object CMakeFiles/SDL3-shared.dir/src/locale/SDL_locale.c.o
+2026-08-10T17:51:04.5665836Z [ 39%] Building C object CMakeFiles/SDL3-shared.dir/src/main/SDL_main_callbacks.c.o
+2026-08-10T17:51:04.6275914Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/main/SDL_runapp.c.o
+2026-08-10T17:51:04.6425716Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/misc/SDL_url.c.o
+2026-08-10T17:51:04.6806136Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/power/SDL_power.c.o
+2026-08-10T17:51:04.6955863Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_d3dmath.c.o
+2026-08-10T17:51:04.7388550Z [ 41%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_render.c.o
+2026-08-10T17:51:04.7835785Z [ 41%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_render_unsupported.c.o
+2026-08-10T17:51:04.8345966Z [ 41%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_yuv_sw.c.o
+2026-08-10T17:51:05.0225841Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d/SDL_render_d3d.c.o
+2026-08-10T17:51:05.0466122Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d/SDL_shaders_d3d.c.o
+2026-08-10T17:51:05.0725888Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d11/SDL_render_d3d11.c.o
+2026-08-10T17:51:05.0906128Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d11/SDL_shaders_d3d11.c.o
+2026-08-10T17:51:05.1206244Z [ 43%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d12/SDL_render_d3d12.c.o
+2026-08-10T17:51:05.1365984Z [ 43%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d12/SDL_shaders_d3d12.c.o
+2026-08-10T17:51:05.1816039Z [ 43%] Building C object CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_pipeline_gpu.c.o
+2026-08-10T17:51:05.1875719Z [ 44%] Building C object CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_render_gpu.c.o
+2026-08-10T17:51:05.2725877Z [ 44%] Building C object CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_shaders_gpu.c.o
+2026-08-10T17:51:05.3655831Z [ 44%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengl/SDL_render_gl.c.o
+2026-08-10T17:51:05.4769957Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengl/SDL_shaders_gl.c.o
+2026-08-10T17:51:05.5105831Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengles2/SDL_render_gles2.c.o
+2026-08-10T17:51:05.6326005Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengles2/SDL_shaders_gles2.c.o
+2026-08-10T17:51:05.7075908Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/ps2/SDL_render_ps2.c.o
+2026-08-10T17:51:05.7582768Z [ 46%] Building C object CMakeFiles/SDL3-shared.dir/src/render/psp/SDL_render_psp.c.o
+2026-08-10T17:51:05.8066057Z [ 46%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_blendfillrect.c.o
+2026-08-10T17:51:05.9335993Z [ 46%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_blendline.c.o
+2026-08-10T17:51:06.1766144Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_blendpoint.c.o
+2026-08-10T17:51:06.5316061Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_drawline.c.o
+2026-08-10T17:51:06.6088090Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_drawpoint.c.o
+2026-08-10T17:51:06.6946391Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_render_sw.c.o
+2026-08-10T17:51:06.7742916Z [ 48%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_rotate.c.o
+2026-08-10T17:51:07.0706189Z [ 48%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_triangle.c.o
+2026-08-10T17:51:07.2409153Z [ 48%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vitagxm/SDL_render_vita_gxm.c.o
+2026-08-10T17:51:07.2916177Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vitagxm/SDL_render_vita_gxm_memory.c.o
+2026-08-10T17:51:07.3386490Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vitagxm/SDL_render_vita_gxm_tools.c.o
+2026-08-10T17:51:07.3845785Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vulkan/SDL_render_vulkan.c.o
+2026-08-10T17:51:08.1366789Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vulkan/SDL_shaders_vulkan.c.o
+2026-08-10T17:51:08.2012532Z [ 50%] Building C object CMakeFiles/SDL3-shared.dir/src/sensor/SDL_sensor.c.o
+2026-08-10T17:51:08.4651036Z [ 50%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_crc16.c.o
+2026-08-10T17:51:08.5575910Z [ 50%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_crc32.c.o
+2026-08-10T17:51:08.6325974Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_getenv.c.o
+2026-08-10T17:51:08.7206745Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_iconv.c.o
+2026-08-10T17:51:08.7705977Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_malloc.c.o
+2026-08-10T17:51:08.8085968Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_memcpy.c.o
+2026-08-10T17:51:08.8205646Z [ 52%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_memmove.c.o
+2026-08-10T17:51:08.8682313Z [ 52%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_memset.c.o
+2026-08-10T17:51:08.8687343Z [ 52%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_mslibc.c.o
+2026-08-10T17:51:08.8702077Z [ 53%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_murmur3.c.o
+2026-08-10T17:51:08.9176022Z [ 53%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_qsort.c.o
+2026-08-10T17:51:08.9295991Z [ 53%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_random.c.o
+2026-08-10T17:51:08.9424002Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_stdlib.c.o
+2026-08-10T17:51:09.0055636Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_string.c.o
+2026-08-10T17:51:09.0966154Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_strtokr.c.o
+2026-08-10T17:51:09.1575762Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/storage/SDL_storage.c.o
+2026-08-10T17:51:09.3240864Z [ 55%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/SDL_thread.c.o
+2026-08-10T17:51:09.3261238Z [ 55%] Building C object CMakeFiles/SDL3-shared.dir/src/time/SDL_time.c.o
+2026-08-10T17:51:09.3375479Z [ 55%] Building C object CMakeFiles/SDL3-shared.dir/src/timer/SDL_timer.c.o
+2026-08-10T17:51:09.4095811Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_RLEaccel.c.o
+2026-08-10T17:51:09.4739039Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit.c.o
+2026-08-10T17:51:09.5032470Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_0.c.o
+2026-08-10T17:51:09.5220698Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_1.c.o
+2026-08-10T17:51:09.6146058Z [ 57%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_A.c.o
+2026-08-10T17:51:10.6795729Z [ 57%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_N.c.o
+2026-08-10T17:51:11.0035506Z [ 57%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_auto.c.o
+2026-08-10T17:51:11.0086478Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_copy.c.o
+2026-08-10T17:51:11.1015909Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_slow.c.o
+2026-08-10T17:51:11.9035771Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_bmp.c.o
+2026-08-10T17:51:12.1530819Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_clipboard.c.o
+2026-08-10T17:51:12.3796006Z [ 59%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_egl.c.o
+2026-08-10T17:51:12.7635920Z [ 59%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_fillrect.c.o
+2026-08-10T17:51:12.9726002Z [ 59%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_pixels.c.o
+2026-08-10T17:51:12.9985735Z [ 60%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_rect.c.o
+2026-08-10T17:51:13.1651219Z [ 60%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_stb.c.o
+2026-08-10T17:51:13.3170292Z [ 60%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_stretch.c.o
+2026-08-10T17:51:13.4445983Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_surface.c.o
+2026-08-10T17:51:13.9095833Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_video.c.o
+2026-08-10T17:51:14.4895868Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_video_unsupported.c.o
+2026-08-10T17:51:14.5525906Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_vulkan_utils.c.o
+2026-08-10T17:51:14.7055969Z [ 62%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_yuv.c.o
+2026-08-10T17:51:14.7836006Z [ 62%] Building C object CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_lsx.c.o
+2026-08-10T17:51:14.8385820Z [ 62%] Building C object CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_sse.c.o
+2026-08-10T17:51:15.8196723Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_std.c.o
+2026-08-10T17:51:16.1136085Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/dummy/SDL_dummyaudio.c.o
+2026-08-10T17:51:16.1821436Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/disk/SDL_diskaudio.c.o
+2026-08-10T17:51:16.2685997Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/camera/dummy/SDL_camera_dummy.c.o
+2026-08-10T17:51:16.3315848Z [ 64%] Building C object CMakeFiles/SDL3-shared.dir/src/loadso/dlopen/SDL_sysloadso.c.o
+2026-08-10T17:51:16.3993471Z [ 64%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/virtual/SDL_virtualjoystick.c.o
+2026-08-10T17:51:16.7736043Z [ 64%] Building C object CMakeFiles/SDL3-shared.dir/src/video/dummy/SDL_nullevents.c.o
+2026-08-10T17:51:16.8375885Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/video/dummy/SDL_nullframebuffer.c.o
+2026-08-10T17:51:16.9085756Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/video/dummy/SDL_nullvideo.c.o
+2026-08-10T17:51:16.9925939Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/alsa/SDL_alsa_audio.c.o
+2026-08-10T17:51:17.3186082Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/pulseaudio/SDL_pulseaudio.c.o
+2026-08-10T17:51:17.3885838Z [ 66%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11clipboard.c.o
+2026-08-10T17:51:17.4616008Z [ 66%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11dyn.c.o
+2026-08-10T17:51:17.6165947Z [ 66%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11events.c.o
+2026-08-10T17:51:17.6334202Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11framebuffer.c.o
+2026-08-10T17:51:17.8378521Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11keyboard.c.o
+2026-08-10T17:51:18.0806075Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11messagebox.c.o
+2026-08-10T17:51:18.2056043Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11modes.c.o
+2026-08-10T17:51:18.2625877Z [ 68%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11mouse.c.o
+2026-08-10T17:51:18.4915786Z [ 68%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11opengl.c.o
+2026-08-10T17:51:18.5416024Z [ 68%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11opengles.c.o
+2026-08-10T17:51:18.6393766Z [ 69%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11pen.c.o
+2026-08-10T17:51:18.7525970Z [ 69%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11settings.c.o
+2026-08-10T17:51:18.9025929Z [ 69%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11shape.c.o
+2026-08-10T17:51:18.9157232Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11touch.c.o
+2026-08-10T17:51:18.9425789Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11video.c.o
+2026-08-10T17:51:19.0673552Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11vulkan.c.o
+2026-08-10T17:51:19.0736026Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11window.c.o
+2026-08-10T17:51:19.1995977Z [ 71%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11xfixes.c.o
+2026-08-10T17:51:19.3598730Z [ 71%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11xinput2.c.o
+2026-08-10T17:51:19.4065782Z [ 71%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11xsync.c.o
+2026-08-10T17:51:19.5786050Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/edid-parse.c.o
+2026-08-10T17:51:19.7112808Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/xsettings-client.c.o
+2026-08-10T17:51:19.7956081Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandclipboard.c.o
+2026-08-10T17:51:19.9125831Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandcolor.c.o
+2026-08-10T17:51:19.9566082Z [ 73%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylanddatamanager.c.o
+2026-08-10T17:51:20.0466027Z [ 73%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylanddyn.c.o
+2026-08-10T17:51:20.0506117Z [ 73%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandevents.c.o
+2026-08-10T17:51:20.2256033Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandkeyboard.c.o
+2026-08-10T17:51:20.3603753Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandmessagebox.c.o
+2026-08-10T17:51:20.4585839Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandmouse.c.o
+2026-08-10T17:51:20.5117353Z [01m[K/home/runner/work/HacksToHacks/HacksToHacks/SDL3-src/src/video/wayland/SDL_waylandmouse.c:[m[K In function ‘[01m[KWayland_InitMouse[m[K’:
+2026-08-10T17:51:20.5136772Z [01m[K/home/runner/work/HacksToHacks/HacksToHacks/SDL3-src/src/video/wayland/SDL_waylandmouse.c:975:20:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kd[m[K’ [[01;35m[K-Wunused-variable[m[K]
+2026-08-10T17:51:20.5165360Z   975 |     SDL_VideoData *[01;35m[Kd[m[K = vd->internal;
+2026-08-10T17:51:20.5195154Z       |                    [01;35m[K^[m[K
+2026-08-10T17:51:20.6125069Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandopengles.c.o
+2026-08-10T17:51:20.7128874Z [ 75%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandshmbuffer.c.o
+2026-08-10T17:51:20.7416501Z [ 75%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandvideo.c.o
+2026-08-10T17:51:20.8406017Z [ 75%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandvulkan.c.o
+2026-08-10T17:51:20.9276041Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandwindow.c.o
+2026-08-10T17:51:21.0269758Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/alpha-modifier-v1-protocol.c.o
+2026-08-10T17:51:21.0806276Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/color-management-v1-protocol.c.o
+2026-08-10T17:51:21.1329600Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/cursor-shape-v1-protocol.c.o
+2026-08-10T17:51:21.1835990Z [ 77%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/fractional-scale-v1-protocol.c.o
+2026-08-10T17:51:21.2166186Z [ 77%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/frog-color-management-v1-protocol.c.o
+2026-08-10T17:51:21.2376503Z [ 77%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/idle-inhibit-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.2744983Z [ 78%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/input-timestamps-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.2906268Z [ 78%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.3346761Z [ 78%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/pointer-constraints-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.3435271Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/primary-selection-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.3966892Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/relative-pointer-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.3992586Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/tablet-v2-protocol.c.o
+2026-08-10T17:51:21.4516002Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/viewporter-protocol.c.o
+2026-08-10T17:51:21.4517256Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/text-input-unstable-v3-protocol.c.o
+2026-08-10T17:51:21.5116092Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/wayland-protocol.c.o
+2026-08-10T17:51:21.5156176Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-activation-v1-protocol.c.o
+2026-08-10T17:51:21.5596805Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-decoration-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.5607743Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-dialog-v1-protocol.c.o
+2026-08-10T17:51:21.6166327Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-foreign-unstable-v2-protocol.c.o
+2026-08-10T17:51:21.6167828Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-output-unstable-v1-protocol.c.o
+2026-08-10T17:51:21.6686796Z [ 82%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-shell-protocol.c.o
+2026-08-10T17:51:21.6696504Z [ 82%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-toplevel-icon-v1-protocol.c.o
+2026-08-10T17:51:21.7215894Z [ 82%] Building C object CMakeFiles/SDL3-shared.dir/src/tray/unix/SDL_tray.c.o
+2026-08-10T17:51:21.7217275Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/core/unix/SDL_appid.c.o
+2026-08-10T17:51:21.7975969Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/core/unix/SDL_poll.c.o
+2026-08-10T17:51:21.8685891Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/camera/v4l2/SDL_camera_v4l2.c.o
+2026-08-10T17:51:21.9867352Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/haptic/linux/SDL_syshaptic.c.o
+2026-08-10T17:51:22.0157393Z [ 84%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_evdev.c.o
+2026-08-10T17:51:22.1807585Z [ 84%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_evdev_kbd.c.o
+2026-08-10T17:51:22.2597166Z [ 84%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_evdev_capabilities.c.o
+2026-08-10T17:51:22.3365980Z [ 85%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_threadprio.c.o
+2026-08-10T17:51:22.3505481Z [ 85%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_combined.c.o
+2026-08-10T17:51:22.4326078Z [ 85%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_gamecube.c.o
+2026-08-10T17:51:22.4711927Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_luna.c.o
+2026-08-10T17:51:22.5125824Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_ps3.c.o
+2026-08-10T17:51:22.6376547Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_ps4.c.o
+2026-08-10T17:51:22.6514100Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_ps5.c.o
+2026-08-10T17:51:22.8452913Z [ 87%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_rumble.c.o
+2026-08-10T17:51:22.9705966Z [ 87%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_shield.c.o
+2026-08-10T17:51:22.9935820Z [ 87%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_stadia.c.o
+2026-08-10T17:51:23.0345759Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_steam.c.o
+2026-08-10T17:51:23.1075919Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_steam_hori.c.o
+2026-08-10T17:51:23.1515881Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_steamdeck.c.o
+2026-08-10T17:51:23.1545495Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_switch.c.o
+2026-08-10T17:51:23.2476014Z [ 89%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_wii.c.o
+2026-08-10T17:51:23.2749025Z [ 89%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_xbox360.c.o
+2026-08-10T17:51:23.3675912Z [ 89%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_xbox360w.c.o
+2026-08-10T17:51:23.4155909Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_xboxone.c.o
+2026-08-10T17:51:23.5055878Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapijoystick.c.o
+2026-08-10T17:51:23.6446086Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/linux/SDL_sysjoystick.c.o
+2026-08-10T17:51:23.7805874Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_systhread.c.o
+2026-08-10T17:51:23.8902787Z [ 91%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_sysmutex.c.o
+2026-08-10T17:51:23.8928370Z [ 91%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_syscond.c.o
+2026-08-10T17:51:23.9622450Z [ 91%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_sysrwlock.c.o
+2026-08-10T17:51:23.9786351Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_systls.c.o
+2026-08-10T17:51:23.9815414Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_syssem.c.o
+2026-08-10T17:51:24.0405676Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/misc/unix/SDL_sysurl.c.o
+2026-08-10T17:51:24.0505583Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/power/linux/SDL_syspower.c.o
+2026-08-10T17:51:24.0565612Z [ 93%] Building C object CMakeFiles/SDL3-shared.dir/src/locale/unix/SDL_syslocale.c.o
+2026-08-10T17:51:24.1293339Z [ 93%] Building C object CMakeFiles/SDL3-shared.dir/src/filesystem/unix/SDL_sysfilesystem.c.o
+2026-08-10T17:51:24.1294332Z [ 93%] Building C object CMakeFiles/SDL3-shared.dir/src/storage/generic/SDL_genericstorage.c.o
+2026-08-10T17:51:24.2476060Z [ 94%] Building C object CMakeFiles/SDL3-shared.dir/src/storage/steam/SDL_steamstorage.c.o
+2026-08-10T17:51:24.2809487Z [ 94%] Building C object CMakeFiles/SDL3-shared.dir/src/filesystem/posix/SDL_sysfsops.c.o
+2026-08-10T17:51:24.2828343Z [ 94%] Building C object CMakeFiles/SDL3-shared.dir/src/time/unix/SDL_systime.c.o
+2026-08-10T17:51:24.3256007Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/timer/unix/SDL_systimer.c.o
+2026-08-10T17:51:24.3596071Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/SDL_dialog.c.o
+2026-08-10T17:51:24.3795958Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/SDL_dialog_utils.c.o
+2026-08-10T17:51:24.4215834Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/unix/SDL_unixdialog.c.o
+2026-08-10T17:51:24.4305926Z [ 96%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/unix/SDL_portaldialog.c.o
+2026-08-10T17:51:24.4447138Z [ 96%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/unix/SDL_zenitydialog.c.o
+2026-08-10T17:51:24.4858720Z [ 96%] Building C object CMakeFiles/SDL3-shared.dir/src/process/SDL_process.c.o
+2026-08-10T17:51:24.4919704Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/process/posix/SDL_posixprocess.c.o
+2026-08-10T17:51:24.4976398Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenevents.c.o
+2026-08-10T17:51:24.5635988Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenframebuffer.c.o
+2026-08-10T17:51:24.5770064Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenopengles.c.o
+2026-08-10T17:51:24.5806533Z [ 98%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenvideo.c.o
+2026-08-10T17:51:24.6345983Z [ 98%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenvulkan.c.o
+2026-08-10T17:51:24.6514519Z [ 98%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenwindow.c.o
+2026-08-10T17:51:24.6595756Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/tray/SDL_tray_utils.c.o
+2026-08-10T17:51:24.6625372Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/gpu/vulkan/SDL_gpu_vulkan.c.o
+2026-08-10T17:51:24.7252150Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/sensor/dummy/SDL_dummysensor.c.o
+2026-08-10T17:51:24.7308494Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/main/generic/SDL_sysmain_callbacks.c.o
+2026-08-10T17:51:27.5595940Z [100%] Linking C shared library libSDL3.so
+2026-08-10T17:51:27.6726304Z [100%] Built target SDL3-shared
+2026-08-10T17:51:27.6810343Z -- Install configuration: "Release"
+2026-08-10T17:51:27.6921597Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/pkgconfig/sdl3.pc
+2026-08-10T17:51:27.6924279Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3.so.0.2.16
+2026-08-10T17:51:27.6972431Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3.so.0
+2026-08-10T17:51:27.6973737Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3.so
+2026-08-10T17:51:27.6974638Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3_test.a
+2026-08-10T17:51:27.6980146Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3headersTargets.cmake
+2026-08-10T17:51:27.6982123Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3sharedTargets.cmake
+2026-08-10T17:51:27.6984210Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3sharedTargets-release.cmake
+2026-08-10T17:51:27.6986445Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3testTargets.cmake
+2026-08-10T17:51:27.6988464Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3testTargets-release.cmake
+2026-08-10T17:51:27.6990353Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3Config.cmake
+2026-08-10T17:51:27.6991915Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3ConfigVersion.cmake
+2026-08-10T17:51:27.6995200Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL.h
+2026-08-10T17:51:27.6997052Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_assert.h
+2026-08-10T17:51:27.6998921Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_asyncio.h
+2026-08-10T17:51:27.7000740Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_atomic.h
+2026-08-10T17:51:27.7002640Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_audio.h
+2026-08-10T17:51:27.7005329Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_begin_code.h
+2026-08-10T17:51:27.7007109Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_bits.h
+2026-08-10T17:51:27.7008651Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_blendmode.h
+2026-08-10T17:51:27.7010462Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_camera.h
+2026-08-10T17:51:27.7012271Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_clipboard.h
+2026-08-10T17:51:27.7014065Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_close_code.h
+2026-08-10T17:51:27.7015610Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_copying.h
+2026-08-10T17:51:27.7017309Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_cpuinfo.h
+2026-08-10T17:51:27.7019043Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_dialog.h
+2026-08-10T17:51:27.7020832Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_egl.h
+2026-08-10T17:51:27.7023736Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_endian.h
+2026-08-10T17:51:27.7025802Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_error.h
+2026-08-10T17:51:27.7027328Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_events.h
+2026-08-10T17:51:27.7030614Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_filesystem.h
+2026-08-10T17:51:27.7032345Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_gamepad.h
+2026-08-10T17:51:27.7035322Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_gpu.h
+2026-08-10T17:51:27.7039073Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_guid.h
+2026-08-10T17:51:27.7040587Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_haptic.h
+2026-08-10T17:51:27.7043071Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_hidapi.h
+2026-08-10T17:51:27.7045264Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_hints.h
+2026-08-10T17:51:27.7049115Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_init.h
+2026-08-10T17:51:27.7050861Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_intrin.h
+2026-08-10T17:51:27.7052736Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_iostream.h
+2026-08-10T17:51:27.7055405Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_joystick.h
+2026-08-10T17:51:27.7057988Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_keyboard.h
+2026-08-10T17:51:27.7059824Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_keycode.h
+2026-08-10T17:51:27.7061859Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_loadso.h
+2026-08-10T17:51:27.7063602Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_locale.h
+2026-08-10T17:51:27.7065562Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_log.h
+2026-08-10T17:51:27.7067641Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_main.h
+2026-08-10T17:51:27.7070069Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_main_impl.h
+2026-08-10T17:51:27.7071722Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_messagebox.h
+2026-08-10T17:51:27.7073449Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_metal.h
+2026-08-10T17:51:27.7075178Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_misc.h
+2026-08-10T17:51:27.7077007Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_mouse.h
+2026-08-10T17:51:27.7079036Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_mutex.h
+2026-08-10T17:51:27.7081595Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_oldnames.h
+2026-08-10T17:51:27.7084455Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengl.h
+2026-08-10T17:51:27.7088174Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengl_glext.h
+2026-08-10T17:51:27.7100288Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles.h
+2026-08-10T17:51:27.7101752Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2.h
+2026-08-10T17:51:27.7103481Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_gl2.h
+2026-08-10T17:51:27.7106352Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_gl2ext.h
+2026-08-10T17:51:27.7111290Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_gl2platform.h
+2026-08-10T17:51:27.7112985Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_khrplatform.h
+2026-08-10T17:51:27.7114927Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_pen.h
+2026-08-10T17:51:27.7116785Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_pixels.h
+2026-08-10T17:51:27.7119639Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_platform.h
+2026-08-10T17:51:27.7121267Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_platform_defines.h
+2026-08-10T17:51:27.7123123Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_power.h
+2026-08-10T17:51:27.7125178Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_process.h
+2026-08-10T17:51:27.7127364Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_properties.h
+2026-08-10T17:51:27.7129110Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_rect.h
+2026-08-10T17:51:27.7131197Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_render.h
+2026-08-10T17:51:27.7134782Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_scancode.h
+2026-08-10T17:51:27.7136645Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_sensor.h
+2026-08-10T17:51:27.7138519Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_stdinc.h
+2026-08-10T17:51:27.7143061Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_storage.h
+2026-08-10T17:51:27.7145201Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_surface.h
+2026-08-10T17:51:27.7148202Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_system.h
+2026-08-10T17:51:27.7150198Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_thread.h
+2026-08-10T17:51:27.7152571Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_time.h
+2026-08-10T17:51:27.7154203Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_timer.h
+2026-08-10T17:51:27.7156329Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_touch.h
+2026-08-10T17:51:27.7158139Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_tray.h
+2026-08-10T17:51:27.7160155Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_version.h
+2026-08-10T17:51:27.7161992Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_video.h
+2026-08-10T17:51:27.7165906Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_vulkan.h
+2026-08-10T17:51:27.7167640Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_revision.h
+2026-08-10T17:51:27.7170422Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test.h
+2026-08-10T17:51:27.7172334Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_assert.h
+2026-08-10T17:51:27.7174115Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_common.h
+2026-08-10T17:51:27.7176298Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_compare.h
+2026-08-10T17:51:27.7178082Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_crc32.h
+2026-08-10T17:51:27.7179953Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_font.h
+2026-08-10T17:51:27.7181882Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_fuzzer.h
+2026-08-10T17:51:27.7183840Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_harness.h
+2026-08-10T17:51:27.7185886Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_log.h
+2026-08-10T17:51:27.7187665Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_md5.h
+2026-08-10T17:51:27.7189572Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_memory.h
+2026-08-10T17:51:27.7193184Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/share/licenses/SDL3/LICENSE.txt
+2026-08-10T17:51:27.7247464Z ##[group]Run git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
+2026-08-10T17:51:27.7248092Z [36;1mgit clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src[0m
+2026-08-10T17:51:27.7248530Z [36;1mcmake -S raylib-src -B raylib-build \[0m
+2026-08-10T17:51:27.7248835Z [36;1m  -DCMAKE_BUILD_TYPE=Release \[0m
+2026-08-10T17:51:27.7249114Z [36;1m  -DBUILD_SHARED_LIBS=OFF \[0m
+2026-08-10T17:51:27.7249540Z [36;1m  -DBUILD_EXAMPLES=OFF[0m
+2026-08-10T17:51:27.7249850Z [36;1mcmake --build raylib-build --config Release -j$(nproc)[0m
+2026-08-10T17:51:27.7250249Z [36;1mecho "RAYLIB_BUILD=$PWD/raylib-build" >> $GITHUB_ENV[0m
+2026-08-10T17:51:27.7296536Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:51:27.7296780Z env:
+2026-08-10T17:51:27.7297118Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T17:51:27.7297630Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T17:51:27.7298125Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T17:51:27.7298489Z ##[endgroup]
+2026-08-10T17:51:27.7375077Z Cloning into 'raylib-src'...
+2026-08-10T17:51:29.6624782Z Note: switching to 'ae50bfa2cc569c0f8d5bc4315d39db64005b1b08'.
+2026-08-10T17:51:29.6625278Z 
+2026-08-10T17:51:29.6625594Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-08-10T17:51:29.6626384Z changes and commit them, and you can discard any commits you make in this
+2026-08-10T17:51:29.6627127Z state without impacting any branches by switching back to a branch.
+2026-08-10T17:51:29.6627569Z 
+2026-08-10T17:51:29.6627855Z If you want to create a new branch to retain commits you create, you may
+2026-08-10T17:51:29.6628511Z do so (now or later) by using -c with the switch command. Example:
+2026-08-10T17:51:29.6628788Z 
+2026-08-10T17:51:29.6628900Z   git switch -c <new-branch-name>
+2026-08-10T17:51:29.6629086Z 
+2026-08-10T17:51:29.6629205Z Or undo this operation with:
+2026-08-10T17:51:29.6629376Z 
+2026-08-10T17:51:29.6629474Z   git switch -
+2026-08-10T17:51:29.6629599Z 
+2026-08-10T17:51:29.6629817Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-08-10T17:51:29.6630128Z 
+2026-08-10T17:51:29.9346073Z CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+2026-08-10T17:51:29.9346940Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-10T17:51:29.9347563Z   CMake.
+2026-08-10T17:51:29.9347726Z 
+2026-08-10T17:51:29.9348052Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-10T17:51:29.9348817Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-10T17:51:29.9349481Z   to work with policies introduced by <max> or earlier.
+2026-08-10T17:51:29.9349824Z 
+2026-08-10T17:51:29.9349828Z 
+2026-08-10T17:51:29.9833770Z -- The C compiler identification is GNU 13.3.0
+2026-08-10T17:51:30.1146204Z -- The CXX compiler identification is GNU 13.3.0
+2026-08-10T17:51:30.1244285Z -- Detecting C compiler ABI info
+2026-08-10T17:51:30.1797172Z -- Detecting C compiler ABI info - done
+2026-08-10T17:51:30.1978781Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-08-10T17:51:30.1982498Z -- Detecting C compile features
+2026-08-10T17:51:30.1987696Z -- Detecting C compile features - done
+2026-08-10T17:51:30.2149236Z -- Detecting CXX compiler ABI info
+2026-08-10T17:51:30.3151809Z -- Detecting CXX compiler ABI info - done
+2026-08-10T17:51:30.3336696Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-08-10T17:51:30.3340494Z -- Detecting CXX compile features
+2026-08-10T17:51:30.3348169Z -- Detecting CXX compile features - done
+2026-08-10T17:51:30.3469328Z -- Performing Test COMPILER_HAS_THOSE_TOGGLES
+2026-08-10T17:51:30.4020149Z -- Performing Test COMPILER_HAS_THOSE_TOGGLES - Success
+2026-08-10T17:51:30.4021244Z -- Testing if -Werror=pointer-arith can be used -- compiles
+2026-08-10T17:51:30.4025567Z -- Testing if -Werror=implicit-function-declaration can be used -- compiles
+2026-08-10T17:51:30.4028247Z -- Testing if -fno-strict-aliasing can be used -- compiles
+2026-08-10T17:51:30.4109277Z -- Using raylib's GLFW
+2026-08-10T17:51:30.4195892Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-08-10T17:51:30.4838116Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-08-10T17:51:30.4848307Z -- Found Threads: TRUE
+2026-08-10T17:51:30.4849666Z -- Including X11 support
+2026-08-10T17:51:30.5436195Z -- Found X11: /usr/include
+2026-08-10T17:51:30.5440318Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+2026-08-10T17:51:30.6052309Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+2026-08-10T17:51:30.6053177Z -- Looking for gethostbyname
+2026-08-10T17:51:30.6617519Z -- Looking for gethostbyname - found
+2026-08-10T17:51:30.6617966Z -- Looking for connect
+2026-08-10T17:51:30.7193343Z -- Looking for connect - found
+2026-08-10T17:51:30.7193861Z -- Looking for remove
+2026-08-10T17:51:30.7763965Z -- Looking for remove - found
+2026-08-10T17:51:30.7764413Z -- Looking for shmat
+2026-08-10T17:51:30.8333402Z -- Looking for shmat - found
+2026-08-10T17:51:30.8453173Z -- Audio Backend: miniaudio
+2026-08-10T17:51:30.8454931Z -- Building raylib static library
+2026-08-10T17:51:30.8477054Z -- Generated build type: Release
+2026-08-10T17:51:30.8477538Z -- Compiling with the flags:
+2026-08-10T17:51:30.8478054Z --   PLATFORM=PLATFORM_DESKTOP
+2026-08-10T17:51:30.8478511Z --   GRAPHICS=GRAPHICS_API_OPENGL_33
+2026-08-10T17:51:30.8598657Z -- Configuring done (0.9s)
+2026-08-10T17:51:30.8876425Z -- Generating done (0.0s)
+2026-08-10T17:51:30.8884073Z -- Build files have been written to: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T17:51:30.9153040Z [  3%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
+2026-08-10T17:51:30.9154153Z [  6%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
+2026-08-10T17:51:30.9155847Z [  9%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
+2026-08-10T17:51:30.9159687Z [ 12%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
+2026-08-10T17:51:31.0955906Z [ 15%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
+2026-08-10T17:51:31.1315853Z [ 18%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
+2026-08-10T17:51:31.1435733Z [ 21%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
+2026-08-10T17:51:31.1795904Z [ 25%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
+2026-08-10T17:51:31.2597776Z [ 28%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
+2026-08-10T17:51:31.3945778Z [ 31%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
+2026-08-10T17:51:31.4105920Z [ 34%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
+2026-08-10T17:51:31.4205720Z [ 37%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
+2026-08-10T17:51:31.4235519Z [ 40%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
+2026-08-10T17:51:31.4736309Z [ 43%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
+2026-08-10T17:51:31.4967846Z [ 46%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o
+2026-08-10T17:51:31.5225787Z [ 50%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
+2026-08-10T17:51:31.5571203Z [ 53%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o
+2026-08-10T17:51:31.5836888Z [ 56%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o
+2026-08-10T17:51:31.6085798Z [ 59%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o
+2026-08-10T17:51:31.6145628Z [ 62%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o
+2026-08-10T17:51:31.6986288Z [ 65%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o
+2026-08-10T17:51:31.8406097Z [ 68%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o
+2026-08-10T17:51:31.9186030Z [ 71%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o
+2026-08-10T17:51:32.2989471Z [ 75%] Linking C static library libglfw3.a
+2026-08-10T17:51:32.4089400Z [ 75%] Built target glfw
+2026-08-10T17:51:32.4171159Z [ 78%] Building C object raylib/CMakeFiles/raylib.dir/rcore.c.o
+2026-08-10T17:51:32.4172166Z [ 81%] Building C object raylib/CMakeFiles/raylib.dir/rmodels.c.o
+2026-08-10T17:51:32.4177397Z [ 84%] Building C object raylib/CMakeFiles/raylib.dir/rshapes.c.o
+2026-08-10T17:51:32.4215494Z [ 87%] Building C object raylib/CMakeFiles/raylib.dir/rtext.c.o
+2026-08-10T17:51:32.6057170Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/rcore.c: In function ‘LoadAutomationEventList’:
+2026-08-10T17:51:32.6086670Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/rcore.c:2445:13: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:51:32.6115312Z  2445 |             fgets(buffer, 256, raeFile);
+2026-08-10T17:51:32.6115951Z       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:51:32.6146417Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/rcore.c:2462:17: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:51:32.6175200Z  2462 |                 fgets(buffer, 256, raeFile);
+2026-08-10T17:51:32.6205189Z       |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:51:33.2474067Z [ 90%] Building C object raylib/CMakeFiles/raylib.dir/rtextures.c.o
+2026-08-10T17:51:34.8145724Z [ 93%] Building C object raylib/CMakeFiles/raylib.dir/utils.c.o
+2026-08-10T17:51:34.9566050Z [ 96%] Building C object raylib/CMakeFiles/raylib.dir/raudio.c.o
+2026-08-10T17:51:35.3475968Z In file included from /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/raudio.c:176:
+2026-08-10T17:51:35.3506036Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/miniaudio.h: In function ‘ma_device_stop__alsa’:
+2026-08-10T17:51:35.3516637Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/miniaudio.h:28084:9: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:51:35.3565400Z 28084 |         read(((struct pollfd*)pDevice->alsa.pPollDescriptorsCapture)[0].fd, &t, sizeof(t));
+2026-08-10T17:51:35.3595328Z       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:51:35.3597535Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/miniaudio.h:28105:9: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:51:35.3635458Z 28105 |         read(((struct pollfd*)pDevice->alsa.pPollDescriptorsPlayback)[0].fd, &t, sizeof(t));
+2026-08-10T17:51:35.3639989Z       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:51:35.4913428Z In file included from /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/raudio.c:278:
+2026-08-10T17:51:35.4926090Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load_file’:
+2026-08-10T17:51:35.4956548Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1541:13: warning: ignoring return value of ‘fread’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:51:35.4985200Z  1541 |             fread(modctx->modfile, fsize, 1, f);
+2026-08-10T17:51:35.4995273Z       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:51:38.4045511Z In function ‘memcopy’,
+2026-08-10T17:51:38.4046674Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:51:38.4048860Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:51:38.4055717Z   370 |         d[i]=s[i];
+2026-08-10T17:51:38.4056330Z       |         ~~~~^~~~~
+2026-08-10T17:51:38.4057702Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:51:38.4059942Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1080 into destination object ‘title’ of size 20
+2026-08-10T17:51:38.4061202Z   125 |     muchar  title[20];
+2026-08-10T17:51:38.4061767Z       |             ^~~~~
+2026-08-10T17:51:38.4062380Z In function ‘memcopy’,
+2026-08-10T17:51:38.4063546Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:51:38.4065545Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:51:38.4066852Z   370 |         d[i]=s[i];
+2026-08-10T17:51:38.4067394Z       |         ~~~~^~~~~
+2026-08-10T17:51:38.4068475Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:51:38.4070265Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1081 into destination object ‘title’ of size 20
+2026-08-10T17:51:38.4071537Z   125 |     muchar  title[20];
+2026-08-10T17:51:38.4072187Z       |             ^~~~~
+2026-08-10T17:51:38.4072782Z In function ‘memcopy’,
+2026-08-10T17:51:38.4073915Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:51:38.4075838Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:51:38.4077145Z   370 |         d[i]=s[i];
+2026-08-10T17:51:38.4077679Z       |         ~~~~^~~~~
+2026-08-10T17:51:38.4078789Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:51:38.4080620Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1082 into destination object ‘title’ of size 20
+2026-08-10T17:51:38.4081900Z   125 |     muchar  title[20];
+2026-08-10T17:51:38.4082463Z       |             ^~~~~
+2026-08-10T17:51:38.4083050Z In function ‘memcopy’,
+2026-08-10T17:51:38.4084205Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:51:38.4086149Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:51:38.4087441Z   370 |         d[i]=s[i];
+2026-08-10T17:51:38.4087985Z       |         ~~~~^~~~~
+2026-08-10T17:51:38.4089062Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:51:38.4090883Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1083 into destination object ‘title’ of size 20
+2026-08-10T17:51:38.4092148Z   125 |     muchar  title[20];
+2026-08-10T17:51:38.4092702Z       |             ^~~~~
+2026-08-10T17:51:54.2622927Z [100%] Linking C static library libraylib.a
+2026-08-10T17:51:54.3901038Z [100%] Built target raylib
+2026-08-10T17:51:54.3976402Z ##[group]Run RL_SRC=raylib-src/src
+2026-08-10T17:51:54.3976737Z [36;1mRL_SRC=raylib-src/src[0m
+2026-08-10T17:51:54.3976996Z [36;1mRL_LIB=$RAYLIB_BUILD/raylib[0m
+2026-08-10T17:51:54.3977250Z [36;1m[0m
+2026-08-10T17:51:54.3977453Z [36;1mmkdir -p out-linux[0m
+2026-08-10T17:51:54.3977687Z [36;1m[0m
+2026-08-10T17:51:54.3977962Z [36;1m# Compile main game sources (raylib rendering, SDL3 window)[0m
+2026-08-10T17:51:54.3978316Z [36;1mgcc -O2 -Wall \[0m
+2026-08-10T17:51:54.3978556Z [36;1m  -DPLATFORM_DESKTOP \[0m
+2026-08-10T17:51:54.3978807Z [36;1m  -Isrc -I$RL_SRC \[0m
+2026-08-10T17:51:54.3979038Z [36;1m  -I$SDL3_INC \[0m
+2026-08-10T17:51:54.3979324Z [36;1m  -c src/main.c       -o out-linux/main.o[0m
+2026-08-10T17:51:54.3979715Z [36;1mgcc -O2 -Wall -Isrc -c src/cJSON.c  -o out-linux/cJSON.o[0m
+2026-08-10T17:51:54.3980121Z [36;1mgcc -O2 -Wall -Isrc -c src/tween.c  -o out-linux/tween.o[0m
+2026-08-10T17:51:54.3980625Z [36;1m[0m
+2026-08-10T17:51:54.3980883Z [36;1m# Compile SDL3 platform adapter[0m
+2026-08-10T17:51:54.3981156Z [36;1mgcc -O2 -Wall \[0m
+2026-08-10T17:51:54.3981383Z [36;1m  -DPLATFORM_SDL3 \[0m
+2026-08-10T17:51:54.3981627Z [36;1m  -Isrc -I$SDL3_INC \[0m
+2026-08-10T17:51:54.3981929Z [36;1m  -c src/platform_sdl3.c -o out-linux/platform_sdl3.o[0m
+2026-08-10T17:51:54.3982238Z [36;1m[0m
+2026-08-10T17:51:54.3982429Z [36;1m# Link everything[0m
+2026-08-10T17:51:54.3982742Z [36;1mgcc out-linux/main.o out-linux/cJSON.o out-linux/tween.o \[0m
+2026-08-10T17:51:54.3983098Z [36;1m    out-linux/platform_sdl3.o \[0m
+2026-08-10T17:51:54.3983369Z [36;1m    $RL_LIB/libraylib.a \[0m
+2026-08-10T17:51:54.3983626Z [36;1m    -L$SDL3_LIB -lSDL3 \[0m
+2026-08-10T17:51:54.3983907Z [36;1m    -Wl,-rpath,'$ORIGIN' \[0m
+2026-08-10T17:51:54.3984180Z [36;1m    -lGL -lm -ldl -lpthread -lrt \[0m
+2026-08-10T17:51:54.3984498Z [36;1m    -lX11 -lXrandr -lXi -lXcursor -lXinerama \[0m
+2026-08-10T17:51:54.3985014Z [36;1m    -lasound -lpulse \[0m
+2026-08-10T17:51:54.3985275Z [36;1m    -o out-linux/HacksToHacks[0m
+2026-08-10T17:51:54.3985530Z [36;1m[0m
+2026-08-10T17:51:54.3985728Z [36;1mfile out-linux/HacksToHacks[0m
+2026-08-10T17:51:54.4033650Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:51:54.4033901Z env:
+2026-08-10T17:51:54.4034259Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T17:51:54.4034988Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T17:51:54.4035477Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T17:51:54.4035923Z   RAYLIB_BUILD: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T17:51:54.4036269Z ##[endgroup]
+2026-08-10T17:51:54.4329975Z src/main.c: In function ‘UpdateDrawFrame’:
+2026-08-10T17:51:54.4330657Z src/main.c:197:49: warning: null character(s) preserved in literal
+2026-08-10T17:51:54.4331280Z   197 |                     playerName[letterCount+1] = ' ';
+2026-08-10T17:51:54.4331771Z       |                                                 ^
+2026-08-10T17:51:54.4332363Z src/main.c:204:43: warning: null character(s) preserved in literal
+2026-08-10T17:51:54.4332967Z   204 |                 playerName[letterCount] = ' ';
+2026-08-10T17:51:54.4333446Z       |                                           ^
+2026-08-10T17:51:55.1142955Z src/platform_sdl3.c: In function ‘SDL3_PlatformInit’:
+2026-08-10T17:51:55.1144118Z src/platform_sdl3.c:71:50: warning: format ‘%s’ expects argument of type ‘char *’, but argument 4 has type ‘int’ [-Wformat=]
+2026-08-10T17:51:55.1145499Z    71 |     printf("[SDL3] Window created (%dx%d) — SDL %s\n",
+2026-08-10T17:51:55.1146042Z       |                                                 ~^
+2026-08-10T17:51:55.1146503Z       |                                                  |
+2026-08-10T17:51:55.1146981Z       |                                                  char *
+2026-08-10T17:51:55.1147486Z       |                                                 %d
+2026-08-10T17:51:55.1148478Z    72 |            w, h, SDL_GetVersion());
+2026-08-10T17:51:55.1148941Z       |                  ~~~~~~~~~~~~~~~~                 
+2026-08-10T17:51:55.1149346Z       |                  |
+2026-08-10T17:51:55.1149666Z       |                  int
+2026-08-10T17:51:55.2827486Z out-linux/HacksToHacks: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=4798fd429ae8e9a0bb02ab9c981a16be43dc3f05, for GNU/Linux 3.2.0, not stripped
+2026-08-10T17:51:55.2861212Z ##[group]Run mkdir -p linux-dist
+2026-08-10T17:51:55.2861547Z [36;1mmkdir -p linux-dist[0m
+2026-08-10T17:51:55.2861827Z [36;1mcp out-linux/HacksToHacks linux-dist/[0m
+2026-08-10T17:51:55.2862199Z [36;1mcp $SDL3_LIB/libSDL3.so* linux-dist/ 2>/dev/null || true[0m
+2026-08-10T17:51:55.2862548Z [36;1mchmod +x linux-dist/HacksToHacks[0m
+2026-08-10T17:51:55.2862864Z [36;1mcp -r assets  linux-dist/ 2>/dev/null || true[0m
+2026-08-10T17:51:55.2863385Z [36;1mcp -r locales linux-dist/ 2>/dev/null || true[0m
+2026-08-10T17:51:55.2863689Z [36;1mcat > linux-dist/run.sh << 'EOF'[0m
+2026-08-10T17:51:55.2863951Z [36;1m#!/bin/bash[0m
+2026-08-10T17:51:55.2864174Z [36;1mcd "$(dirname "$0")"[0m
+2026-08-10T17:51:55.2864423Z [36;1m./HacksToHacks[0m
+2026-08-10T17:51:55.2864899Z [36;1mEOF[0m
+2026-08-10T17:51:55.2865111Z [36;1mchmod +x linux-dist/run.sh[0m
+2026-08-10T17:51:55.2865398Z [36;1mcat > linux-dist/README.txt << 'EOF'[0m
+2026-08-10T17:51:55.2865771Z [36;1mHacksToHacks - Linux (SDL3 Build)[0m
+2026-08-10T17:51:55.2866056Z [36;1m==================================[0m
+2026-08-10T17:51:55.2866373Z [36;1mEsegui: ./run.sh   oppure   ./HacksToHacks[0m
+2026-08-10T17:51:55.2866706Z [36;1mRequisiti: Linux x86_64, GPU con OpenGL 3.3+[0m
+2026-08-10T17:51:55.2867116Z [36;1mSDL3 è linkato staticamente — nessuna dipendenza extra richiesta.[0m
+2026-08-10T17:51:55.2867497Z [36;1mEOF[0m
+2026-08-10T17:51:55.2867715Z [36;1mcd linux-dist[0m
+2026-08-10T17:51:55.2867990Z [36;1mzip -r ../HacksToHacks-Linux-SDL3.zip .[0m
+2026-08-10T17:51:55.2868291Z [36;1mcd ..[0m
+2026-08-10T17:51:55.2868567Z [36;1mecho "ZIP size: $(du -sh HacksToHacks-Linux-SDL3.zip)"[0m
+2026-08-10T17:51:55.2914946Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:51:55.2915197Z env:
+2026-08-10T17:51:55.2915548Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T17:51:55.2916071Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T17:51:55.2916559Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T17:51:55.2917014Z   RAYLIB_BUILD: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T17:51:55.2917369Z ##[endgroup]
+2026-08-10T17:51:55.4686163Z   adding: HacksToHacks (deflated 59%)
+2026-08-10T17:51:55.4686610Z   adding: README.txt (deflated 25%)
+2026-08-10T17:51:55.6838761Z   adding: libSDL3.so.0.2.16 (deflated 61%)
+2026-08-10T17:51:55.6839220Z   adding: run.sh (deflated 6%)
+2026-08-10T17:51:55.8989440Z   adding: libSDL3.so (deflated 61%)
+2026-08-10T17:51:56.1138352Z   adding: libSDL3.so.0 (deflated 61%)
+2026-08-10T17:51:56.1138870Z   adding: locales/ (stored 0%)
+2026-08-10T17:51:56.1139276Z   adding: locales/fr.json (deflated 36%)
+2026-08-10T17:51:56.1145284Z   adding: locales/es.json (deflated 39%)
+2026-08-10T17:51:56.1165172Z   adding: locales/it.json (deflated 43%)
+2026-08-10T17:51:56.1185915Z   adding: locales/ja.json (deflated 33%)
+2026-08-10T17:51:56.1186452Z   adding: locales/en.json (deflated 46%)
+2026-08-10T17:51:56.1186885Z   adding: assets/ (stored 0%)
+2026-08-10T17:51:56.1187281Z   adding: assets/node_16.jpg (deflated 1%)
+2026-08-10T17:51:56.1191428Z   adding: assets/face2_5.png (deflated 1%)
+2026-08-10T17:51:56.1209312Z   adding: assets/ui_10.png (deflated 1%)
+2026-08-10T17:51:56.1236349Z   adding: assets/face1_1.png (deflated 8%)
+2026-08-10T17:51:56.1242002Z   adding: assets/ui_15.jpg (deflated 1%)
+2026-08-10T17:51:56.1246778Z   adding: assets/node_5.jpg (deflated 1%)
+2026-08-10T17:51:56.1250905Z   adding: assets/face1_4.jpg (deflated 1%)
+2026-08-10T17:51:56.1283678Z   adding: assets/face1_3.png (deflated 9%)
+2026-08-10T17:51:56.1305337Z   adding: assets/face1_4.png (deflated 5%)
+2026-08-10T17:51:56.1310692Z   adding: assets/node_12.jpg (deflated 1%)
+2026-08-10T17:51:56.1338371Z   adding: assets/face1_9.png (deflated 8%)
+2026-08-10T17:51:56.1365703Z   adding: assets/ui_12.png (deflated 1%)
+2026-08-10T17:51:56.1403176Z   adding: assets/face2_11.png (deflated 1%)
+2026-08-10T17:51:56.1408309Z   adding: assets/face1_15.jpg (deflated 1%)
+2026-08-10T17:51:56.1445940Z   adding: assets/face2_9.png (deflated 1%)
+2026-08-10T17:51:56.1451320Z   adding: assets/item_10.jpg (deflated 1%)
+2026-08-10T17:51:56.1456021Z   adding: assets/item_14.jpg (deflated 1%)
+2026-08-10T17:51:56.2171121Z   adding: assets/target_cctv.png (deflated 0%)
+2026-08-10T17:51:56.2195927Z   adding: assets/ui_4.png (deflated 1%)
+2026-08-10T17:51:56.2203003Z   adding: assets/face2_9.jpg (deflated 1%)
+2026-08-10T17:51:56.2230799Z   adding: assets/node_8.png (deflated 4%)
+2026-08-10T17:51:56.2236429Z   adding: assets/node_8.jpg (deflated 1%)
+2026-08-10T17:51:56.2241414Z   adding: assets/node_14.jpg (deflated 1%)
+2026-08-10T17:51:56.2265217Z   adding: assets/node_3.png (deflated 4%)
+2026-08-10T17:51:56.2265667Z   adding: assets/audio/ (stored 0%)
+2026-08-10T17:51:56.2265941Z   adding: assets/audio/voice/ (stored 0%)
+2026-08-10T17:51:56.2266225Z   adding: assets/audio/voice/en/ (stored 0%)
+2026-08-10T17:51:56.2284720Z   adding: assets/audio/voice/en/tutorial_syskaren_1.wav (deflated 18%)
+2026-08-10T17:51:56.2302470Z   adding: assets/audio/voice/en/tutorial_syskaren_1.mp3 (deflated 18%)
+2026-08-10T17:51:56.2397145Z   adding: assets/audio/voice/en/intro_1.wav (deflated 41%)
+2026-08-10T17:51:56.2421318Z   adding: assets/audio/voice/en/syskaren_success.wav (deflated 20%)
+2026-08-10T17:51:56.2443987Z   adding: assets/audio/voice/en/syskaren_success.mp3 (deflated 23%)
+2026-08-10T17:51:56.2509164Z   adding: assets/audio/voice/en/success_1.wav (deflated 36%)
+2026-08-10T17:51:56.2515645Z   adding: assets/audio/voice/en/syskaren_error.wav (deflated 28%)
+2026-08-10T17:51:56.2594465Z   adding: assets/audio/voice/en/error_1.wav (deflated 39%)
+2026-08-10T17:51:56.2601675Z   adding: assets/audio/voice/en/syskaren_error.mp3 (deflated 16%)
+2026-08-10T17:51:56.2602192Z   adding: assets/audio/voice/it/ (stored 0%)
+2026-08-10T17:51:56.2621577Z   adding: assets/audio/voice/it/tutorial_syskaren_1.wav (deflated 3%)
+2026-08-10T17:51:56.2641158Z   adding: assets/audio/voice/it/tutorial_syskaren_1.mp3 (deflated 3%)
+2026-08-10T17:51:56.2753600Z   adding: assets/audio/voice/it/intro_1.wav (deflated 36%)
+2026-08-10T17:51:56.2779297Z   adding: assets/audio/voice/it/syskaren_success.wav (deflated 4%)
+2026-08-10T17:51:56.2806099Z   adding: assets/audio/voice/it/syskaren_success.mp3 (deflated 4%)
+2026-08-10T17:51:56.2889091Z   adding: assets/audio/voice/it/success_1.wav (deflated 32%)
+2026-08-10T17:51:56.2896684Z   adding: assets/audio/voice/it/syskaren_error.wav (deflated 5%)
+2026-08-10T17:51:56.2981954Z   adding: assets/audio/voice/it/error_1.wav (deflated 37%)
+2026-08-10T17:51:56.2989340Z   adding: assets/audio/voice/it/syskaren_error.mp3 (deflated 5%)
+2026-08-10T17:51:56.3016939Z   adding: assets/item_1.png (deflated 4%)
+2026-08-10T17:51:56.3022350Z   adding: assets/item_1.jpg (deflated 1%)
+2026-08-10T17:51:56.3051875Z   adding: assets/item_2.png (deflated 4%)
+2026-08-10T17:51:56.3071541Z   adding: assets/ui_1.png (deflated 1%)
+2026-08-10T17:51:56.3077451Z   adding: assets/item_6.jpg (deflated 1%)
+2026-08-10T17:51:56.3108063Z   adding: assets/item_5.png (deflated 5%)
+2026-08-10T17:51:56.3113053Z   adding: assets/node_2.jpg (deflated 1%)
+2026-08-10T17:51:56.3139906Z   adding: assets/node_2.png (deflated 5%)
+2026-08-10T17:51:56.3172832Z   adding: assets/item_8.png (deflated 6%)
+2026-08-10T17:51:56.3201139Z   adding: assets/face1_8.png (deflated 8%)
+2026-08-10T17:51:56.3208388Z   adding: assets/face2_12.jpg (deflated 1%)
+2026-08-10T17:51:56.3212680Z   adding: assets/ui_4.jpg (deflated 1%)
+2026-08-10T17:51:56.3227758Z   adding: assets/ui_8.png (deflated 1%)
+2026-08-10T17:51:56.3265370Z   adding: assets/face2_15.png (deflated 1%)
+2026-08-10T17:51:56.3272087Z   adding: assets/face2_3.jpg (deflated 1%)
+2026-08-10T17:51:56.3300811Z   adding: assets/face1_2.png (deflated 8%)
+2026-08-10T17:51:56.3307176Z   adding: assets/face1_12.jpg (deflated 1%)
+2026-08-10T17:51:56.3331644Z   adding: assets/node_7.png (deflated 5%)
+2026-08-10T17:51:56.3336408Z   adding: assets/ui_16.jpg (deflated 1%)
+2026-08-10T17:51:56.3362756Z   adding: assets/node_9.png (deflated 4%)
+2026-08-10T17:51:56.3391742Z   adding: assets/ui_14.png (deflated 1%)
+2026-08-10T17:51:56.3435888Z   adding: assets/face1_10.png (deflated 9%)
+2026-08-10T17:51:56.3441285Z   adding: assets/face1_13.jpg (deflated 1%)
+2026-08-10T17:51:56.3474368Z   adding: assets/face1_6.png (deflated 8%)
+2026-08-10T17:51:56.3514798Z   adding: assets/face2_14.png (deflated 1%)
+2026-08-10T17:51:56.3542249Z   adding: assets/ui_7.png (deflated 1%)
+2026-08-10T17:51:56.3581081Z   adding: assets/face2_2.png (deflated 1%)
+2026-08-10T17:51:56.3586938Z   adding: assets/face1_3.jpg (deflated 1%)
+2026-08-10T17:51:56.3594135Z   adding: assets/face2_13.jpg (deflated 1%)
+2026-08-10T17:51:56.3600817Z   adding: assets/ui_6.jpg (deflated 1%)
+2026-08-10T17:51:56.3606311Z   adding: assets/ui_11.jpg (deflated 1%)
+2026-08-10T17:51:56.3633965Z   adding: assets/item_3.png (deflated 4%)
+2026-08-10T17:51:56.3659794Z   adding: assets/face1_14.png (deflated 6%)
+2026-08-10T17:51:56.3696519Z   adding: assets/face2_3.png (deflated 1%)
+2026-08-10T17:51:56.3728426Z   adding: assets/item_6.png (deflated 6%)
+2026-08-10T17:51:56.3733656Z   adding: assets/node_7.jpg (deflated 1%)
+2026-08-10T17:51:56.3763645Z   adding: assets/node_10.png (deflated 6%)
+2026-08-10T17:51:56.3769184Z   adding: assets/face1_11.jpg (deflated 1%)
+2026-08-10T17:51:56.3773918Z   adding: assets/ui_13.jpg (deflated 1%)
+2026-08-10T17:51:56.3781069Z   adding: assets/face2_16.jpg (deflated 1%)
+2026-08-10T17:51:56.3787568Z   adding: assets/face2_4.jpg (deflated 1%)
+2026-08-10T17:51:56.3792372Z   adding: assets/face1_1.jpg (deflated 1%)
+2026-08-10T17:51:56.4467587Z   adding: assets/face2_1.png (deflated 0%)
+2026-08-10T17:51:56.4504171Z   adding: assets/face2_4.png (deflated 1%)
+2026-08-10T17:51:56.4510212Z   adding: assets/node_1.jpg (deflated 1%)
+2026-08-10T17:51:56.4515144Z   adding: assets/face1_9.jpg (deflated 1%)
+2026-08-10T17:51:56.4554663Z   adding: assets/face2_16.png (deflated 1%)
+2026-08-10T17:51:56.4592109Z   adding: assets/face2_10.png (deflated 1%)
+2026-08-10T17:51:56.4620265Z   adding: assets/ui_6.png (deflated 1%)
+2026-08-10T17:51:56.4645966Z   adding: assets/ui_9.png (deflated 1%)
+2026-08-10T17:51:56.4650937Z   adding: assets/item_9.jpg (deflated 1%)
+2026-08-10T17:51:56.4658165Z   adding: assets/node_11.jpg (deflated 1%)
+2026-08-10T17:51:56.4663544Z   adding: assets/item_2.jpg (deflated 1%)
+2026-08-10T17:51:56.4690457Z   adding: assets/face1_15.png (deflated 7%)
+2026-08-10T17:51:56.5057577Z   adding: assets/target_pc.jpg (deflated 1%)
+2026-08-10T17:51:56.5061050Z   adding: assets/ui_3.jpg (deflated 2%)
+2026-08-10T17:51:56.5081373Z   adding: assets/ui_5.png (deflated 1%)
+2026-08-10T17:51:56.5111151Z   adding: assets/item_11.png (deflated 6%)
+2026-08-10T17:51:56.5116014Z   adding: assets/node_3.jpg (deflated 1%)
+2026-08-10T17:51:56.5143210Z   adding: assets/item_12.png (deflated 5%)
+2026-08-10T17:51:56.5148816Z   adding: assets/item_13.jpg (deflated 1%)
+2026-08-10T17:51:56.5192383Z   adding: assets/face2_8.png (deflated 1%)
+2026-08-10T17:51:56.5218388Z   adding: assets/node_13.png (deflated 4%)
+2026-08-10T17:51:56.5222334Z   adding: assets/ui_5.jpg (deflated 1%)
+2026-08-10T17:51:56.5230056Z   adding: assets/face2_8.jpg (deflated 1%)
+2026-08-10T17:51:56.5252920Z   adding: assets/ui_2.png (deflated 1%)
+2026-08-10T17:51:56.5260193Z   adding: assets/face2_10.jpg (deflated 1%)
+2026-08-10T17:51:56.5289639Z   adding: assets/face1_13.png (deflated 8%)
+2026-08-10T17:51:56.5295761Z   adding: assets/node_6.jpg (deflated 1%)
+2026-08-10T17:51:56.5323408Z   adding: assets/face1_16.png (deflated 8%)
+2026-08-10T17:51:56.5327143Z   adding: assets/ui_10.jpg (deflated 2%)
+2026-08-10T17:51:56.5859715Z   adding: assets/target_pc.png (deflated 0%)
+2026-08-10T17:51:56.5865279Z   adding: assets/face1_6.jpg (deflated 1%)
+2026-08-10T17:51:56.5870135Z   adding: assets/item_12.jpg (deflated 1%)
+2026-08-10T17:51:56.6284093Z   adding: assets/target_cctv.jpg (deflated 1%)
+2026-08-10T17:51:56.6290986Z   adding: assets/face1_10.jpg (deflated 1%)
+2026-08-10T17:51:56.6297213Z   adding: assets/face1_7.jpg (deflated 1%)
+2026-08-10T17:51:56.6302557Z   adding: assets/ui_12.jpg (deflated 1%)
+2026-08-10T17:51:56.6308153Z   adding: assets/ui_14.jpg (deflated 1%)
+2026-08-10T17:51:56.6334995Z   adding: assets/item_13.png (deflated 4%)
+2026-08-10T17:51:56.6340206Z   adding: assets/item_3.jpg (deflated 1%)
+2026-08-10T17:51:56.6387964Z   adding: assets/face2_7.png (deflated 2%)
+2026-08-10T17:51:56.6394118Z   adding: assets/node_13.jpg (deflated 1%)
+2026-08-10T17:51:56.6418274Z   adding: assets/node_14.png (deflated 3%)
+2026-08-10T17:51:56.6426798Z   adding: assets/face2_7.jpg (deflated 1%)
+2026-08-10T17:51:56.6464391Z   adding: assets/node_11.png (deflated 7%)
+2026-08-10T17:51:56.6469977Z   adding: assets/item_11.jpg (deflated 1%)
+2026-08-10T17:51:56.6512783Z   adding: assets/face2_13.png (deflated 1%)
+2026-08-10T17:51:56.6539559Z   adding: assets/node_12.png (deflated 5%)
+2026-08-10T17:51:56.6546337Z   adding: assets/face2_6.jpg (deflated 1%)
+2026-08-10T17:51:56.6551096Z   adding: assets/ui_7.jpg (deflated 1%)
+2026-08-10T17:51:56.6579590Z   adding: assets/node_16.png (deflated 5%)
+2026-08-10T17:51:56.6584258Z   adding: assets/item_4.jpg (deflated 1%)
+2026-08-10T17:51:56.6590247Z   adding: assets/node_10.jpg (deflated 1%)
+2026-08-10T17:51:56.6595580Z   adding: assets/ui_9.jpg (deflated 1%)
+2026-08-10T17:51:56.6624901Z   adding: assets/face1_7.png (deflated 7%)
+2026-08-10T17:51:56.6630304Z   adding: assets/face1_16.jpg (deflated 1%)
+2026-08-10T17:51:56.6660437Z   adding: assets/item_10.png (deflated 6%)
+2026-08-10T17:51:56.7148631Z   adding: assets/face2_1.jpg (deflated 2%)
+2026-08-10T17:51:56.7175229Z   adding: assets/item_7.png (deflated 5%)
+2026-08-10T17:51:56.7200973Z   adding: assets/ui_13.png (deflated 1%)
+2026-08-10T17:51:56.7207848Z   adding: assets/face2_11.jpg (deflated 1%)
+2026-08-10T17:51:56.7213389Z   adding: assets/item_5.jpg (deflated 1%)
+2026-08-10T17:51:56.7218865Z   adding: assets/face1_8.jpg (deflated 1%)
+2026-08-10T17:51:56.7226003Z   adding: assets/face2_14.jpg (deflated 1%)
+2026-08-10T17:51:56.7233256Z   adding: assets/face2_5.jpg (deflated 1%)
+2026-08-10T17:51:56.7236861Z   adding: assets/ui_8.jpg (deflated 2%)
+2026-08-10T17:51:56.7255332Z   adding: assets/ui_3.png (deflated 1%)
+2026-08-10T17:51:56.7259226Z   adding: assets/ui_1.jpg (deflated 1%)
+2026-08-10T17:51:56.7286950Z   adding: assets/node_6.png (deflated 5%)
+2026-08-10T17:51:56.7292234Z   adding: assets/face1_14.jpg (deflated 1%)
+2026-08-10T17:51:56.7315145Z   adding: assets/item_4.png (deflated 3%)
+2026-08-10T17:51:56.7321885Z   adding: assets/face2_2.jpg (deflated 1%)
+2026-08-10T17:51:56.7353748Z   adding: assets/node_1.png (deflated 6%)
+2026-08-10T17:51:56.7379298Z   adding: assets/item_15.png (deflated 5%)
+2026-08-10T17:51:56.7384844Z   adding: assets/item_16.jpg (deflated 1%)
+2026-08-10T17:51:56.7411289Z   adding: assets/ui_11.png (deflated 1%)
+2026-08-10T17:51:56.7416230Z   adding: assets/item_15.jpg (deflated 1%)
+2026-08-10T17:51:56.7459229Z   adding: assets/face2_12.png (deflated 2%)
+2026-08-10T17:51:56.7480828Z   adding: assets/node_15.png (deflated 4%)
+2026-08-10T17:51:56.7486136Z   adding: assets/item_7.jpg (deflated 1%)
+2026-08-10T17:51:56.7493220Z   adding: assets/face2_15.jpg (deflated 1%)
+2026-08-10T17:51:56.7498259Z   adding: assets/node_4.jpg (deflated 1%)
+2026-08-10T17:51:56.7525959Z   adding: assets/item_9.png (deflated 5%)
+2026-08-10T17:51:56.7531907Z   adding: assets/item_8.jpg (deflated 1%)
+2026-08-10T17:51:56.7537020Z   adding: assets/node_15.jpg (deflated 1%)
+2026-08-10T17:51:56.7596266Z   adding: assets/font.ttf (deflated 72%)
+2026-08-10T17:51:56.7619264Z   adding: assets/node_4.png (deflated 4%)
+2026-08-10T17:51:56.7654834Z   adding: assets/face2_6.png (deflated 1%)
+2026-08-10T17:51:56.7686695Z   adding: assets/item_16.png (deflated 6%)
+2026-08-10T17:51:56.7716314Z   adding: assets/ui_15.png (deflated 1%)
+2026-08-10T17:51:56.7721553Z   adding: assets/node_9.jpg (deflated 1%)
+2026-08-10T17:51:56.7746677Z   adding: assets/node_5.png (deflated 5%)
+2026-08-10T17:51:56.7752099Z   adding: assets/face1_2.jpg (deflated 1%)
+2026-08-10T17:51:56.7775810Z   adding: assets/face1_5.png (deflated 7%)
+2026-08-10T17:51:56.7780001Z   adding: assets/ui_2.jpg (deflated 1%)
+2026-08-10T17:51:56.7808589Z   adding: assets/face1_11.png (deflated 7%)
+2026-08-10T17:51:56.7835732Z   adding: assets/item_14.png (deflated 5%)
+2026-08-10T17:51:56.7840496Z   adding: assets/face1_5.jpg (deflated 1%)
+2026-08-10T17:51:56.7868761Z   adding: assets/face1_12.png (deflated 7%)
+2026-08-10T17:51:56.7893949Z   adding: assets/ui_16.png (deflated 1%)
+2026-08-10T17:51:56.7920188Z ZIP size: 24M	HacksToHacks-Linux-SDL3.zip
+2026-08-10T17:51:56.7982905Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:51:56.7985074Z ##[group]Run actions/upload-artifact@v4
+2026-08-10T17:51:56.7985351Z with:
+2026-08-10T17:51:56.7985554Z   name: linux-sdl3-zip
+2026-08-10T17:51:56.7985793Z   path: HacksToHacks-Linux-SDL3.zip
+2026-08-10T17:51:56.7986058Z   retention-days: 7
+2026-08-10T17:51:56.7986272Z   if-no-files-found: warn
+2026-08-10T17:51:56.7986504Z   compression-level: 6
+2026-08-10T17:51:56.7986721Z   overwrite: false
+2026-08-10T17:51:56.7986939Z   include-hidden-files: false
+2026-08-10T17:51:56.7987185Z env:
+2026-08-10T17:51:56.7987526Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T17:51:56.7988089Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T17:51:56.7988551Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T17:51:56.7988999Z   RAYLIB_BUILD: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T17:51:56.7989350Z ##[endgroup]
+2026-08-10T17:51:56.9781725Z (node:8874) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T17:51:56.9782438Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T17:51:56.9830944Z With the provided path, there will be 1 file uploaded
+2026-08-10T17:51:56.9855163Z Artifact name is valid!
+2026-08-10T17:51:56.9858296Z Root directory input is valid!
+2026-08-10T17:51:57.1708692Z Beginning upload of artifact content to blob storage
+2026-08-10T17:51:57.4547378Z (node:8874) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T17:51:57.7763018Z Uploaded bytes 8388608
+2026-08-10T17:51:58.1243774Z Uploaded bytes 16777216
+2026-08-10T17:51:58.2829168Z Uploaded bytes 24770958
+2026-08-10T17:51:58.3129294Z Finished uploading artifact content to blob storage!
+2026-08-10T17:51:58.3130436Z SHA256 digest of uploaded artifact zip is 3b511c7e1bfdf1d974d4f525bbf4ed1db9fbeb18eeac94caa62d88e4c66c96e1
+2026-08-10T17:51:58.3132601Z Finalizing artifact upload
+2026-08-10T17:51:58.4736870Z Artifact linux-sdl3-zip.zip successfully finalized. Artifact ID 9073481936
+2026-08-10T17:51:58.4738300Z Artifact linux-sdl3-zip has been successfully uploaded! Final size is 24770958 bytes. Artifact ID is 9073481936
+2026-08-10T17:51:58.4744692Z Artifact download URL: https://github.com/outfrancesco51-collab/HacksToHacks/actions/runs/31415997898/artifacts/9073481936
+2026-08-10T17:51:58.5014930Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:51:58.5016878Z Post job cleanup.
+2026-08-10T17:51:58.5879150Z [command]/usr/bin/git version
+2026-08-10T17:51:58.5922734Z git version 2.54.0
+2026-08-10T17:51:58.5962138Z Temporarily overriding HOME='/home/runner/work/_temp/051adfad-311d-4b01-8d3b-37bee46c6c4e' before making global git config changes
+2026-08-10T17:51:58.5963531Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T17:51:58.5968698Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:51:58.6009903Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T17:51:58.6071132Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T17:51:58.6333838Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T17:51:58.6363725Z http.https://github.com/.extraheader
+2026-08-10T17:51:58.6375263Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-10T17:51:58.6421228Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T17:51:58.6691729Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T17:51:58.6732366Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T17:51:58.7152578Z Cleaning up orphan processes
+2026-08-10T17:51:58.7452802Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

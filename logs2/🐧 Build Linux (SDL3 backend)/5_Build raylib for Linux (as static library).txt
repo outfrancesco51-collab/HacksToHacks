@@ -1,0 +1,173 @@
+﻿2026-08-10T17:42:39.5650221Z ##[group]Run git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
+2026-08-10T17:42:39.5650922Z [36;1mgit clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src[0m
+2026-08-10T17:42:39.5651388Z [36;1mcmake -S raylib-src -B raylib-build \[0m
+2026-08-10T17:42:39.5651698Z [36;1m  -DCMAKE_BUILD_TYPE=Release \[0m
+2026-08-10T17:42:39.5651972Z [36;1m  -DBUILD_SHARED_LIBS=OFF \[0m
+2026-08-10T17:42:39.5652396Z [36;1m  -DBUILD_EXAMPLES=OFF[0m
+2026-08-10T17:42:39.5652724Z [36;1mcmake --build raylib-build --config Release -j$(nproc)[0m
+2026-08-10T17:42:39.5653143Z [36;1mecho "RAYLIB_BUILD=$PWD/raylib-build" >> $GITHUB_ENV[0m
+2026-08-10T17:42:39.5695579Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:42:39.5695827Z env:
+2026-08-10T17:42:39.5696467Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T17:42:39.5697021Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T17:42:39.5697502Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T17:42:39.5697903Z ##[endgroup]
+2026-08-10T17:42:39.5773472Z Cloning into 'raylib-src'...
+2026-08-10T17:42:41.2714756Z Note: switching to 'ae50bfa2cc569c0f8d5bc4315d39db64005b1b08'.
+2026-08-10T17:42:41.2715273Z 
+2026-08-10T17:42:41.2715487Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-08-10T17:42:41.2716285Z changes and commit them, and you can discard any commits you make in this
+2026-08-10T17:42:41.2716784Z state without impacting any branches by switching back to a branch.
+2026-08-10T17:42:41.2717063Z 
+2026-08-10T17:42:41.2717253Z If you want to create a new branch to retain commits you create, you may
+2026-08-10T17:42:41.2717687Z do so (now or later) by using -c with the switch command. Example:
+2026-08-10T17:42:41.2717934Z 
+2026-08-10T17:42:41.2718036Z   git switch -c <new-branch-name>
+2026-08-10T17:42:41.2718199Z 
+2026-08-10T17:42:41.2718294Z Or undo this operation with:
+2026-08-10T17:42:41.2718456Z 
+2026-08-10T17:42:41.2718550Z   git switch -
+2026-08-10T17:42:41.2718663Z 
+2026-08-10T17:42:41.2718873Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-08-10T17:42:41.2719179Z 
+2026-08-10T17:42:41.5241178Z CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+2026-08-10T17:42:41.5241861Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-10T17:42:41.5242275Z   CMake.
+2026-08-10T17:42:41.5242383Z 
+2026-08-10T17:42:41.5242589Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-10T17:42:41.5243113Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-10T17:42:41.5243558Z   to work with policies introduced by <max> or earlier.
+2026-08-10T17:42:41.5243789Z 
+2026-08-10T17:42:41.5243793Z 
+2026-08-10T17:42:41.5701927Z -- The C compiler identification is GNU 13.3.0
+2026-08-10T17:42:42.6304864Z -- The CXX compiler identification is GNU 13.3.0
+2026-08-10T17:42:42.6400889Z -- Detecting C compiler ABI info
+2026-08-10T17:42:42.6906670Z -- Detecting C compiler ABI info - done
+2026-08-10T17:42:42.7089586Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-08-10T17:42:42.7092823Z -- Detecting C compile features
+2026-08-10T17:42:42.7098140Z -- Detecting C compile features - done
+2026-08-10T17:42:42.7312495Z -- Detecting CXX compiler ABI info
+2026-08-10T17:42:42.8667430Z -- Detecting CXX compiler ABI info - done
+2026-08-10T17:42:42.8856288Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-08-10T17:42:42.8859855Z -- Detecting CXX compile features
+2026-08-10T17:42:42.8867355Z -- Detecting CXX compile features - done
+2026-08-10T17:42:42.8982444Z -- Performing Test COMPILER_HAS_THOSE_TOGGLES
+2026-08-10T17:42:42.9495176Z -- Performing Test COMPILER_HAS_THOSE_TOGGLES - Success
+2026-08-10T17:42:42.9496193Z -- Testing if -Werror=pointer-arith can be used -- compiles
+2026-08-10T17:42:42.9500115Z -- Testing if -Werror=implicit-function-declaration can be used -- compiles
+2026-08-10T17:42:42.9503014Z -- Testing if -fno-strict-aliasing can be used -- compiles
+2026-08-10T17:42:42.9584489Z -- Using raylib's GLFW
+2026-08-10T17:42:42.9671177Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-08-10T17:42:43.0251838Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-08-10T17:42:43.0260968Z -- Found Threads: TRUE
+2026-08-10T17:42:43.0262186Z -- Including X11 support
+2026-08-10T17:42:43.0877892Z -- Found X11: /usr/include
+2026-08-10T17:42:43.0881707Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+2026-08-10T17:42:43.1453816Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+2026-08-10T17:42:43.1454795Z -- Looking for gethostbyname
+2026-08-10T17:42:43.1991176Z -- Looking for gethostbyname - found
+2026-08-10T17:42:43.1991742Z -- Looking for connect
+2026-08-10T17:42:43.2525451Z -- Looking for connect - found
+2026-08-10T17:42:43.2526261Z -- Looking for remove
+2026-08-10T17:42:43.3055449Z -- Looking for remove - found
+2026-08-10T17:42:43.3056201Z -- Looking for shmat
+2026-08-10T17:42:43.3597020Z -- Looking for shmat - found
+2026-08-10T17:42:43.3712336Z -- Audio Backend: miniaudio
+2026-08-10T17:42:43.3714256Z -- Building raylib static library
+2026-08-10T17:42:43.3734584Z -- Generated build type: Release
+2026-08-10T17:42:43.3735045Z -- Compiling with the flags:
+2026-08-10T17:42:43.3735501Z --   PLATFORM=PLATFORM_DESKTOP
+2026-08-10T17:42:43.3735775Z --   GRAPHICS=GRAPHICS_API_OPENGL_33
+2026-08-10T17:42:43.3857894Z -- Configuring done (1.9s)
+2026-08-10T17:42:43.4227273Z -- Generating done (0.0s)
+2026-08-10T17:42:43.4233888Z -- Build files have been written to: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T17:42:43.4477914Z [  3%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
+2026-08-10T17:42:43.4484813Z [  6%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
+2026-08-10T17:42:43.4486371Z [  9%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
+2026-08-10T17:42:43.4491723Z [ 12%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
+2026-08-10T17:42:43.6367290Z [ 15%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
+2026-08-10T17:42:43.6749012Z [ 18%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
+2026-08-10T17:42:43.6887211Z [ 21%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
+2026-08-10T17:42:43.7297141Z [ 25%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
+2026-08-10T17:42:43.8087575Z [ 28%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
+2026-08-10T17:42:43.9488798Z [ 31%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
+2026-08-10T17:42:43.9584302Z [ 34%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
+2026-08-10T17:42:43.9757493Z [ 37%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
+2026-08-10T17:42:44.0077355Z [ 40%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
+2026-08-10T17:42:44.0377449Z [ 43%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
+2026-08-10T17:42:44.0832139Z [ 46%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o
+2026-08-10T17:42:44.0877063Z [ 50%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
+2026-08-10T17:42:44.1173695Z [ 53%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o
+2026-08-10T17:42:44.1647411Z [ 56%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o
+2026-08-10T17:42:44.1817262Z [ 59%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o
+2026-08-10T17:42:44.1847020Z [ 62%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o
+2026-08-10T17:42:44.2707244Z [ 65%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o
+2026-08-10T17:42:44.4327570Z [ 68%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o
+2026-08-10T17:42:44.5097160Z [ 71%] Building C object raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o
+2026-08-10T17:42:44.8873271Z [ 75%] Linking C static library libglfw3.a
+2026-08-10T17:42:44.9867552Z [ 75%] Built target glfw
+2026-08-10T17:42:44.9945302Z [ 78%] Building C object raylib/CMakeFiles/raylib.dir/rcore.c.o
+2026-08-10T17:42:44.9952348Z [ 81%] Building C object raylib/CMakeFiles/raylib.dir/rmodels.c.o
+2026-08-10T17:42:44.9953358Z [ 84%] Building C object raylib/CMakeFiles/raylib.dir/rshapes.c.o
+2026-08-10T17:42:44.9959828Z [ 87%] Building C object raylib/CMakeFiles/raylib.dir/rtext.c.o
+2026-08-10T17:42:45.2060216Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/rcore.c: In function ‘LoadAutomationEventList’:
+2026-08-10T17:42:45.2077858Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/rcore.c:2445:13: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:42:45.2106758Z  2445 |             fgets(buffer, 256, raeFile);
+2026-08-10T17:42:45.2146609Z       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:42:45.2168167Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/rcore.c:2462:17: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:42:45.2196680Z  2462 |                 fgets(buffer, 256, raeFile);
+2026-08-10T17:42:45.2226685Z       |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:42:45.8887164Z [ 90%] Building C object raylib/CMakeFiles/raylib.dir/rtextures.c.o
+2026-08-10T17:42:47.5576815Z [ 93%] Building C object raylib/CMakeFiles/raylib.dir/utils.c.o
+2026-08-10T17:42:47.7027421Z [ 96%] Building C object raylib/CMakeFiles/raylib.dir/raudio.c.o
+2026-08-10T17:42:48.1237363Z In file included from /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/raudio.c:176:
+2026-08-10T17:42:48.1267808Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/miniaudio.h: In function ‘ma_device_stop__alsa’:
+2026-08-10T17:42:48.1298160Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/miniaudio.h:28084:9: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:42:48.1326867Z 28084 |         read(((struct pollfd*)pDevice->alsa.pPollDescriptorsCapture)[0].fd, &t, sizeof(t));
+2026-08-10T17:42:48.1356564Z       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:42:48.1387750Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/miniaudio.h:28105:9: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:42:48.1416759Z 28105 |         read(((struct pollfd*)pDevice->alsa.pPollDescriptorsPlayback)[0].fd, &t, sizeof(t));
+2026-08-10T17:42:48.1446600Z       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:42:48.2857223Z In file included from /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/raudio.c:278:
+2026-08-10T17:42:48.2897480Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load_file’:
+2026-08-10T17:42:48.2928087Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1541:13: warning: ignoring return value of ‘fread’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+2026-08-10T17:42:48.2929649Z  1541 |             fread(modctx->modfile, fsize, 1, f);
+2026-08-10T17:42:48.2946592Z       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-08-10T17:42:51.3525180Z In function ‘memcopy’,
+2026-08-10T17:42:51.3526783Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:42:51.3528752Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:42:51.3530471Z   370 |         d[i]=s[i];
+2026-08-10T17:42:51.3530997Z       |         ~~~~^~~~~
+2026-08-10T17:42:51.3532176Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:42:51.3534398Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1080 into destination object ‘title’ of size 20
+2026-08-10T17:42:51.3535700Z   125 |     muchar  title[20];
+2026-08-10T17:42:51.3536500Z       |             ^~~~~
+2026-08-10T17:42:51.3537103Z In function ‘memcopy’,
+2026-08-10T17:42:51.3538321Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:42:51.3540182Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:42:51.3541558Z   370 |         d[i]=s[i];
+2026-08-10T17:42:51.3542065Z       |         ~~~~^~~~~
+2026-08-10T17:42:51.3543177Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:42:51.3545079Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1081 into destination object ‘title’ of size 20
+2026-08-10T17:42:51.3546669Z   125 |     muchar  title[20];
+2026-08-10T17:42:51.3547252Z       |             ^~~~~
+2026-08-10T17:42:51.3547887Z In function ‘memcopy’,
+2026-08-10T17:42:51.3549131Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:42:51.3551044Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:42:51.3552446Z   370 |         d[i]=s[i];
+2026-08-10T17:42:51.3552995Z       |         ~~~~^~~~~
+2026-08-10T17:42:51.3554163Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:42:51.3556443Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1082 into destination object ‘title’ of size 20
+2026-08-10T17:42:51.3557903Z   125 |     muchar  title[20];
+2026-08-10T17:42:51.3558468Z       |             ^~~~~
+2026-08-10T17:42:51.3559081Z In function ‘memcopy’,
+2026-08-10T17:42:51.3560326Z     inlined from ‘jar_mod_load’ at /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:1133:13:
+2026-08-10T17:42:51.3562224Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-08-10T17:42:51.3563496Z   370 |         d[i]=s[i];
+2026-08-10T17:42:51.3564038Z       |         ~~~~^~~~~
+2026-08-10T17:42:51.3565237Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+2026-08-10T17:42:51.3567464Z /home/runner/work/HacksToHacks/HacksToHacks/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1083 into destination object ‘title’ of size 20
+2026-08-10T17:42:51.3568761Z   125 |     muchar  title[20];
+2026-08-10T17:42:51.3569305Z       |             ^~~~~
+2026-08-10T17:43:06.6751259Z [100%] Linking C static library libraylib.a
+2026-08-10T17:43:06.7890513Z [100%] Built target raylib

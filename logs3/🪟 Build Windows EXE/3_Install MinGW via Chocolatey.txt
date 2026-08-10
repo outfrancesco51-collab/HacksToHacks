@@ -1,0 +1,30 @@
+﻿2026-08-10T17:50:10.3849662Z ##[group]Run choco install mingw -y --no-progress
+2026-08-10T17:50:10.3850274Z [36;1mchoco install mingw -y --no-progress[0m
+2026-08-10T17:50:10.4879590Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T17:50:10.4880051Z ##[endgroup]
+2026-08-10T17:50:13.8416790Z Chocolatey v2.7.3
+2026-08-10T17:50:14.3068860Z Installing the following packages:
+2026-08-10T17:50:14.3135341Z mingw
+2026-08-10T17:50:14.3196656Z By installing, you accept licenses for the packages.
+2026-08-10T17:50:17.4675379Z Downloading package from source 'https://community.chocolatey.org/api/v2/'
+2026-08-10T17:50:17.9869072Z 
+2026-08-10T17:50:17.9869789Z mingw v16.1.0 [Approved]
+2026-08-10T17:50:18.0192231Z mingw package files install completed. Performing other installation steps.
+2026-08-10T17:50:20.9705430Z Downloading mingw 64 bit
+2026-08-10T17:50:20.9706624Z   from 'https://github.com/niXman/mingw-builds-binaries/releases/download/16.1.0-rt_v14-rev0/x86_64-16.1.0-release-posix-seh-ucrt-rt_v14-rev0.7z'
+2026-08-10T17:50:21.8474867Z 
+2026-08-10T17:50:21.8496428Z Download of x86_64-16.1.0-release-posix-seh-ucrt-rt_v14-rev0.7z (101.95 MB) completed.
+2026-08-10T17:50:26.7217445Z Hashes match.
+2026-08-10T17:50:26.7718663Z Extracting C:\Users\runneradmin\AppData\Local\Temp\chocolatey\mingw\16.1.0\x86_64-16.1.0-release-posix-seh-ucrt-rt_v14-rev0.7z to C:\ProgramData\chocolatey\lib\mingw\tools\install...
+2026-08-10T17:51:00.8115769Z C:\ProgramData\chocolatey\lib\mingw\tools\install
+2026-08-10T17:51:01.0827620Z Using ProgramData: C:\ProgramData
+2026-08-10T17:51:01.1010737Z Testing path: C:\ProgramData\mingw64\mingw32\bin...Not Found!
+2026-08-10T17:51:01.1018931Z Testing path: C:\ProgramData\mingw64\mingw64\bin...Found!
+2026-08-10T17:51:01.1116171Z PATH environment variable does not have C:\ProgramData\mingw64\mingw64\bin in it. Adding...
+2026-08-10T17:51:01.3533130Z Environment Vars (like PATH) have changed. Close/reopen your shell to
+2026-08-10T17:51:01.3534033Z  see the changes (or in powershell/cmd.exe just type `refreshenv`).
+2026-08-10T17:51:01.4580667Z  The install of mingw was successful.
+2026-08-10T17:51:01.4583437Z   Deployed to 'C:\ProgramData\chocolatey\lib\mingw\tools\install'
+2026-08-10T17:51:01.4723067Z 
+2026-08-10T17:51:01.4723385Z Chocolatey installed 1/1 packages. 
+2026-08-10T17:51:01.4723839Z  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).

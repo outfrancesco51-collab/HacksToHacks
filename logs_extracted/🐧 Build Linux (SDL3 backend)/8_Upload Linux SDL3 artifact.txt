@@ -1,0 +1,32 @@
+﻿2026-08-10T16:44:01.8989860Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T16:44:01.8991746Z ##[group]Run actions/upload-artifact@v4
+2026-08-10T16:44:01.8992017Z with:
+2026-08-10T16:44:01.8992203Z   name: linux-sdl3-zip
+2026-08-10T16:44:01.8992430Z   path: HacksToHacks-Linux-SDL3.zip
+2026-08-10T16:44:01.8992680Z   retention-days: 7
+2026-08-10T16:44:01.8992885Z   if-no-files-found: warn
+2026-08-10T16:44:01.8993105Z   compression-level: 6
+2026-08-10T16:44:01.8993315Z   overwrite: false
+2026-08-10T16:44:01.8993516Z   include-hidden-files: false
+2026-08-10T16:44:01.8993752Z env:
+2026-08-10T16:44:01.8994071Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T16:44:01.8994585Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T16:44:01.8995513Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T16:44:01.8995979Z   RAYLIB_BUILD: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T16:44:01.8996319Z ##[endgroup]
+2026-08-10T16:44:02.0637631Z (node:8820) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T16:44:02.0638826Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T16:44:02.0682999Z With the provided path, there will be 1 file uploaded
+2026-08-10T16:44:02.0691315Z Artifact name is valid!
+2026-08-10T16:44:02.0692115Z Root directory input is valid!
+2026-08-10T16:44:02.2660210Z Beginning upload of artifact content to blob storage
+2026-08-10T16:44:02.5420497Z (node:8820) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T16:44:03.0041520Z Uploaded bytes 8388608
+2026-08-10T16:44:03.2512640Z Uploaded bytes 16777216
+2026-08-10T16:44:03.4466266Z Uploaded bytes 24770960
+2026-08-10T16:44:03.4830541Z Finished uploading artifact content to blob storage!
+2026-08-10T16:44:03.4831981Z SHA256 digest of uploaded artifact zip is c2b6c52ae0fe153c7d680c4bee1fffa4edce14f1283fedcccf4b14018d84ad33
+2026-08-10T16:44:03.4834317Z Finalizing artifact upload
+2026-08-10T16:44:03.6634621Z Artifact linux-sdl3-zip.zip successfully finalized. Artifact ID 9071337955
+2026-08-10T16:44:03.6636358Z Artifact linux-sdl3-zip has been successfully uploaded! Final size is 24770960 bytes. Artifact ID is 9071337955
+2026-08-10T16:44:03.6644496Z Artifact download URL: https://github.com/outfrancesco51-collab/HacksToHacks/actions/runs/31410308848/artifacts/9071337955

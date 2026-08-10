@@ -1,0 +1,59 @@
+﻿2026-08-10T17:43:06.7960308Z ##[group]Run RL_SRC=raylib-src/src
+2026-08-10T17:43:06.7960671Z [36;1mRL_SRC=raylib-src/src[0m
+2026-08-10T17:43:06.7960922Z [36;1mRL_LIB=$RAYLIB_BUILD/raylib[0m
+2026-08-10T17:43:06.7961168Z [36;1m[0m
+2026-08-10T17:43:06.7961365Z [36;1mmkdir -p out-linux[0m
+2026-08-10T17:43:06.7961595Z [36;1m[0m
+2026-08-10T17:43:06.7961868Z [36;1m# Compile main game sources (raylib rendering, SDL3 window)[0m
+2026-08-10T17:43:06.7962224Z [36;1mgcc -O2 -Wall \[0m
+2026-08-10T17:43:06.7962452Z [36;1m  -DPLATFORM_DESKTOP \[0m
+2026-08-10T17:43:06.7962693Z [36;1m  -Isrc -I$RL_SRC \[0m
+2026-08-10T17:43:06.7962920Z [36;1m  -I$SDL3_INC \[0m
+2026-08-10T17:43:06.7963168Z [36;1m  -c src/main.c       -o out-linux/main.o[0m
+2026-08-10T17:43:06.7963535Z [36;1mgcc -O2 -Wall -Isrc -c src/cJSON.c  -o out-linux/cJSON.o[0m
+2026-08-10T17:43:06.7963934Z [36;1mgcc -O2 -Wall -Isrc -c src/tween.c  -o out-linux/tween.o[0m
+2026-08-10T17:43:06.7964435Z [36;1m[0m
+2026-08-10T17:43:06.7964631Z [36;1m# Compile SDL3 platform adapter[0m
+2026-08-10T17:43:06.7964939Z [36;1mgcc -O2 -Wall \[0m
+2026-08-10T17:43:06.7965161Z [36;1m  -DPLATFORM_SDL3 \[0m
+2026-08-10T17:43:06.7965402Z [36;1m  -Isrc -I$SDL3_INC \[0m
+2026-08-10T17:43:06.7965704Z [36;1m  -c src/platform_sdl3.c -o out-linux/platform_sdl3.o[0m
+2026-08-10T17:43:06.7966336Z [36;1m[0m
+2026-08-10T17:43:06.7966528Z [36;1m# Link everything[0m
+2026-08-10T17:43:06.7966847Z [36;1mgcc out-linux/main.o out-linux/cJSON.o out-linux/tween.o \[0m
+2026-08-10T17:43:06.7967210Z [36;1m    out-linux/platform_sdl3.o \[0m
+2026-08-10T17:43:06.7967490Z [36;1m    $RL_LIB/libraylib.a \[0m
+2026-08-10T17:43:06.7967745Z [36;1m    -L$SDL3_LIB -lSDL3 \[0m
+2026-08-10T17:43:06.7967993Z [36;1m    -Wl,-rpath,'$ORIGIN' \[0m
+2026-08-10T17:43:06.7968263Z [36;1m    -lGL -lm -ldl -lpthread -lrt \[0m
+2026-08-10T17:43:06.7968587Z [36;1m    -lX11 -lXrandr -lXi -lXcursor -lXinerama \[0m
+2026-08-10T17:43:06.7968897Z [36;1m    -lasound -lpulse \[0m
+2026-08-10T17:43:06.7969147Z [36;1m    -o out-linux/HacksToHacks[0m
+2026-08-10T17:43:06.7969393Z [36;1m[0m
+2026-08-10T17:43:06.7969578Z [36;1mfile out-linux/HacksToHacks[0m
+2026-08-10T17:43:06.8011789Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:43:06.8012039Z env:
+2026-08-10T17:43:06.8012379Z   SDL3_DIR: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3
+2026-08-10T17:43:06.8012911Z   SDL3_INC: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include
+2026-08-10T17:43:06.8013410Z   SDL3_LIB: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib
+2026-08-10T17:43:06.8013865Z   RAYLIB_BUILD: /home/runner/work/HacksToHacks/HacksToHacks/raylib-build
+2026-08-10T17:43:06.8014225Z ##[endgroup]
+2026-08-10T17:43:06.8290578Z src/main.c: In function ‘UpdateDrawFrame’:
+2026-08-10T17:43:06.8291267Z src/main.c:197:49: warning: null character(s) preserved in literal
+2026-08-10T17:43:06.8291974Z   197 |                     playerName[letterCount+1] = ' ';
+2026-08-10T17:43:06.8292527Z       |                                                 ^
+2026-08-10T17:43:06.8293104Z src/main.c:204:43: warning: null character(s) preserved in literal
+2026-08-10T17:43:06.8293537Z   204 |                 playerName[letterCount] = ' ';
+2026-08-10T17:43:06.8293866Z       |                                           ^
+2026-08-10T17:43:07.5164357Z src/platform_sdl3.c: In function ‘SDL3_PlatformInit’:
+2026-08-10T17:43:07.5165636Z src/platform_sdl3.c:71:50: warning: format ‘%s’ expects argument of type ‘char *’, but argument 4 has type ‘int’ [-Wformat=]
+2026-08-10T17:43:07.5167044Z    71 |     printf("[SDL3] Window created (%dx%d) — SDL %s\n",
+2026-08-10T17:43:07.5167660Z       |                                                 ~^
+2026-08-10T17:43:07.5168126Z       |                                                  |
+2026-08-10T17:43:07.5168619Z       |                                                  char *
+2026-08-10T17:43:07.5169182Z       |                                                 %d
+2026-08-10T17:43:07.5169676Z    72 |            w, h, SDL_GetVersion());
+2026-08-10T17:43:07.5170669Z       |                  ~~~~~~~~~~~~~~~~                 
+2026-08-10T17:43:07.5171141Z       |                  |
+2026-08-10T17:43:07.5171516Z       |                  int
+2026-08-10T17:43:07.7322362Z out-linux/HacksToHacks: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=4798fd429ae8e9a0bb02ab9c981a16be43dc3f05, for GNU/Linux 3.2.0, not stripped

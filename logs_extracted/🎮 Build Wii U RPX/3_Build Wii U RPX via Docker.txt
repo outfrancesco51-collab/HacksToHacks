@@ -1,0 +1,82 @@
+﻿2026-08-10T16:42:16.9133432Z ##[group]Run docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
+2026-08-10T16:42:16.9136689Z [36;1mdocker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\[0m
+2026-08-10T16:42:16.9138926Z [36;1m  dkp-pacman -Syu --noconfirm || true && \[0m
+2026-08-10T16:42:16.9141145Z [36;1m  dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf && \[0m
+2026-08-10T16:42:16.9143144Z [36;1m  mkdir -p wiiu-build && \[0m
+2026-08-10T16:42:16.9145234Z [36;1m  export PATH=/opt/devkitpro/portlibs/wiiu/bin:/opt/devkitpro/devkitPPC/bin:\$PATH && \[0m
+2026-08-10T16:42:16.9147837Z [36;1m  wiiu-cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release && \[0m
+2026-08-10T16:42:16.9149918Z [36;1m  cmake --build wiiu-build --config Release -j\$(nproc) \[0m
+2026-08-10T16:42:16.9151662Z [36;1m"[0m
+2026-08-10T16:42:16.9200013Z shell: /usr/bin/bash -e {0}
+2026-08-10T16:42:16.9201457Z ##[endgroup]
+2026-08-10T16:42:17.0203869Z Unable to find image 'devkitpro/devkitppc:latest' locally
+2026-08-10T16:42:17.9206711Z latest: Pulling from devkitpro/devkitppc
+2026-08-10T16:42:18.1972119Z 59e22667830b: Pulling fs layer
+2026-08-10T16:42:18.1972916Z 74701f26999d: Pulling fs layer
+2026-08-10T16:42:18.1974628Z ea5d3216df1f: Pulling fs layer
+2026-08-10T16:42:18.1975314Z 3727f0a7f966: Pulling fs layer
+2026-08-10T16:42:18.1975931Z 3727f0a7f966: Waiting
+2026-08-10T16:42:18.6047351Z 59e22667830b: Download complete
+2026-08-10T16:42:18.7223663Z ea5d3216df1f: Verifying Checksum
+2026-08-10T16:42:18.7224493Z ea5d3216df1f: Download complete
+2026-08-10T16:42:19.4655974Z 74701f26999d: Verifying Checksum
+2026-08-10T16:42:19.4658586Z 74701f26999d: Download complete
+2026-08-10T16:42:20.2177137Z 3727f0a7f966: Verifying Checksum
+2026-08-10T16:42:20.2178178Z 3727f0a7f966: Download complete
+2026-08-10T16:42:20.3230072Z 59e22667830b: Pull complete
+2026-08-10T16:42:29.2149618Z 74701f26999d: Pull complete
+2026-08-10T16:42:29.5787608Z ea5d3216df1f: Pull complete
+2026-08-10T16:42:37.2162037Z 3727f0a7f966: Pull complete
+2026-08-10T16:42:37.2205326Z Digest: sha256:44cb1a920e1ec3ec7c06767493c3b85f8d643d6137cc4661f0201895ac6e4967
+2026-08-10T16:42:37.2222173Z Status: Downloaded newer image for devkitpro/devkitppc:latest
+2026-08-10T16:42:37.4365624Z :: Synchronizing package databases...
+2026-08-10T16:42:39.0988915Z  dkp-libs downloading...
+2026-08-10T16:42:39.0989782Z  dkp-linux downloading...
+2026-08-10T16:42:39.1200012Z :: Starting full system upgrade...
+2026-08-10T16:42:39.1265474Z resolving dependencies...
+2026-08-10T16:42:39.1290329Z looking for conflicting packages...
+2026-08-10T16:42:39.1298344Z 
+2026-08-10T16:42:39.1299223Z Packages (5) devkitARM-r68-1  devkitarm-binutils-2.46.0-1  devkitarm-gcc-16.1.0-1  devkitppc-crtls-2.1.0-1  wii-examples-20260510-1
+2026-08-10T16:42:39.1301503Z 
+2026-08-10T16:42:39.1301645Z Total Download Size:    91.39 MiB
+2026-08-10T16:42:39.1302238Z Total Installed Size:  370.56 MiB
+2026-08-10T16:42:39.1302536Z Net Upgrade Size:       10.71 MiB
+2026-08-10T16:42:39.1302742Z 
+2026-08-10T16:42:39.1312633Z :: Proceed with installation? [Y/n] 
+2026-08-10T16:42:39.1313205Z :: Retrieving packages...
+2026-08-10T16:42:40.6463211Z  devkitarm-gcc-16.1.0-1-x86_64 downloading...
+2026-08-10T16:42:40.6464046Z  devkitarm-binutils-2.46.0-1-x86_64 downloading...
+2026-08-10T16:42:40.6464650Z  wii-examples-20260510-1-any downloading...
+2026-08-10T16:42:40.6465330Z  devkitppc-crtls-2.1.0-1-any downloading...
+2026-08-10T16:42:40.6465689Z  devkitARM-r68-1-any downloading...
+2026-08-10T16:42:40.6466005Z checking keyring...
+2026-08-10T16:42:40.6539405Z checking package integrity...
+2026-08-10T16:42:41.1964016Z loading package files...
+2026-08-10T16:42:41.2072549Z checking for file conflicts...
+2026-08-10T16:42:41.2112671Z checking available disk space...
+2026-08-10T16:42:41.2312702Z :: Processing package changes...
+2026-08-10T16:42:41.2313224Z upgrading devkitarm-binutils...
+2026-08-10T16:42:41.2880219Z upgrading devkitarm-gcc...
+2026-08-10T16:42:42.1694511Z upgrading devkitARM...
+2026-08-10T16:42:42.1713033Z upgrading devkitppc-crtls...
+2026-08-10T16:42:42.1740084Z upgrading wii-examples...
+2026-08-10T16:42:42.2711265Z warning: catnip-0.2.0-1 is up to date -- skipping
+2026-08-10T16:42:42.2711901Z warning: devkitppc-cmake-1.1.4-1 is up to date -- skipping
+2026-08-10T16:42:42.2712309Z warning: devkitppc-rules-1.2.1-1 is up to date -- skipping
+2026-08-10T16:42:42.2712738Z warning: ppc-pkg-config-0.28-5 is up to date -- skipping
+2026-08-10T16:42:42.2713105Z warning: wiiu-cmake-1.3.2-1 is up to date -- skipping
+2026-08-10T16:42:42.2713465Z warning: wiiu-pkg-config-0.28-4 is up to date -- skipping
+2026-08-10T16:42:42.2713813Z warning: wut-1.9.1-1 is up to date -- skipping
+2026-08-10T16:42:42.2714138Z warning: devkit-env-1.0.1-2 is up to date -- skipping
+2026-08-10T16:42:42.2714531Z warning: devkitPPC-gdb-14.1-2 is up to date -- skipping
+2026-08-10T16:42:42.2714920Z warning: devkitppc-binutils-2.46.0-1 is up to date -- skipping
+2026-08-10T16:42:42.2715322Z warning: devkitppc-gcc-16.1.0-1 is up to date -- skipping
+2026-08-10T16:42:42.2715775Z warning: devkitppc-mn10200-binutils-2.24-3 is up to date -- skipping
+2026-08-10T16:42:42.2716205Z warning: general-tools-1.4.4-1 is up to date -- skipping
+2026-08-10T16:42:42.2716548Z warning: wiiload-0.5.3-1 is up to date -- skipping
+2026-08-10T16:42:42.2716887Z warning: wut-tools-1.3.5-1 is up to date -- skipping
+2026-08-10T16:42:42.2717223Z warning: wiiu-sdl2-2.32.10-2 is up to date -- skipping
+2026-08-10T16:42:42.2717583Z warning: wiiu-sdl2_ttf-2.20.2-1 is up to date -- skipping
+2026-08-10T16:42:42.2717906Z  there is nothing to do
+2026-08-10T16:42:42.2743933Z /bin/bash: line 1: wiiu-cmake: command not found
+2026-08-10T16:42:43.3265134Z ##[error]Process completed with exit code 127.

@@ -1,0 +1,243 @@
+🎮 Build Wii U RPX	Set up job	﻿2026-08-10T13:03:51.2679170Z Current runner version: '2.336.0'
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2695554Z ##[group]Runner Image Provisioner
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2696273Z Hosted Compute Agent
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2696699Z Version: 20260707.563
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2697143Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2697606Z Build Date: 2026-07-07T19:33:50Z
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2698085Z Worker ID: {e6a345eb-48b1-4a8f-a5cb-9fdf6350ae92}
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2698560Z Azure Region: centralus
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2698937Z ##[endgroup]
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2699797Z ##[group]Operating System
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2700204Z Ubuntu
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2700589Z 24.04.4
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2701086Z LTS
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2701438Z ##[endgroup]
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2701848Z ##[group]Runner Image
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2702266Z Image: ubuntu-24.04
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2702689Z Version: 20260720.247.2
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2703389Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2704547Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2705178Z ##[endgroup]
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2705924Z ##[group]GITHUB_TOKEN Permissions
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2707385Z Contents: write
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2708071Z Metadata: read
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2708495Z ##[endgroup]
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2709865Z Secret source: Actions
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.2710573Z Prepare workflow directory
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.3018800Z Prepare all required actions
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.3055820Z Getting action download info
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:51.5344853Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:52.3926343Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+🎮 Build Wii U RPX	Set up job	2026-08-10T13:03:52.9896991Z Complete job name: 🎮 Build Wii U RPX
+🎮 Build Wii U RPX	Initialize containers	﻿2026-08-10T13:03:53.0217949Z ##[group]Checking docker version
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.0226801Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1307739Z '1.48'
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1315799Z Docker daemon API version: '1.48'
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1316269Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1449118Z '1.48'
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1455927Z Docker client API version: '1.48'
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1459832Z ##[endgroup]
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1461713Z ##[group]Clean up resources from previous jobs
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1465278Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=22378e"
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1567125Z ##[command]/usr/bin/docker network prune --force --filter "label=22378e"
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1668400Z ##[endgroup]
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1668729Z ##[group]Create local container network
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.1675248Z ##[command]/usr/bin/docker network create --label 22378e github_network_53e3a140ebcb4988948bbe30c0a792e3
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.8591510Z ad24f7927d22e3d267c14c9a3c6ee19ef547dc1abc3868e6144ed38645f1041d
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.8604176Z ##[endgroup]
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.8622308Z ##[group]Starting job container
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:53.8637477Z ##[command]/usr/bin/docker pull devkitpro/devkitppc:latest
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.0421976Z latest: Pulling from devkitpro/devkitppc
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.1881337Z 59e22667830b: Pulling fs layer
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.1882261Z 74701f26999d: Pulling fs layer
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.1882966Z ea5d3216df1f: Pulling fs layer
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.1883360Z 3727f0a7f966: Pulling fs layer
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.1883791Z 3727f0a7f966: Waiting
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.5722847Z 59e22667830b: Verifying Checksum
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.5723922Z 59e22667830b: Download complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.5766798Z ea5d3216df1f: Verifying Checksum
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:55.5769412Z ea5d3216df1f: Download complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:56.1600654Z 74701f26999d: Verifying Checksum
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:56.1601715Z 74701f26999d: Download complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:56.8441470Z 3727f0a7f966: Verifying Checksum
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:56.8442033Z 3727f0a7f966: Download complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:03:57.2998827Z 59e22667830b: Pull complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:11.8537015Z 74701f26999d: Pull complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:12.8424661Z ea5d3216df1f: Pull complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8502477Z 3727f0a7f966: Pull complete
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8552378Z Digest: sha256:44cb1a920e1ec3ec7c06767493c3b85f8d643d6137cc4661f0201895ac6e4967
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8570213Z Status: Downloaded newer image for devkitpro/devkitppc:latest
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8582673Z docker.io/devkitpro/devkitppc:latest
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8650160Z ##[command]/usr/bin/docker create --name 6e851125237b49728dc89383f1db44ed_devkitprodevkitppclatest_a15902 --label 22378e --workdir /__w/HacksToHacks/HacksToHacks --network github_network_53e3a140ebcb4988948bbe30c0a792e3  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" devkitpro/devkitppc:latest "-f" "/dev/null"
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8889357Z 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:22.8903129Z ##[command]/usr/bin/docker start 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0357646Z 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0367099Z ##[command]/usr/bin/docker ps --all --filter id=9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0465243Z 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf Up Less than a second
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0475915Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0576246Z HOME=/github/home
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0576524Z GITHUB_ACTIONS=true
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0576857Z CI=true
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0577201Z PATH=/opt/devkitpro/tools/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0577800Z DEBIAN_FRONTEND=noninteractive
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0578097Z LANG=en_US.UTF-8
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0578455Z DEVKITPRO=/opt/devkitpro
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0578796Z DEVKITPPC=/opt/devkitpro/devkitPPC
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0579092Z DEVKITARM=/opt/devkitpro/devkitARM
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0589389Z ##[endgroup]
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0596248Z ##[group]Waiting for all services to be ready
+🎮 Build Wii U RPX	Initialize containers	2026-08-10T13:04:23.0597592Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	﻿2026-08-10T13:04:23.0807201Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0813116Z ##[group]Run actions/checkout@v4
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0813478Z with:
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0813787Z   repository: outfrancesco51-collab/HacksToHacks
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0815578Z   token: ***
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0815801Z   ssh-strict: true
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0816023Z   ssh-user: git
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0816243Z   persist-credentials: true
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0816470Z   clean: true
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0816728Z   sparse-checkout-cone-mode: true
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0816978Z   fetch-depth: 1
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0817183Z   fetch-tags: false
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0817405Z   show-progress: true
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0817620Z   lfs: false
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0817848Z   submodules: false
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0818150Z   set-safe-directory: true
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0818399Z   allow-unsafe-pr-checkout: false
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0818763Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.0865121Z ##[command]/usr/bin/docker exec  9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf sh -c "cat /etc/*release | grep ^ID"
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2329661Z Syncing repository: outfrancesco51-collab/HacksToHacks
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2331556Z ##[group]Getting Git version info
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2332129Z Working directory is '/__w/HacksToHacks/HacksToHacks'
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2332821Z [command]/usr/bin/git version
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2333222Z git version 2.39.5
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2334870Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2339040Z Temporarily overriding HOME='/__w/_temp/62d18ec3-849e-483f-9ee4-528e35e553b1' before making global git config changes
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2340282Z Adding repository directory to the temporary git global config as a safe directory
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2341372Z [command]/usr/bin/git config --global --add safe.directory /__w/HacksToHacks/HacksToHacks
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2362837Z Deleting the contents of '/__w/HacksToHacks/HacksToHacks'
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2366389Z ##[group]Initializing the repository
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2369123Z [command]/usr/bin/git init /__w/HacksToHacks/HacksToHacks
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2390363Z hint: Using 'master' as the name for the initial branch. This default branch name
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2391819Z hint: is subject to change. To configure the initial branch name to use in all
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2392726Z hint: of your new repositories, which will suppress this warning, call:
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2393400Z hint: 
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2394091Z hint: 	git config --global init.defaultBranch <name>
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2394620Z hint: 
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2395212Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2395918Z hint: 'development'. The just-created branch can be renamed via this command:
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2396892Z hint: 
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2397462Z hint: 	git branch -m <name>
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2398117Z Initialized empty Git repository in /__w/HacksToHacks/HacksToHacks/.git/
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2406690Z [command]/usr/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2428009Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2429186Z ##[group]Disabling automatic garbage collection
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2431555Z [command]/usr/bin/git config --local gc.auto 0
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2448733Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2449227Z ##[group]Setting up auth
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2453203Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2473467Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2604206Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2622558Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2757991Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2802651Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2904216Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2925432Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2926292Z ##[group]Fetching the repository
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:23.2932134Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b5df26a3cdb350e68912123ff1c600f0ad902595:refs/remotes/origin/main
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5636665Z From https://github.com/outfrancesco51-collab/HacksToHacks
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5637537Z  * [new ref]         b5df26a3cdb350e68912123ff1c600f0ad902595 -> origin/main
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5657039Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5657694Z ##[group]Determining the checkout info
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5658393Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5661952Z [command]/usr/bin/git sparse-checkout disable
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.5765680Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.6006518Z ##[group]Checking out the ref
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.6009533Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.8014119Z Switched to a new branch 'main'
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.8014568Z branch 'main' set up to track 'origin/main'.
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.8022012Z ##[endgroup]
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.8049917Z [command]/usr/bin/git log -1 --format=%H
+🎮 Build Wii U RPX	Run actions/checkout@v4	2026-08-10T13:04:24.8069275Z b5df26a3cdb350e68912123ff1c600f0ad902595
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	﻿2026-08-10T13:04:24.8244705Z ##[group]Run # devkitpro/devkitppc image already has dkp-pacman
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8245236Z ^[[36;1m# devkitpro/devkitppc image already has dkp-pacman^[[0m
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8245682Z ^[[36;1mdkp-pacman -Syu --noconfirm || true^[[0m
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8246010Z ^[[36;1mdkp-pacman -S --noconfirm --needed \^[[0m
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8246325Z ^[[36;1m  wiiu-dev \^[[0m
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8246591Z ^[[36;1m  wiiu-sdl2 \^[[0m
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8246852Z ^[[36;1m  wiiu-sdl2_ttf^[[0m
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8249714Z shell: sh -e {0}
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.8249964Z ##[endgroup]
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:24.9366904Z :: Synchronizing package databases...
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5212748Z error: failed retrieving file 'dkp-libs.db' from pkg.devkitpro.org : The requested URL returned error: 403
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5213547Z  dkp-libs downloading...
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5213928Z  dkp-linux downloading...
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5214901Z error: failed retrieving file 'dkp-linux.db' from pkg.devkitpro.org : The requested URL returned error: 403
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5216154Z error: failed to synchronize all databases (failed to retrieve some files)
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5507020Z warning: catnip-0.2.0-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5507480Z warning: devkitppc-cmake-1.1.4-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5507927Z warning: devkitppc-rules-1.2.1-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5508320Z warning: ppc-pkg-config-0.28-5 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5508689Z warning: wiiu-cmake-1.3.2-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5509213Z warning: wiiu-pkg-config-0.28-4 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5509569Z warning: wut-1.9.1-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5509988Z warning: devkit-env-1.0.1-2 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5510796Z warning: devkitPPC-gdb-14.1-2 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5511426Z warning: devkitppc-binutils-2.46.0-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5511928Z warning: devkitppc-gcc-16.1.0-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5512441Z warning: devkitppc-mn10200-binutils-2.24-3 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5512963Z warning: general-tools-1.4.4-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5513374Z warning: wiiload-0.5.3-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5513796Z warning: wut-tools-1.3.5-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5514228Z warning: wiiu-sdl2-2.32.10-2 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5514725Z warning: wiiu-sdl2_ttf-2.20.2-1 is up to date -- skipping
+🎮 Build Wii U RPX	Install Wii U SDK (WUT + SDL2 + SDL2_ttf)	2026-08-10T13:04:25.5527279Z  there is nothing to do
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	﻿2026-08-10T13:04:25.5563944Z ##[group]Run mkdir -p wiiu-build
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5564255Z ^[[36;1mmkdir -p wiiu-build^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5564542Z ^[[36;1m# powerpc-eabi-cmake is the WUT CMake wrapper^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5564922Z ^[[36;1m/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-cmake \^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5565231Z ^[[36;1m  -S wiiu \^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5565461Z ^[[36;1m  -B wiiu-build \^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5565705Z ^[[36;1m  -DCMAKE_BUILD_TYPE=Release^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5566005Z ^[[36;1mcmake --build wiiu-build --config Release -j$(nproc)^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5566367Z ^[[36;1mls -la wiiu-build/ || true^[[0m
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5566709Z shell: sh -e {0}
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.5566923Z ##[endgroup]
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.6334676Z -- The C compiler identification is GNU 16.1.0
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.6421214Z -- Detecting C compiler ABI info
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7080084Z -- Detecting C compiler ABI info - done
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7271118Z -- Check for working C compiler: /opt/devkitpro/devkitPPC/bin/powerpc-eabi-gcc - skipped
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7273481Z -- Detecting C compile features
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7276613Z -- Detecting C compile features - done
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7282781Z CMake Error at CMakeLists.txt:58 (include):
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7283229Z   include could not find requested file:
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7283465Z 
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7283585Z     WUT
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7283686Z 
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7283698Z 
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7285975Z -- Configuring incomplete, errors occurred!
+🎮 Build Wii U RPX	Build Wii U RPX via CMake	2026-08-10T13:04:25.7324011Z ##[error]Process completed with exit code 1.
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	﻿2026-08-10T13:04:25.7446986Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.7448715Z Post job cleanup.
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.7456396Z ##[command]/usr/bin/docker exec  9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf sh -c "cat /etc/*release | grep ^ID"
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8862260Z [command]/usr/bin/git version
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8896209Z git version 2.39.5
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8934178Z Temporarily overriding HOME='/__w/_temp/4ed3e4da-cd35-4294-ba40-465b8ddd505e' before making global git config changes
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8934992Z Adding repository directory to the temporary git global config as a safe directory
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8938019Z [command]/usr/bin/git config --global --add safe.directory /__w/HacksToHacks/HacksToHacks
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8964355Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.8990280Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.9161493Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.9176634Z http.https://github.com/.extraheader
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.9184545Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.9206780Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.9350666Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+🎮 Build Wii U RPX	Post Run actions/checkout@v4	2026-08-10T13:04:25.9375184Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+🎮 Build Wii U RPX	Stop containers	﻿2026-08-10T13:04:25.9622912Z Stop and remove container: 6e851125237b49728dc89383f1db44ed_devkitprodevkitppclatest_a15902
+🎮 Build Wii U RPX	Stop containers	2026-08-10T13:04:25.9627253Z ##[command]/usr/bin/docker rm --force 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf
+🎮 Build Wii U RPX	Stop containers	2026-08-10T13:04:26.8436903Z 9fe8fe9eb596fc02b75d6a029d929fe819105683160481265d7da3c9547bf4cf
+🎮 Build Wii U RPX	Stop containers	2026-08-10T13:04:26.8454168Z Remove container network: github_network_53e3a140ebcb4988948bbe30c0a792e3
+🎮 Build Wii U RPX	Stop containers	2026-08-10T13:04:26.8456883Z ##[command]/usr/bin/docker network rm github_network_53e3a140ebcb4988948bbe30c0a792e3
+🎮 Build Wii U RPX	Stop containers	2026-08-10T13:04:27.0448958Z github_network_53e3a140ebcb4988948bbe30c0a792e3
+🎮 Build Wii U RPX	Complete job	﻿2026-08-10T13:04:27.0503114Z Cleaning up orphan processes
+🎮 Build Wii U RPX	Complete job	2026-08-10T13:04:27.0712505Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

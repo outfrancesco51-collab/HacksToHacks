@@ -1,0 +1,75 @@
+﻿2026-08-10T17:50:01.9688290Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:50:01.9703200Z ##[group]Run actions/checkout@v4
+2026-08-10T17:50:01.9706920Z with:
+2026-08-10T17:50:01.9707870Z   repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:01.9712200Z   token: ***
+2026-08-10T17:50:01.9712640Z   ssh-strict: true
+2026-08-10T17:50:01.9713040Z   ssh-user: git
+2026-08-10T17:50:01.9713380Z   persist-credentials: true
+2026-08-10T17:50:01.9713830Z   clean: true
+2026-08-10T17:50:01.9714210Z   sparse-checkout-cone-mode: true
+2026-08-10T17:50:01.9714650Z   fetch-depth: 1
+2026-08-10T17:50:01.9714990Z   fetch-tags: false
+2026-08-10T17:50:01.9715500Z   show-progress: true
+2026-08-10T17:50:01.9715930Z   lfs: false
+2026-08-10T17:50:01.9716240Z   submodules: false
+2026-08-10T17:50:01.9716690Z   set-safe-directory: true
+2026-08-10T17:50:01.9717410Z   allow-unsafe-pr-checkout: false
+2026-08-10T17:50:01.9718250Z ##[endgroup]
+2026-08-10T17:50:02.8990030Z Syncing repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:02.8994440Z ##[group]Getting Git version info
+2026-08-10T17:50:02.8997130Z Working directory is '/Users/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T17:50:02.9000620Z [command]/opt/homebrew/bin/git version
+2026-08-10T17:50:02.9445490Z git version 2.55.0
+2026-08-10T17:50:02.9525180Z ##[endgroup]
+2026-08-10T17:50:02.9576630Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/0fbceed8-00e9-4c81-9c7f-983397f02abe/.gitconfig'
+2026-08-10T17:50:02.9603520Z Temporarily overriding HOME='/Users/runner/work/_temp/0fbceed8-00e9-4c81-9c7f-983397f02abe' before making global git config changes
+2026-08-10T17:50:02.9612480Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T17:50:02.9618650Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:50:02.9702450Z Deleting the contents of '/Users/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T17:50:02.9767020Z ##[group]Initializing the repository
+2026-08-10T17:50:02.9829630Z [command]/opt/homebrew/bin/git init /Users/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T17:50:03.0132520Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-10T17:50:03.0138970Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-10T17:50:03.0141190Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-10T17:50:03.0142860Z hint: call:
+2026-08-10T17:50:03.0143690Z hint:
+2026-08-10T17:50:03.0144740Z hint: 	git config --global init.defaultBranch <name>
+2026-08-10T17:50:03.0145960Z hint:
+2026-08-10T17:50:03.0147120Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-10T17:50:03.0154580Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-10T17:50:03.0161440Z hint:
+2026-08-10T17:50:03.0164570Z hint: 	git branch -m <name>
+2026-08-10T17:50:03.0172990Z hint:
+2026-08-10T17:50:03.0176240Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-10T17:50:03.0186440Z Initialized empty Git repository in /Users/runner/work/HacksToHacks/HacksToHacks/.git/
+2026-08-10T17:50:03.0196440Z [command]/opt/homebrew/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:03.0297750Z ##[endgroup]
+2026-08-10T17:50:03.0305280Z ##[group]Disabling automatic garbage collection
+2026-08-10T17:50:03.0307000Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-08-10T17:50:03.0430890Z ##[endgroup]
+2026-08-10T17:50:03.0433880Z ##[group]Setting up auth
+2026-08-10T17:50:03.0439340Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T17:50:03.0506340Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T17:50:03.1854080Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T17:50:03.1946350Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T17:50:03.4386550Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T17:50:03.4695300Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T17:50:03.6375560Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-10T17:50:03.6499580Z ##[endgroup]
+2026-08-10T17:50:03.6500110Z ##[group]Fetching the repository
+2026-08-10T17:50:03.6505530Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5972df36c5aab613a4c8a398c1a318310a2d10ac:refs/remotes/origin/main
+2026-08-10T17:50:05.2858480Z From https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T17:50:05.2859920Z  * [new ref]         5972df36c5aab613a4c8a398c1a318310a2d10ac -> origin/main
+2026-08-10T17:50:05.2861680Z ##[endgroup]
+2026-08-10T17:50:05.2862130Z ##[group]Determining the checkout info
+2026-08-10T17:50:05.2862700Z ##[endgroup]
+2026-08-10T17:50:05.2867530Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-08-10T17:50:05.2958000Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-10T17:50:05.3045820Z ##[group]Checking out the ref
+2026-08-10T17:50:05.3047410Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T17:50:05.4159610Z Switched to a new branch 'main'
+2026-08-10T17:50:05.4171080Z branch 'main' set up to track 'origin/main'.
+2026-08-10T17:50:05.4175030Z ##[endgroup]
+2026-08-10T17:50:05.4298840Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-08-10T17:50:05.4423090Z 5972df36c5aab613a4c8a398c1a318310a2d10ac

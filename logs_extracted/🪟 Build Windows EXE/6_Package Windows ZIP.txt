@@ -1,0 +1,29 @@
+﻿2026-08-10T16:44:04.4067897Z ##[group]Run New-Item -ItemType Directory -Force win-dist
+2026-08-10T16:44:04.4069131Z [36;1mNew-Item -ItemType Directory -Force win-dist[0m
+2026-08-10T16:44:04.4069585Z [36;1mCopy-Item out-win\HacksToHacks.exe win-dist\[0m
+2026-08-10T16:44:04.4070085Z [36;1m# Copy raylib DLL if present (static link usually means no DLL)[0m
+2026-08-10T16:44:04.4070673Z [36;1mGet-ChildItem "$env:RAYLIB_ROOT\bin" -Filter "*.dll" -ErrorAction SilentlyContinue |[0m
+2026-08-10T16:44:04.4071290Z [36;1m  Copy-Item -Destination win-dist\ -ErrorAction SilentlyContinue[0m
+2026-08-10T16:44:04.4071812Z [36;1mif (Test-Path assets)  { Copy-Item -Recurse assets  win-dist\ }[0m
+2026-08-10T16:44:04.4072320Z [36;1mif (Test-Path locales) { Copy-Item -Recurse locales win-dist\ }[0m
+2026-08-10T16:44:04.4072763Z [36;1m# Add a launcher README[0m
+2026-08-10T16:44:04.4073117Z [36;1mSet-Content win-dist\README.txt @"[0m
+2026-08-10T16:44:04.4073477Z [36;1mHacksToHacks - Windows[0m
+2026-08-10T16:44:04.4073815Z [36;1m======================[0m
+2026-08-10T16:44:04.4074284Z [36;1mEsegui HacksToHacks.exe per avviare il gioco.[0m
+2026-08-10T16:44:04.4074675Z [36;1mRequisiti: Windows 10+ x64[0m
+2026-08-10T16:44:04.4074996Z [36;1m"@[0m
+2026-08-10T16:44:04.4075368Z [36;1mCompress-Archive win-dist\* HacksToHacks-Windows.zip[0m
+2026-08-10T16:44:04.4075901Z [36;1mWrite-Host "ZIP size: $((Get-Item HacksToHacks-Windows.zip).Length / 1MB) MB"[0m
+2026-08-10T16:44:04.4144446Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T16:44:04.4144940Z env:
+2026-08-10T16:44:04.4145387Z   RAYLIB_ROOT: D:\a\HacksToHacks\HacksToHacks\raylib-win\raylib-5.0_win64_mingw-w64
+2026-08-10T16:44:04.4145919Z ##[endgroup]
+2026-08-10T16:44:04.7707625Z 
+2026-08-10T16:44:04.7717063Z     Directory: D:\a\HacksToHacks\HacksToHacks
+2026-08-10T16:44:04.7717592Z 
+2026-08-10T16:44:04.7720266Z [32;1mMode   [0m[32;1m              LastWriteTime[0m [32;1;3m        Length[0m[32;1m Name[0m
+2026-08-10T16:44:04.7721262Z [32;1m----   [0m [32;1m             -------------[0m [32;1m        ------[0m [32;1m----[0m
+2026-08-10T16:44:04.7877343Z d----           8/10/2026  4:44 PM                [44;1mwin-dist[0m
+2026-08-10T16:44:06.2202273Z ZIP size: 19.231969833374 MB
+2026-08-10T16:44:06.2212109Z 

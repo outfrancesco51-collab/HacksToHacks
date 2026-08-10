@@ -1,0 +1,196 @@
+build	Set up job	﻿2026-08-09T17:15:24.1547145Z Current runner version: '2.336.0'
+build	Set up job	2026-08-09T17:15:24.1576923Z ##[group]Runner Image Provisioner
+build	Set up job	2026-08-09T17:15:24.1577910Z Hosted Compute Agent
+build	Set up job	2026-08-09T17:15:24.1578512Z Version: 20260707.563
+build	Set up job	2026-08-09T17:15:24.1579119Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+build	Set up job	2026-08-09T17:15:24.1579960Z Build Date: 2026-07-07T19:33:50Z
+build	Set up job	2026-08-09T17:15:24.1580641Z Worker ID: {49672c3d-26dc-45de-89a1-586a44745537}
+build	Set up job	2026-08-09T17:15:24.1581435Z Azure Region: northcentralus
+build	Set up job	2026-08-09T17:15:24.1582396Z ##[endgroup]
+build	Set up job	2026-08-09T17:15:24.1583903Z ##[group]Operating System
+build	Set up job	2026-08-09T17:15:24.1584647Z Ubuntu
+build	Set up job	2026-08-09T17:15:24.1585183Z 24.04.4
+build	Set up job	2026-08-09T17:15:24.1585767Z LTS
+build	Set up job	2026-08-09T17:15:24.1586303Z ##[endgroup]
+build	Set up job	2026-08-09T17:15:24.1586852Z ##[group]Runner Image
+build	Set up job	2026-08-09T17:15:24.1587494Z Image: ubuntu-24.04
+build	Set up job	2026-08-09T17:15:24.1588069Z Version: 20260720.247.2
+build	Set up job	2026-08-09T17:15:24.1589151Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-08-09T17:15:24.1590925Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+build	Set up job	2026-08-09T17:15:24.1592208Z ##[endgroup]
+build	Set up job	2026-08-09T17:15:24.1593491Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-08-09T17:15:24.1595419Z Contents: read
+build	Set up job	2026-08-09T17:15:24.1596126Z Metadata: read
+build	Set up job	2026-08-09T17:15:24.1596694Z Packages: read
+build	Set up job	2026-08-09T17:15:24.1597676Z ##[endgroup]
+build	Set up job	2026-08-09T17:15:24.1599816Z Secret source: Actions
+build	Set up job	2026-08-09T17:15:24.1601209Z Prepare workflow directory
+build	Set up job	2026-08-09T17:15:24.1951399Z Prepare all required actions
+build	Set up job	2026-08-09T17:15:24.2000734Z Getting action download info
+build	Set up job	2026-08-09T17:15:24.4396423Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+build	Set up job	2026-08-09T17:15:24.8482967Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+build	Set up job	2026-08-09T17:15:25.3145296Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	Set up job	2026-08-09T17:15:25.5324459Z Complete job name: build
+build	Run actions/checkout@v4	﻿2026-08-09T17:15:25.6112436Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6121318Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6122398Z with:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6122932Z   repository: outfrancesco51-collab/HacksToHacks
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6127084Z   token: ***
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6127532Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6127980Z   ssh-user: git
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6128441Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6128952Z   clean: true
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6129408Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6129947Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6130381Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6130839Z   show-progress: true
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6131348Z   lfs: false
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6131940Z   submodules: false
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6132454Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6132985Z   allow-unsafe-pr-checkout: false
+build	Run actions/checkout@v4	2026-08-09T17:15:25.6133787Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7156342Z Syncing repository: outfrancesco51-collab/HacksToHacks
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7158427Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7159425Z Working directory is '/home/runner/work/HacksToHacks/HacksToHacks'
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7160591Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7199712Z git version 2.54.0
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7255339Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7272066Z Temporarily overriding HOME='/home/runner/work/_temp/47994ba9-a980-4ea2-ac38-29c1bb4517be' before making global git config changes
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7274759Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7277486Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7329439Z Deleting the contents of '/home/runner/work/HacksToHacks/HacksToHacks'
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7335124Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7340663Z [command]/usr/bin/git init /home/runner/work/HacksToHacks/HacksToHacks
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7443675Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7455917Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7457810Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7459197Z hint: call:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7459921Z hint:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7460818Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7462317Z hint:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7463256Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7464455Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7465569Z hint:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7466734Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7467654Z hint:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7468744Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7470579Z Initialized empty Git repository in /home/runner/work/HacksToHacks/HacksToHacks/.git/
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7474224Z [command]/usr/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7507573Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7508874Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7511424Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7544042Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7545400Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7550802Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7603032Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-08-09T17:15:25.7967033Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8014578Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8248967Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8290531Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8526455Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8568435Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8570060Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-08-09T17:15:25.8579025Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a5727fc67f69cdfa46c44a3aaaccf181e3109f6e:refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2039064Z From https://github.com/outfrancesco51-collab/HacksToHacks
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2041448Z  * [new ref]         a5727fc67f69cdfa46c44a3aaaccf181e3109f6e -> origin/main
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2073849Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2074963Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2076098Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2082274Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2130104Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2163458Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-08-09T17:15:27.2168693Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-08-09T17:15:27.3040174Z Switched to a new branch 'main'
+build	Run actions/checkout@v4	2026-08-09T17:15:27.3041533Z branch 'main' set up to track 'origin/main'.
+build	Run actions/checkout@v4	2026-08-09T17:15:27.3055730Z ##[endgroup]
+build	Run actions/checkout@v4	2026-08-09T17:15:27.3103237Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-08-09T17:15:27.3130118Z a5727fc67f69cdfa46c44a3aaaccf181e3109f6e
+build	Setup Java	﻿2026-08-09T17:15:27.3450997Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Setup Java	2026-08-09T17:15:27.3453392Z ##[group]Run actions/setup-java@v4
+build	Setup Java	2026-08-09T17:15:27.3453834Z with:
+build	Setup Java	2026-08-09T17:15:27.3454267Z   distribution: temurin
+build	Setup Java	2026-08-09T17:15:27.3454635Z   java-version: 11
+build	Setup Java	2026-08-09T17:15:27.3517120Z   java-package: jdk
+build	Setup Java	2026-08-09T17:15:27.3517717Z   check-latest: false
+build	Setup Java	2026-08-09T17:15:27.3518243Z   server-id: github
+build	Setup Java	2026-08-09T17:15:27.3518703Z   server-username: GITHUB_ACTOR
+build	Setup Java	2026-08-09T17:15:27.3519294Z   server-password: GITHUB_TOKEN
+build	Setup Java	2026-08-09T17:15:27.3519911Z   overwrite-settings: true
+build	Setup Java	2026-08-09T17:15:27.3520378Z   job-status: success
+build	Setup Java	2026-08-09T17:15:27.3525904Z   token: ***
+build	Setup Java	2026-08-09T17:15:27.3526406Z ##[endgroup]
+build	Setup Java	2026-08-09T17:15:27.5205205Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+build	Setup Java	2026-08-09T17:15:27.5213919Z ##[group]Installed distributions
+build	Setup Java	2026-08-09T17:15:27.5425724Z Resolved Java 11.0.31+11 from tool-cache
+build	Setup Java	2026-08-09T17:15:27.5426648Z Setting Java 11.0.31+11 as the default
+build	Setup Java	2026-08-09T17:15:27.5439213Z (node:2340) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Setup Java	2026-08-09T17:15:27.5440614Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Setup Java	2026-08-09T17:15:27.5444646Z Creating toolchains.xml for JDK version 11 from temurin
+build	Setup Java	2026-08-09T17:15:27.5532454Z Writing to /home/runner/.m2/toolchains.xml
+build	Setup Java	2026-08-09T17:15:27.5533662Z 
+build	Setup Java	2026-08-09T17:15:27.5534200Z Java configuration:
+build	Setup Java	2026-08-09T17:15:27.5534697Z   Distribution: temurin
+build	Setup Java	2026-08-09T17:15:27.5535167Z   Version: 11.0.31+11
+build	Setup Java	2026-08-09T17:15:27.5535830Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/x64
+build	Setup Java	2026-08-09T17:15:27.5536388Z 
+build	Setup Java	2026-08-09T17:15:27.5536954Z ##[endgroup]
+build	Setup Java	2026-08-09T17:15:27.5557581Z Creating settings.xml with server-id: github
+build	Setup Java	2026-08-09T17:15:27.5558263Z Writing to /home/runner/.m2/settings.xml
+build	Download Raylib and setup Android project	﻿2026-08-09T17:15:27.5829794Z ##[group]Run git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-repo
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5831133Z ^[[36;1mgit clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-repo^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5832388Z ^[[36;1mcp -r raylib-repo/projects/VSCode/Android raylib-android^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5833659Z ^[[36;1m# Copy source files to raylib-android/src^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5834401Z ^[[36;1mcp src/main.c raylib-android/src/^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5835024Z ^[[36;1mcp src/cJSON.c raylib-android/src/^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5835618Z ^[[36;1mcp src/tween.c raylib-android/src/^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5836228Z ^[[36;1mcp src/*.h raylib-android/src/ || true^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5836824Z ^[[36;1m# Copy assets^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5837327Z ^[[36;1mrm -rf raylib-android/assets/*^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5837694Z ^[[36;1mcp -r assets/* raylib-android/assets/^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5838157Z ^[[36;1mcp -r locales raylib-android/assets/locales^[[0m
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5908226Z shell: /usr/bin/bash -e {0}
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5909378Z env:
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5910714Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/x64
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5912218Z   JAVA_HOME_11_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/x64
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.5913155Z ##[endgroup]
+build	Download Raylib and setup Android project	2026-08-09T17:15:27.6052317Z Cloning into 'raylib-repo'...
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3177145Z Note: switching to 'ae50bfa2cc569c0f8d5bc4315d39db64005b1b08'.
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3177806Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3178229Z You are in 'detached HEAD' state. You can look around, make experimental
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3179227Z changes and commit them, and you can discard any commits you make in this
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3180503Z state without impacting any branches by switching back to a branch.
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3181137Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3181505Z If you want to create a new branch to retain commits you create, you may
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3182646Z do so (now or later) by using -c with the switch command. Example:
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3183121Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3183321Z   git switch -c <new-branch-name>
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3183623Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3183798Z Or undo this operation with:
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3184072Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3184221Z   git switch -
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3184432Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3184789Z Turn off this advice by setting config variable advice.detachedHead to false
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.3185329Z 
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.5699197Z cp: cannot stat 'raylib-repo/projects/VSCode/Android': No such file or directory
+build	Download Raylib and setup Android project	2026-08-09T17:15:29.5709149Z ##[error]Process completed with exit code 1.
+build	Post Setup Java	﻿2026-08-09T17:15:29.5837293Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Post Setup Java	2026-08-09T17:15:29.5838559Z Post job cleanup.
+build	Post Setup Java	2026-08-09T17:15:29.7156128Z (node:2364) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Post Setup Java	2026-08-09T17:15:29.7156923Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Post Run actions/checkout@v4	﻿2026-08-09T17:15:29.7375656Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.7376984Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8263851Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8307574Z git version 2.54.0
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8380396Z Temporarily overriding HOME='/home/runner/work/_temp/a4866949-33a9-4327-a878-1e24063baf4c' before making global git config changes
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8382066Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8388455Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8430181Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8471622Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8742282Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8799109Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8806368Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.8853896Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.9183172Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-08-09T17:15:29.9240780Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-08-09T17:15:29.9711005Z Cleaning up orphan processes
+build	Complete job	2026-08-09T17:15:29.9972896Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

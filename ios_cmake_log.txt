@@ -1,0 +1,155 @@
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	﻿2026-08-10T13:17:47.1224420Z Current runner version: '2.336.0'
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1257290Z ##[group]Runner Image Provisioner
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1259720Z Hosted Compute Agent
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1261250Z Version: 20260707.563
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1262910Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1264610Z Build Date: 2026-07-07T19:33:50Z
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1266310Z Worker ID: {5baf5aac-f7ee-4dc1-a413-e9123eeeb1ee}
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1268770Z Azure Region: westus
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1270640Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1277530Z ##[group]Operating System
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1279060Z macOS
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1282010Z 26.5.2
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1284660Z 25F84
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1287200Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1289080Z ##[group]Runner Image
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1291840Z Image: macos-26-arm64
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1293450Z Version: 20260728.0273.1
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1298130Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20260728.0273/images/macos/macos-26-arm64-Readme.md
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1301490Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20260728.0273
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1303270Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1306490Z ##[group]GITHUB_TOKEN Permissions
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1312620Z Contents: write
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1314630Z Metadata: read
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1315130Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1318090Z Secret source: Actions
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1319070Z Prepare workflow directory
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1813850Z Prepare all required actions
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.1880120Z Getting action download info
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.6043260Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:47.9113160Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.1798830Z Complete job name: 🍎 Build iOS / iPadOS IPA
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2435960Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2445130Z ##[group]Run actions/checkout@v4
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2445680Z with:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2446080Z   repository: outfrancesco51-collab/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2449630Z   token: ***
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2449960Z   ssh-strict: true
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2450360Z   ssh-user: git
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2450700Z   persist-credentials: true
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2451070Z   clean: true
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2451420Z   sparse-checkout-cone-mode: true
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2451890Z   fetch-depth: 1
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2452240Z   fetch-tags: false
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2452630Z   show-progress: true
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2452950Z   lfs: false
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2453300Z   submodules: false
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2453630Z   set-safe-directory: true
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2454450Z   allow-unsafe-pr-checkout: false
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.2455120Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8473720Z Syncing repository: outfrancesco51-collab/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8476330Z ##[group]Getting Git version info
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8477360Z Working directory is '/Users/runner/work/HacksToHacks/HacksToHacks'
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8478660Z [command]/opt/homebrew/bin/git version
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8769630Z git version 2.55.0
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8786300Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8793860Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/9a551ef1-ce7e-4662-b33e-301ad4b58f60/.gitconfig'
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8800410Z Temporarily overriding HOME='/Users/runner/work/_temp/9a551ef1-ce7e-4662-b33e-301ad4b58f60' before making global git config changes
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8802510Z Adding repository directory to the temporary git global config as a safe directory
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8804400Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/HacksToHacks/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8912890Z Deleting the contents of '/Users/runner/work/HacksToHacks/HacksToHacks'
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8915580Z ##[group]Initializing the repository
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.8919750Z [command]/opt/homebrew/bin/git init /Users/runner/work/HacksToHacks/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9148470Z hint: Using 'master' as the name for the initial branch. This default branch name
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9150750Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9152820Z hint: to use in all of your new repositories, which will suppress this warning,
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9154310Z hint: call:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9155250Z hint:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9156170Z hint: 	git config --global init.defaultBranch <name>
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9157640Z hint:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9158800Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9160610Z hint: 'development'. The just-created branch can be renamed via this command:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9162170Z hint:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9163770Z hint: 	git branch -m <name>
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9164670Z hint:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9165900Z hint: Disable this message with "git config set advice.defaultBranchName false"
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9167860Z Initialized empty Git repository in /Users/runner/work/HacksToHacks/HacksToHacks/.git/
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9171660Z [command]/opt/homebrew/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9255890Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9257800Z ##[group]Disabling automatic garbage collection
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9261590Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9378560Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9380330Z ##[group]Setting up auth
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9385490Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:48.9476920Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.0603980Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.0679880Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.1525610Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.1580910Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.2788480Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.2859960Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.2860550Z ##[group]Fetching the repository
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:49.2865860Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d0bd8faf2bbfe76ba4cb68f69a4643280c42674e:refs/remotes/origin/main
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2477060Z From https://github.com/outfrancesco51-collab/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2478040Z  * [new ref]         d0bd8faf2bbfe76ba4cb68f69a4643280c42674e -> origin/main
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2480810Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2481340Z ##[group]Determining the checkout info
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2482390Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2486490Z [command]/opt/homebrew/bin/git sparse-checkout disable
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2575440Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2677110Z ##[group]Checking out the ref
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.2678950Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4223650Z Switched to a new branch 'main'
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4262230Z branch 'main' set up to track 'origin/main'.
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4277160Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4320540Z [command]/opt/homebrew/bin/git log -1 --format=%H
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4388760Z d0bd8faf2bbfe76ba4cb68f69a4643280c42674e
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4562840Z ##[group]Run git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4563460Z ^[[36;1mgit clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4602630Z shell: /bin/bash -e {0}
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.4602880Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:50.5023370Z Cloning into 'raylib-src'...
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7487630Z ##[group]Run mkdir build-raylib
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7487890Z ^[[36;1mmkdir build-raylib^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7488090Z ^[[36;1mcd build-raylib^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7488290Z ^[[36;1mcmake ../raylib-src \^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7488490Z ^[[36;1m  -DCMAKE_SYSTEM_NAME=iOS \^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7488730Z ^[[36;1m  -DCMAKE_OSX_SYSROOT=iphoneos \^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7489010Z ^[[36;1m  -DCMAKE_OSX_ARCHITECTURES=arm64 \^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7489250Z ^[[36;1m  -DBUILD_SHARED_LIBS=OFF \^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7489470Z ^[[36;1m  -DOPENGL_VERSION=ES2^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7489870Z ^[[36;1mcmake --build . --config Release -j$(sysctl -n hw.logicalcpu)^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7490250Z ^[[36;1mmkdir -p ../raylib-ios-lib^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7490520Z ^[[36;1mcp raylib/libraylib.a ../raylib-ios-lib/^[[0m
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7561830Z shell: /bin/bash -e {0}
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.7562140Z ##[endgroup]
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9518470Z CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9519550Z   Compatibility with CMake < 3.5 has been removed from CMake.
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9520200Z 
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9520340Z -- Configuring incomplete, errors occurred!
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9521390Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9521960Z   to tell CMake that the project requires at least <min> but has been updated
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9522400Z   to work with policies introduced by <max> or earlier.
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9522650Z 
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9522830Z   Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9523080Z 
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9523080Z 
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9556130Z ##[error]Process completed with exit code 1.
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9755160Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:52.9757350Z Post job cleanup.
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.0848740Z [command]/opt/homebrew/bin/git version
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.0914500Z git version 2.55.0
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.0937980Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/488432e1-5dcd-4b7c-b548-7fb1a8cb1780/.gitconfig'
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.0946630Z Temporarily overriding HOME='/Users/runner/work/_temp/488432e1-5dcd-4b7c-b548-7fb1a8cb1780' before making global git config changes
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.0949260Z Adding repository directory to the temporary git global config as a safe directory
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.0953310Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/HacksToHacks/HacksToHacks
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.1027140Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.1094140Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.2019520Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.2078700Z http.https://github.com/.extraheader
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.2102750Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.2172790Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.3086020Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.3148070Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.4569510Z Cleaning up orphan processes
+🍎 Build iOS / iPadOS IPA	UNKNOWN STEP	2026-08-10T13:17:53.6082640Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,22 @@
+﻿2026-08-10T17:51:02.8362974Z ##[group]Run RL="$RAYLIB_ROOT"
+2026-08-10T17:51:02.8363350Z [36;1mRL="$RAYLIB_ROOT"[0m
+2026-08-10T17:51:02.8363594Z [36;1mmkdir -p out-win[0m
+2026-08-10T17:51:02.8363824Z [36;1mgcc -O2 -Wall \[0m
+2026-08-10T17:51:02.8364046Z [36;1m  -I"$RL/include" -Isrc \[0m
+2026-08-10T17:51:02.8364326Z [36;1m  src/main.c src/cJSON.c src/tween.c \[0m
+2026-08-10T17:51:02.8365094Z [36;1m  -o out-win/HacksToHacks.exe \[0m
+2026-08-10T17:51:02.8365372Z [36;1m  -L"$RL/lib" -lraylib \[0m
+2026-08-10T17:51:02.8365618Z [36;1m  -lgdi32 -lwinmm -lopengl32[0m
+2026-08-10T17:51:02.8365930Z [36;1mecho "EXE OK: $(ls -lh out-win/HacksToHacks.exe)"[0m
+2026-08-10T17:51:02.8378146Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-08-10T17:51:02.8378525Z env:
+2026-08-10T17:51:02.8378839Z   RAYLIB_ROOT: D:\a\HacksToHacks\HacksToHacks\raylib-win\raylib-5.0_win64_mingw-w64
+2026-08-10T17:51:02.8379224Z ##[endgroup]
+2026-08-10T17:51:05.0447000Z src/main.c: In function 'UpdateDrawFrame':
+2026-08-10T17:51:05.0448751Z src/main.c:197:49: warning: null character(s) preserved in literal
+2026-08-10T17:51:05.0449404Z   197 |                     playerName[letterCount+1] = ' ';
+2026-08-10T17:51:05.0449830Z       |                                                 ^
+2026-08-10T17:51:05.0450637Z src/main.c:204:43: warning: null character(s) preserved in literal
+2026-08-10T17:51:05.0451530Z   204 |                 playerName[letterCount] = ' ';
+2026-08-10T17:51:05.0451950Z       |                                           ^
+2026-08-10T17:51:08.5395215Z EXE OK: -rwxr-xr-x 1 runneradmin 197121 1.7M Aug 10 17:51 out-win/HacksToHacks.exe

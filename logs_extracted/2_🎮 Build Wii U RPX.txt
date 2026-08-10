@@ -1,0 +1,204 @@
+﻿2026-08-10T16:42:14.3261211Z Current runner version: '2.336.0'
+2026-08-10T16:42:14.3286182Z ##[group]Runner Image Provisioner
+2026-08-10T16:42:14.3287091Z Hosted Compute Agent
+2026-08-10T16:42:14.3287673Z Version: 20260707.563
+2026-08-10T16:42:14.3288350Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-08-10T16:42:14.3289089Z Build Date: 2026-07-07T19:33:50Z
+2026-08-10T16:42:14.3289767Z Worker ID: {4a17f56f-2988-40e3-b2ae-37e63dd24774}
+2026-08-10T16:42:14.3290608Z Azure Region: westus2
+2026-08-10T16:42:14.3291690Z ##[endgroup]
+2026-08-10T16:42:14.3293330Z ##[group]Operating System
+2026-08-10T16:42:14.3293981Z Ubuntu
+2026-08-10T16:42:14.3294521Z 24.04.4
+2026-08-10T16:42:14.3295092Z LTS
+2026-08-10T16:42:14.3295604Z ##[endgroup]
+2026-08-10T16:42:14.3296136Z ##[group]Runner Image
+2026-08-10T16:42:14.3296816Z Image: ubuntu-24.04
+2026-08-10T16:42:14.3297407Z Version: 20260720.247.2
+2026-08-10T16:42:14.3298867Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-10T16:42:14.3300383Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+2026-08-10T16:42:14.3301722Z ##[endgroup]
+2026-08-10T16:42:14.3302850Z ##[group]GITHUB_TOKEN Permissions
+2026-08-10T16:42:14.3305039Z Contents: write
+2026-08-10T16:42:14.3305642Z Metadata: read
+2026-08-10T16:42:14.3306272Z ##[endgroup]
+2026-08-10T16:42:14.3308408Z Secret source: Actions
+2026-08-10T16:42:14.3309860Z Prepare workflow directory
+2026-08-10T16:42:14.3662070Z Prepare all required actions
+2026-08-10T16:42:14.3713670Z Getting action download info
+2026-08-10T16:42:14.7325243Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-10T16:42:15.0645363Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-10T16:42:15.2705169Z Complete job name: 🎮 Build Wii U RPX
+2026-08-10T16:42:15.3453326Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T16:42:15.3461928Z ##[group]Run actions/checkout@v4
+2026-08-10T16:42:15.3462684Z with:
+2026-08-10T16:42:15.3463195Z   repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T16:42:15.3467293Z   token: ***
+2026-08-10T16:42:15.3467734Z   ssh-strict: true
+2026-08-10T16:42:15.3468179Z   ssh-user: git
+2026-08-10T16:42:15.3468633Z   persist-credentials: true
+2026-08-10T16:42:15.3469120Z   clean: true
+2026-08-10T16:42:15.3469566Z   sparse-checkout-cone-mode: true
+2026-08-10T16:42:15.3470094Z   fetch-depth: 1
+2026-08-10T16:42:15.3470522Z   fetch-tags: false
+2026-08-10T16:42:15.3471173Z   show-progress: true
+2026-08-10T16:42:15.3471634Z   lfs: false
+2026-08-10T16:42:15.3472095Z   submodules: false
+2026-08-10T16:42:15.3472562Z   set-safe-directory: true
+2026-08-10T16:42:15.3473070Z   allow-unsafe-pr-checkout: false
+2026-08-10T16:42:15.3473872Z ##[endgroup]
+2026-08-10T16:42:15.4496234Z Syncing repository: outfrancesco51-collab/HacksToHacks
+2026-08-10T16:42:15.4498847Z ##[group]Getting Git version info
+2026-08-10T16:42:15.4500038Z Working directory is '/home/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T16:42:15.4504841Z [command]/usr/bin/git version
+2026-08-10T16:42:15.4605380Z git version 2.54.0
+2026-08-10T16:42:15.4630393Z ##[endgroup]
+2026-08-10T16:42:15.4647045Z Temporarily overriding HOME='/home/runner/work/_temp/be5c6558-91e6-40ae-84a8-ed7336e307bb' before making global git config changes
+2026-08-10T16:42:15.4649385Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T16:42:15.4652062Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T16:42:15.4705123Z Deleting the contents of '/home/runner/work/HacksToHacks/HacksToHacks'
+2026-08-10T16:42:15.4708825Z ##[group]Initializing the repository
+2026-08-10T16:42:15.4713968Z [command]/usr/bin/git init /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T16:42:15.4836352Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-10T16:42:15.4839084Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-10T16:42:15.4841556Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-10T16:42:15.4843360Z hint: call:
+2026-08-10T16:42:15.4844372Z hint:
+2026-08-10T16:42:15.4845668Z hint: 	git config --global init.defaultBranch <name>
+2026-08-10T16:42:15.4846729Z hint:
+2026-08-10T16:42:15.4847673Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-10T16:42:15.4849157Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-10T16:42:15.4850381Z hint:
+2026-08-10T16:42:15.4851330Z hint: 	git branch -m <name>
+2026-08-10T16:42:15.4852121Z hint:
+2026-08-10T16:42:15.4853101Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-10T16:42:15.4854804Z Initialized empty Git repository in /home/runner/work/HacksToHacks/HacksToHacks/.git/
+2026-08-10T16:42:15.4859604Z [command]/usr/bin/git remote add origin https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T16:42:15.4913951Z ##[endgroup]
+2026-08-10T16:42:15.4915416Z ##[group]Disabling automatic garbage collection
+2026-08-10T16:42:15.4918333Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-10T16:42:15.4951501Z ##[endgroup]
+2026-08-10T16:42:15.4953106Z ##[group]Setting up auth
+2026-08-10T16:42:15.4960483Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T16:42:15.5000583Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T16:42:15.5392898Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T16:42:15.5433276Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T16:42:15.5665801Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T16:42:15.5703414Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T16:42:15.5931971Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-10T16:42:15.5971391Z ##[endgroup]
+2026-08-10T16:42:15.5973252Z ##[group]Fetching the repository
+2026-08-10T16:42:15.5983280Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +cb97434b24fdbf7e10edf844715b2caffd59f7bf:refs/remotes/origin/main
+2026-08-10T16:42:16.7750048Z From https://github.com/outfrancesco51-collab/HacksToHacks
+2026-08-10T16:42:16.7752351Z  * [new ref]         cb97434b24fdbf7e10edf844715b2caffd59f7bf -> origin/main
+2026-08-10T16:42:16.7786154Z ##[endgroup]
+2026-08-10T16:42:16.7788287Z ##[group]Determining the checkout info
+2026-08-10T16:42:16.7791168Z ##[endgroup]
+2026-08-10T16:42:16.7796319Z [command]/usr/bin/git sparse-checkout disable
+2026-08-10T16:42:16.7850357Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-10T16:42:16.7883500Z ##[group]Checking out the ref
+2026-08-10T16:42:16.7889166Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T16:42:16.8770801Z Switched to a new branch 'main'
+2026-08-10T16:42:16.8772942Z branch 'main' set up to track 'origin/main'.
+2026-08-10T16:42:16.8787809Z ##[endgroup]
+2026-08-10T16:42:16.8835207Z [command]/usr/bin/git log -1 --format=%H
+2026-08-10T16:42:16.8861307Z cb97434b24fdbf7e10edf844715b2caffd59f7bf
+2026-08-10T16:42:16.9133472Z ##[group]Run docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
+2026-08-10T16:42:16.9136697Z [36;1mdocker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\[0m
+2026-08-10T16:42:16.9138930Z [36;1m  dkp-pacman -Syu --noconfirm || true && \[0m
+2026-08-10T16:42:16.9141153Z [36;1m  dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf && \[0m
+2026-08-10T16:42:16.9143149Z [36;1m  mkdir -p wiiu-build && \[0m
+2026-08-10T16:42:16.9145238Z [36;1m  export PATH=/opt/devkitpro/portlibs/wiiu/bin:/opt/devkitpro/devkitPPC/bin:\$PATH && \[0m
+2026-08-10T16:42:16.9147841Z [36;1m  wiiu-cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release && \[0m
+2026-08-10T16:42:16.9149930Z [36;1m  cmake --build wiiu-build --config Release -j\$(nproc) \[0m
+2026-08-10T16:42:16.9151667Z [36;1m"[0m
+2026-08-10T16:42:16.9200038Z shell: /usr/bin/bash -e {0}
+2026-08-10T16:42:16.9201464Z ##[endgroup]
+2026-08-10T16:42:17.0204070Z Unable to find image 'devkitpro/devkitppc:latest' locally
+2026-08-10T16:42:17.9206811Z latest: Pulling from devkitpro/devkitppc
+2026-08-10T16:42:18.1972180Z 59e22667830b: Pulling fs layer
+2026-08-10T16:42:18.1972929Z 74701f26999d: Pulling fs layer
+2026-08-10T16:42:18.1974652Z ea5d3216df1f: Pulling fs layer
+2026-08-10T16:42:18.1975325Z 3727f0a7f966: Pulling fs layer
+2026-08-10T16:42:18.1975946Z 3727f0a7f966: Waiting
+2026-08-10T16:42:18.6047437Z 59e22667830b: Download complete
+2026-08-10T16:42:18.7223734Z ea5d3216df1f: Verifying Checksum
+2026-08-10T16:42:18.7224510Z ea5d3216df1f: Download complete
+2026-08-10T16:42:19.4656029Z 74701f26999d: Verifying Checksum
+2026-08-10T16:42:19.4658603Z 74701f26999d: Download complete
+2026-08-10T16:42:20.2177196Z 3727f0a7f966: Verifying Checksum
+2026-08-10T16:42:20.2178196Z 3727f0a7f966: Download complete
+2026-08-10T16:42:20.3230143Z 59e22667830b: Pull complete
+2026-08-10T16:42:29.2149696Z 74701f26999d: Pull complete
+2026-08-10T16:42:29.5787643Z ea5d3216df1f: Pull complete
+2026-08-10T16:42:37.2162120Z 3727f0a7f966: Pull complete
+2026-08-10T16:42:37.2205351Z Digest: sha256:44cb1a920e1ec3ec7c06767493c3b85f8d643d6137cc4661f0201895ac6e4967
+2026-08-10T16:42:37.2222204Z Status: Downloaded newer image for devkitpro/devkitppc:latest
+2026-08-10T16:42:37.4365649Z :: Synchronizing package databases...
+2026-08-10T16:42:39.0988957Z  dkp-libs downloading...
+2026-08-10T16:42:39.0989791Z  dkp-linux downloading...
+2026-08-10T16:42:39.1200042Z :: Starting full system upgrade...
+2026-08-10T16:42:39.1265492Z resolving dependencies...
+2026-08-10T16:42:39.1290346Z looking for conflicting packages...
+2026-08-10T16:42:39.1298359Z 
+2026-08-10T16:42:39.1299234Z Packages (5) devkitARM-r68-1  devkitarm-binutils-2.46.0-1  devkitarm-gcc-16.1.0-1  devkitppc-crtls-2.1.0-1  wii-examples-20260510-1
+2026-08-10T16:42:39.1301525Z 
+2026-08-10T16:42:39.1301648Z Total Download Size:    91.39 MiB
+2026-08-10T16:42:39.1302243Z Total Installed Size:  370.56 MiB
+2026-08-10T16:42:39.1302571Z Net Upgrade Size:       10.71 MiB
+2026-08-10T16:42:39.1302745Z 
+2026-08-10T16:42:39.1312646Z :: Proceed with installation? [Y/n] 
+2026-08-10T16:42:39.1313210Z :: Retrieving packages...
+2026-08-10T16:42:40.6463254Z  devkitarm-gcc-16.1.0-1-x86_64 downloading...
+2026-08-10T16:42:40.6464051Z  devkitarm-binutils-2.46.0-1-x86_64 downloading...
+2026-08-10T16:42:40.6464655Z  wii-examples-20260510-1-any downloading...
+2026-08-10T16:42:40.6465336Z  devkitppc-crtls-2.1.0-1-any downloading...
+2026-08-10T16:42:40.6465691Z  devkitARM-r68-1-any downloading...
+2026-08-10T16:42:40.6466008Z checking keyring...
+2026-08-10T16:42:40.6539418Z checking package integrity...
+2026-08-10T16:42:41.1964056Z loading package files...
+2026-08-10T16:42:41.2072584Z checking for file conflicts...
+2026-08-10T16:42:41.2112694Z checking available disk space...
+2026-08-10T16:42:41.2312754Z :: Processing package changes...
+2026-08-10T16:42:41.2313236Z upgrading devkitarm-binutils...
+2026-08-10T16:42:41.2880259Z upgrading devkitarm-gcc...
+2026-08-10T16:42:42.1695116Z upgrading devkitARM...
+2026-08-10T16:42:42.1713047Z upgrading devkitppc-crtls...
+2026-08-10T16:42:42.1740096Z upgrading wii-examples...
+2026-08-10T16:42:42.2711301Z warning: catnip-0.2.0-1 is up to date -- skipping
+2026-08-10T16:42:42.2711906Z warning: devkitppc-cmake-1.1.4-1 is up to date -- skipping
+2026-08-10T16:42:42.2712311Z warning: devkitppc-rules-1.2.1-1 is up to date -- skipping
+2026-08-10T16:42:42.2712740Z warning: ppc-pkg-config-0.28-5 is up to date -- skipping
+2026-08-10T16:42:42.2713107Z warning: wiiu-cmake-1.3.2-1 is up to date -- skipping
+2026-08-10T16:42:42.2713467Z warning: wiiu-pkg-config-0.28-4 is up to date -- skipping
+2026-08-10T16:42:42.2713815Z warning: wut-1.9.1-1 is up to date -- skipping
+2026-08-10T16:42:42.2714141Z warning: devkit-env-1.0.1-2 is up to date -- skipping
+2026-08-10T16:42:42.2714534Z warning: devkitPPC-gdb-14.1-2 is up to date -- skipping
+2026-08-10T16:42:42.2714923Z warning: devkitppc-binutils-2.46.0-1 is up to date -- skipping
+2026-08-10T16:42:42.2715359Z warning: devkitppc-gcc-16.1.0-1 is up to date -- skipping
+2026-08-10T16:42:42.2715778Z warning: devkitppc-mn10200-binutils-2.24-3 is up to date -- skipping
+2026-08-10T16:42:42.2716213Z warning: general-tools-1.4.4-1 is up to date -- skipping
+2026-08-10T16:42:42.2716555Z warning: wiiload-0.5.3-1 is up to date -- skipping
+2026-08-10T16:42:42.2716889Z warning: wut-tools-1.3.5-1 is up to date -- skipping
+2026-08-10T16:42:42.2717226Z warning: wiiu-sdl2-2.32.10-2 is up to date -- skipping
+2026-08-10T16:42:42.2717585Z warning: wiiu-sdl2_ttf-2.20.2-1 is up to date -- skipping
+2026-08-10T16:42:42.2717909Z  there is nothing to do
+2026-08-10T16:42:42.2743948Z /bin/bash: line 1: wiiu-cmake: command not found
+2026-08-10T16:42:43.3265163Z ##[error]Process completed with exit code 127.
+2026-08-10T16:42:43.3496470Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T16:42:43.3498100Z Post job cleanup.
+2026-08-10T16:42:43.4372247Z [command]/usr/bin/git version
+2026-08-10T16:42:43.4417981Z git version 2.54.0
+2026-08-10T16:42:43.4461682Z Temporarily overriding HOME='/home/runner/work/_temp/57ecbefa-ccd4-444a-8e29-d57e4ccbfbd8' before making global git config changes
+2026-08-10T16:42:43.4463259Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T16:42:43.4468959Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/HacksToHacks/HacksToHacks
+2026-08-10T16:42:43.4513291Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T16:42:43.4557538Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T16:42:43.4817570Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T16:42:43.4853601Z http.https://github.com/.extraheader
+2026-08-10T16:42:43.4865201Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-10T16:42:43.4906217Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T16:42:43.5196744Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T16:42:43.5239662Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T16:42:43.5682852Z Cleaning up orphan processes
+2026-08-10T16:42:43.6021270Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

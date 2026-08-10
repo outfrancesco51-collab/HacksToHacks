@@ -24,6 +24,7 @@
 typedef enum GameScreen { EPILEPSY_WARNING = 0, NAME_INPUT, TITLE, CUTSCENE, GAMEPLAY, SETTINGS, HACKING_MINIGAME } GameScreen;
 GameScreen currentScreen = EPILEPSY_WARNING;
 char currentLang[10] = "it";
+char pcUsername[128] = "UNKNOWN";
 
 // Localizzazione
 cJSON *localeData = NULL;
@@ -38,6 +39,7 @@ const char* GetText(const char* key) {
 Sound sndKarenIntro;
 Sound sndKarenError;
 Sound sndKarenSuccess;
+Sound sndHackerUI[10];
 
 void LoadLanguage(const char* langCode) {
     char path[256];
@@ -76,6 +78,7 @@ Texture2D texCCTV;
 Texture2D texPC;
 Texture2D texEpilepsy;
 Texture2D texCutscene1;
+Texture2D texCutscene2;
 
 // UI
 Rectangle windowMap = { 50, 50, 800, 500 };
@@ -154,13 +157,27 @@ void InitGame(void)
 #endif
     InitAudioDevice();
 
+    sndKarenError = LoadSound("assets/karen_error.mp3");
+    sndKarenSuccess = LoadSound("assets/karen_success.mp3");
+    
+    for(int i=0; i<10; i++) {
+        sndHackerUI[i] = LoadSound(TextFormat("assets/sounds/sfx_%d.wav", i));
+    }
+
+    const char* userEnv = getenv("USERNAME");
+    if (!userEnv) userEnv = getenv("USER");
+    if (userEnv) {
+        strncpy(pcUsername, userEnv, 127);
+    }
+
     texUI = LoadTexture("assets/ui_1.png");
     texNode = LoadTexture("assets/node_1.png");
     texBank = LoadTexture("assets/face2_1.png"); 
     texCCTV = LoadTexture("assets/target_cctv.png");
     texPC = LoadTexture("assets/target_pc.png");
     texEpilepsy = LoadTexture("assets/epilepsy.jpg");
-    texCutscene1 = LoadTexture("assets/cutscene1.jpg");
+    texCutscene1 = LoadTexture("assets/spy1.jpg");
+    texCutscene2 = LoadTexture("assets/spy2.jpg");
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
     LoadLanguage("it");
@@ -198,6 +215,7 @@ void DestroyGame(void)
     UnloadSound(sndKarenIntro);
     UnloadSound(sndKarenError);
     UnloadSound(sndKarenSuccess);
+    for(int i=0; i<10; i++) UnloadSound(sndHackerUI[i]);
     UnloadFont(customFont);
     UnloadTexture(texUI);
     UnloadTexture(texBank);
@@ -206,6 +224,7 @@ void DestroyGame(void)
     UnloadTexture(texNode);
     UnloadTexture(texEpilepsy);
     UnloadTexture(texCutscene1);
+    UnloadTexture(texCutscene2);
     UnloadCutscene();
     if(localeData) cJSON_Delete(localeData);
     
@@ -301,14 +320,20 @@ void UpdateDrawFrame(void)
                 if (CheckCollisionPointRec(mouse, btnPlay)) {
                     StopSound(sndKarenIntro); 
                     currentScreen = CUTSCENE;
-                    static CutsceneFrame frames[2];
+                    static CutsceneFrame frames[4];
                     frames[0].image = texCutscene1;
-                    frames[0].text = "Hacker: Ok, let's see what Naples has to offer...";
+                    frames[0].text = "Hacker: The grid is fully operational. They don't know I'm here yet.";
                     frames[0].timePerChar = 0.05f;
                     frames[1].image = texCutscene1;
-                    frames[1].text = "Agent A: Try not to crash the entire grid this time.";
+                    frames[1].text = "Agent A: Perfect. We need the root access to the mainframe.";
                     frames[1].timePerChar = 0.05f;
-                    PlayCutscene(frames, 2);
+                    frames[2].image = texCutscene2;
+                    frames[2].text = "Hacker: It's heavily encrypted. But nothing a little glitch can't fix.";
+                    frames[2].timePerChar = 0.05f;
+                    frames[3].image = texCutscene2;
+                    frames[3].text = "Agent A: Execute the payload. Let's start the show.";
+                    frames[3].timePerChar = 0.05f;
+                    PlayCutscene(frames, 4);
                 } else if (CheckCollisionPointRec(mouse, btnOpt)) {
                     StopSound(sndKarenIntro); currentScreen = SETTINGS;
                 } else if (CheckCollisionPointRec(mouse, btnExit)) {
@@ -326,14 +351,20 @@ void UpdateDrawFrame(void)
                 StopSound(sndKarenIntro);
                 if (menuSelection == 0) {
                     currentScreen = CUTSCENE;
-                    static CutsceneFrame frames[2];
+                    static CutsceneFrame frames[4];
                     frames[0].image = texCutscene1;
-                    frames[0].text = "Hacker: Ok, let's see what Naples has to offer...";
+                    frames[0].text = "Hacker: The grid is fully operational. They don't know I'm here yet.";
                     frames[0].timePerChar = 0.05f;
                     frames[1].image = texCutscene1;
-                    frames[1].text = "Agent A: Try not to crash the entire grid this time.";
+                    frames[1].text = "Agent A: Perfect. We need the root access to the mainframe.";
                     frames[1].timePerChar = 0.05f;
-                    PlayCutscene(frames, 2);
+                    frames[2].image = texCutscene2;
+                    frames[2].text = "Hacker: It's heavily encrypted. But nothing a little glitch can't fix.";
+                    frames[2].timePerChar = 0.05f;
+                    frames[3].image = texCutscene2;
+                    frames[3].text = "Agent A: Execute the payload. Let's start the show.";
+                    frames[3].timePerChar = 0.05f;
+                    PlayCutscene(frames, 4);
                 }
                 else if (menuSelection == 1) currentScreen = SETTINGS;
                 else if (menuSelection == 2) {
@@ -419,6 +450,7 @@ void UpdateDrawFrame(void)
                             typedLen++;
                         }
                     }
+                    if (charsToAdd > 0) PlaySound(sndHackerUI[GetRandomValue(0, 9)]);
                     
                     if (typedLen >= strlen(src) - 5) {
                         hackGranted = true;
@@ -557,22 +589,43 @@ void UpdateDrawFrame(void)
             break;
         }
         case HACKING_MINIGAME: {
-            DrawTextHacker(">>> TERMINALE DI INJECTION <<<", 180, 20, 40, HACKER_GREEN);
-            DrawTextHacker("TAPPA LO SCHERMO PER GENERARE IL PAYLOAD...", 180, 60, 20, GRAY);
+            // Background grid
+            for(int i = 0; i < 20; i++) {
+                DrawLine(0, i * 40, SCREEN_WIDTH, i * 40, (Color){0, 50, 0, 100});
+                DrawLine(i * 40, 0, i * 40, SCREEN_HEIGHT, (Color){0, 50, 0, 100});
+            }
             
-            Rectangle btnExitHack = {10, 10, 150, 50};
-            DrawRectangleRec(btnExitHack, RED); DrawTextHacker("< BACK", btnExitHack.x+15, btnExitHack.y+15, 30, WHITE);
+            // Hacker Typer Fake Terminal Layer
+            if (GetRandomValue(0, 100) > 95) {
+                // Glitch block
+                DrawRectangle(GetRandomValue(0, SCREEN_WIDTH), GetRandomValue(0, SCREEN_HEIGHT), GetRandomValue(50, 300), GetRandomValue(10, 50), (Color){0, 255, 0, 150});
+            }
             
-            DrawTextEx(customFont, typedCode, (Vector2){20, 100}, 24, 2, HACKER_GREEN);
+            // Draw fake terminal window
+            DrawRectangle(50, 50, 700, 500, (Color){10, 10, 10, 230});
+            DrawRectangleLines(50, 50, 700, 500, HACKER_GREEN);
+            DrawTextHacker(TextFormat("CMD.EXE - ROOT ACCESS: %s", pcUsername), 60, 60, 20, WHITE);
+            DrawLine(50, 80, 750, 80, HACKER_GREEN);
             
-            if (hackGranted) {
-                Texture2D resTex = (selectedTarget == 0) ? texBank : (selectedTarget == 1 ? texCCTV : texPC);
-                DrawTextureEx(resTex, (Vector2){SCREEN_WIDTH/2 - (resTex.width*0.5f)/2, 100}, 0.0f, 0.5f, WHITE); 
-                
-                if (((int)(GetTime() * 8)) % 2 == 0) {
-                    DrawRectangle(SCREEN_WIDTH/2 - 250, SCREEN_HEIGHT/2 + 50, 500, 100, HACKER_GREEN);
-                    DrawTextHacker(GetText("ACCESS_GRANTED"), SCREEN_WIDTH/2 - 190, SCREEN_HEIGHT/2 + 70, 60, BLACK);
-                }
+            DrawTextHacker(TextFormat("C:\\Users\\%s\\AppData\\Local>", pcUsername), 60, 100, 30, GRAY);
+            DrawTextHacker("I SEE YOU.", 60, 140, 40, RED);
+            
+            DrawTextHacker(typedCode, 60, 200, 20, HACKER_GREEN);
+            
+            // Blinking cursor
+            if ((int)(GetTime() * 2) % 2 == 0) {
+                int textW = MeasureText(typedCode, 20);
+                DrawRectangle(60 + textW + 5, 200, 15, 25, HACKER_GREEN);
+            }
+            
+            Rectangle btnExitHack = {600, 60, 100, 40};
+            DrawRectangleRec(btnExitHack, RED); DrawTextHacker("< BACK", btnExitHack.x+10, btnExitHack.y+10, 20, WHITE);
+            
+            // Success / Fail logic
+            if (typedLen > 200 || hackGranted) {
+                DrawTextHacker(">>> ACCESS GRANTED <<<", 60, 450, 40, GREEN);
+                if (!IsSoundPlaying(sndKarenSuccess)) PlaySound(sndKarenSuccess);
+                if (IsKeyPressed(KEY_ENTER)) currentScreen = GAMEPLAY;
             }
             break;
         }

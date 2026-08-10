@@ -1,0 +1,31 @@
+﻿2026-08-10T16:42:14.1419195Z Current runner version: '2.336.0'
+2026-08-10T16:42:14.1515433Z ##[group]Runner Image Provisioner
+2026-08-10T16:42:14.1516855Z Hosted Compute Agent
+2026-08-10T16:42:14.1517459Z Version: 20260729.566
+2026-08-10T16:42:14.1518157Z Commit: cf7153fe6e25b664e8693c24944bf2b00355d109
+2026-08-10T16:42:14.1518885Z Build Date: 2026-07-29T19:17:02Z
+2026-08-10T16:42:14.1519493Z Worker ID: {9fbe590d-9b69-4dc5-aef1-4a2998204aeb}
+2026-08-10T16:42:14.1520267Z Azure Region: westus3
+2026-08-10T16:42:14.1520784Z ##[endgroup]
+2026-08-10T16:42:14.1522311Z ##[group]Operating System
+2026-08-10T16:42:14.1522919Z Microsoft Windows Server 2025
+2026-08-10T16:42:14.1523502Z 10.0.26100
+2026-08-10T16:42:14.1524012Z Datacenter
+2026-08-10T16:42:14.1524514Z ##[endgroup]
+2026-08-10T16:42:14.1525019Z ##[group]Runner Image
+2026-08-10T16:42:14.1525667Z Image: windows-2025-vs2026
+2026-08-10T16:42:14.1526207Z Version: 20260803.193.1
+2026-08-10T16:42:14.1527321Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20260803.193/images/windows/Windows2025-VS2026-Readme.md
+2026-08-10T16:42:14.1529480Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20260803.193
+2026-08-10T16:42:14.1530467Z ##[endgroup]
+2026-08-10T16:42:14.1531483Z ##[group]GITHUB_TOKEN Permissions
+2026-08-10T16:42:14.1534201Z Contents: write
+2026-08-10T16:42:14.1534749Z Metadata: read
+2026-08-10T16:42:14.1535610Z ##[endgroup]
+2026-08-10T16:42:14.1538015Z Secret source: Actions
+2026-08-10T16:42:14.1538996Z Prepare workflow directory
+2026-08-10T16:42:14.1932734Z Prepare all required actions
+2026-08-10T16:42:14.2003464Z Getting action download info
+2026-08-10T16:42:14.5091024Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-10T16:42:14.6443495Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-10T16:42:14.9872744Z Complete job name: 🪟 Build Windows EXE

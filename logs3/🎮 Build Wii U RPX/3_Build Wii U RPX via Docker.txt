@@ -1,0 +1,79 @@
+﻿2026-08-10T17:50:04.8837269Z ##[group]Run docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
+2026-08-10T17:50:04.8839696Z [36;1mdocker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\[0m
+2026-08-10T17:50:04.8841228Z [36;1m  dkp-pacman -Syu --noconfirm || true && \[0m
+2026-08-10T17:50:04.8842592Z [36;1m  dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf && \[0m
+2026-08-10T17:50:04.8843935Z [36;1m  mkdir -p wiiu-build && \[0m
+2026-08-10T17:50:04.8845604Z [36;1m  cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/WiiU.cmake && \[0m
+2026-08-10T17:50:04.8847544Z [36;1m  cmake --build wiiu-build --config Release -j\$(nproc) \[0m
+2026-08-10T17:50:04.8848636Z [36;1m"[0m
+2026-08-10T17:50:04.8891660Z shell: /usr/bin/bash -e {0}
+2026-08-10T17:50:04.8892497Z ##[endgroup]
+2026-08-10T17:50:04.9375504Z Unable to find image 'devkitpro/devkitppc:latest' locally
+2026-08-10T17:50:05.8241748Z latest: Pulling from devkitpro/devkitppc
+2026-08-10T17:50:06.1072291Z 59e22667830b: Pulling fs layer
+2026-08-10T17:50:06.1072845Z 74701f26999d: Pulling fs layer
+2026-08-10T17:50:06.4161449Z ea5d3216df1f: Pulling fs layer
+2026-08-10T17:50:06.4162452Z 3727f0a7f966: Pulling fs layer
+2026-08-10T17:50:06.4163113Z 3727f0a7f966: Waiting
+2026-08-10T17:50:06.4163701Z 59e22667830b: Verifying Checksum
+2026-08-10T17:50:06.4164444Z 59e22667830b: Download complete
+2026-08-10T17:50:06.4302326Z ea5d3216df1f: Verifying Checksum
+2026-08-10T17:50:06.4330461Z ea5d3216df1f: Download complete
+2026-08-10T17:50:07.0633000Z 74701f26999d: Verifying Checksum
+2026-08-10T17:50:07.0633583Z 74701f26999d: Download complete
+2026-08-10T17:50:07.5463643Z 59e22667830b: Pull complete
+2026-08-10T17:50:07.6611433Z 3727f0a7f966: Verifying Checksum
+2026-08-10T17:50:07.6613426Z 3727f0a7f966: Download complete
+2026-08-10T17:50:19.7544668Z 74701f26999d: Pull complete
+2026-08-10T17:50:20.4474796Z ea5d3216df1f: Pull complete
+2026-08-10T17:50:30.6289164Z 3727f0a7f966: Pull complete
+2026-08-10T17:50:30.6351395Z Digest: sha256:44cb1a920e1ec3ec7c06767493c3b85f8d643d6137cc4661f0201895ac6e4967
+2026-08-10T17:50:30.6374667Z Status: Downloaded newer image for devkitpro/devkitppc:latest
+2026-08-10T17:50:30.8065329Z :: Synchronizing package databases...
+2026-08-10T17:50:31.3333362Z error: failed retrieving file 'dkp-linux.db' from pkg.devkitpro.org : The requested URL returned error: 403
+2026-08-10T17:50:31.3334339Z error: failed retrieving file 'dkp-libs.db' from pkg.devkitpro.org : The requested URL returned error: 403
+2026-08-10T17:50:31.3335035Z error: failed to synchronize all databases (failed to retrieve some files)
+2026-08-10T17:50:31.3335478Z  dkp-libs downloading...
+2026-08-10T17:50:31.3335984Z  dkp-linux downloading...
+2026-08-10T17:50:31.3649350Z warning: catnip-0.2.0-1 is up to date -- skipping
+2026-08-10T17:50:31.3650041Z warning: devkitppc-cmake-1.1.4-1 is up to date -- skipping
+2026-08-10T17:50:31.3650517Z warning: devkitppc-rules-1.2.1-1 is up to date -- skipping
+2026-08-10T17:50:31.3651080Z warning: ppc-pkg-config-0.28-5 is up to date -- skipping
+2026-08-10T17:50:31.3651580Z warning: wiiu-cmake-1.3.2-1 is up to date -- skipping
+2026-08-10T17:50:31.3652030Z warning: wiiu-pkg-config-0.28-4 is up to date -- skipping
+2026-08-10T17:50:31.3652443Z warning: wut-1.9.1-1 is up to date -- skipping
+2026-08-10T17:50:31.3652833Z warning: devkit-env-1.0.1-2 is up to date -- skipping
+2026-08-10T17:50:31.3653303Z warning: devkitPPC-gdb-14.1-2 is up to date -- skipping
+2026-08-10T17:50:31.3653767Z warning: devkitppc-binutils-2.46.0-1 is up to date -- skipping
+2026-08-10T17:50:31.3654266Z warning: devkitppc-gcc-16.1.0-1 is up to date -- skipping
+2026-08-10T17:50:31.3655016Z warning: devkitppc-mn10200-binutils-2.24-3 is up to date -- skipping
+2026-08-10T17:50:31.3655429Z warning: general-tools-1.4.4-1 is up to date -- skipping
+2026-08-10T17:50:31.3655696Z warning: wiiload-0.5.3-1 is up to date -- skipping
+2026-08-10T17:50:31.3655974Z warning: wut-tools-1.3.5-1 is up to date -- skipping
+2026-08-10T17:50:31.3656638Z warning: wiiu-sdl2-2.32.10-2 is up to date -- skipping
+2026-08-10T17:50:31.3657042Z warning: wiiu-sdl2_ttf-2.20.2-1 is up to date -- skipping
+2026-08-10T17:50:31.3657309Z  there is nothing to do
+2026-08-10T17:50:31.4031309Z -- The C compiler identification is GNU 16.1.0
+2026-08-10T17:50:31.4141260Z -- Detecting C compiler ABI info
+2026-08-10T17:50:31.4957076Z -- Detecting C compiler ABI info - done
+2026-08-10T17:50:31.5160874Z -- Check for working C compiler: /opt/devkitpro/devkitPPC/bin/powerpc-eabi-gcc - skipped
+2026-08-10T17:50:31.5164079Z -- Detecting C compile features
+2026-08-10T17:50:31.5168887Z -- Detecting C compile features - done
+2026-08-10T17:50:31.5201354Z CMake Error at CMakeLists.txt:58 (find_package):
+2026-08-10T17:50:31.5201896Z   By not providing "FindWUT.cmake" in CMAKE_MODULE_PATH this project has
+2026-08-10T17:50:31.5202506Z   asked CMake to find a package configuration file provided by "WUT", but
+2026-08-10T17:50:31.5202955Z   CMake did not find one.
+2026-08-10T17:50:31.5203163Z 
+2026-08-10T17:50:31.5203417Z   Could not find a package configuration file provided by "WUT" with any of
+2026-08-10T17:50:31.5203858Z   the following names:
+2026-08-10T17:50:31.5204012Z 
+2026-08-10T17:50:31.5204117Z     WUTConfig.cmake
+2026-08-10T17:50:31.5204343Z     wut-config.cmake
+2026-08-10T17:50:31.5204482Z 
+2026-08-10T17:50:31.5204711Z   Add the installation prefix of "WUT" to CMAKE_PREFIX_PATH or set "WUT_DIR"
+2026-08-10T17:50:31.5205230Z   to a directory containing one of the above files.  If "WUT" provides a
+2026-08-10T17:50:31.5205765Z   separate development package or SDK, be sure it has been installed.
+2026-08-10T17:50:31.5206072Z 
+2026-08-10T17:50:31.5206077Z 
+2026-08-10T17:50:31.5206260Z -- Configuring incomplete, errors occurred!
+2026-08-10T17:50:31.5911360Z ##[error]Process completed with exit code 1.

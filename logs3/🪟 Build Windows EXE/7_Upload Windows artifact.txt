@@ -1,0 +1,29 @@
+﻿2026-08-10T17:51:10.4281118Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T17:51:10.4283124Z ##[group]Run actions/upload-artifact@v4
+2026-08-10T17:51:10.4283411Z with:
+2026-08-10T17:51:10.4283611Z   name: windows-zip
+2026-08-10T17:51:10.4283825Z   path: HacksToHacks-Windows.zip
+2026-08-10T17:51:10.4284090Z   retention-days: 7
+2026-08-10T17:51:10.4284290Z   if-no-files-found: warn
+2026-08-10T17:51:10.4284503Z   compression-level: 6
+2026-08-10T17:51:10.4284696Z   overwrite: false
+2026-08-10T17:51:10.4284915Z   include-hidden-files: false
+2026-08-10T17:51:10.4285203Z env:
+2026-08-10T17:51:10.4285601Z   RAYLIB_ROOT: D:\a\HacksToHacks\HacksToHacks\raylib-win\raylib-5.0_win64_mingw-w64
+2026-08-10T17:51:10.4286007Z ##[endgroup]
+2026-08-10T17:51:10.6297866Z (node:8792) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T17:51:10.6298629Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T17:51:10.6352743Z With the provided path, there will be 1 file uploaded
+2026-08-10T17:51:10.6358062Z Artifact name is valid!
+2026-08-10T17:51:10.6360252Z Root directory input is valid!
+2026-08-10T17:51:10.7801395Z Beginning upload of artifact content to blob storage
+2026-08-10T17:51:11.0964071Z (node:8792) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T17:51:11.2989933Z Uploaded bytes 8388608
+2026-08-10T17:51:11.5687457Z Uploaded bytes 16777216
+2026-08-10T17:51:11.6407558Z Uploaded bytes 20161684
+2026-08-10T17:51:11.6588613Z Finished uploading artifact content to blob storage!
+2026-08-10T17:51:11.6590081Z SHA256 digest of uploaded artifact zip is f41fc6ce452189f81497e43d9b4c1fff81713ce9804fb03b69194beaf3bdc4de
+2026-08-10T17:51:11.6592498Z Finalizing artifact upload
+2026-08-10T17:51:11.8409905Z Artifact windows-zip.zip successfully finalized. Artifact ID 9073457565
+2026-08-10T17:51:11.8411460Z Artifact windows-zip has been successfully uploaded! Final size is 20161684 bytes. Artifact ID is 9073457565
+2026-08-10T17:51:11.8423694Z Artifact download URL: https://github.com/outfrancesco51-collab/HacksToHacks/actions/runs/31415997898/artifacts/9073457565

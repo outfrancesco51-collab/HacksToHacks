@@ -1,0 +1,47 @@
+﻿2026-08-10T17:50:05.4634180Z ##[group]Run # Download prebuilt raylib iOS XCFrameworks
+2026-08-10T17:50:05.4634720Z [36;1m# Download prebuilt raylib iOS XCFrameworks[0m
+2026-08-10T17:50:05.4635380Z [36;1mcurl -LO https://github.com/ghera/raylib-iOS/releases/download/6.0.3-iOS/raylib-ios-xcframeworks-6.0.3-iOS.zip[0m
+2026-08-10T17:50:05.4635940Z [36;1munzip -q raylib-ios-xcframeworks-6.0.3-iOS.zip -d raylib-xcf[0m
+2026-08-10T17:50:05.4636280Z [36;1m[0m
+2026-08-10T17:50:05.4636510Z [36;1mIOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)[0m
+2026-08-10T17:50:05.4636820Z [36;1mCC="xcrun -sdk iphoneos clang"[0m
+2026-08-10T17:50:05.4637070Z [36;1m[0m
+2026-08-10T17:50:05.4637300Z [36;1m# We use the ios-arm64 slices of the xcframeworks[0m
+2026-08-10T17:50:05.4637690Z [36;1mXCF_DIR="$PWD/raylib-xcf/raylib-ios-xcframeworks"[0m
+2026-08-10T17:50:05.4638070Z [36;1mRAYLIB_FW="$XCF_DIR/raylib.xcframework/ios-arm64"[0m
+2026-08-10T17:50:05.4638490Z [36;1mEGL_FW="$XCF_DIR/libEGL.xcframework/ios-arm64"[0m
+2026-08-10T17:50:05.4638850Z [36;1mGLES_FW="$XCF_DIR/libGLESv2.xcframework/ios-arm64"[0m
+2026-08-10T17:50:05.4639270Z [36;1m[0m
+2026-08-10T17:50:05.4639470Z [36;1mmkdir -p build-ios/HacksToHacks.app[0m
+2026-08-10T17:50:05.4640070Z [36;1mCFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK -O2 -fPIC -Isrc -I$RAYLIB_FW/Headers -mios-version-min=13.0 -Wno-deprecated-declarations"[0m
+2026-08-10T17:50:05.4640620Z [36;1m[0m
+2026-08-10T17:50:05.4640830Z [36;1m# Compile all .c files in src/[0m
+2026-08-10T17:50:05.4641070Z [36;1mfor srcfile in src/*.c; do[0m
+2026-08-10T17:50:05.4641360Z [36;1m  objfile="build-ios/$(basename "${srcfile%.c}.o")"[0m
+2026-08-10T17:50:05.4641680Z [36;1m  $CC $CFLAGS -x c -c "$srcfile" -o "$objfile"[0m
+2026-08-10T17:50:05.4641930Z [36;1mdone[0m
+2026-08-10T17:50:05.4642120Z [36;1m[0m
+2026-08-10T17:50:05.4642270Z [36;1m# Link Game[0m
+2026-08-10T17:50:05.4642570Z [36;1m$CC -target arm64-apple-ios13.0 -isysroot $IOS_SDK -mios-version-min=13.0 \[0m
+2026-08-10T17:50:05.4642920Z [36;1m  build-ios/*.o \[0m
+2026-08-10T17:50:05.4643180Z [36;1m  -F "$RAYLIB_FW" -F "$EGL_FW" -F "$GLES_FW" \[0m
+2026-08-10T17:50:05.4643530Z [36;1m  -framework raylib -framework libEGL -framework libGLESv2 \[0m
+2026-08-10T17:50:05.4644190Z [36;1m  -framework Foundation -framework UIKit -framework QuartzCore -framework CoreGraphics \[0m
+2026-08-10T17:50:05.4644670Z [36;1m  -o build-ios/HacksToHacks.app/HacksToHacks[0m
+2026-08-10T17:50:05.4644930Z [36;1m[0m
+2026-08-10T17:50:05.4645090Z [36;1mecho "Build OK"[0m
+2026-08-10T17:50:05.4688580Z shell: /bin/bash -e {0}
+2026-08-10T17:50:05.4688930Z ##[endgroup]
+2026-08-10T17:50:05.5130900Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-08-10T17:50:05.5131680Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-08-10T17:50:05.5131970Z 
+2026-08-10T17:50:05.8584550Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-08-10T17:50:05.8594190Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-08-10T17:50:05.8596650Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-08-10T17:50:06.1644500Z 
+2026-08-10T17:50:06.1941730Z 100 14.0M  100 14.0M    0     0  21.9M      0 --:--:-- --:--:-- --:--:-- 21.9M
+2026-08-10T17:50:09.8820220Z src/main.c:1:10: fatal error: 'raylib.h' file not found
+2026-08-10T17:50:09.8820900Z     1 | #include "raylib.h"
+2026-08-10T17:50:09.8821340Z       |          ^~~~~~~~~~
+2026-08-10T17:50:09.9030610Z 1 error generated.
+2026-08-10T17:50:09.9060630Z ##[error]Process completed with exit code 1.

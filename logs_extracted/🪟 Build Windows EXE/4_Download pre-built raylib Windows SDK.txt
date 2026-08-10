@@ -1,0 +1,8 @@
+﻿2026-08-10T16:43:52.4216876Z ##[group]Run $url = "https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win64_mingw-w64.zip"
+2026-08-10T16:43:52.4217996Z [36;1m$url = "https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win64_mingw-w64.zip"[0m
+2026-08-10T16:43:52.4218630Z [36;1mInvoke-WebRequest -Uri $url -OutFile raylib-win.zip[0m
+2026-08-10T16:43:52.4219151Z [36;1mExpand-Archive raylib-win.zip -DestinationPath raylib-win[0m
+2026-08-10T16:43:52.4219722Z [36;1m$RL = Get-ChildItem raylib-win -Directory | Select-Object -First 1[0m
+2026-08-10T16:43:52.4220264Z [36;1mecho "RAYLIB_ROOT=$($RL.FullName)" >> $env:GITHUB_ENV[0m
+2026-08-10T16:43:52.4294050Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T16:43:52.4294565Z ##[endgroup]

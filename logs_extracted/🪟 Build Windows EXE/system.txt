@@ -1,0 +1,8 @@
+2026-08-10T16:42:11.4260000Z Evaluating build-windows.if
+2026-08-10T16:42:11.4260000Z Evaluating: success()
+2026-08-10T16:42:11.4260000Z Result: true
+2026-08-10T16:42:11.4320000Z Requested labels: windows-latest
+2026-08-10T16:42:11.4320000Z Job defined at: outfrancesco51-collab/HacksToHacks/.github/workflows/release.yml@refs/heads/main
+2026-08-10T16:42:11.4320000Z Waiting for a runner to pick up this job...
+2026-08-10T16:42:11.6590000Z Job is waiting for a hosted runner to come online.
+2026-08-10T16:42:11.6590000Z Job is about to start running on the hosted runner: GitHub Actions 1000000107

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(HacksToHacks C)
+project(HacksToHacks VERSION 2.1 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 set(DOWNLOAD_EXTRACT_TIMESTAMP ON)

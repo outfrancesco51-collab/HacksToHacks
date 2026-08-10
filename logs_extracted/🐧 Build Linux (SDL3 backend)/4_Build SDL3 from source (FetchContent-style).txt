@@ -1,0 +1,1079 @@
+﻿2026-08-10T16:42:36.9857058Z ##[group]Run git clone --depth 1 --branch release-3.2.16 https://github.com/libsdl-org/SDL.git SDL3-src
+2026-08-10T16:42:36.9858042Z [36;1mgit clone --depth 1 --branch release-3.2.16 https://github.com/libsdl-org/SDL.git SDL3-src[0m
+2026-08-10T16:42:36.9858555Z [36;1mcmake -S SDL3-src -B SDL3-build \[0m
+2026-08-10T16:42:36.9858866Z [36;1m  -DCMAKE_BUILD_TYPE=Release \[0m
+2026-08-10T16:42:36.9859139Z [36;1m  -DSDL_STATIC=OFF \[0m
+2026-08-10T16:42:36.9859380Z [36;1m  -DSDL_SHARED=ON \[0m
+2026-08-10T16:42:36.9859656Z [36;1m  -DCMAKE_INSTALL_PREFIX=$PWD/SDL3-install[0m
+2026-08-10T16:42:36.9860030Z [36;1mcmake --build SDL3-build --config Release -j$(nproc)[0m
+2026-08-10T16:42:36.9860368Z [36;1mcmake --install SDL3-build[0m
+2026-08-10T16:42:36.9860713Z [36;1mecho "SDL3_DIR=$PWD/SDL3-install/lib/cmake/SDL3" >> $GITHUB_ENV[0m
+2026-08-10T16:42:36.9861139Z [36;1mecho "SDL3_INC=$PWD/SDL3-install/include" >> $GITHUB_ENV[0m
+2026-08-10T16:42:36.9861521Z [36;1mecho "SDL3_LIB=$PWD/SDL3-install/lib" >> $GITHUB_ENV[0m
+2026-08-10T16:42:36.9907448Z shell: /usr/bin/bash -e {0}
+2026-08-10T16:42:36.9907717Z ##[endgroup]
+2026-08-10T16:42:36.9983251Z Cloning into 'SDL3-src'...
+2026-08-10T16:42:40.9121221Z Note: switching to 'c9a6709bd21750f1ad9597be21abace78c6378c9'.
+2026-08-10T16:42:40.9121600Z 
+2026-08-10T16:42:40.9121801Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-08-10T16:42:40.9122269Z changes and commit them, and you can discard any commits you make in this
+2026-08-10T16:42:40.9122720Z state without impacting any branches by switching back to a branch.
+2026-08-10T16:42:40.9122988Z 
+2026-08-10T16:42:40.9123162Z If you want to create a new branch to retain commits you create, you may
+2026-08-10T16:42:40.9123591Z do so (now or later) by using -c with the switch command. Example:
+2026-08-10T16:42:40.9123853Z 
+2026-08-10T16:42:40.9123951Z   git switch -c <new-branch-name>
+2026-08-10T16:42:40.9124122Z 
+2026-08-10T16:42:40.9124215Z Or undo this operation with:
+2026-08-10T16:42:40.9124397Z 
+2026-08-10T16:42:40.9124478Z   git switch -
+2026-08-10T16:42:40.9124595Z 
+2026-08-10T16:42:40.9124793Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-08-10T16:42:40.9125297Z 
+2026-08-10T16:42:41.3803524Z -- The C compiler identification is GNU 13.3.0
+2026-08-10T16:42:41.3988313Z -- Detecting C compiler ABI info
+2026-08-10T16:42:41.5009652Z -- Detecting C compiler ABI info - done
+2026-08-10T16:42:41.5187082Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-08-10T16:42:41.5194175Z -- Detecting C compile features
+2026-08-10T16:42:41.5202180Z -- Detecting C compile features - done
+2026-08-10T16:42:41.6414221Z -- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
+2026-08-10T16:42:41.6947902Z -- Detecting Target CPU Architecture
+2026-08-10T16:42:42.4884205Z -- Detecting Target CPU Architecture - X64
+2026-08-10T16:42:42.4968583Z -- Performing Test HAVE_GCC_WALL
+2026-08-10T16:42:42.5476347Z -- Performing Test HAVE_GCC_WALL - Success
+2026-08-10T16:42:42.5485401Z -- Performing Test HAVE_GCC_WUNDEF
+2026-08-10T16:42:42.5985372Z -- Performing Test HAVE_GCC_WUNDEF - Success
+2026-08-10T16:42:42.5997421Z -- Performing Test HAVE_GCC_WFLOAT_CONVERSION
+2026-08-10T16:42:42.6502882Z -- Performing Test HAVE_GCC_WFLOAT_CONVERSION - Success
+2026-08-10T16:42:42.6511365Z -- Performing Test HAVE_GCC_NO_STRICT_ALIASING
+2026-08-10T16:42:42.7011449Z -- Performing Test HAVE_GCC_NO_STRICT_ALIASING - Success
+2026-08-10T16:42:42.7019802Z -- Performing Test HAVE_GCC_WDOCUMENTATION
+2026-08-10T16:42:42.7310176Z -- Performing Test HAVE_GCC_WDOCUMENTATION - Failed
+2026-08-10T16:42:42.7318430Z -- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND
+2026-08-10T16:42:42.7691452Z -- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND - Failed
+2026-08-10T16:42:42.7699776Z -- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS
+2026-08-10T16:42:42.8098605Z -- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS - Failed
+2026-08-10T16:42:42.8107406Z -- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS
+2026-08-10T16:42:42.8421659Z -- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS - Failed
+2026-08-10T16:42:42.8430330Z -- Performing Test HAVE_GCC_WSHADOW
+2026-08-10T16:42:42.8941620Z -- Performing Test HAVE_GCC_WSHADOW - Success
+2026-08-10T16:42:42.8950408Z -- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS
+2026-08-10T16:42:42.9487272Z -- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS - Success
+2026-08-10T16:42:42.9496091Z -- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH
+2026-08-10T16:42:43.0284663Z -- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH - Success
+2026-08-10T16:42:43.0299445Z -- Performing Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS
+2026-08-10T16:42:43.0837736Z -- Performing Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS - Success
+2026-08-10T16:42:43.0868350Z -- Looking for __GLIBC__
+2026-08-10T16:42:43.1626419Z -- Looking for __GLIBC__ - found
+2026-08-10T16:42:43.1630826Z -- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT
+2026-08-10T16:42:43.2189329Z -- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT - Success
+2026-08-10T16:42:43.2194247Z -- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS
+2026-08-10T16:42:43.2840078Z -- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS - Success
+2026-08-10T16:42:43.2842020Z -- Performing Test HAVE_GCC_FVISIBILITY
+2026-08-10T16:42:43.3544164Z -- Performing Test HAVE_GCC_FVISIBILITY - Success
+2026-08-10T16:42:43.3554130Z -- Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED
+2026-08-10T16:42:43.4064739Z -- Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED - Success
+2026-08-10T16:42:43.4068631Z -- Performing Test COMPILER_SUPPORTS_MMX
+2026-08-10T16:42:43.4652812Z -- Performing Test COMPILER_SUPPORTS_MMX - Success
+2026-08-10T16:42:43.4655793Z -- Performing Test COMPILER_SUPPORTS_SSE
+2026-08-10T16:42:43.5313722Z -- Performing Test COMPILER_SUPPORTS_SSE - Success
+2026-08-10T16:42:43.5316334Z -- Performing Test COMPILER_SUPPORTS_SSE2
+2026-08-10T16:42:43.5959375Z -- Performing Test COMPILER_SUPPORTS_SSE2 - Success
+2026-08-10T16:42:43.5961753Z -- Performing Test COMPILER_SUPPORTS_SSE3
+2026-08-10T16:42:43.6632331Z -- Performing Test COMPILER_SUPPORTS_SSE3 - Success
+2026-08-10T16:42:43.6635389Z -- Performing Test COMPILER_SUPPORTS_SSE4_1
+2026-08-10T16:42:43.7340877Z -- Performing Test COMPILER_SUPPORTS_SSE4_1 - Success
+2026-08-10T16:42:43.7343662Z -- Performing Test COMPILER_SUPPORTS_SSE4_2
+2026-08-10T16:42:43.8008173Z -- Performing Test COMPILER_SUPPORTS_SSE4_2 - Success
+2026-08-10T16:42:43.8010761Z -- Performing Test COMPILER_SUPPORTS_AVX
+2026-08-10T16:42:44.1063466Z -- Performing Test COMPILER_SUPPORTS_AVX - Success
+2026-08-10T16:42:44.1066455Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-08-10T16:42:44.3780538Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-08-10T16:42:44.3783072Z -- Performing Test COMPILER_SUPPORTS_AVX512F
+2026-08-10T16:42:44.6292709Z -- Performing Test COMPILER_SUPPORTS_AVX512F - Success
+2026-08-10T16:42:44.6299823Z -- Looking for alloca.h
+2026-08-10T16:42:44.6825187Z -- Looking for alloca.h - found
+2026-08-10T16:42:44.6826999Z -- Looking for float.h
+2026-08-10T16:42:44.7346955Z -- Looking for float.h - found
+2026-08-10T16:42:44.7348197Z -- Looking for iconv.h
+2026-08-10T16:42:44.7933568Z -- Looking for iconv.h - found
+2026-08-10T16:42:44.7935173Z -- Looking for inttypes.h
+2026-08-10T16:42:44.8495670Z -- Looking for inttypes.h - found
+2026-08-10T16:42:44.8496761Z -- Looking for limits.h
+2026-08-10T16:42:44.9073700Z -- Looking for limits.h - found
+2026-08-10T16:42:44.9074872Z -- Looking for malloc.h
+2026-08-10T16:42:44.9664242Z -- Looking for malloc.h - found
+2026-08-10T16:42:44.9665714Z -- Looking for math.h
+2026-08-10T16:42:45.0389006Z -- Looking for math.h - found
+2026-08-10T16:42:45.0390096Z -- Looking for memory.h
+2026-08-10T16:42:45.0943289Z -- Looking for memory.h - found
+2026-08-10T16:42:45.0944436Z -- Looking for signal.h
+2026-08-10T16:42:45.1620469Z -- Looking for signal.h - found
+2026-08-10T16:42:45.1621642Z -- Looking for stdarg.h
+2026-08-10T16:42:45.2142277Z -- Looking for stdarg.h - found
+2026-08-10T16:42:45.2143293Z -- Looking for stdbool.h
+2026-08-10T16:42:45.2661965Z -- Looking for stdbool.h - found
+2026-08-10T16:42:45.2663217Z -- Looking for stddef.h
+2026-08-10T16:42:45.3180985Z -- Looking for stddef.h - found
+2026-08-10T16:42:45.3182211Z -- Looking for stdint.h
+2026-08-10T16:42:45.3719554Z -- Looking for stdint.h - found
+2026-08-10T16:42:45.3720980Z -- Looking for stdio.h
+2026-08-10T16:42:45.4271400Z -- Looking for stdio.h - found
+2026-08-10T16:42:45.4272521Z -- Looking for stdlib.h
+2026-08-10T16:42:45.4845597Z -- Looking for stdlib.h - found
+2026-08-10T16:42:45.4846999Z -- Looking for string.h
+2026-08-10T16:42:45.5393782Z -- Looking for string.h - found
+2026-08-10T16:42:45.5395271Z -- Looking for strings.h
+2026-08-10T16:42:45.5941416Z -- Looking for strings.h - found
+2026-08-10T16:42:45.5942441Z -- Looking for sys/types.h
+2026-08-10T16:42:45.6514729Z -- Looking for sys/types.h - found
+2026-08-10T16:42:45.6516141Z -- Looking for time.h
+2026-08-10T16:42:45.7079188Z -- Looking for time.h - found
+2026-08-10T16:42:45.7080282Z -- Looking for wchar.h
+2026-08-10T16:42:45.7638239Z -- Looking for wchar.h - found
+2026-08-10T16:42:45.7639878Z -- Looking for pow in m
+2026-08-10T16:42:45.8292855Z -- Looking for pow in m - found
+2026-08-10T16:42:45.8298193Z -- Looking for abs
+2026-08-10T16:42:45.9156998Z -- Looking for abs - found
+2026-08-10T16:42:45.9159420Z -- Looking for acos
+2026-08-10T16:42:46.0022589Z -- Looking for acos - found
+2026-08-10T16:42:46.0025455Z -- Looking for acosf
+2026-08-10T16:42:46.0894516Z -- Looking for acosf - found
+2026-08-10T16:42:46.0897419Z -- Looking for asin
+2026-08-10T16:42:46.1762244Z -- Looking for asin - found
+2026-08-10T16:42:46.1764840Z -- Looking for asinf
+2026-08-10T16:42:46.2618479Z -- Looking for asinf - found
+2026-08-10T16:42:46.2621012Z -- Looking for atan
+2026-08-10T16:42:46.3487573Z -- Looking for atan - found
+2026-08-10T16:42:46.3490203Z -- Looking for atan2
+2026-08-10T16:42:46.4363193Z -- Looking for atan2 - found
+2026-08-10T16:42:46.4366071Z -- Looking for atan2f
+2026-08-10T16:42:46.5235453Z -- Looking for atan2f - found
+2026-08-10T16:42:46.5238744Z -- Looking for atanf
+2026-08-10T16:42:46.6098611Z -- Looking for atanf - found
+2026-08-10T16:42:46.6101712Z -- Looking for atof
+2026-08-10T16:42:46.6938007Z -- Looking for atof - found
+2026-08-10T16:42:46.6940886Z -- Looking for atoi
+2026-08-10T16:42:46.7777320Z -- Looking for atoi - found
+2026-08-10T16:42:46.7780387Z -- Looking for bcopy
+2026-08-10T16:42:46.8624845Z -- Looking for bcopy - found
+2026-08-10T16:42:46.8627602Z -- Looking for ceil
+2026-08-10T16:42:46.9479664Z -- Looking for ceil - found
+2026-08-10T16:42:46.9482152Z -- Looking for ceilf
+2026-08-10T16:42:47.0334625Z -- Looking for ceilf - found
+2026-08-10T16:42:47.0337459Z -- Looking for copysign
+2026-08-10T16:42:47.1190241Z -- Looking for copysign - found
+2026-08-10T16:42:47.1193251Z -- Looking for copysignf
+2026-08-10T16:42:47.2045591Z -- Looking for copysignf - found
+2026-08-10T16:42:47.2049098Z -- Looking for cos
+2026-08-10T16:42:47.2906374Z -- Looking for cos - found
+2026-08-10T16:42:47.2909513Z -- Looking for cosf
+2026-08-10T16:42:47.3771504Z -- Looking for cosf - found
+2026-08-10T16:42:47.3774806Z -- Looking for _Exit
+2026-08-10T16:42:47.4612281Z -- Looking for _Exit - found
+2026-08-10T16:42:47.4615810Z -- Looking for exp
+2026-08-10T16:42:47.5461886Z -- Looking for exp - found
+2026-08-10T16:42:47.5464937Z -- Looking for expf
+2026-08-10T16:42:47.6317887Z -- Looking for expf - found
+2026-08-10T16:42:47.6320374Z -- Looking for fabs
+2026-08-10T16:42:47.7178572Z -- Looking for fabs - found
+2026-08-10T16:42:47.7181022Z -- Looking for fabsf
+2026-08-10T16:42:47.8034799Z -- Looking for fabsf - found
+2026-08-10T16:42:47.8037734Z -- Looking for floor
+2026-08-10T16:42:47.8904205Z -- Looking for floor - found
+2026-08-10T16:42:47.8907246Z -- Looking for floorf
+2026-08-10T16:42:47.9761235Z -- Looking for floorf - found
+2026-08-10T16:42:47.9763899Z -- Looking for fmod
+2026-08-10T16:42:48.0628965Z -- Looking for fmod - found
+2026-08-10T16:42:48.0631844Z -- Looking for fmodf
+2026-08-10T16:42:48.1498644Z -- Looking for fmodf - found
+2026-08-10T16:42:48.1501841Z -- Looking for fopen64
+2026-08-10T16:42:48.2341980Z -- Looking for fopen64 - found
+2026-08-10T16:42:48.2345667Z -- Looking for fseeko
+2026-08-10T16:42:48.3244142Z -- Looking for fseeko - found
+2026-08-10T16:42:48.3248951Z -- Looking for fseeko64
+2026-08-10T16:42:48.4095641Z -- Looking for fseeko64 - found
+2026-08-10T16:42:48.4105738Z -- Looking for getenv
+2026-08-10T16:42:48.4938730Z -- Looking for getenv - found
+2026-08-10T16:42:48.4941402Z -- Looking for _i64toa
+2026-08-10T16:42:48.5520238Z -- Looking for _i64toa - not found
+2026-08-10T16:42:48.5522878Z -- Looking for index
+2026-08-10T16:42:48.6369972Z -- Looking for index - found
+2026-08-10T16:42:48.6372580Z -- Looking for itoa
+2026-08-10T16:42:48.6943616Z -- Looking for itoa - not found
+2026-08-10T16:42:48.6947191Z -- Looking for log
+2026-08-10T16:42:48.7801169Z -- Looking for log - found
+2026-08-10T16:42:48.7804390Z -- Looking for log10
+2026-08-10T16:42:48.8672203Z -- Looking for log10 - found
+2026-08-10T16:42:48.8675141Z -- Looking for log10f
+2026-08-10T16:42:48.9534786Z -- Looking for log10f - found
+2026-08-10T16:42:48.9537496Z -- Looking for logf
+2026-08-10T16:42:49.0383951Z -- Looking for logf - found
+2026-08-10T16:42:49.0386776Z -- Looking for lround
+2026-08-10T16:42:49.1247853Z -- Looking for lround - found
+2026-08-10T16:42:49.1250794Z -- Looking for lroundf
+2026-08-10T16:42:49.2107199Z -- Looking for lroundf - found
+2026-08-10T16:42:49.2109634Z -- Looking for _ltoa
+2026-08-10T16:42:49.2678789Z -- Looking for _ltoa - not found
+2026-08-10T16:42:49.2681229Z -- Looking for malloc
+2026-08-10T16:42:49.3559669Z -- Looking for malloc - found
+2026-08-10T16:42:49.3562018Z -- Looking for memcmp
+2026-08-10T16:42:49.4400612Z -- Looking for memcmp - found
+2026-08-10T16:42:49.4403118Z -- Looking for memcpy
+2026-08-10T16:42:49.5245997Z -- Looking for memcpy - found
+2026-08-10T16:42:49.5248760Z -- Looking for memmove
+2026-08-10T16:42:49.6091052Z -- Looking for memmove - found
+2026-08-10T16:42:49.6094092Z -- Looking for memset
+2026-08-10T16:42:49.6937872Z -- Looking for memset - found
+2026-08-10T16:42:49.6940475Z -- Looking for modf
+2026-08-10T16:42:49.7800023Z -- Looking for modf - found
+2026-08-10T16:42:49.7802643Z -- Looking for modff
+2026-08-10T16:42:49.8669087Z -- Looking for modff - found
+2026-08-10T16:42:49.8672222Z -- Looking for pow
+2026-08-10T16:42:49.9530192Z -- Looking for pow - found
+2026-08-10T16:42:49.9533113Z -- Looking for powf
+2026-08-10T16:42:50.0392796Z -- Looking for powf - found
+2026-08-10T16:42:50.0395895Z -- Looking for putenv
+2026-08-10T16:42:50.1245253Z -- Looking for putenv - found
+2026-08-10T16:42:50.1248617Z -- Looking for rindex
+2026-08-10T16:42:50.2090123Z -- Looking for rindex - found
+2026-08-10T16:42:50.2093306Z -- Looking for round
+2026-08-10T16:42:50.2956902Z -- Looking for round - found
+2026-08-10T16:42:50.2960133Z -- Looking for roundf
+2026-08-10T16:42:50.3849177Z -- Looking for roundf - found
+2026-08-10T16:42:50.3852031Z -- Looking for scalbn
+2026-08-10T16:42:50.4706553Z -- Looking for scalbn - found
+2026-08-10T16:42:50.4709780Z -- Looking for scalbnf
+2026-08-10T16:42:50.5566912Z -- Looking for scalbnf - found
+2026-08-10T16:42:50.5570029Z -- Looking for setenv
+2026-08-10T16:42:50.6417764Z -- Looking for setenv - found
+2026-08-10T16:42:50.6420353Z -- Looking for sin
+2026-08-10T16:42:50.7292391Z -- Looking for sin - found
+2026-08-10T16:42:50.7295886Z -- Looking for sinf
+2026-08-10T16:42:50.8158311Z -- Looking for sinf - found
+2026-08-10T16:42:50.8161141Z -- Looking for sqr
+2026-08-10T16:42:50.8736314Z -- Looking for sqr - not found
+2026-08-10T16:42:50.8739296Z -- Looking for sqrt
+2026-08-10T16:42:50.9604555Z -- Looking for sqrt - found
+2026-08-10T16:42:50.9607521Z -- Looking for sqrtf
+2026-08-10T16:42:51.0471319Z -- Looking for sqrtf - found
+2026-08-10T16:42:51.0474808Z -- Looking for sscanf
+2026-08-10T16:42:51.1317653Z -- Looking for sscanf - found
+2026-08-10T16:42:51.1320620Z -- Looking for strchr
+2026-08-10T16:42:51.2158375Z -- Looking for strchr - found
+2026-08-10T16:42:51.2161443Z -- Looking for strcmp
+2026-08-10T16:42:51.3006430Z -- Looking for strcmp - found
+2026-08-10T16:42:51.3009293Z -- Looking for strlcat
+2026-08-10T16:42:51.3847732Z -- Looking for strlcat - found
+2026-08-10T16:42:51.3850980Z -- Looking for strlcpy
+2026-08-10T16:42:51.4693015Z -- Looking for strlcpy - found
+2026-08-10T16:42:51.4696010Z -- Looking for strlen
+2026-08-10T16:42:51.5543402Z -- Looking for strlen - found
+2026-08-10T16:42:51.5546334Z -- Looking for strncmp
+2026-08-10T16:42:51.6393276Z -- Looking for strncmp - found
+2026-08-10T16:42:51.6396262Z -- Looking for strnlen
+2026-08-10T16:42:51.7235161Z -- Looking for strnlen - found
+2026-08-10T16:42:51.7237851Z -- Looking for strpbrk
+2026-08-10T16:42:51.8077765Z -- Looking for strpbrk - found
+2026-08-10T16:42:51.8080740Z -- Looking for strrchr
+2026-08-10T16:42:51.8922477Z -- Looking for strrchr - found
+2026-08-10T16:42:51.8925381Z -- Looking for strstr
+2026-08-10T16:42:51.9765857Z -- Looking for strstr - found
+2026-08-10T16:42:51.9768934Z -- Looking for strnstr
+2026-08-10T16:42:52.0336199Z -- Looking for strnstr - not found
+2026-08-10T16:42:52.0339449Z -- Looking for strtod
+2026-08-10T16:42:52.1182880Z -- Looking for strtod - found
+2026-08-10T16:42:52.1186380Z -- Looking for strtok_r
+2026-08-10T16:42:52.2028174Z -- Looking for strtok_r - found
+2026-08-10T16:42:52.2030883Z -- Looking for strtol
+2026-08-10T16:42:52.2880925Z -- Looking for strtol - found
+2026-08-10T16:42:52.2884266Z -- Looking for strtoll
+2026-08-10T16:42:52.3736810Z -- Looking for strtoll - found
+2026-08-10T16:42:52.3740071Z -- Looking for strtoul
+2026-08-10T16:42:52.4583156Z -- Looking for strtoul - found
+2026-08-10T16:42:52.4586482Z -- Looking for strtoull
+2026-08-10T16:42:52.5431922Z -- Looking for strtoull - found
+2026-08-10T16:42:52.5434990Z -- Looking for tan
+2026-08-10T16:42:52.6293530Z -- Looking for tan - found
+2026-08-10T16:42:52.6296962Z -- Looking for tanf
+2026-08-10T16:42:52.7157487Z -- Looking for tanf - found
+2026-08-10T16:42:52.7160558Z -- Looking for trunc
+2026-08-10T16:42:52.8024392Z -- Looking for trunc - found
+2026-08-10T16:42:52.8027880Z -- Looking for truncf
+2026-08-10T16:42:52.8894809Z -- Looking for truncf - found
+2026-08-10T16:42:52.8898234Z -- Looking for unsetenv
+2026-08-10T16:42:52.9741328Z -- Looking for unsetenv - found
+2026-08-10T16:42:52.9743863Z -- Looking for vsnprintf
+2026-08-10T16:42:53.0584954Z -- Looking for vsnprintf - found
+2026-08-10T16:42:53.0587837Z -- Looking for vsscanf
+2026-08-10T16:42:53.1430619Z -- Looking for vsscanf - found
+2026-08-10T16:42:53.1433800Z -- Looking for wcsnlen
+2026-08-10T16:42:53.2282940Z -- Looking for wcsnlen - found
+2026-08-10T16:42:53.2286299Z -- Looking for wcscmp
+2026-08-10T16:42:53.3134270Z -- Looking for wcscmp - found
+2026-08-10T16:42:53.3137762Z -- Looking for wcsdup
+2026-08-10T16:42:53.4003393Z -- Looking for wcsdup - found
+2026-08-10T16:42:53.4006220Z -- Looking for wcslcat
+2026-08-10T16:42:53.5676371Z -- Looking for wcslcat - found
+2026-08-10T16:42:53.5678954Z -- Looking for wcslcpy
+2026-08-10T16:42:53.6522078Z -- Looking for wcslcpy - found
+2026-08-10T16:42:53.6524556Z -- Looking for wcslen
+2026-08-10T16:42:53.7371588Z -- Looking for wcslen - found
+2026-08-10T16:42:53.7374109Z -- Looking for wcsncmp
+2026-08-10T16:42:53.8228217Z -- Looking for wcsncmp - found
+2026-08-10T16:42:53.8230705Z -- Looking for wcsstr
+2026-08-10T16:42:53.9078235Z -- Looking for wcsstr - found
+2026-08-10T16:42:53.9080727Z -- Looking for wcstol
+2026-08-10T16:42:53.9923785Z -- Looking for wcstol - found
+2026-08-10T16:42:53.9926665Z -- Looking for strcasestr
+2026-08-10T16:42:54.0782110Z -- Looking for strcasestr - found
+2026-08-10T16:42:54.0785328Z -- Performing Test LIBC_HAS_ISINF
+2026-08-10T16:42:54.1524827Z -- Performing Test LIBC_HAS_ISINF - Success
+2026-08-10T16:42:54.1526044Z -- Performing Test LIBC_ISINF_HANDLES_FLOAT
+2026-08-10T16:42:54.2219474Z -- Performing Test LIBC_ISINF_HANDLES_FLOAT - Success
+2026-08-10T16:42:54.2220253Z -- Performing Test LIBC_HAS_ISINFF
+2026-08-10T16:42:54.2912396Z -- Performing Test LIBC_HAS_ISINFF - Success
+2026-08-10T16:42:54.2913354Z -- Performing Test LIBC_HAS_ISNAN
+2026-08-10T16:42:54.3599386Z -- Performing Test LIBC_HAS_ISNAN - Success
+2026-08-10T16:42:54.3600366Z -- Performing Test LIBC_ISNAN_HANDLES_FLOAT
+2026-08-10T16:42:54.4282652Z -- Performing Test LIBC_ISNAN_HANDLES_FLOAT - Success
+2026-08-10T16:42:54.4283294Z -- Performing Test LIBC_HAS_ISNANF
+2026-08-10T16:42:54.4958033Z -- Performing Test LIBC_HAS_ISNANF - Success
+2026-08-10T16:42:54.4960587Z -- Looking for fdatasync
+2026-08-10T16:42:54.5504177Z -- Looking for fdatasync - found
+2026-08-10T16:42:54.5506531Z -- Looking for gethostname
+2026-08-10T16:42:54.6044498Z -- Looking for gethostname - found
+2026-08-10T16:42:54.6046954Z -- Looking for getpagesize
+2026-08-10T16:42:54.6595133Z -- Looking for getpagesize - found
+2026-08-10T16:42:54.6597496Z -- Looking for sigaction
+2026-08-10T16:42:54.7162165Z -- Looking for sigaction - found
+2026-08-10T16:42:54.7164469Z -- Looking for setjmp
+2026-08-10T16:42:54.7693940Z -- Looking for setjmp - found
+2026-08-10T16:42:54.7696200Z -- Looking for nanosleep
+2026-08-10T16:42:54.8226713Z -- Looking for nanosleep - found
+2026-08-10T16:42:54.8228807Z -- Looking for gmtime_r
+2026-08-10T16:42:54.8762550Z -- Looking for gmtime_r - found
+2026-08-10T16:42:54.8764816Z -- Looking for localtime_r
+2026-08-10T16:42:54.9300614Z -- Looking for localtime_r - found
+2026-08-10T16:42:54.9302560Z -- Looking for nl_langinfo
+2026-08-10T16:42:54.9898689Z -- Looking for nl_langinfo - found
+2026-08-10T16:42:54.9900544Z -- Looking for sysconf
+2026-08-10T16:42:55.0444089Z -- Looking for sysconf - found
+2026-08-10T16:42:55.0446467Z -- Looking for sysctlbyname
+2026-08-10T16:42:55.0729662Z -- Looking for sysctlbyname - not found
+2026-08-10T16:42:55.0731872Z -- Looking for getauxval
+2026-08-10T16:42:55.1294327Z -- Looking for getauxval - found
+2026-08-10T16:42:55.1297060Z -- Looking for elf_aux_info
+2026-08-10T16:42:55.1606016Z -- Looking for elf_aux_info - not found
+2026-08-10T16:42:55.1608040Z -- Looking for poll
+2026-08-10T16:42:55.2199503Z -- Looking for poll - found
+2026-08-10T16:42:55.2201456Z -- Looking for memfd_create
+2026-08-10T16:42:55.2779807Z -- Looking for memfd_create - found
+2026-08-10T16:42:55.2781753Z -- Looking for posix_fallocate
+2026-08-10T16:42:55.3340974Z -- Looking for posix_fallocate - found
+2026-08-10T16:42:55.3342623Z -- Performing Test ICONV_IN_LIBC
+2026-08-10T16:42:55.3877234Z -- Performing Test ICONV_IN_LIBC - Success
+2026-08-10T16:42:55.3879129Z -- Performing Test ICONV_IN_LIBICONV
+2026-08-10T16:42:55.4305663Z -- Performing Test ICONV_IN_LIBICONV - Failed
+2026-08-10T16:42:55.4308605Z -- Performing Test HAVE_SA_SIGACTION
+2026-08-10T16:42:55.4871878Z -- Performing Test HAVE_SA_SIGACTION - Success
+2026-08-10T16:42:55.4873325Z -- Performing Test HAVE_ST_MTIM
+2026-08-10T16:42:55.5484192Z -- Performing Test HAVE_ST_MTIM - Success
+2026-08-10T16:42:55.5528393Z -- Looking for dlopen
+2026-08-10T16:42:55.6061429Z -- Looking for dlopen - found
+2026-08-10T16:42:55.6064434Z -- Performing Test HAVE_O_CLOEXEC
+2026-08-10T16:42:55.6601796Z -- Performing Test HAVE_O_CLOEXEC - Success
+2026-08-10T16:42:55.6683145Z -- Found ALSA: /usr/lib/x86_64-linux-gnu/libasound.so (found version "1.2.11")
+2026-08-10T16:42:55.6693249Z -- dynamic libasound -> libasound.so.2
+2026-08-10T16:42:55.6700227Z -- Checking for module 'jack'
+2026-08-10T16:42:55.6920540Z --   Package 'jack', required by 'virtual:world', not found
+2026-08-10T16:42:55.6929232Z -- Checking for module 'libpipewire-0.3>=0.3.44'
+2026-08-10T16:42:55.6974475Z --   Package 'libpipewire-0.3', required by 'virtual:world', not found
+2026-08-10T16:42:55.6981267Z -- Checking for module 'libpulse>=0.9.15'
+2026-08-10T16:42:55.7067599Z --   Found libpulse, version 16.1
+2026-08-10T16:42:55.7284662Z -- dynamic libpulse -> libpulse.so.0
+2026-08-10T16:42:55.7291567Z -- Checking for module 'sndio'
+2026-08-10T16:42:55.7336893Z --   Package 'sndio', required by 'virtual:world', not found
+2026-08-10T16:42:55.7968298Z -- Found X11: /usr/include
+2026-08-10T16:42:55.7975966Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+2026-08-10T16:42:55.8552157Z -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+2026-08-10T16:42:55.8553516Z -- Looking for gethostbyname
+2026-08-10T16:42:55.9079780Z -- Looking for gethostbyname - found
+2026-08-10T16:42:55.9080351Z -- Looking for connect
+2026-08-10T16:42:55.9600308Z -- Looking for connect - found
+2026-08-10T16:42:55.9600841Z -- Looking for remove
+2026-08-10T16:42:56.0116540Z -- Looking for remove - found
+2026-08-10T16:42:56.0117064Z -- Looking for shmat
+2026-08-10T16:42:56.0641008Z -- Looking for shmat - found
+2026-08-10T16:42:56.0664477Z -- dynamic libX11 -> libX11.so.6
+2026-08-10T16:42:56.0672322Z -- dynamic libXext -> libXext.so.6
+2026-08-10T16:42:56.0680032Z -- dynamic libXcursor -> libXcursor.so.1
+2026-08-10T16:42:56.0687713Z -- dynamic libXi -> libXi.so.6
+2026-08-10T16:42:56.0695896Z -- dynamic libXfixes -> libXfixes.so.3
+2026-08-10T16:42:56.0703486Z -- dynamic libXrandr -> libXrandr.so.2
+2026-08-10T16:42:56.0711561Z -- dynamic libXrender -> libXrender.so.1
+2026-08-10T16:42:56.0738214Z -- Looking for shmat
+2026-08-10T16:42:56.1295218Z -- Looking for shmat - found
+2026-08-10T16:42:56.1298512Z -- Performing Test HAVE_XGENERICEVENT
+2026-08-10T16:42:56.1902348Z -- Performing Test HAVE_XGENERICEVENT - Success
+2026-08-10T16:42:56.1904450Z -- Looking for XkbLookupKeySym
+2026-08-10T16:42:56.2527923Z -- Looking for XkbLookupKeySym - found
+2026-08-10T16:42:56.2530325Z -- Performing Test HAVE_XINPUT2_MULTITOUCH
+2026-08-10T16:42:56.3138823Z -- Performing Test HAVE_XINPUT2_MULTITOUCH - Success
+2026-08-10T16:42:56.3140000Z -- Performing Test HAVE_XFIXES_H
+2026-08-10T16:42:56.3748620Z -- Performing Test HAVE_XFIXES_H - Success
+2026-08-10T16:42:56.3882530Z -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+2026-08-10T16:42:56.3887723Z -- Performing Test HAVE_OPENGL_EGL
+2026-08-10T16:42:56.4449165Z -- Performing Test HAVE_OPENGL_EGL - Success
+2026-08-10T16:42:56.4457703Z -- Checking for module 'libdrm'
+2026-08-10T16:42:56.4506517Z --   Package 'libdrm', required by 'virtual:world', not found
+2026-08-10T16:42:56.4513681Z -- Checking for module 'gbm'
+2026-08-10T16:42:56.4559807Z --   Package 'gbm', required by 'virtual:world', not found
+2026-08-10T16:42:56.4563719Z -- Performing Test HAVE_OPENGL_GLX
+2026-08-10T16:42:56.5379132Z -- Performing Test HAVE_OPENGL_GLX - Success
+2026-08-10T16:42:56.5380423Z -- Performing Test HAVE_OPENGL
+2026-08-10T16:42:56.6110251Z -- Performing Test HAVE_OPENGL - Success
+2026-08-10T16:42:56.6113210Z -- Performing Test HAVE_OPENGLES_V1
+2026-08-10T16:42:56.6668045Z -- Performing Test HAVE_OPENGLES_V1 - Success
+2026-08-10T16:42:56.6669178Z -- Performing Test HAVE_OPENGLES_V2
+2026-08-10T16:42:56.7262361Z -- Performing Test HAVE_OPENGLES_V2 - Success
+2026-08-10T16:42:56.7271113Z -- Checking for modules 'wayland-client>=1.18;wayland-egl;wayland-cursor;egl;xkbcommon>=0.5.0'
+2026-08-10T16:42:56.7427934Z --   Found wayland-client, version 1.22.0
+2026-08-10T16:42:56.7500296Z --   Found wayland-egl, version 18.1.0
+2026-08-10T16:42:56.7569499Z --   Found wayland-cursor, version 1.22.0
+2026-08-10T16:42:56.7638114Z --   Found egl, version 1.5
+2026-08-10T16:42:56.7708088Z --   Found xkbcommon, version 1.6.0
+2026-08-10T16:42:56.8013250Z -- dynamic libwayland-client -> libwayland-client.so.0
+2026-08-10T16:42:56.8020493Z -- dynamic libwayland-egl -> libwayland-egl.so.1
+2026-08-10T16:42:56.8027943Z -- dynamic libwayland-cursor -> libwayland-cursor.so.0
+2026-08-10T16:42:56.8034960Z -- dynamic libxkbcommon -> libxkbcommon.so.0
+2026-08-10T16:42:56.8042143Z -- Checking for module 'libdecor-0'
+2026-08-10T16:42:56.8131358Z --   Found libdecor-0, version 0.2.2
+2026-08-10T16:42:56.8359991Z -- dynamic libdecor-0 -> libdecor-0.so.0
+2026-08-10T16:42:56.8366227Z -- Performing Test HAVE_LINUX_INPUT_H
+2026-08-10T16:42:56.9261718Z -- Performing Test HAVE_LINUX_INPUT_H - Success
+2026-08-10T16:42:56.9262762Z -- Performing Test HAVE_INPUT_KD
+2026-08-10T16:42:57.0298857Z -- Performing Test HAVE_INPUT_KD - Success
+2026-08-10T16:42:57.0299805Z -- Performing Test HAVE_LINUX_VIDEODEV2_H
+2026-08-10T16:42:57.1538185Z -- Performing Test HAVE_LINUX_VIDEODEV2_H - Success
+2026-08-10T16:42:57.1541666Z -- Looking for libudev.h
+2026-08-10T16:42:57.1807982Z -- Looking for libudev.h - not found
+2026-08-10T16:42:57.1809684Z -- Looking for sys/inotify.h
+2026-08-10T16:42:57.2357625Z -- Looking for sys/inotify.h - found
+2026-08-10T16:42:57.2360079Z -- Looking for inotify_init
+2026-08-10T16:42:57.2897429Z -- Looking for inotify_init - found
+2026-08-10T16:42:57.2900604Z -- Looking for inotify_init1
+2026-08-10T16:42:57.3438309Z -- Looking for inotify_init1 - found
+2026-08-10T16:42:57.3441285Z -- Checking for one of the modules 'dbus-1;dbus'
+2026-08-10T16:42:57.3543853Z -- Checking for one of the modules 'ibus-1.0;ibus'
+2026-08-10T16:42:57.3642708Z -- Checking for one of the modules 'liburing-ffi'
+2026-08-10T16:42:57.3697691Z -- Performing Test LIBC_HAS_WORKING_LIBUNWIND
+2026-08-10T16:42:57.3959746Z -- Performing Test LIBC_HAS_WORKING_LIBUNWIND - Failed
+2026-08-10T16:42:57.3962696Z -- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND
+2026-08-10T16:42:57.4221758Z -- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND - Failed
+2026-08-10T16:42:57.4228694Z -- Checking for modules 'libunwind;libunwind-generic'
+2026-08-10T16:42:57.4275294Z --   Package 'libunwind', required by 'virtual:world', not found
+2026-08-10T16:42:57.4317819Z --   Package 'libunwind-generic', required by 'virtual:world', not found
+2026-08-10T16:42:57.4372385Z -- Checking for module 'libusb-1.0>=1.0.16'
+2026-08-10T16:42:57.4417484Z --   Package 'libusb-1.0', required by 'virtual:world', not found
+2026-08-10T16:42:57.4449028Z -- Could NOT find LibUSB (missing: LibUSB_LIBRARY LibUSB_INCLUDE_PATH) (found version "LibUSB_VERSION-NOTFOUND")
+2026-08-10T16:42:57.4455213Z -- Performing Test HAVE_PTHREADS
+2026-08-10T16:42:57.5047023Z -- Performing Test HAVE_PTHREADS - Success
+2026-08-10T16:42:57.5050633Z -- Performing Test HAVE_RECURSIVE_MUTEXES
+2026-08-10T16:42:57.5619493Z -- Performing Test HAVE_RECURSIVE_MUTEXES - Success
+2026-08-10T16:42:57.5621017Z -- Performing Test HAVE_PTHREADS_SEM
+2026-08-10T16:42:57.6204181Z -- Performing Test HAVE_PTHREADS_SEM - Success
+2026-08-10T16:42:57.6206095Z -- Performing Test COMPILER_HAS_SEM_TIMEDWAIT
+2026-08-10T16:42:57.6795317Z -- Performing Test COMPILER_HAS_SEM_TIMEDWAIT - Success
+2026-08-10T16:42:57.6797024Z -- Looking for pthread.h
+2026-08-10T16:42:57.7364892Z -- Looking for pthread.h - found
+2026-08-10T16:42:57.7366280Z -- Looking for pthread_np.h
+2026-08-10T16:42:57.7630468Z -- Looking for pthread_np.h - not found
+2026-08-10T16:42:57.7631975Z -- Performing Test HAVE_PTHREAD_SETNAME_NP
+2026-08-10T16:42:57.8199684Z -- Performing Test HAVE_PTHREAD_SETNAME_NP - Success
+2026-08-10T16:42:57.8203711Z -- Looking for clock_gettime in c
+2026-08-10T16:42:57.8750935Z -- Looking for clock_gettime in c - found
+2026-08-10T16:42:57.8765726Z -- Performing Test HAVE_ENABLE_NEW_DTAGS
+2026-08-10T16:42:57.9276450Z -- Performing Test HAVE_ENABLE_NEW_DTAGS - Success
+2026-08-10T16:42:57.9282685Z -- Performing Test HAVE_POSIX_SPAWN
+2026-08-10T16:42:57.9870439Z -- Performing Test HAVE_POSIX_SPAWN - Success
+2026-08-10T16:42:58.0247117Z -- 
+2026-08-10T16:42:58.0247534Z -- SDL3 was configured with the following options:
+2026-08-10T16:42:58.0247885Z -- 
+2026-08-10T16:42:58.0248099Z -- Platform: Linux-6.17.0-1020-azure
+2026-08-10T16:42:58.0248388Z -- 64-bit:   TRUE
+2026-08-10T16:42:58.0248759Z -- Compiler: /usr/bin/cc
+2026-08-10T16:42:58.0249166Z -- Revision: SDL3-3.2.16-release-3.2.16
+2026-08-10T16:42:58.0249601Z -- Vendor:   
+2026-08-10T16:42:58.0249900Z -- 
+2026-08-10T16:42:58.0250179Z -- Subsystems:
+2026-08-10T16:42:58.0250495Z --   Audio:    ON
+2026-08-10T16:42:58.0250809Z --   Video:    ON
+2026-08-10T16:42:58.0251120Z --   GPU:      ON
+2026-08-10T16:42:58.0251433Z --   Render:   ON
+2026-08-10T16:42:58.0251746Z --   Camera:   ON
+2026-08-10T16:42:58.0252060Z --   Joystick: ON
+2026-08-10T16:42:58.0252375Z --   Haptic:   ON
+2026-08-10T16:42:58.0252864Z --   Hidapi:   ON
+2026-08-10T16:42:58.0253533Z --   Power:    ON
+2026-08-10T16:42:58.0254347Z --   Sensor:   ON
+2026-08-10T16:42:58.0255371Z --   Dialog:   ON
+2026-08-10T16:42:58.0255891Z -- 
+2026-08-10T16:42:58.0256199Z -- Options:
+2026-08-10T16:42:58.0265816Z --   SDL_ALSA                    (Wanted: ON): ON
+2026-08-10T16:42:58.0266469Z --   SDL_ALSA_SHARED             (Wanted: ON): ON
+2026-08-10T16:42:58.0267374Z --   SDL_ALTIVEC                 (Wanted: OFF): OFF
+2026-08-10T16:42:58.0268164Z --   SDL_ARMNEON                 (Wanted: OFF): OFF
+2026-08-10T16:42:58.0268890Z --   SDL_ASAN                    (Wanted: OFF): OFF
+2026-08-10T16:42:58.0269708Z --   SDL_ASSEMBLY                (Wanted: ON): ON
+2026-08-10T16:42:58.0270550Z --   SDL_ASSERTIONS              (Wanted: auto): auto
+2026-08-10T16:42:58.0271309Z --   SDL_AVX                     (Wanted: ON): ON
+2026-08-10T16:42:58.0272177Z --   SDL_AVX2                    (Wanted: ON): ON
+2026-08-10T16:42:58.0273046Z --   SDL_AVX512F                 (Wanted: ON): ON
+2026-08-10T16:42:58.0273810Z --   SDL_BACKGROUNDING_SIGNAL    (Wanted: OFF): OFF
+2026-08-10T16:42:58.0274668Z --   SDL_CCACHE                  (Wanted: OFF): OFF
+2026-08-10T16:42:58.0275761Z --   SDL_CLANG_TIDY              (Wanted: OFF): OFF
+2026-08-10T16:42:58.0276616Z --   SDL_CLOCK_GETTIME           (Wanted: ON): ON
+2026-08-10T16:42:58.0277364Z --   SDL_COCOA                   (Wanted: OFF): OFF
+2026-08-10T16:42:58.0278161Z --   SDL_DBUS                    (Wanted: ON): OFF
+2026-08-10T16:42:58.0278989Z --   SDL_DEPS_SHARED             (Wanted: ON): OFF
+2026-08-10T16:42:58.0279729Z --   SDL_DIRECTX                 (Wanted: OFF): OFF
+2026-08-10T16:42:58.0280594Z --   SDL_DISKAUDIO               (Wanted: ON): ON
+2026-08-10T16:42:58.0281458Z --   SDL_DUMMYAUDIO              (Wanted: ON): ON
+2026-08-10T16:42:58.0282203Z --   SDL_DUMMYCAMERA             (Wanted: ON): ON
+2026-08-10T16:42:58.0283006Z --   SDL_DUMMYVIDEO              (Wanted: ON): ON
+2026-08-10T16:42:58.0283764Z --   SDL_EXAMPLES                (Wanted: OFF): OFF
+2026-08-10T16:42:58.0284467Z --   SDL_EXAMPLES_LINK_SHARED    (Wanted: ON): OFF
+2026-08-10T16:42:58.0285347Z --   SDL_FOREGROUNDING_SIGNAL    (Wanted: OFF): OFF
+2026-08-10T16:42:58.0286399Z --   SDL_GCC_ATOMICS             (Wanted: ON): ON
+2026-08-10T16:42:58.0287132Z --   SDL_GPU_DXVK                (Wanted: OFF): OFF
+2026-08-10T16:42:58.0287890Z --   SDL_HIDAPI                  (Wanted: ON): ON
+2026-08-10T16:42:58.0288684Z --   SDL_HIDAPI_JOYSTICK         (Wanted: ON): ON
+2026-08-10T16:42:58.0289480Z --   SDL_HIDAPI_LIBUSB           (Wanted: ON): OFF
+2026-08-10T16:42:58.0290197Z --   SDL_HIDAPI_LIBUSB_SHARED    (Wanted: ON): OFF
+2026-08-10T16:42:58.0291000Z --   SDL_IBUS                    (Wanted: ON): OFF
+2026-08-10T16:42:58.0291755Z --   SDL_INSTALL                 (Wanted: ON): OFF
+2026-08-10T16:42:58.0292565Z --   SDL_INSTALL_TESTS           (Wanted: OFF): OFF
+2026-08-10T16:42:58.0293290Z --   SDL_JACK                    (Wanted: ON): OFF
+2026-08-10T16:42:58.0294111Z --   SDL_JACK_SHARED             (Wanted: ON): OFF
+2026-08-10T16:42:58.0294845Z --   SDL_KMSDRM                  (Wanted: ON): OFF
+2026-08-10T16:42:58.0295919Z --   SDL_KMSDRM_SHARED           (Wanted: ON): OFF
+2026-08-10T16:42:58.0296663Z --   SDL_LASX                    (Wanted: OFF): OFF
+2026-08-10T16:42:58.0297509Z --   SDL_LIBC                    (Wanted: ON): ON
+2026-08-10T16:42:58.0298228Z --   SDL_LIBICONV                (Wanted: OFF): OFF
+2026-08-10T16:42:58.0299043Z --   SDL_LIBUDEV                 (Wanted: ON): OFF
+2026-08-10T16:42:58.0299755Z --   SDL_LIBURING                (Wanted: ON): OFF
+2026-08-10T16:42:58.0300504Z --   SDL_LSX                     (Wanted: OFF): OFF
+2026-08-10T16:42:58.0301288Z --   SDL_METAL                   (Wanted: OFF): OFF
+2026-08-10T16:42:58.0302080Z --   SDL_MMX                     (Wanted: ON): ON
+2026-08-10T16:42:58.0302876Z --   SDL_OFFSCREEN               (Wanted: ON): ON
+2026-08-10T16:42:58.0310128Z --   SDL_OPENGL                  (Wanted: ON): ON
+2026-08-10T16:42:58.0310700Z --   SDL_OPENGLES                (Wanted: ON): ON
+2026-08-10T16:42:58.0311483Z --   SDL_OPENVR                  (Wanted: OFF): OFF
+2026-08-10T16:42:58.0312018Z --   SDL_OSS                     (Wanted: OFF): OFF
+2026-08-10T16:42:58.0312765Z --   SDL_PIPEWIRE                (Wanted: ON): OFF
+2026-08-10T16:42:58.0313322Z --   SDL_PIPEWIRE_SHARED         (Wanted: ON): OFF
+2026-08-10T16:42:58.0313854Z --   SDL_PTHREADS                (Wanted: ON): ON
+2026-08-10T16:42:58.0314374Z --   SDL_PTHREADS_SEM            (Wanted: ON): ON
+2026-08-10T16:42:58.0314885Z --   SDL_PULSEAUDIO              (Wanted: ON): ON
+2026-08-10T16:42:58.0315685Z --   SDL_PULSEAUDIO_SHARED       (Wanted: ON): ON
+2026-08-10T16:42:58.0316219Z --   SDL_RENDER_D3D              (Wanted: OFF): OFF
+2026-08-10T16:42:58.0316748Z --   SDL_RENDER_D3D11            (Wanted: OFF): OFF
+2026-08-10T16:42:58.0317263Z --   SDL_RENDER_D3D12            (Wanted: OFF): OFF
+2026-08-10T16:42:58.0317782Z --   SDL_RENDER_GPU              (Wanted: ON): ON
+2026-08-10T16:42:58.0318296Z --   SDL_RENDER_METAL            (Wanted: ON): OFF
+2026-08-10T16:42:58.0318821Z --   SDL_RENDER_VULKAN           (Wanted: ON): ON
+2026-08-10T16:42:58.0319341Z --   SDL_ROCKCHIP                (Wanted: OFF): OFF
+2026-08-10T16:42:58.0319671Z --   SDL_RPATH                   (Wanted: ON): ON
+2026-08-10T16:42:58.0319991Z --   SDL_RPI                     (Wanted: OFF): OFF
+2026-08-10T16:42:58.0320296Z --   SDL_SNDIO                   (Wanted: ON): OFF
+2026-08-10T16:42:58.0320598Z --   SDL_SNDIO_SHARED            (Wanted: ON): OFF
+2026-08-10T16:42:58.0325722Z --   SDL_SSE                     (Wanted: ON): ON
+2026-08-10T16:42:58.0336038Z --   SDL_SSE2                    (Wanted: ON): ON
+2026-08-10T16:42:58.0336538Z --   SDL_SSE3                    (Wanted: ON): ON
+2026-08-10T16:42:58.0336881Z --   SDL_SSE4_1                  (Wanted: ON): ON
+2026-08-10T16:42:58.0337175Z --   SDL_SSE4_2                  (Wanted: ON): ON
+2026-08-10T16:42:58.0337485Z --   SDL_SYSTEM_ICONV            (Wanted: ON): ON
+2026-08-10T16:42:58.0337788Z --   SDL_TESTS                   (Wanted: OFF): OFF
+2026-08-10T16:42:58.0338113Z --   SDL_TESTS_LINK_SHARED       (Wanted: ON): OFF
+2026-08-10T16:42:58.0338439Z --   SDL_UNINSTALL               (Wanted: ON): OFF
+2026-08-10T16:42:58.0338740Z --   SDL_VIRTUAL_JOYSTICK        (Wanted: ON): ON
+2026-08-10T16:42:58.0339037Z --   SDL_VIVANTE                 (Wanted: OFF): OFF
+2026-08-10T16:42:58.0339328Z --   SDL_VULKAN                  (Wanted: ON): ON
+2026-08-10T16:42:58.0339618Z --   SDL_WASAPI                  (Wanted: OFF): OFF
+2026-08-10T16:42:58.0339916Z --   SDL_WAYLAND                 (Wanted: ON): ON
+2026-08-10T16:42:58.0340215Z --   SDL_WAYLAND_LIBDECOR        (Wanted: ON): ON
+2026-08-10T16:42:58.0340511Z --   SDL_WAYLAND_LIBDECOR_SHARED (Wanted: ON): ON
+2026-08-10T16:42:58.0340811Z --   SDL_WAYLAND_SHARED          (Wanted: ON): ON
+2026-08-10T16:42:58.0341094Z --   SDL_X11                     (Wanted: ON): ON
+2026-08-10T16:42:58.0341377Z --   SDL_X11_SHARED              (Wanted: ON): ON
+2026-08-10T16:42:58.0341660Z --   SDL_X11_XCURSOR             (Wanted: ON): ON
+2026-08-10T16:42:58.0341949Z --   SDL_X11_XDBE                (Wanted: ON): ON
+2026-08-10T16:42:58.0342242Z --   SDL_X11_XFIXES              (Wanted: ON): ON
+2026-08-10T16:42:58.0342524Z --   SDL_X11_XINPUT              (Wanted: ON): ON
+2026-08-10T16:42:58.0342810Z --   SDL_X11_XRANDR              (Wanted: ON): ON
+2026-08-10T16:42:58.0343103Z --   SDL_X11_XSCRNSAVER          (Wanted: ON): OFF
+2026-08-10T16:42:58.0343394Z --   SDL_X11_XSHAPE              (Wanted: ON): ON
+2026-08-10T16:42:58.0343673Z --   SDL_X11_XSYNC               (Wanted: ON): ON
+2026-08-10T16:42:58.0343958Z --   SDL_XINPUT                  (Wanted: OFF): OFF
+2026-08-10T16:42:58.0344218Z -- 
+2026-08-10T16:42:58.0344398Z --  Build Shared Library: ON
+2026-08-10T16:42:58.0344634Z --  Build Static Library: OFF
+2026-08-10T16:42:58.0344848Z -- 
+2026-08-10T16:42:58.0345234Z -- If something was not detected, although the libraries
+2026-08-10T16:42:58.0345598Z -- were installed, then make sure you have set the
+2026-08-10T16:42:58.0346194Z -- CMAKE_C_FLAGS and CMAKE_PREFIX_PATH CMake variables correctly.
+2026-08-10T16:42:58.0346522Z -- 
+2026-08-10T16:42:58.0347399Z -- Configuring done (16.8s)
+2026-08-10T16:42:58.1000227Z -- Generating done (0.1s)
+2026-08-10T16:42:58.1012937Z -- Build files have been written to: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-build
+2026-08-10T16:42:58.1436588Z [  0%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_assert.c.o
+2026-08-10T16:42:58.1437836Z [  0%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_atan2.c.o
+2026-08-10T16:42:58.1440379Z [  0%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_common.c.o
+2026-08-10T16:42:58.1466325Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_compare.c.o
+2026-08-10T16:42:58.2446328Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_crc32.c.o
+2026-08-10T16:42:58.2885544Z [  1%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_font.c.o
+2026-08-10T16:42:58.3592987Z [  2%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_exp.c.o
+2026-08-10T16:42:58.4186277Z [  2%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_fmod.c.o
+2026-08-10T16:42:58.7346312Z [  2%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_fuzzer.c.o
+2026-08-10T16:42:58.9126254Z [  2%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_log.c.o
+2026-08-10T16:42:58.9466133Z [  3%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_harness.c.o
+2026-08-10T16:42:58.9676160Z [  3%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_log10.c.o
+2026-08-10T16:42:59.0586257Z [  3%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_log.c.o
+2026-08-10T16:42:59.1826202Z [  4%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_pow.c.o
+2026-08-10T16:42:59.2457045Z [  4%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_md5.c.o
+2026-08-10T16:42:59.4566717Z [  5%] Building C object CMakeFiles/SDL3_test.dir/src/test/SDL_test_memory.c.o
+2026-08-10T16:42:59.4996163Z [  5%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_rem_pio2.c.o
+2026-08-10T16:42:59.5656590Z [  5%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/e_sqrt.c.o
+2026-08-10T16:42:59.6126057Z [  5%] Linking C static library libSDL3_test.a
+2026-08-10T16:42:59.7366068Z [  5%] Built target SDL3_test
+2026-08-10T16:42:59.7382235Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_cos.c.o
+2026-08-10T16:42:59.8476211Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_rem_pio2.c.o
+2026-08-10T16:43:00.1056298Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_sin.c.o
+2026-08-10T16:43:00.1716224Z [  6%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/k_tan.c.o
+2026-08-10T16:43:00.3065996Z [  7%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_atan.c.o
+2026-08-10T16:43:00.6276193Z [  7%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_copysign.c.o
+2026-08-10T16:43:00.6825939Z [  7%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_cos.c.o
+2026-08-10T16:43:00.7446051Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_fabs.c.o
+2026-08-10T16:43:00.8736074Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_floor.c.o
+2026-08-10T16:43:01.1826076Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isinf.c.o
+2026-08-10T16:43:01.2336301Z [  8%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isinff.c.o
+2026-08-10T16:43:01.2976265Z [  9%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isnan.c.o
+2026-08-10T16:43:01.4576051Z [  9%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_isnanf.c.o
+2026-08-10T16:43:01.7326226Z [  9%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_modf.c.o
+2026-08-10T16:43:01.7846050Z [ 10%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_scalbn.c.o
+2026-08-10T16:43:01.8596264Z [ 10%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_sin.c.o
+2026-08-10T16:43:02.0196159Z [ 10%] Building C object CMakeFiles/SDL_uclibc.dir/src/libm/s_tan.c.o
+2026-08-10T16:43:02.5012108Z [ 11%] Linking C static library libSDL_uclibc.a
+2026-08-10T16:43:02.5974065Z [ 11%] Built target SDL_uclibc
+2026-08-10T16:43:02.6073507Z [ 11%] Generating wayland-generated-protocols/alpha-modifier-v1-client-protocol.h
+2026-08-10T16:43:02.6077212Z [ 11%] Generating wayland-generated-protocols/color-management-v1-client-protocol.h
+2026-08-10T16:43:02.6082957Z [ 11%] Generating wayland-generated-protocols/xdg-toplevel-icon-v1-client-protocol.h
+2026-08-10T16:43:02.6096970Z [ 12%] Generating wayland-generated-protocols/cursor-shape-v1-client-protocol.h
+2026-08-10T16:43:02.6156096Z [ 12%] Generating wayland-generated-protocols/fractional-scale-v1-client-protocol.h
+2026-08-10T16:43:02.6195569Z [ 12%] Generating wayland-generated-protocols/frog-color-management-v1-client-protocol.h
+2026-08-10T16:43:02.6216427Z [ 13%] Generating wayland-generated-protocols/idle-inhibit-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6229635Z [ 13%] Generating wayland-generated-protocols/input-timestamps-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6236677Z [ 13%] Generating wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6238244Z [ 14%] Generating wayland-generated-protocols/pointer-constraints-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6250814Z [ 14%] Generating wayland-generated-protocols/primary-selection-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6265942Z [ 14%] Generating wayland-generated-protocols/tablet-v2-client-protocol.h
+2026-08-10T16:43:02.6269270Z [ 14%] Generating wayland-generated-protocols/relative-pointer-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6284320Z [ 15%] Generating wayland-generated-protocols/text-input-unstable-v3-client-protocol.h
+2026-08-10T16:43:02.6322368Z [ 15%] Generating wayland-generated-protocols/viewporter-client-protocol.h
+2026-08-10T16:43:02.6325620Z [ 15%] Generating wayland-generated-protocols/wayland-client-protocol.h
+2026-08-10T16:43:02.6353175Z [ 16%] Generating wayland-generated-protocols/xdg-activation-v1-client-protocol.h
+2026-08-10T16:43:02.6360790Z [ 16%] Generating wayland-generated-protocols/xdg-decoration-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6385844Z [ 16%] Generating wayland-generated-protocols/xdg-dialog-v1-client-protocol.h
+2026-08-10T16:43:02.6423935Z [ 16%] Generating wayland-generated-protocols/xdg-foreign-unstable-v2-client-protocol.h
+2026-08-10T16:43:02.6430429Z [ 17%] Generating wayland-generated-protocols/xdg-output-unstable-v1-client-protocol.h
+2026-08-10T16:43:02.6448769Z [ 17%] Generating wayland-generated-protocols/xdg-shell-client-protocol.h
+2026-08-10T16:43:02.6483601Z [ 17%] Generating wayland-generated-protocols/xdg-toplevel-icon-v1-protocol.c
+2026-08-10T16:43:02.6490024Z [ 17%] Generating wayland-generated-protocols/alpha-modifier-v1-protocol.c
+2026-08-10T16:43:02.6491086Z [ 17%] Generating wayland-generated-protocols/color-management-v1-protocol.c
+2026-08-10T16:43:02.6529982Z [ 17%] Generating wayland-generated-protocols/cursor-shape-v1-protocol.c
+2026-08-10T16:43:02.6545830Z [ 18%] Generating wayland-generated-protocols/fractional-scale-v1-protocol.c
+2026-08-10T16:43:02.6550024Z [ 18%] Generating wayland-generated-protocols/frog-color-management-v1-protocol.c
+2026-08-10T16:43:02.6592443Z [ 18%] Generating wayland-generated-protocols/idle-inhibit-unstable-v1-protocol.c
+2026-08-10T16:43:02.6593725Z [ 19%] Generating wayland-generated-protocols/input-timestamps-unstable-v1-protocol.c
+2026-08-10T16:43:02.6597733Z [ 19%] Generating wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-protocol.c
+2026-08-10T16:43:02.6608755Z [ 19%] Generating wayland-generated-protocols/pointer-constraints-unstable-v1-protocol.c
+2026-08-10T16:43:02.6670871Z [ 19%] Generating wayland-generated-protocols/primary-selection-unstable-v1-protocol.c
+2026-08-10T16:43:02.6673487Z [ 20%] Generating wayland-generated-protocols/relative-pointer-unstable-v1-protocol.c
+2026-08-10T16:43:02.6674837Z [ 20%] Generating wayland-generated-protocols/text-input-unstable-v3-protocol.c
+2026-08-10T16:43:02.6686581Z [ 20%] Generating wayland-generated-protocols/tablet-v2-protocol.c
+2026-08-10T16:43:02.6726302Z [ 21%] Generating wayland-generated-protocols/viewporter-protocol.c
+2026-08-10T16:43:02.6727570Z [ 21%] Generating wayland-generated-protocols/wayland-protocol.c
+2026-08-10T16:43:02.6756154Z [ 21%] Generating wayland-generated-protocols/xdg-activation-v1-protocol.c
+2026-08-10T16:43:02.6774022Z [ 21%] Generating wayland-generated-protocols/xdg-decoration-unstable-v1-protocol.c
+2026-08-10T16:43:02.6786211Z [ 22%] Generating wayland-generated-protocols/xdg-dialog-v1-protocol.c
+2026-08-10T16:43:02.6815700Z [ 22%] Generating wayland-generated-protocols/xdg-foreign-unstable-v2-protocol.c
+2026-08-10T16:43:02.6843765Z [ 22%] Generating wayland-generated-protocols/xdg-output-unstable-v1-protocol.c
+2026-08-10T16:43:02.6844882Z [ 23%] Generating wayland-generated-protocols/xdg-shell-protocol.c
+2026-08-10T16:43:02.7036973Z [ 24%] Building C object CMakeFiles/SDL3-shared.dir/cmake_pch.h.gch
+2026-08-10T16:43:02.7044676Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/dynapi/SDL_dynapi.c.o
+2026-08-10T16:43:03.5293547Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_assert.c.o
+2026-08-10T16:43:03.5296465Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL.c.o
+2026-08-10T16:43:03.5297458Z [ 25%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_error.c.o
+2026-08-10T16:43:03.5996091Z [ 26%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_guid.c.o
+2026-08-10T16:43:03.6536388Z [ 26%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_hashtable.c.o
+2026-08-10T16:43:03.6941930Z [ 26%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_hints.c.o
+2026-08-10T16:43:03.7806235Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_list.c.o
+2026-08-10T16:43:03.8456276Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_log.c.o
+2026-08-10T16:43:03.8508944Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_properties.c.o
+2026-08-10T16:43:03.8591667Z [ 27%] Building C object CMakeFiles/SDL3-shared.dir/src/SDL_utils.c.o
+2026-08-10T16:43:04.0496317Z [ 28%] Building C object CMakeFiles/SDL3-shared.dir/src/atomic/SDL_atomic.c.o
+2026-08-10T16:43:04.0627527Z [ 28%] Building C object CMakeFiles/SDL3-shared.dir/src/atomic/SDL_spinlock.c.o
+2026-08-10T16:43:04.1136288Z [ 28%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audio.c.o
+2026-08-10T16:43:04.1286059Z [ 29%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audiocvt.c.o
+2026-08-10T16:43:04.1786006Z [ 29%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audiodev.c.o
+2026-08-10T16:43:04.2266171Z [ 29%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audioqueue.c.o
+2026-08-10T16:43:04.4506376Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audioresample.c.o
+2026-08-10T16:43:04.8026140Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_audiotypecvt.c.o
+2026-08-10T16:43:04.8766058Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_mixer.c.o
+2026-08-10T16:43:05.0776043Z [ 30%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/SDL_wave.c.o
+2026-08-10T16:43:05.3296330Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/camera/SDL_camera.c.o
+2026-08-10T16:43:05.5996551Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/core/SDL_core_unsupported.c.o
+2026-08-10T16:43:05.6806082Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/cpuinfo/SDL_cpuinfo.c.o
+2026-08-10T16:43:05.7616455Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_categories.c.o
+2026-08-10T16:43:05.8026254Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_clipboardevents.c.o
+2026-08-10T16:43:05.8496229Z [ 31%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_displayevents.c.o
+2026-08-10T16:43:05.8535913Z [ 32%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_dropevents.c.o
+2026-08-10T16:43:05.8716059Z [ 32%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_events.c.o
+2026-08-10T16:43:05.9206353Z [ 32%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_eventwatch.c.o
+2026-08-10T16:43:05.9726144Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keyboard.c.o
+2026-08-10T16:43:06.0136294Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keymap.c.o
+2026-08-10T16:43:06.1946305Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keysym_to_keycode.c.o
+2026-08-10T16:43:06.2552972Z [ 33%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_keysym_to_scancode.c.o
+2026-08-10T16:43:06.3236098Z [ 34%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_mouse.c.o
+2026-08-10T16:43:06.3845763Z [ 34%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_pen.c.o
+2026-08-10T16:43:06.4936115Z [ 34%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_quit.c.o
+2026-08-10T16:43:06.5836258Z [ 35%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_scancode_tables.c.o
+2026-08-10T16:43:06.6126380Z [ 35%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_touch.c.o
+2026-08-10T16:43:06.6496321Z [ 35%] Building C object CMakeFiles/SDL3-shared.dir/src/events/SDL_windowevents.c.o
+2026-08-10T16:43:06.7796143Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/events/imKStoUCS.c.o
+2026-08-10T16:43:06.8121606Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/filesystem/SDL_filesystem.c.o
+2026-08-10T16:43:06.8576295Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/gpu/SDL_gpu.c.o
+2026-08-10T16:43:06.8973949Z [ 36%] Building C object CMakeFiles/SDL3-shared.dir/src/haptic/SDL_haptic.c.o
+2026-08-10T16:43:07.0086262Z [ 37%] Building C object CMakeFiles/SDL3-shared.dir/src/hidapi/SDL_hidapi.c.o
+2026-08-10T16:43:07.1587668Z [ 37%] Building C object CMakeFiles/SDL3-shared.dir/src/io/SDL_asyncio.c.o
+2026-08-10T16:43:07.1905946Z [ 37%] Building C object CMakeFiles/SDL3-shared.dir/src/io/SDL_iostream.c.o
+2026-08-10T16:43:07.3168030Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/io/generic/SDL_asyncio_generic.c.o
+2026-08-10T16:43:07.4716379Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/SDL_gamepad.c.o
+2026-08-10T16:43:07.5386259Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/SDL_joystick.c.o
+2026-08-10T16:43:07.7236398Z [ 38%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/SDL_steam_virtual_gamepad.c.o
+2026-08-10T16:43:07.8516324Z [ 39%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/controller_type.c.o
+2026-08-10T16:43:07.9386179Z [ 39%] Building C object CMakeFiles/SDL3-shared.dir/src/locale/SDL_locale.c.o
+2026-08-10T16:43:07.9596324Z [ 39%] Building C object CMakeFiles/SDL3-shared.dir/src/main/SDL_main_callbacks.c.o
+2026-08-10T16:43:08.0186113Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/main/SDL_runapp.c.o
+2026-08-10T16:43:08.0361041Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/misc/SDL_url.c.o
+2026-08-10T16:43:08.0706259Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/power/SDL_power.c.o
+2026-08-10T16:43:08.0924014Z [ 40%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_d3dmath.c.o
+2026-08-10T16:43:08.1286109Z [ 41%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_render.c.o
+2026-08-10T16:43:08.1886143Z [ 41%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_render_unsupported.c.o
+2026-08-10T16:43:08.2346941Z [ 41%] Building C object CMakeFiles/SDL3-shared.dir/src/render/SDL_yuv_sw.c.o
+2026-08-10T16:43:08.4276354Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d/SDL_render_d3d.c.o
+2026-08-10T16:43:08.4745938Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d/SDL_shaders_d3d.c.o
+2026-08-10T16:43:08.4752343Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d11/SDL_render_d3d11.c.o
+2026-08-10T16:43:08.5226281Z [ 42%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d11/SDL_shaders_d3d11.c.o
+2026-08-10T16:43:08.5255972Z [ 43%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d12/SDL_render_d3d12.c.o
+2026-08-10T16:43:08.5696343Z [ 43%] Building C object CMakeFiles/SDL3-shared.dir/src/render/direct3d12/SDL_shaders_d3d12.c.o
+2026-08-10T16:43:08.5726118Z [ 43%] Building C object CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_pipeline_gpu.c.o
+2026-08-10T16:43:08.6336275Z [ 44%] Building C object CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_render_gpu.c.o
+2026-08-10T16:43:08.6766490Z [ 44%] Building C object CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_shaders_gpu.c.o
+2026-08-10T16:43:08.7774773Z [ 44%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengl/SDL_render_gl.c.o
+2026-08-10T16:43:08.9396720Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengl/SDL_shaders_gl.c.o
+2026-08-10T16:43:08.9946337Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengles2/SDL_render_gles2.c.o
+2026-08-10T16:43:09.0956327Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/opengles2/SDL_shaders_gles2.c.o
+2026-08-10T16:43:09.1766343Z [ 45%] Building C object CMakeFiles/SDL3-shared.dir/src/render/ps2/SDL_render_ps2.c.o
+2026-08-10T16:43:09.2256775Z [ 46%] Building C object CMakeFiles/SDL3-shared.dir/src/render/psp/SDL_render_psp.c.o
+2026-08-10T16:43:09.2732689Z [ 46%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_blendfillrect.c.o
+2026-08-10T16:43:09.3610546Z [ 46%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_blendline.c.o
+2026-08-10T16:43:09.9626443Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_blendpoint.c.o
+2026-08-10T16:43:10.3516171Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_drawline.c.o
+2026-08-10T16:43:10.4036192Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_drawpoint.c.o
+2026-08-10T16:43:10.5766384Z [ 47%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_render_sw.c.o
+2026-08-10T16:43:10.6336087Z [ 48%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_rotate.c.o
+2026-08-10T16:43:11.0236407Z [ 48%] Building C object CMakeFiles/SDL3-shared.dir/src/render/software/SDL_triangle.c.o
+2026-08-10T16:43:11.1676236Z [ 48%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vitagxm/SDL_render_vita_gxm.c.o
+2026-08-10T16:43:11.2156401Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vitagxm/SDL_render_vita_gxm_memory.c.o
+2026-08-10T16:43:11.3116314Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vitagxm/SDL_render_vita_gxm_tools.c.o
+2026-08-10T16:43:11.4116112Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vulkan/SDL_render_vulkan.c.o
+2026-08-10T16:43:12.1788269Z [ 49%] Building C object CMakeFiles/SDL3-shared.dir/src/render/vulkan/SDL_shaders_vulkan.c.o
+2026-08-10T16:43:12.2466142Z [ 50%] Building C object CMakeFiles/SDL3-shared.dir/src/sensor/SDL_sensor.c.o
+2026-08-10T16:43:12.5196071Z [ 50%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_crc16.c.o
+2026-08-10T16:43:12.6096101Z [ 50%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_crc32.c.o
+2026-08-10T16:43:12.6836195Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_getenv.c.o
+2026-08-10T16:43:12.7676217Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_iconv.c.o
+2026-08-10T16:43:12.8176070Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_malloc.c.o
+2026-08-10T16:43:12.8477029Z [ 51%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_memcpy.c.o
+2026-08-10T16:43:12.9079849Z [ 52%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_memmove.c.o
+2026-08-10T16:43:12.9126102Z [ 52%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_memset.c.o
+2026-08-10T16:43:12.9515960Z [ 52%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_mslibc.c.o
+2026-08-10T16:43:12.9585914Z [ 53%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_murmur3.c.o
+2026-08-10T16:43:12.9993857Z [ 53%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_qsort.c.o
+2026-08-10T16:43:13.0230845Z [ 53%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_random.c.o
+2026-08-10T16:43:13.0250514Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_stdlib.c.o
+2026-08-10T16:43:13.0998475Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_string.c.o
+2026-08-10T16:43:13.1736063Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/stdlib/SDL_strtokr.c.o
+2026-08-10T16:43:13.2285683Z [ 54%] Building C object CMakeFiles/SDL3-shared.dir/src/storage/SDL_storage.c.o
+2026-08-10T16:43:13.2565991Z [ 55%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/SDL_thread.c.o
+2026-08-10T16:43:13.4126219Z [ 55%] Building C object CMakeFiles/SDL3-shared.dir/src/time/SDL_time.c.o
+2026-08-10T16:43:13.4405515Z [ 55%] Building C object CMakeFiles/SDL3-shared.dir/src/timer/SDL_timer.c.o
+2026-08-10T16:43:13.4455942Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_RLEaccel.c.o
+2026-08-10T16:43:13.5286238Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit.c.o
+2026-08-10T16:43:13.5626121Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_0.c.o
+2026-08-10T16:43:13.6376335Z [ 56%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_1.c.o
+2026-08-10T16:43:13.6692166Z [ 57%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_A.c.o
+2026-08-10T16:43:14.8466116Z [ 57%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_N.c.o
+2026-08-10T16:43:15.1196382Z [ 57%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_auto.c.o
+2026-08-10T16:43:15.3016071Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_copy.c.o
+2026-08-10T16:43:15.3916063Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_slow.c.o
+2026-08-10T16:43:16.2515900Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_bmp.c.o
+2026-08-10T16:43:16.5136192Z [ 58%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_clipboard.c.o
+2026-08-10T16:43:16.7245880Z [ 59%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_egl.c.o
+2026-08-10T16:43:17.1226242Z [ 59%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_fillrect.c.o
+2026-08-10T16:43:17.3430964Z [ 59%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_pixels.c.o
+2026-08-10T16:43:17.3696145Z [ 60%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_rect.c.o
+2026-08-10T16:43:17.5096396Z [ 60%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_stb.c.o
+2026-08-10T16:43:17.7072270Z [ 60%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_stretch.c.o
+2026-08-10T16:43:17.8426724Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_surface.c.o
+2026-08-10T16:43:18.3516242Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_video.c.o
+2026-08-10T16:43:18.9106223Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_video_unsupported.c.o
+2026-08-10T16:43:18.9706197Z [ 61%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_vulkan_utils.c.o
+2026-08-10T16:43:19.1826207Z [ 62%] Building C object CMakeFiles/SDL3-shared.dir/src/video/SDL_yuv.c.o
+2026-08-10T16:43:19.2042343Z [ 62%] Building C object CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_lsx.c.o
+2026-08-10T16:43:19.2546192Z [ 62%] Building C object CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_sse.c.o
+2026-08-10T16:43:20.3546167Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_std.c.o
+2026-08-10T16:43:20.6889260Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/dummy/SDL_dummyaudio.c.o
+2026-08-10T16:43:20.7676336Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/disk/SDL_diskaudio.c.o
+2026-08-10T16:43:20.8536121Z [ 63%] Building C object CMakeFiles/SDL3-shared.dir/src/camera/dummy/SDL_camera_dummy.c.o
+2026-08-10T16:43:20.9176165Z [ 64%] Building C object CMakeFiles/SDL3-shared.dir/src/loadso/dlopen/SDL_sysloadso.c.o
+2026-08-10T16:43:20.9866227Z [ 64%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/virtual/SDL_virtualjoystick.c.o
+2026-08-10T16:43:21.3776282Z [ 64%] Building C object CMakeFiles/SDL3-shared.dir/src/video/dummy/SDL_nullevents.c.o
+2026-08-10T16:43:21.4386213Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/video/dummy/SDL_nullframebuffer.c.o
+2026-08-10T16:43:21.5096152Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/video/dummy/SDL_nullvideo.c.o
+2026-08-10T16:43:21.5906253Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/alsa/SDL_alsa_audio.c.o
+2026-08-10T16:43:21.9786357Z [ 65%] Building C object CMakeFiles/SDL3-shared.dir/src/audio/pulseaudio/SDL_pulseaudio.c.o
+2026-08-10T16:43:22.0966375Z [ 66%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11clipboard.c.o
+2026-08-10T16:43:22.0995891Z [ 66%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11dyn.c.o
+2026-08-10T16:43:22.2938403Z [ 66%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11events.c.o
+2026-08-10T16:43:22.3196494Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11framebuffer.c.o
+2026-08-10T16:43:22.5276602Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11keyboard.c.o
+2026-08-10T16:43:22.7706262Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11messagebox.c.o
+2026-08-10T16:43:22.9096438Z [ 67%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11modes.c.o
+2026-08-10T16:43:22.9465424Z [ 68%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11mouse.c.o
+2026-08-10T16:43:23.2018369Z [ 68%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11opengl.c.o
+2026-08-10T16:43:23.2286308Z [ 68%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11opengles.c.o
+2026-08-10T16:43:23.3706646Z [ 69%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11pen.c.o
+2026-08-10T16:43:23.4375357Z [ 69%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11settings.c.o
+2026-08-10T16:43:23.6042651Z [ 69%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11shape.c.o
+2026-08-10T16:43:23.6476331Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11touch.c.o
+2026-08-10T16:43:23.6736183Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11video.c.o
+2026-08-10T16:43:23.7786183Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11vulkan.c.o
+2026-08-10T16:43:23.7996264Z [ 70%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11window.c.o
+2026-08-10T16:43:23.9316264Z [ 71%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11xfixes.c.o
+2026-08-10T16:43:24.0716412Z [ 71%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11xinput2.c.o
+2026-08-10T16:43:24.1386287Z [ 71%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/SDL_x11xsync.c.o
+2026-08-10T16:43:24.3116119Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/edid-parse.c.o
+2026-08-10T16:43:24.4346214Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/x11/xsettings-client.c.o
+2026-08-10T16:43:24.5386387Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandclipboard.c.o
+2026-08-10T16:43:24.6536159Z [ 72%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandcolor.c.o
+2026-08-10T16:43:24.7176460Z [ 73%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylanddatamanager.c.o
+2026-08-10T16:43:24.7756208Z [ 73%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylanddyn.c.o
+2026-08-10T16:43:24.7996345Z [ 73%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandevents.c.o
+2026-08-10T16:43:24.9939264Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandkeyboard.c.o
+2026-08-10T16:43:25.1276610Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandmessagebox.c.o
+2026-08-10T16:43:25.2296230Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandmouse.c.o
+2026-08-10T16:43:25.2897460Z [01m[K/home/runner/work/HacksToHacks/HacksToHacks/SDL3-src/src/video/wayland/SDL_waylandmouse.c:[m[K In function ‘[01m[KWayland_InitMouse[m[K’:
+2026-08-10T16:43:25.2900861Z [01m[K/home/runner/work/HacksToHacks/HacksToHacks/SDL3-src/src/video/wayland/SDL_waylandmouse.c:975:20:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kd[m[K’ [[01;35m[K-Wunused-variable[m[K]
+2026-08-10T16:43:25.2925924Z   975 |     SDL_VideoData *[01;35m[Kd[m[K = vd->internal;
+2026-08-10T16:43:25.2955684Z       |                    [01;35m[K^[m[K
+2026-08-10T16:43:25.3796208Z [ 74%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandopengles.c.o
+2026-08-10T16:43:25.4936868Z [ 75%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandshmbuffer.c.o
+2026-08-10T16:43:25.5056157Z [ 75%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandvideo.c.o
+2026-08-10T16:43:25.6226154Z [ 75%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandvulkan.c.o
+2026-08-10T16:43:25.7186405Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/src/video/wayland/SDL_waylandwindow.c.o
+2026-08-10T16:43:25.8182426Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/alpha-modifier-v1-protocol.c.o
+2026-08-10T16:43:25.8676714Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/color-management-v1-protocol.c.o
+2026-08-10T16:43:25.9206461Z [ 76%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/cursor-shape-v1-protocol.c.o
+2026-08-10T16:43:25.9696389Z [ 77%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/fractional-scale-v1-protocol.c.o
+2026-08-10T16:43:25.9842580Z [ 77%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/frog-color-management-v1-protocol.c.o
+2026-08-10T16:43:26.0226603Z [ 77%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/idle-inhibit-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.0376486Z [ 78%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/input-timestamps-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.0714583Z [ 78%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.0935911Z [ 78%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/pointer-constraints-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.1392184Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/primary-selection-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.1526515Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/relative-pointer-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.1917884Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/tablet-v2-protocol.c.o
+2026-08-10T16:43:26.2006200Z [ 79%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/text-input-unstable-v3-protocol.c.o
+2026-08-10T16:43:26.2453919Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/viewporter-protocol.c.o
+2026-08-10T16:43:26.2502226Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/wayland-protocol.c.o
+2026-08-10T16:43:26.2992975Z [ 80%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-activation-v1-protocol.c.o
+2026-08-10T16:43:26.3025833Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-decoration-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.3494165Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-dialog-v1-protocol.c.o
+2026-08-10T16:43:26.3511776Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-foreign-unstable-v2-protocol.c.o
+2026-08-10T16:43:26.4018459Z [ 81%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-output-unstable-v1-protocol.c.o
+2026-08-10T16:43:26.4035973Z [ 82%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-shell-protocol.c.o
+2026-08-10T16:43:26.4526679Z [ 82%] Building C object CMakeFiles/SDL3-shared.dir/wayland-generated-protocols/xdg-toplevel-icon-v1-protocol.c.o
+2026-08-10T16:43:26.4545824Z [ 82%] Building C object CMakeFiles/SDL3-shared.dir/src/tray/unix/SDL_tray.c.o
+2026-08-10T16:43:26.5036256Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/core/unix/SDL_appid.c.o
+2026-08-10T16:43:26.5766152Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/core/unix/SDL_poll.c.o
+2026-08-10T16:43:26.6456134Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/camera/v4l2/SDL_camera_v4l2.c.o
+2026-08-10T16:43:26.7216347Z [ 83%] Building C object CMakeFiles/SDL3-shared.dir/src/haptic/linux/SDL_syshaptic.c.o
+2026-08-10T16:43:26.8484814Z [ 84%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_evdev.c.o
+2026-08-10T16:43:26.9646320Z [ 84%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_evdev_kbd.c.o
+2026-08-10T16:43:26.9981272Z [ 84%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_evdev_capabilities.c.o
+2026-08-10T16:43:27.0629020Z [ 85%] Building C object CMakeFiles/SDL3-shared.dir/src/core/linux/SDL_threadprio.c.o
+2026-08-10T16:43:27.1736217Z [ 85%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_combined.c.o
+2026-08-10T16:43:27.1737583Z [ 85%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_gamecube.c.o
+2026-08-10T16:43:27.2846256Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_luna.c.o
+2026-08-10T16:43:27.3556384Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_ps3.c.o
+2026-08-10T16:43:27.4036234Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_ps4.c.o
+2026-08-10T16:43:27.4276497Z [ 86%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_ps5.c.o
+2026-08-10T16:43:27.6986354Z [ 87%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_rumble.c.o
+2026-08-10T16:43:27.7738465Z [ 87%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_shield.c.o
+2026-08-10T16:43:27.8246309Z [ 87%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_stadia.c.o
+2026-08-10T16:43:27.8335955Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_steam.c.o
+2026-08-10T16:43:27.9446349Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_steam_hori.c.o
+2026-08-10T16:43:27.9674116Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_steamdeck.c.o
+2026-08-10T16:43:28.1044602Z [ 88%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_switch.c.o
+2026-08-10T16:43:28.1846516Z [ 89%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_wii.c.o
+2026-08-10T16:43:28.1951382Z [ 89%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_xbox360.c.o
+2026-08-10T16:43:28.2073636Z [ 89%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_xbox360w.c.o
+2026-08-10T16:43:28.3451444Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapi_xboxone.c.o
+2026-08-10T16:43:28.3523289Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/hidapi/SDL_hidapijoystick.c.o
+2026-08-10T16:43:28.6220973Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/joystick/linux/SDL_sysjoystick.c.o
+2026-08-10T16:43:28.7226327Z [ 90%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_systhread.c.o
+2026-08-10T16:43:28.8306587Z [ 91%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_sysmutex.c.o
+2026-08-10T16:43:28.8395910Z [ 91%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_syscond.c.o
+2026-08-10T16:43:28.8926192Z [ 91%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_sysrwlock.c.o
+2026-08-10T16:43:28.9053882Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_systls.c.o
+2026-08-10T16:43:28.9246418Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/thread/pthread/SDL_syssem.c.o
+2026-08-10T16:43:28.9656116Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/misc/unix/SDL_sysurl.c.o
+2026-08-10T16:43:28.9756184Z [ 92%] Building C object CMakeFiles/SDL3-shared.dir/src/power/linux/SDL_syspower.c.o
+2026-08-10T16:43:29.0076179Z [ 93%] Building C object CMakeFiles/SDL3-shared.dir/src/locale/unix/SDL_syslocale.c.o
+2026-08-10T16:43:29.0416366Z [ 93%] Building C object CMakeFiles/SDL3-shared.dir/src/filesystem/unix/SDL_sysfilesystem.c.o
+2026-08-10T16:43:29.0806545Z [ 93%] Building C object CMakeFiles/SDL3-shared.dir/src/storage/generic/SDL_genericstorage.c.o
+2026-08-10T16:43:29.1887263Z [ 94%] Building C object CMakeFiles/SDL3-shared.dir/src/storage/steam/SDL_steamstorage.c.o
+2026-08-10T16:43:29.1918234Z [ 94%] Building C object CMakeFiles/SDL3-shared.dir/src/filesystem/posix/SDL_sysfsops.c.o
+2026-08-10T16:43:29.1971836Z [ 94%] Building C object CMakeFiles/SDL3-shared.dir/src/time/unix/SDL_systime.c.o
+2026-08-10T16:43:29.2938543Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/timer/unix/SDL_systimer.c.o
+2026-08-10T16:43:29.2976227Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/SDL_dialog.c.o
+2026-08-10T16:43:29.3156260Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/SDL_dialog_utils.c.o
+2026-08-10T16:43:29.3185856Z [ 95%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/unix/SDL_unixdialog.c.o
+2026-08-10T16:43:29.3736214Z [ 96%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/unix/SDL_portaldialog.c.o
+2026-08-10T16:43:29.3737334Z [ 96%] Building C object CMakeFiles/SDL3-shared.dir/src/dialog/unix/SDL_zenitydialog.c.o
+2026-08-10T16:43:29.3820516Z [ 96%] Building C object CMakeFiles/SDL3-shared.dir/src/process/SDL_process.c.o
+2026-08-10T16:43:29.4304524Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/process/posix/SDL_posixprocess.c.o
+2026-08-10T16:43:29.4315964Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenevents.c.o
+2026-08-10T16:43:29.4766468Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenframebuffer.c.o
+2026-08-10T16:43:29.4989503Z [ 97%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenopengles.c.o
+2026-08-10T16:43:29.5096299Z [ 98%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenvideo.c.o
+2026-08-10T16:43:29.5476439Z [ 98%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenvulkan.c.o
+2026-08-10T16:43:29.5697345Z [ 98%] Building C object CMakeFiles/SDL3-shared.dir/src/video/offscreen/SDL_offscreenwindow.c.o
+2026-08-10T16:43:29.5906149Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/tray/SDL_tray_utils.c.o
+2026-08-10T16:43:29.6206193Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/gpu/vulkan/SDL_gpu_vulkan.c.o
+2026-08-10T16:43:29.6454643Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/sensor/dummy/SDL_dummysensor.c.o
+2026-08-10T16:43:29.6696645Z [ 99%] Building C object CMakeFiles/SDL3-shared.dir/src/main/generic/SDL_sysmain_callbacks.c.o
+2026-08-10T16:43:32.5185501Z [100%] Linking C shared library libSDL3.so
+2026-08-10T16:43:32.6266015Z [100%] Built target SDL3-shared
+2026-08-10T16:43:32.6346644Z -- Install configuration: "Release"
+2026-08-10T16:43:32.6358061Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/pkgconfig/sdl3.pc
+2026-08-10T16:43:32.6360797Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3.so.0.2.16
+2026-08-10T16:43:32.6406344Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3.so.0
+2026-08-10T16:43:32.6407763Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3.so
+2026-08-10T16:43:32.6408987Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/libSDL3_test.a
+2026-08-10T16:43:32.6414418Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3headersTargets.cmake
+2026-08-10T16:43:32.6416948Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3sharedTargets.cmake
+2026-08-10T16:43:32.6419206Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3sharedTargets-release.cmake
+2026-08-10T16:43:32.6421507Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3testTargets.cmake
+2026-08-10T16:43:32.6423812Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3testTargets-release.cmake
+2026-08-10T16:43:32.6426101Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3Config.cmake
+2026-08-10T16:43:32.6427913Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/lib/cmake/SDL3/SDL3ConfigVersion.cmake
+2026-08-10T16:43:32.6431777Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL.h
+2026-08-10T16:43:32.6433385Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_assert.h
+2026-08-10T16:43:32.6436364Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_asyncio.h
+2026-08-10T16:43:32.6437824Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_atomic.h
+2026-08-10T16:43:32.6439817Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_audio.h
+2026-08-10T16:43:32.6442421Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_begin_code.h
+2026-08-10T16:43:32.6444019Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_bits.h
+2026-08-10T16:43:32.6446085Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_blendmode.h
+2026-08-10T16:43:32.6447723Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_camera.h
+2026-08-10T16:43:32.6449675Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_clipboard.h
+2026-08-10T16:43:32.6451535Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_close_code.h
+2026-08-10T16:43:32.6453029Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_copying.h
+2026-08-10T16:43:32.6454794Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_cpuinfo.h
+2026-08-10T16:43:32.6456839Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_dialog.h
+2026-08-10T16:43:32.6458540Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_egl.h
+2026-08-10T16:43:32.6461298Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_endian.h
+2026-08-10T16:43:32.6463198Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_error.h
+2026-08-10T16:43:32.6464844Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_events.h
+2026-08-10T16:43:32.6467590Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_filesystem.h
+2026-08-10T16:43:32.6469505Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_gamepad.h
+2026-08-10T16:43:32.6471744Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_gpu.h
+2026-08-10T16:43:32.6475379Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_guid.h
+2026-08-10T16:43:32.6477026Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_haptic.h
+2026-08-10T16:43:32.6479236Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_hidapi.h
+2026-08-10T16:43:32.6481083Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_hints.h
+2026-08-10T16:43:32.6484419Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_init.h
+2026-08-10T16:43:32.6486440Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_intrin.h
+2026-08-10T16:43:32.6488456Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_iostream.h
+2026-08-10T16:43:32.6490689Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_joystick.h
+2026-08-10T16:43:32.6492783Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_keyboard.h
+2026-08-10T16:43:32.6494652Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_keycode.h
+2026-08-10T16:43:32.6496873Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_loadso.h
+2026-08-10T16:43:32.6498525Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_locale.h
+2026-08-10T16:43:32.6500206Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_log.h
+2026-08-10T16:43:32.6502064Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_main.h
+2026-08-10T16:43:32.6504018Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_main_impl.h
+2026-08-10T16:43:32.6506184Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_messagebox.h
+2026-08-10T16:43:32.6507919Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_metal.h
+2026-08-10T16:43:32.6509600Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_misc.h
+2026-08-10T16:43:32.6511154Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_mouse.h
+2026-08-10T16:43:32.6513227Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_mutex.h
+2026-08-10T16:43:32.6515509Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_oldnames.h
+2026-08-10T16:43:32.6518237Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengl.h
+2026-08-10T16:43:32.6521699Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengl_glext.h
+2026-08-10T16:43:32.6532528Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles.h
+2026-08-10T16:43:32.6534245Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2.h
+2026-08-10T16:43:32.6536181Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_gl2.h
+2026-08-10T16:43:32.6538321Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_gl2ext.h
+2026-08-10T16:43:32.6542562Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_gl2platform.h
+2026-08-10T16:43:32.6544180Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_opengles2_khrplatform.h
+2026-08-10T16:43:32.6546402Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_pen.h
+2026-08-10T16:43:32.6548172Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_pixels.h
+2026-08-10T16:43:32.6550447Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_platform.h
+2026-08-10T16:43:32.6552215Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_platform_defines.h
+2026-08-10T16:43:32.6553944Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_power.h
+2026-08-10T16:43:32.6556007Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_process.h
+2026-08-10T16:43:32.6557903Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_properties.h
+2026-08-10T16:43:32.6559930Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_rect.h
+2026-08-10T16:43:32.6561907Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_render.h
+2026-08-10T16:43:32.6564832Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_scancode.h
+2026-08-10T16:43:32.6566953Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_sensor.h
+2026-08-10T16:43:32.6568766Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_stdinc.h
+2026-08-10T16:43:32.6572622Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_storage.h
+2026-08-10T16:43:32.6574643Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_surface.h
+2026-08-10T16:43:32.6577447Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_system.h
+2026-08-10T16:43:32.6579382Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_thread.h
+2026-08-10T16:43:32.6581296Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_time.h
+2026-08-10T16:43:32.6583093Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_timer.h
+2026-08-10T16:43:32.6585126Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_touch.h
+2026-08-10T16:43:32.6586939Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_tray.h
+2026-08-10T16:43:32.6588873Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_version.h
+2026-08-10T16:43:32.6590672Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_video.h
+2026-08-10T16:43:32.6593873Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_vulkan.h
+2026-08-10T16:43:32.6596113Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_revision.h
+2026-08-10T16:43:32.6598423Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test.h
+2026-08-10T16:43:32.6600307Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_assert.h
+2026-08-10T16:43:32.6602084Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_common.h
+2026-08-10T16:43:32.6603910Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_compare.h
+2026-08-10T16:43:32.6605596Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_crc32.h
+2026-08-10T16:43:32.6607646Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_font.h
+2026-08-10T16:43:32.6609463Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_fuzzer.h
+2026-08-10T16:43:32.6611358Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_harness.h
+2026-08-10T16:43:32.6613149Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_log.h
+2026-08-10T16:43:32.6614878Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_md5.h
+2026-08-10T16:43:32.6616890Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/include/SDL3/SDL_test_memory.h
+2026-08-10T16:43:32.6619979Z -- Installing: /home/runner/work/HacksToHacks/HacksToHacks/SDL3-install/share/licenses/SDL3/LICENSE.txt
