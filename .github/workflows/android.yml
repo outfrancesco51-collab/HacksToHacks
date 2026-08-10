@@ -8,7 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+
+    defaults:
+      run:
+        shell: bash
 
     steps:
     - uses: actions/checkout@v4
@@ -54,7 +58,7 @@ jobs:
         sed -i 's|RAYLIB_PATH \?= ../../..|RAYLIB_PATH \?= ../../raylib-repo|' Makefile
         
         # Fix toolchain path for NDK r25+
-        sed -i 's|ANDROID_TOOLCHAIN       = .*|ANDROID_TOOLCHAIN       = $(ANDROID_NDK)/toolchains/llvm/prebuilt/linux-x86_64|' Makefile.Android
+        sed -i 's|ANDROID_TOOLCHAIN       = .*|ANDROID_TOOLCHAIN       = $(ANDROID_NDK)/toolchains/llvm/prebuilt/windows-x86_64|' Makefile.Android
         sed -i 's|CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-clang|CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android21-clang|' Makefile.Android
         sed -i 's|CC = $(ANDROID_TOOLCHAIN)/bin/arm-linux-androideabi-clang|CC = $(ANDROID_TOOLCHAIN)/bin/armv7a-linux-androideabi21-clang|' Makefile.Android
         sed -i 's|AR = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-ar|AR = $(ANDROID_TOOLCHAIN)/bin/llvm-ar|' Makefile.Android
@@ -63,11 +67,15 @@ jobs:
         # Ensure javac compiles to a target supported by dx/d8
         sed -i 's|javac -verbose|javac -source 1.8 -target 1.8 -verbose|' Makefile.Android
         
-        # Use d8 instead of dx since dx was removed in build-tools 31+
-        sed -i 's|$(ANDROID_BUILD_TOOLS)/dx|$(ANDROID_BUILD_TOOLS)/d8|' Makefile.Android
+        # Use d8 instead of dx since dx was removed in build-tools 31+ (with .bat extension on Windows)
+        sed -i 's|$(ANDROID_BUILD_TOOLS)/dx|$(ANDROID_BUILD_TOOLS)/d8.bat|' Makefile.Android
         sed -i 's|--dex --output=$(PROJECT_BUILD_PATH)/bin/classes.dex $(PROJECT_BUILD_PATH)/obj|$(PROJECT_BUILD_PATH)/obj/*.class --output $(PROJECT_BUILD_PATH)/bin/|' Makefile.Android
         
-        make PLATFORM=PLATFORM_ANDROID
+        # Fix windows specific paths inside Makefile.Android
+        sed -i 's|C:/android-sdk|$(ANDROID_HOME)|g' Makefile.Android
+        sed -i 's|C:/JavaJDK|$(JAVA_HOME)|g' Makefile.Android
+        
+        mingw32-make PLATFORM=PLATFORM_ANDROID
         
     - name: Upload APK
       uses: actions/upload-artifact@v4
