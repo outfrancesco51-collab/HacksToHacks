@@ -20,6 +20,8 @@ add_executable(HacksToHacks
     src/tween.c
     src/city3d.c
     src/cutscene.c
+    src/minigame_fingerprint.c
+    src/minigame_wires.c
 )
 
 target_include_directories(HacksToHacks PRIVATE src)

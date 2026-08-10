@@ -263,6 +263,8 @@ jobs:
           gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/tween.c  -o out-linux/tween.o
           gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/city3d.c -o out-linux/city3d.o
           gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/cutscene.c -o out-linux/cutscene.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/minigame_fingerprint.c -o out-linux/minigame_fingerprint.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/minigame_wires.c -o out-linux/minigame_wires.o
 
           # Compile SDL3 platform adapter
           gcc -O2 -Wall \
@@ -273,6 +275,7 @@ jobs:
           # Link everything
           gcc out-linux/main.o out-linux/cJSON.o out-linux/tween.o \
               out-linux/city3d.o out-linux/cutscene.o \
+              out-linux/minigame_fingerprint.o out-linux/minigame_wires.o \
               out-linux/platform_sdl3.o \
               $RL_LIB/libraylib.a \
               -L$SDL3_LIB -lSDL3 \

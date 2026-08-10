@@ -33,7 +33,7 @@ jobs:
     - name: Build WebAssembly Project
       run: |
         mkdir -p build_web
-        emcc src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c -o build_web/index.html -Os -Wall raylib-src/src/libraylib.a -Iraylib-src/src -Lraylib-src/src -s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=67108864 -s FORCE_FILESYSTEM=1 --preload-file assets --preload-file locales -DPLATFORM_WEB
+        emcc src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c src/minigame_fingerprint.c src/minigame_wires.c -o build_web/index.html -Os -Wall raylib-src/src/libraylib.a -Iraylib-src/src -Lraylib-src/src -s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=67108864 -s FORCE_FILESYSTEM=1 --preload-file assets --preload-file locales -DPLATFORM_WEB raylib/src/libraylib.ales -DPLATFORM_WEB
       
     - name: Upload Web Artifact
       uses: actions/upload-artifact@v4

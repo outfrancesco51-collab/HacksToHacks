@@ -20,8 +20,10 @@
 #include "city3d.h"
 
 #include "cutscene.h"
+#include "minigame_fingerprint.h"
+#include "minigame_wires.h"
 
-typedef enum GameScreen { EPILEPSY_WARNING = 0, NAME_INPUT, TITLE, CUTSCENE, GAMEPLAY, SETTINGS, HACKING_MINIGAME } GameScreen;
+typedef enum GameScreen { EPILEPSY_WARNING = 0, NAME_INPUT, TITLE, CUTSCENE, GAMEPLAY, SETTINGS, HACKING_MINIGAME, FINGERPRINT_MINIGAME, WIRES_MINIGAME } GameScreen;
 GameScreen currentScreen = EPILEPSY_WARNING;
 char currentLang[10] = "it";
 char pcUsername[128] = "UNKNOWN";
@@ -39,7 +41,9 @@ const char* GetText(const char* key) {
 Sound sndKarenIntro;
 Sound sndKarenError;
 Sound sndKarenSuccess;
-Sound sndHackerUI[10];
+Sound sndHackerUI[200];
+FingerprintHackState fpState;
+WiresHackState wiresState;
 
 void LoadLanguage(const char* langCode) {
     char path[256];
@@ -81,6 +85,7 @@ Texture2D texCutscene1;
 Texture2D texCutscene2;
 Texture2D texSpain;
 Texture2D texArgentina;
+Texture2D texFingerprint;
 
 // UI
 Rectangle windowMap = { 50, 50, 800, 500 };
@@ -93,9 +98,9 @@ float settingsScrollY = 0.0f;
 float typewriterTime = 0.0f;
 float warningTime = 0.0f;
 int menuSelection = 0; 
-int selectedTarget = 0; // 0=Naples, 1=CCTV, 2=PC, 3=Spain, 4=Argentina
-const char* targets[] = { "CENTRAL BANK NAPLES", "CCTV GRID MILAN", "UNKNOWN PC", "SPAIN POWER GRID", "ARGENTINA SAT LINK" };
-int numTargets = 5;
+int selectedTarget = 0;
+const char* targets[] = { "CENTRAL BANK NAPLES", "CCTV GRID MILAN", "UNKNOWN PC", "ELEVATOR CONTROL (MILAN)", "BROADCAST TOWER (MADRID)", "SMART TV NETWORK (BUENOS AIRES)" };
+int numTargets = 6;
 Shader glitchShader;
 Shader bloomShader;
 RenderTexture2D target;
@@ -149,6 +154,25 @@ void UpdateDrawFrame(void);
 void InitGame(void)
 {
 #if !defined(PLATFORM_WEB) && !defined(PLATFORM_ANDROID) && !defined(PLATFORM_IOS)
+    // Generate 500MB payload for advanced complexity
+    FILE* fPayload = fopen("HacksToHacks_Payload.dat", "rb");
+    if (!fPayload) {
+        printf("Generating 500MB advanced hacking payload...\n");
+        fPayload = fopen("HacksToHacks_Payload.dat", "wb");
+        if (fPayload) {
+            char buffer[1024 * 1024]; // 1MB buffer
+            memset(buffer, 0x01, sizeof(buffer));
+            for (int i = 0; i < 500; i++) {
+                fwrite(buffer, 1, sizeof(buffer), fPayload);
+            }
+            fclose(fPayload);
+            printf("Payload generation complete.\n");
+        }
+    } else {
+        fclose(fPayload);
+    }
+
+#if defined(PLATFORM_DESKTOP)
     SetConfigFlags(FLAG_WINDOW_UNDECORATED | FLAG_WINDOW_ALWAYS_RUN);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker Typer");
     SetWindowPosition(0, 0);
@@ -161,7 +185,7 @@ void InitGame(void)
     sndKarenError = LoadSound("assets/karen_error.mp3");
     sndKarenSuccess = LoadSound("assets/karen_success.mp3");
     
-    for(int i=0; i<10; i++) {
+    for(int i=0; i<200; i++) {
         sndHackerUI[i] = LoadSound(TextFormat("assets/sounds/sfx_%d.wav", i));
     }
 
@@ -172,7 +196,7 @@ void InitGame(void)
     }
 
     texUI = LoadTexture("assets/ui_1.png");
-    texNode = LoadTexture("assets/node_1.png");
+    texNode = LoadTexture("assets/node_new.jpg");
     texBank = LoadTexture("assets/face2_1.png"); 
     texCCTV = LoadTexture("assets/target_cctv.png");
     texPC = LoadTexture("assets/target_pc.png");
@@ -181,6 +205,7 @@ void InitGame(void)
     texCutscene2 = LoadTexture("assets/spy2.jpg");
     texSpain = LoadTexture("assets/target_spain.jpg");
     texArgentina = LoadTexture("assets/target_argentina.jpg");
+    texFingerprint = LoadTexture("assets/fingerprint.jpg");
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
     LoadLanguage("it");
@@ -218,7 +243,7 @@ void DestroyGame(void)
     UnloadSound(sndKarenIntro);
     UnloadSound(sndKarenError);
     UnloadSound(sndKarenSuccess);
-    for(int i=0; i<10; i++) UnloadSound(sndHackerUI[i]);
+    for(int i=0; i<200; i++) UnloadSound(sndHackerUI[i]);
     UnloadFont(customFont);
     UnloadTexture(texUI);
     UnloadTexture(texBank);
@@ -230,6 +255,7 @@ void DestroyGame(void)
     UnloadTexture(texCutscene2);
     UnloadTexture(texSpain);
     UnloadTexture(texArgentina);
+    UnloadTexture(texFingerprint);
     UnloadCutscene();
     if(localeData) cJSON_Delete(localeData);
     
@@ -397,6 +423,15 @@ void UpdateDrawFrame(void)
             }
             break;
         }
+        
+        case FINGERPRINT_MINIGAME: {
+            DrawFingerprintHack(&fpState, windowMap);
+            break;
+        }
+        case WIRES_MINIGAME: {
+            DrawWiresHack(&wiresState, windowMap);
+            break;
+        }
         case CUTSCENE: {
             UpdateDrawCutscene(dt);
             if (IsCutsceneFinished()) {
@@ -417,11 +452,19 @@ void UpdateDrawFrame(void)
                 if (CheckCollisionPointRec(mouse, btnPrev)) selectedTarget = (selectedTarget - 1 + numTargets) % numTargets;
                 else if (CheckCollisionPointRec(mouse, btnNext)) selectedTarget = (selectedTarget + 1) % numTargets;
                 else if (CheckCollisionPointRec(mouse, btnHack)) {
-                    currentScreen = HACKING_MINIGAME;
-                    typedLen = 0;
-                    memset(typedCode, 0, MAX_FAKE_CODE);
-                    hackGranted = false;
-                    errorPlayed = false;
+                    if (selectedTarget == 3) {
+                        currentScreen = WIRES_MINIGAME;
+                        InitWiresHack(&wiresState);
+                    } else if (selectedTarget == 4 || selectedTarget == 5) {
+                        currentScreen = FINGERPRINT_MINIGAME;
+                        InitFingerprintHack(&fpState, texFingerprint);
+                    } else {
+                        currentScreen = HACKING_MINIGAME;
+                        typedLen = 0;
+                        memset(typedCode, 0, MAX_FAKE_CODE);
+                        hackGranted = false;
+                        errorPlayed = false;
+                    }
                 }
             }
             
@@ -463,7 +506,7 @@ void UpdateDrawFrame(void)
                             typedLen++;
                         }
                     }
-                    if (charsToAdd > 0) PlaySound(sndHackerUI[GetRandomValue(0, 9)]);
+                    if (charsToAdd > 0) PlaySound(sndHackerUI[GetRandomValue(0, 199)]);
                     
                     if (typedLen >= strlen(src) - 5) {
                         hackGranted = true;
@@ -479,6 +522,29 @@ void UpdateDrawFrame(void)
             } else {
                 grantedTimer += dt;
                 if (grantedTimer > 4.0f) {
+                    currentScreen = GAMEPLAY;
+                }
+            }
+            break;
+        }
+        
+        case FINGERPRINT_MINIGAME: {
+            if (IsKeyPressed(KEY_ESCAPE)) currentScreen = GAMEPLAY;
+            UpdateFingerprintHack(&fpState, dt);
+            if (fpState.solved) {
+                grantedTimer += dt;
+                if (grantedTimer > 2.0f) {
+                    currentScreen = GAMEPLAY;
+                }
+            }
+            break;
+        }
+        case WIRES_MINIGAME: {
+            if (IsKeyPressed(KEY_ESCAPE)) currentScreen = GAMEPLAY;
+            UpdateWiresHack(&wiresState, dt);
+            if (wiresState.solved) {
+                grantedTimer += dt;
+                if (grantedTimer > 2.0f) {
                     currentScreen = GAMEPLAY;
                 }
             }
@@ -641,6 +707,29 @@ void UpdateDrawFrame(void)
                 DrawTextHacker(">>> ACCESS GRANTED <<<", 60, 450, 40, GREEN);
                 if (!IsSoundPlaying(sndKarenSuccess)) PlaySound(sndKarenSuccess);
                 if (IsKeyPressed(KEY_ENTER)) currentScreen = GAMEPLAY;
+            }
+            break;
+        }
+        
+        case FINGERPRINT_MINIGAME: {
+            if (IsKeyPressed(KEY_ESCAPE)) currentScreen = GAMEPLAY;
+            UpdateFingerprintHack(&fpState, dt);
+            if (fpState.solved) {
+                grantedTimer += dt;
+                if (grantedTimer > 2.0f) {
+                    currentScreen = GAMEPLAY;
+                }
+            }
+            break;
+        }
+        case WIRES_MINIGAME: {
+            if (IsKeyPressed(KEY_ESCAPE)) currentScreen = GAMEPLAY;
+            UpdateWiresHack(&wiresState, dt);
+            if (wiresState.solved) {
+                grantedTimer += dt;
+                if (grantedTimer > 2.0f) {
+                    currentScreen = GAMEPLAY;
+                }
             }
             break;
         }
