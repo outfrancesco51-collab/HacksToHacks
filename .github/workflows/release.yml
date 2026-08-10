@@ -56,7 +56,7 @@ jobs:
           GLES_FW="$XCF_DIR/libGLESv2.xcframework/ios-arm64"
           
           mkdir -p build-ios/HacksToHacks.app
-          CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK -O2 -fPIC -Isrc -I$RAYLIB_FW/raylib.framework/Headers -mios-version-min=13.0 -Wno-deprecated-declarations"
+          CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK -O2 -fPIC -Isrc -I$RAYLIB_FW/raylib.framework/Headers -mios-version-min=13.0 -Wno-deprecated-declarations -DPLATFORM_IOS"
           
           # Compile all .c files in src/
           for srcfile in src/*.c; do
@@ -320,6 +320,7 @@ jobs:
         run: |
           docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
             dkp-pacman -Syu --noconfirm || true && \
+            dkp-pacman -Sl wiiu && \
             dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-portlibs wiiu-sdl2 wiiu-sdl2_ttf && \
             mkdir -p wiiu-build && \
             cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/WiiU.cmake && \
