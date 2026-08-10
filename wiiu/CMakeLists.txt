@@ -2,16 +2,10 @@ cmake_minimum_required(VERSION 3.19)
 project(HacksToHacks_WiiU C)
 
 # ─── devkitPro / WUT toolchain ────────────────────────────────────────────────
-if(NOT DEFINED DEVKITPRO)
-    message(FATAL_ERROR "DEVKITPRO not set. Run with powerpc-eabi-cmake.")
-endif()
-
-# Find packages
-find_package(WUT REQUIRED)
-# We can just link directly using -l for portlibs, or rely on wiiu-pkg-config.
-# For simplicity, let's use the WUT targets and link SDL2 manually if needed.
 set(WIIU_LIB "${DEVKITPRO}/portlibs/wiiu/lib")
 set(WIIU_INC "${DEVKITPRO}/portlibs/wiiu/include")
+set(WUT_LIB  "${DEVKITPRO}/wut/lib")
+set(WUT_INC  "${DEVKITPRO}/wut/include")
 
 # ─── Source files ─────────────────────────────────────────────────────────────
 add_executable(HacksToHacks_WiiU
@@ -20,15 +14,23 @@ add_executable(HacksToHacks_WiiU
 
 # ─── Include paths ────────────────────────────────────────────────────────────
 target_include_directories(HacksToHacks_WiiU PRIVATE
+    ${WUT_INC}
     ${WIIU_INC}
     ${WIIU_INC}/SDL2
 )
 
-# ─── Link libraries ───────────────────────────────────────────────────────────
-target_link_directories(HacksToHacks_WiiU PRIVATE ${WIIU_LIB})
+target_compile_options(HacksToHacks_WiiU PRIVATE
+    -O2
+    -mcpu=750
+    -meabi
+    -mhard-float
+    -D__WIIU__
+    -D__WUT__
+)
+
+target_link_directories(HacksToHacks_WiiU PRIVATE ${WIIU_LIB} ${WUT_LIB})
 
 target_link_libraries(HacksToHacks_WiiU PRIVATE
-    WUT::WUT
     -lSDL2_ttf
     -lSDL2
     -lfreetype
@@ -36,6 +38,9 @@ target_link_libraries(HacksToHacks_WiiU PRIVATE
     -lpng
     -lz
     -lm
+    -lwut
+    -lvpad
+    -lwhb
 )
 
 # ─── WUT helpers → generates .rpx from ELF ───────────────────────────────────
