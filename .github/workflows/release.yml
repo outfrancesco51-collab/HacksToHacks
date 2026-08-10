@@ -44,7 +44,7 @@ jobs:
         run: |
           mkdir build-ios
           cd build-ios
-          cmake .. -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0
+          cmake .. -G Xcode -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
           cmake --build . --config Release
           echo "Build OK"
 
@@ -193,8 +193,8 @@ jobs:
           git clone --depth 1 --branch release-3.2.16 https://github.com/libsdl-org/SDL.git SDL3-src
           cmake -S SDL3-src -B SDL3-build \
             -DCMAKE_BUILD_TYPE=Release \
-            -DSDL_STATIC=ON \
-            -DSDL_SHARED=OFF \
+            -DSDL_STATIC=OFF \
+            -DSDL_SHARED=ON \
             -DCMAKE_INSTALL_PREFIX=$PWD/SDL3-install
           cmake --build SDL3-build --config Release -j$(nproc)
           cmake --install SDL3-build
@@ -238,7 +238,8 @@ jobs:
           gcc out-linux/main.o out-linux/cJSON.o out-linux/tween.o \
               out-linux/platform_sdl3.o \
               $RL_LIB/libraylib.a \
-              $SDL3_LIB/libSDL3.a \
+              -L$SDL3_LIB -lSDL3 \
+              -Wl,-rpath,'$ORIGIN' \
               -lGL -lm -ldl -lpthread -lrt \
               -lX11 -lXrandr -lXi -lXcursor -lXinerama \
               -lasound -lpulse \
@@ -250,6 +251,7 @@ jobs:
         run: |
           mkdir -p linux-dist
           cp out-linux/HacksToHacks linux-dist/
+          cp $SDL3_LIB/libSDL3.so* linux-dist/ 2>/dev/null || true
           chmod +x linux-dist/HacksToHacks
           cp -r assets  linux-dist/ 2>/dev/null || true
           cp -r locales linux-dist/ 2>/dev/null || true
@@ -292,7 +294,7 @@ jobs:
         run: |
           docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
             dkp-pacman -Syu --noconfirm || true && \
-            dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf wiiu-freetype wiiu-libpng wiiu-zlib && \
+            dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf && \
             mkdir -p wiiu-build && \
             /opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release && \
             cmake --build wiiu-build --config Release -j\$(nproc) \
