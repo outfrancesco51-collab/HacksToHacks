@@ -71,7 +71,11 @@ jobs:
         $CC $CFLAGS -c src/main.c   -o out-android/main.o
         $CC $CFLAGS -c src/cJSON.c  -o out-android/cJSON.o
         $CC $CFLAGS -c src/tween.c  -o out-android/tween.o
-        $LD -shared -o out-android/libmain.so out-android/main.o out-android/cJSON.o out-android/tween.o $LIBS
+        $CC $CFLAGS -c src/city3d.c -o out-android/city3d.o
+        $CC $CFLAGS -c src/cutscene.c -o out-android/cutscene.o
+        $CC $CFLAGS -c src/minigame_fingerprint.c -o out-android/minigame_fingerprint.o
+        $CC $CFLAGS -c src/minigame_wires.c -o out-android/minigame_wires.o
+        $LD -shared -o out-android/libmain.so out-android/main.o out-android/cJSON.o out-android/tween.o out-android/city3d.o out-android/cutscene.o out-android/minigame_fingerprint.o out-android/minigame_wires.o $LIBS
         echo "Game shared lib compiled OK"
 
     - name: Write AndroidManifest.xml

@@ -168,7 +168,7 @@ jobs:
           mkdir -p out-win
           gcc -O2 -Wall \
             -I"$RL/include" -Isrc \
-            src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c \
+            src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c src/minigame_fingerprint.c src/minigame_wires.c \
             -o out-win/HacksToHacks.exe \
             -L"$RL/lib" -lraylib \
             -lgdi32 -lwinmm -lopengl32

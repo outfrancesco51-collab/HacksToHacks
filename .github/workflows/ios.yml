@@ -65,7 +65,7 @@ jobs:
 
         mkdir -p out-ios
 
-        for f in main.c cJSON.c tween.c; do
+        for f in main.c cJSON.c tween.c city3d.c cutscene.c minigame_fingerprint.c minigame_wires.c; do
           echo "Compiling src/$f..."
           $CC $CFLAGS -c src/$f -o out-ios/${f%.c}.o
         done
