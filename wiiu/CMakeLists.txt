@@ -38,9 +38,6 @@ target_link_libraries(HacksToHacks_WiiU PRIVATE
     -lpng
     -lz
     -lm
-    -lwut
-    -lvpad
-    -lwhb
 )
 
 # ─── WUT helpers → generates .rpx from ELF ───────────────────────────────────
