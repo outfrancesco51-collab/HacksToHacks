@@ -370,8 +370,8 @@ jobs:
   publish-release:
     name: 📦 Publish GitHub Release
     runs-on: ubuntu-latest
-    # Only publish on push (not PRs), after all builds succeed
-    if: github.event_name == 'push'
+    # Run even if some builds fail, so we still publish successful platforms
+    if: always() && github.event_name == 'push'
     needs:
       - build-ios
       - build-windows
@@ -384,24 +384,28 @@ jobs:
       # Download every platform artifact into its own subfolder
       - name: Download iOS IPA
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: ios-ipa
           path: release-assets/
 
       - name: Download Windows ZIP
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: windows-zip
           path: release-assets/
 
       - name: Download Linux SDL3 ZIP
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: linux-sdl3-zip
           path: release-assets/
 
       - name: Download Wii U ZIP
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: wiiu-zip
           path: release-assets/
@@ -462,10 +466,8 @@ jobs:
 
             ---
             *Build automatica da commit `${{ github.sha }}`*
+          fail_on_unmatched_files: false
           files: |
-            release-assets/HacksToHacks.ipa
-            release-assets/HacksToHacks-Windows.zip
-            release-assets/HacksToHacks-Linux-SDL3.zip
-            release-assets/HacksToHacks-WiiU.zip
+            release-assets/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
