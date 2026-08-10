@@ -34,6 +34,9 @@ target_link_libraries(HacksToHacks_WiiU PRIVATE
     -lSDL2_ttf
     -lSDL2
     -lfreetype
+    -lharfbuzz
+    -lbrotlidec
+    -lbrotlicommon
     -lbz2
     -lpng
     -lz

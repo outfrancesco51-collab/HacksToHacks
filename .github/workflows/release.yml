@@ -119,9 +119,17 @@ jobs:
           # Overwrite its Info.plist with our custom AltStore one
           cp Info.plist build-ios/HacksToHacks.app/Info.plist
           
+          # Add PkgInfo required by older iOS / AltStore parsers
+          echo -n "APPL????" > build-ios/HacksToHacks.app/PkgInfo
+          
+          # Ensure executable permissions are strictly set
+          chmod +x build-ios/HacksToHacks.app/HacksToHacks
+          
           mkdir -p Payload
           cp -r build-ios/HacksToHacks.app Payload/
-          zip -r HacksToHacks.ipa Payload/
+          
+          # Use -X to strip extra attributes like __MACOSX resource forks which break AltStore
+          zip -X -r HacksToHacks.ipa Payload/
           echo "IPA size: $(du -sh HacksToHacks.ipa)"
 
       - name: Upload IPA artifact
