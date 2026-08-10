@@ -72,8 +72,8 @@ jobs:
         sed -i 's|--dex --output=$(PROJECT_BUILD_PATH)/bin/classes.dex $(PROJECT_BUILD_PATH)/obj|$(PROJECT_BUILD_PATH)/obj/*.class --output $(PROJECT_BUILD_PATH)/bin/|' Makefile.Android
         
         # Fix windows specific paths inside Makefile.Android
-        sed -i 's|C:/android-sdk|$(ANDROID_HOME)|g' Makefile.Android
-        sed -i 's|C:/JavaJDK|$(JAVA_HOME)|g' Makefile.Android
+        sed -i "s|C:/android-sdk|$ANDROID_SDK_ROOT|g" Makefile.Android
+        sed -i "s|C:/JavaJDK|$JAVA_HOME|g" Makefile.Android
         
         mingw32-make PLATFORM=PLATFORM_ANDROID
         
