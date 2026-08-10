@@ -42,48 +42,34 @@ jobs:
 
       - name: Build game for iOS
         run: |
-          git clone --depth 1 https://github.com/ghera/raylib-iOS.git raylib-src
-          
-          # Create GLES2 wrapper headers to fix iOS missing <GLES2/gl2.h> and missing typedefs
-          mkdir -p GLES2 GLES3
-          echo '#include <OpenGLES/ES2/gl.h>' > GLES2/gl2.h
-          echo '#include <OpenGLES/ES2/glext.h>' > GLES2/gl2ext.h
-          echo 'typedef void (*PFNGLGENVERTEXARRAYSOESPROC) (int n, unsigned int *arrays);' >> GLES2/gl2ext.h
-          echo 'typedef void (*PFNGLBINDVERTEXARRAYOESPROC) (unsigned int array);' >> GLES2/gl2ext.h
-          echo 'typedef void (*PFNGLDELETEVERTEXARRAYSOESPROC) (int n, const unsigned int *arrays);' >> GLES2/gl2ext.h
-          echo 'typedef void (*PFNGLDRAWARRAYSINSTANCEDEXTPROC) (unsigned int mode, int first, int count, int instancecount);' >> GLES2/gl2ext.h
-          echo 'typedef void (*PFNGLDRAWELEMENTSINSTANCEDEXTPROC) (unsigned int mode, int count, unsigned int type, const void *indices, int instancecount);' >> GLES2/gl2ext.h
-          echo 'typedef void (*PFNGLVERTEXATTRIBDIVISOREXTPROC) (unsigned int index, unsigned int divisor);' >> GLES2/gl2ext.h
-          echo '#include <OpenGLES/ES3/gl.h>' > GLES3/gl3.h
+          # Download prebuilt raylib iOS XCFrameworks
+          curl -LO https://github.com/ghera/raylib-iOS/releases/download/6.0.3-iOS/raylib-ios-xcframeworks-6.0.3-iOS.zip
+          unzip -q raylib-ios-xcframeworks-6.0.3-iOS.zip -d raylib-xcf
           
           IOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
           CC="xcrun -sdk iphoneos clang"
-          AR="xcrun -sdk iphoneos ar"
-          RL_SRC=raylib-src/src
           
-          # Compile Raylib
-          CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK -DPLATFORM_IOS -DGRAPHICS_API_OPENGL_ES2 -O2 -fPIC -I$RL_SRC -I$PWD -mios-version-min=13.0 -Wno-deprecated-declarations"
-          mkdir -p raylib-ios-lib
-          for f in rcore.c rshapes.c rtextures.c rtext.c rmodels.c raudio.c utils.c; do
-            $CC $CFLAGS -x objective-c -c $RL_SRC/$f -o raylib-ios-lib/${f%.c}.o
-          done
-          [ -f "$RL_SRC/rcore_apple.m" ] && $CC $CFLAGS -c $RL_SRC/rcore_apple.m -o raylib-ios-lib/rcore_apple.o
-          $AR rcs raylib-ios-lib/libraylib.a raylib-ios-lib/*.o
+          # We use the ios-arm64 slices of the xcframeworks
+          XCF_DIR="$PWD/raylib-xcf/raylib-ios-xcframeworks"
+          RAYLIB_FW="$XCF_DIR/raylib.xcframework/ios-arm64"
+          EGL_FW="$XCF_DIR/libEGL.xcframework/ios-arm64"
+          GLES_FW="$XCF_DIR/libGLESv2.xcframework/ios-arm64"
           
-          # Compile Game
           mkdir -p build-ios/HacksToHacks.app
-          CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK -DPLATFORM_IOS -DGRAPHICS_API_OPENGL_ES2 -O2 -fPIC -Isrc -I$RL_SRC -I$PWD -mios-version-min=13.0 -Wno-deprecated-declarations"
-          for f in main.c cJSON.c tween.c; do
-            $CC $CFLAGS -c src/$f -o raylib-ios-lib/${f%.c}.o
+          CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK -O2 -fPIC -Isrc -I$RAYLIB_FW/Headers -mios-version-min=13.0 -Wno-deprecated-declarations"
+          
+          # Compile all .c files in src/
+          for srcfile in src/*.c; do
+            objfile="build-ios/$(basename "${srcfile%.c}.o")"
+            $CC $CFLAGS -x c -c "$srcfile" -o "$objfile"
           done
           
+          # Link Game
           $CC -target arm64-apple-ios13.0 -isysroot $IOS_SDK -mios-version-min=13.0 \
-            raylib-ios-lib/main.o raylib-ios-lib/cJSON.o raylib-ios-lib/tween.o \
-            -Lraylib-ios-lib -lraylib \
-            -framework UIKit -framework Foundation -framework CoreGraphics \
-            -framework QuartzCore -framework CoreVideo -framework AVFoundation \
-            -framework AudioToolbox -framework CoreMotion -framework OpenGLES \
-            -framework GLKit \
+            build-ios/*.o \
+            -F "$RAYLIB_FW" -F "$EGL_FW" -F "$GLES_FW" \
+            -framework raylib -framework libEGL -framework libGLESv2 \
+            -framework Foundation -framework UIKit -framework QuartzCore -framework CoreGraphics \
             -o build-ios/HacksToHacks.app/HacksToHacks
           
           echo "Build OK"
@@ -336,7 +322,7 @@ jobs:
             dkp-pacman -Syu --noconfirm || true && \
             dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf && \
             mkdir -p wiiu-build && \
-            cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/wut/share/wut/cmake/wut.toolchain.cmake && \
+            cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/WiiU.cmake && \
             cmake --build wiiu-build --config Release -j\$(nproc) \
           "
 
