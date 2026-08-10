@@ -1,8 +1,10 @@
 {
   "name": "HacksToHacks Repository",
+  "identifier": "com.outfrancesco.hackstohacks.source",
   "subtitle": "Official AltStore Source for HacksToHacks",
   "description": "Welcome to the HacksToHacks repository! Here you can install the latest nightly build of the game for iOS and iPadOS.",
   "website": "https://outfrancesco51-collab.github.io/HacksToHacks",
+  "iconURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/assets/ui/hacker_icon.png",
   "tintColor": "#00FF00",
   "featuredApps": [
     "com.outfrancesco.hackstohacks"
