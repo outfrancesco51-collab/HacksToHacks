@@ -82,12 +82,12 @@ jobs:
           <plist version="1.0">
           <dict>
               <key>CFBundleExecutable</key><string>HacksToHacks</string>
-              <key>CFBundleIdentifier</key><string>com.hackstohacks.game</string>
+              <key>CFBundleIdentifier</key><string>com.outfrancesco.hackstohacks</string>
               <key>CFBundleName</key><string>HacksToHacks</string>
               <key>CFBundleDisplayName</key><string>HacksToHacks</string>
               <key>CFBundlePackageType</key><string>APPL</string>
-              <key>CFBundleShortVersionString</key><string>1.0</string>
-              <key>CFBundleVersion</key><string>1</string>
+              <key>CFBundleShortVersionString</key><string>2.0</string>
+              <key>CFBundleVersion</key><string>2</string>
               <key>LSRequiresIPhoneOS</key><true/>
               <key>UIDeviceFamily</key>
               <array><integer>1</integer><integer>2</integer></array>
