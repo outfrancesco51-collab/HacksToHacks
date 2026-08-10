@@ -320,7 +320,7 @@ jobs:
         run: |
           docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
             dkp-pacman -Syu --noconfirm || true && \
-            dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf wiiu-freetype && \
+            dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-portlibs wiiu-sdl2 wiiu-sdl2_ttf && \
             mkdir -p wiiu-build && \
             cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/WiiU.cmake && \
             cmake --build wiiu-build --config Release -j\$(nproc) \
