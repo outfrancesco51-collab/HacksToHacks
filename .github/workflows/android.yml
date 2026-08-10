@@ -8,11 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-
-    defaults:
-      run:
-        shell: bash
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -23,62 +19,141 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Download Raylib and setup Android project
+    - name: Install Android NDK and Build Tools
       run: |
-        git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-repo
-        mkdir raylib-android
-        cp raylib-repo/projects/VSCode/Makefile raylib-android/
-        cp raylib-repo/projects/VSCode/Makefile.Android raylib-android/
-        
-        # Create src and copy files
-        mkdir -p raylib-android/src
-        cp src/main.c raylib-android/src/
-        cp src/cJSON.c raylib-android/src/
-        cp src/tween.c raylib-android/src/
-        cp src/*.h raylib-android/src/ || true
-        
-        # Copy assets
-        mkdir -p raylib-android/assets
-        cp -r assets/* raylib-android/assets/
-        cp -r locales raylib-android/assets/locales
-        
-    - name: Build APK
+        # Accept licenses
+        yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+        # Install required build tools and NDK
+        $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "platforms;android-33" "build-tools;34.0.0" "ndk;25.2.9519653"
+        echo "NDK_HOME=$ANDROID_SDK_ROOT/ndk/25.2.9519653" >> $GITHUB_ENV
+        echo "ANDROID_BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/34.0.0" >> $GITHUB_ENV
+        echo "KEYSTORE_PATH=$HOME/debug.keystore" >> $GITHUB_ENV
+
+    - name: Generate debug keystore
       run: |
-        cd raylib-android
-        export ANDROID_NDK=$ANDROID_NDK_LATEST_HOME
-        export ANDROID_HOME=$ANDROID_SDK_ROOT
-        
-        # Find latest build tools
-        LATEST_BUILD_TOOLS=$(ls -1 $ANDROID_SDK_ROOT/build-tools | sort -r | head -n 1)
-        export ANDROID_BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/$LATEST_BUILD_TOOLS
-        
-        # Modify Makefile.Android for modern NDK
-        sed -i 's/PROJECT_NAME \?= raylib_game/PROJECT_NAME \?= HacksToHacks/' Makefile
-        sed -i 's/PROJECT_SOURCE_FILES \?= raylib_game.c/PROJECT_SOURCE_FILES \?= main.c cJSON.c tween.c/' Makefile
-        sed -i 's|RAYLIB_PATH \?= ../../..|RAYLIB_PATH \?= ../../raylib-repo|' Makefile
-        
-        # Fix toolchain path for NDK r25+
-        sed -i 's|ANDROID_TOOLCHAIN       = .*|ANDROID_TOOLCHAIN       = $(ANDROID_NDK)/toolchains/llvm/prebuilt/windows-x86_64|' Makefile.Android
-        sed -i 's|CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-clang|CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android21-clang|' Makefile.Android
-        sed -i 's|CC = $(ANDROID_TOOLCHAIN)/bin/arm-linux-androideabi-clang|CC = $(ANDROID_TOOLCHAIN)/bin/armv7a-linux-androideabi21-clang|' Makefile.Android
-        sed -i 's|AR = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-ar|AR = $(ANDROID_TOOLCHAIN)/bin/llvm-ar|' Makefile.Android
-        sed -i 's|AR = $(ANDROID_TOOLCHAIN)/bin/arm-linux-androideabi-ar|AR = $(ANDROID_TOOLCHAIN)/bin/llvm-ar|' Makefile.Android
-        
-        # Ensure javac compiles to a target supported by dx/d8
-        sed -i 's|javac -verbose|javac -source 1.8 -target 1.8 -verbose|' Makefile.Android
-        
-        # Use d8 instead of dx since dx was removed in build-tools 31+ (with .bat extension on Windows)
-        sed -i 's|$(ANDROID_BUILD_TOOLS)/dx|$(ANDROID_BUILD_TOOLS)/d8.bat|' Makefile.Android
-        sed -i 's|--dex --output=$(PROJECT_BUILD_PATH)/bin/classes.dex $(PROJECT_BUILD_PATH)/obj|$(PROJECT_BUILD_PATH)/obj/*.class --output $(PROJECT_BUILD_PATH)/bin/|' Makefile.Android
-        
-        # Fix windows specific paths inside Makefile.Android
-        sed -i "s|C:/android-sdk|$ANDROID_SDK_ROOT|g" Makefile.Android
-        sed -i "s|C:/JavaJDK|$JAVA_HOME|g" Makefile.Android
-        
-        mingw32-make PLATFORM=PLATFORM_ANDROID
-        
+        keytool -genkey -v \
+          -keystore $HOME/debug.keystore \
+          -alias hackskey \
+          -keyalg RSA -keysize 2048 -validity 10000 \
+          -dname "CN=HacksToHacks, OU=Game, O=Dev, L=Naples, S=Italy, C=IT" \
+          -storepass android -keypass android
+
+    - name: Clone Raylib source
+      run: |
+        git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
+
+    - name: Compile raylib for Android (arm64-v8a)
+      run: |
+        export NDK=$NDK_HOME
+        export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
+        export CC=$TOOLCHAIN/bin/aarch64-linux-android21-clang
+        export AR=$TOOLCHAIN/bin/llvm-ar
+
+        mkdir -p raylib-android-lib
+        # Compile raylib sources manually
+        RAYLIB_SRC="raylib-src/src"
+        C_FILES="rcore.c rshapes.c rtextures.c rtext.c rmodels.c raudio.c utils.c"
+        INCLUDES="-I$RAYLIB_SRC -I$NDK/sysroot/usr/include -I$NDK/sysroot/usr/include/aarch64-linux-android"
+        DEFINES="-DPLATFORM_ANDROID -DGRAPHICS_API_OPENGL_ES2 -DANDROID -D__ANDROID__ -D_ANDROID_API__=21"
+        CFLAGS="-std=c99 -O2 -fPIC $DEFINES $INCLUDES"
+
+        for f in $C_FILES; do
+          $CC $CFLAGS -c $RAYLIB_SRC/$f -o raylib-android-lib/${f%.c}.o
+        done
+        $AR rcs raylib-android-lib/libraylib.a raylib-android-lib/*.o
+        echo "Raylib compiled for Android arm64-v8a"
+
+    - name: Compile game sources for Android
+      run: |
+        export NDK=$NDK_HOME
+        export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
+        export CC=$TOOLCHAIN/bin/aarch64-linux-android21-clang
+        export LD=$TOOLCHAIN/bin/aarch64-linux-android21-clang
+
+        RAYLIB_SRC="raylib-src/src"
+        INCLUDES="-Isrc -I$RAYLIB_SRC -I$NDK/sysroot/usr/include -I$NDK/sysroot/usr/include/aarch64-linux-android"
+        DEFINES="-DPLATFORM_ANDROID -DGRAPHICS_API_OPENGL_ES2 -DANDROID -D__ANDROID__ -D_ANDROID_API__=21"
+        CFLAGS="-std=c11 -O2 -fPIC $DEFINES $INCLUDES"
+        LIBS="-Lraylib-android-lib -lraylib -llog -landroid -lEGL -lGLESv2 -lOpenSLES -lm -lc"
+
+        mkdir -p out-android
+        $CC $CFLAGS -c src/main.c -o out-android/main.o
+        $CC $CFLAGS -c src/cJSON.c -o out-android/cJSON.o
+        $CC $CFLAGS -c src/tween.c -o out-android/tween.o
+        $LD -shared -o out-android/libmain.so out-android/main.o out-android/cJSON.o out-android/tween.o $LIBS
+        echo "Game compiled as shared library"
+
+    - name: Package APK manually
+      run: |
+        NDK=$NDK_HOME
+        BUILD_TOOLS=$ANDROID_BUILD_TOOLS
+
+        mkdir -p apk-build/lib/arm64-v8a
+        mkdir -p apk-build/assets
+        cp out-android/libmain.so apk-build/lib/arm64-v8a/
+        cp -r assets/* apk-build/assets/ || true
+        cp -r locales apk-build/assets/locales || true
+
+        # Generate a minimal AndroidManifest.xml
+        cat > apk-build/AndroidManifest.xml << 'EOF'
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hackstohacks.game"
+    android:versionCode="1"
+    android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <application android:label="HacksToHacks" android:hasCode="false">
+        <activity android:name="android.app.NativeActivity"
+            android:label="HacksToHacks"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:exported="true">
+            <meta-data android:name="android.app.lib_name" android:value="main"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+EOF
+
+        # Compile resources with aapt2
+        $BUILD_TOOLS/aapt2 compile --dir apk-build/res -o apk-build/compiled.flata 2>/dev/null || true
+
+        # Link APK
+        $BUILD_TOOLS/aapt2 link apk-build/compiled.flata \
+          --manifest apk-build/AndroidManifest.xml \
+          -I $ANDROID_SDK_ROOT/platforms/android-33/android.jar \
+          -o apk-build/unsigned.apk \
+          --min-sdk-version 21 \
+          --target-sdk-version 33 || \
+        # Fallback: use aapt (v1) if aapt2 link fails
+        $BUILD_TOOLS/aapt package -f -M apk-build/AndroidManifest.xml \
+          -I $ANDROID_SDK_ROOT/platforms/android-33/android.jar \
+          -F apk-build/unsigned.apk
+
+        # Add native lib and assets
+        cd apk-build
+        zip -r unsigned.apk lib/ assets/ || true
+        cd ..
+
+        # Align and sign
+        $BUILD_TOOLS/zipalign -f 4 apk-build/unsigned.apk apk-build/aligned.apk
+
+        $BUILD_TOOLS/apksigner sign \
+          --ks $KEYSTORE_PATH \
+          --ks-key-alias hackskey \
+          --ks-pass pass:android \
+          --key-pass pass:android \
+          --out HacksToHacks.apk \
+          apk-build/aligned.apk
+
+        echo "APK built and signed!"
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: HacksToHacks-Android-APK
-        path: raylib-android/HacksToHacks.apk
+        path: HacksToHacks.apk

@@ -13,22 +13,35 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Configure CMake
-      run: cmake -B build -G Xcode -DCMAKE_SYSTEM_NAME=iOS "-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO -DCMAKE_IOS_INSTALL_COMBINED=YES -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-
-    - name: Build
-      run: cmake --build build --config Release
-
-    - name: Create Payload and IPA
+    - name: Configure CMake for iOS
       run: |
+        cmake -B build -G Xcode \
+          -DCMAKE_SYSTEM_NAME=iOS \
+          "-DCMAKE_OSX_ARCHITECTURES=arm64" \
+          -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 \
+          -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+          -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED=NO \
+          -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY="" \
+          -DBUILD_EXAMPLES=OFF \
+          -DBUILD_SHARED_LIBS=OFF
+
+    - name: Build for iOS
+      run: |
+        cmake --build build --config Release --sdk iphoneos
+
+    - name: Create IPA
+      run: |
+        APP_PATH=$(find build -name "*.app" -type d | head -n 1)
+        echo "Found app at: $APP_PATH"
         mkdir -p Payload
-        cp -r build/Release-iphoneos/HacksToHacks.app Payload/
-        # Copy assets into the app bundle manually just in case
-        cp -r assets Payload/HacksToHacks.app/
-        cp -r locales Payload/HacksToHacks.app/
+        cp -r "$APP_PATH" Payload/
+        # Copy assets
+        cp -r assets Payload/HacksToHacks.app/ || true
+        cp -r locales Payload/HacksToHacks.app/ || true
         zip -r HacksToHacks.ipa Payload
 
-    - name: Upload Artifact
+    - name: Upload IPA
       uses: actions/upload-artifact@v4
       with:
         name: HacksToHacks-iOS-IPA
