@@ -259,10 +259,10 @@ jobs:
             -Isrc -I$RL_SRC \
             -I$SDL3_INC \
             -c src/main.c       -o out-linux/main.o
-          gcc -O2 -Wall -Isrc -c src/cJSON.c  -o out-linux/cJSON.o
-          gcc -O2 -Wall -Isrc -c src/tween.c  -o out-linux/tween.o
-          gcc -O2 -Wall -Isrc -c src/city3d.c -o out-linux/city3d.o
-          gcc -O2 -Wall -Isrc -c src/cutscene.c -o out-linux/cutscene.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/cJSON.c  -o out-linux/cJSON.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/tween.c  -o out-linux/tween.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/city3d.c -o out-linux/city3d.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/cutscene.c -o out-linux/cutscene.o
 
           # Compile SDL3 platform adapter
           gcc -O2 -Wall \

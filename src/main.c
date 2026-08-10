@@ -79,6 +79,8 @@ Texture2D texPC;
 Texture2D texEpilepsy;
 Texture2D texCutscene1;
 Texture2D texCutscene2;
+Texture2D texSpain;
+Texture2D texArgentina;
 
 // UI
 Rectangle windowMap = { 50, 50, 800, 500 };
@@ -91,10 +93,9 @@ float settingsScrollY = 0.0f;
 float typewriterTime = 0.0f;
 float warningTime = 0.0f;
 int menuSelection = 0; 
-int selectedTarget = 0; // 0=Bank, 1=CCTV, 2=PC
-
-// 3D & Shaders
-Camera3D camera = { 0 };
+int selectedTarget = 0; // 0=Naples, 1=CCTV, 2=PC, 3=Spain, 4=Argentina
+const char* targets[] = { "CENTRAL BANK NAPLES", "CCTV GRID MILAN", "UNKNOWN PC", "SPAIN POWER GRID", "ARGENTINA SAT LINK" };
+int numTargets = 5;
 Shader glitchShader;
 Shader bloomShader;
 RenderTexture2D target;
@@ -178,6 +179,8 @@ void InitGame(void)
     texEpilepsy = LoadTexture("assets/epilepsy.jpg");
     texCutscene1 = LoadTexture("assets/spy1.jpg");
     texCutscene2 = LoadTexture("assets/spy2.jpg");
+    texSpain = LoadTexture("assets/target_spain.jpg");
+    texArgentina = LoadTexture("assets/target_argentina.jpg");
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
     LoadLanguage("it");
@@ -225,6 +228,8 @@ void DestroyGame(void)
     UnloadTexture(texEpilepsy);
     UnloadTexture(texCutscene1);
     UnloadTexture(texCutscene2);
+    UnloadTexture(texSpain);
+    UnloadTexture(texArgentina);
     UnloadCutscene();
     if(localeData) cJSON_Delete(localeData);
     
@@ -322,10 +327,18 @@ void UpdateDrawFrame(void)
                     currentScreen = CUTSCENE;
                     static CutsceneFrame frames[4];
                     frames[0].image = texCutscene1;
-                    frames[0].text = "Hacker: The grid is fully operational. They don't know I'm here yet.";
+                    if (selectedTarget == 3) {
+                        frames[0].text = "Hacker: The Spanish grid is heavy on firewalls. Very aggressive.";
+                        frames[1].text = "Agent A: Spain is a major hub. We need access to their energy network.";
+                    } else if (selectedTarget == 4) {
+                        frames[0].text = "Hacker: Routing through Buenos Aires. Latency is high, but we're in.";
+                        frames[1].text = "Agent A: The Argentinian satellite link is crucial. Don't lose the ping.";
+                    } else {
+                        frames[0].text = "Hacker: The local grid is fully operational. They don't know I'm here yet.";
+                        frames[1].text = "Agent A: Perfect. We need the root access to the mainframe.";
+                    }
                     frames[0].timePerChar = 0.05f;
                     frames[1].image = texCutscene1;
-                    frames[1].text = "Agent A: Perfect. We need the root access to the mainframe.";
                     frames[1].timePerChar = 0.05f;
                     frames[2].image = texCutscene2;
                     frames[2].text = "Hacker: It's heavily encrypted. But nothing a little glitch can't fix.";
@@ -353,10 +366,18 @@ void UpdateDrawFrame(void)
                     currentScreen = CUTSCENE;
                     static CutsceneFrame frames[4];
                     frames[0].image = texCutscene1;
-                    frames[0].text = "Hacker: The grid is fully operational. They don't know I'm here yet.";
+                    if (selectedTarget == 3) {
+                        frames[0].text = "Hacker: The Spanish grid is heavy on firewalls. Very aggressive.";
+                        frames[1].text = "Agent A: Spain is a major hub. We need access to their energy network.";
+                    } else if (selectedTarget == 4) {
+                        frames[0].text = "Hacker: Routing through Buenos Aires. Latency is high, but we're in.";
+                        frames[1].text = "Agent A: The Argentinian satellite link is crucial. Don't lose the ping.";
+                    } else {
+                        frames[0].text = "Hacker: The local grid is fully operational. They don't know I'm here yet.";
+                        frames[1].text = "Agent A: Perfect. We need the root access to the mainframe.";
+                    }
                     frames[0].timePerChar = 0.05f;
                     frames[1].image = texCutscene1;
-                    frames[1].text = "Agent A: Perfect. We need the root access to the mainframe.";
                     frames[1].timePerChar = 0.05f;
                     frames[2].image = texCutscene2;
                     frames[2].text = "Hacker: It's heavily encrypted. But nothing a little glitch can't fix.";
@@ -384,8 +405,8 @@ void UpdateDrawFrame(void)
             break;
         }
         case GAMEPLAY: {
-            if (IsKeyPressed(KEY_DOWN)) selectedTarget = (selectedTarget + 1) % 3;
-            if (IsKeyPressed(KEY_UP)) selectedTarget = (selectedTarget - 1 + 3) % 3;
+            if (IsKeyPressed(KEY_DOWN)) selectedTarget = (selectedTarget + 1) % numTargets;
+            if (IsKeyPressed(KEY_UP)) selectedTarget = (selectedTarget - 1 + numTargets) % numTargets;
             if (IsKeyPressed(KEY_ESCAPE)) currentScreen = TITLE;
             
             Rectangle btnPrev = {windowMap.x + 30, windowMap.y + 130, 50, 50};
@@ -393,8 +414,8 @@ void UpdateDrawFrame(void)
             Rectangle btnHack = {windowMap.x + 30, windowMap.y + 200, 250, 60};
             
             if (clicked) {
-                if (CheckCollisionPointRec(mouse, btnPrev)) selectedTarget = (selectedTarget - 1 + 3) % 3;
-                else if (CheckCollisionPointRec(mouse, btnNext)) selectedTarget = (selectedTarget + 1) % 3;
+                if (CheckCollisionPointRec(mouse, btnPrev)) selectedTarget = (selectedTarget - 1 + numTargets) % numTargets;
+                else if (CheckCollisionPointRec(mouse, btnNext)) selectedTarget = (selectedTarget + 1) % numTargets;
                 else if (CheckCollisionPointRec(mouse, btnHack)) {
                     currentScreen = HACKING_MINIGAME;
                     typedLen = 0;
@@ -402,14 +423,6 @@ void UpdateDrawFrame(void)
                     hackGranted = false;
                     errorPlayed = false;
                 }
-            }
-            
-            if (IsKeyPressed(KEY_H)) {
-                currentScreen = HACKING_MINIGAME;
-                typedLen = 0;
-                memset(typedCode, 0, MAX_FAKE_CODE);
-                hackGranted = false;
-                errorPlayed = false;
             }
             
             // Finestra draggabile (non la sposto se ho premuto i bottoni)
@@ -558,22 +571,24 @@ void UpdateDrawFrame(void)
             // Draw UI Overlays
             DrawTextHacker("HACKS TO HACKS - VIRTUAL OS", 10, 10, 20, GRAY);
             DrawTextHacker(TextFormat("USER: %s", playerName), 10, 30, 20, HACKER_GREEN);
-            DrawTextHacker("TAP BERSAGLIO O PREMI H PER HACKERARE", 10, 50, 20, WHITE);
             
             DrawRectangle(windowMap.x + 10, windowMap.y + 10, windowMap.width, windowMap.height, (Color){0,0,0,200});
             DrawRectangleRec(windowMap, DARK_BG);
             DrawTextureNPatch(texUI, uiPatch, windowMap, (Vector2){0,0}, 0.0f, WHITE);
             DrawRectangle(windowMap.x+2, windowMap.y+2, windowMap.width-4, 40, HACKER_GREEN);
-            DrawTextHacker(GetText("MAP_TITLE"), windowMap.x + 20, windowMap.y + 5, 30, BLACK);
+            DrawTextHacker("MAP", windowMap.x + 20, windowMap.y + 5, 30, BLACK);
             
-            const char* targetName = "";
-            Texture2D tTex;
-            if (selectedTarget == 0) { targetName = GetText("TARGET_BANK"); tTex = texBank; }
-            if (selectedTarget == 1) { targetName = GetText("TARGET_CCTV"); tTex = texCCTV; }
-            if (selectedTarget == 2) { targetName = GetText("TARGET_PC"); tTex = texPC; }
+            if (hackGranted) {
+                Texture2D resTex = texBank;
+                if (selectedTarget == 1) resTex = texCCTV;
+                else if (selectedTarget == 2) resTex = texPC;
+                else if (selectedTarget == 3) resTex = texSpain;
+                else if (selectedTarget == 4) resTex = texArgentina;
+                
+                DrawTextureEx(resTex, (Vector2){SCREEN_WIDTH/2 - (resTex.width*0.5f)/2, 100}, 0.0f, 0.5f, WHITE); 
+            }
             
-            DrawTextHacker(TextFormat("TARGET: %s", targetName), windowMap.x + 30, windowMap.y + 80, 40, WHITE);
-            DrawTextureEx(tTex, (Vector2){windowMap.x + 300, windowMap.y + 150}, 0.0f, 0.4f, WHITE); 
+            DrawTextHacker(TextFormat("TARGET: %s", targets[selectedTarget]), windowMap.x + 30, windowMap.y + 80, 40, WHITE);
             DrawTexture(texNode, windowMap.x + 50, windowMap.y + 300, WHITE);
             
             Rectangle btnPrev = {windowMap.x + 30, windowMap.y + 130, 50, 50};
