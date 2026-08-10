@@ -168,7 +168,7 @@ jobs:
           mkdir -p out-win
           gcc -O2 -Wall \
             -I"$RL/include" -Isrc \
-            src/main.c src/cJSON.c src/tween.c \
+            src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c \
             -o out-win/HacksToHacks.exe \
             -L"$RL/lib" -lraylib \
             -lgdi32 -lwinmm -lopengl32
@@ -261,6 +261,8 @@ jobs:
             -c src/main.c       -o out-linux/main.o
           gcc -O2 -Wall -Isrc -c src/cJSON.c  -o out-linux/cJSON.o
           gcc -O2 -Wall -Isrc -c src/tween.c  -o out-linux/tween.o
+          gcc -O2 -Wall -Isrc -c src/city3d.c -o out-linux/city3d.o
+          gcc -O2 -Wall -Isrc -c src/cutscene.c -o out-linux/cutscene.o
 
           # Compile SDL3 platform adapter
           gcc -O2 -Wall \
@@ -270,6 +272,7 @@ jobs:
 
           # Link everything
           gcc out-linux/main.o out-linux/cJSON.o out-linux/tween.o \
+              out-linux/city3d.o out-linux/cutscene.o \
               out-linux/platform_sdl3.o \
               $RL_LIB/libraylib.a \
               -L$SDL3_LIB -lSDL3 \
