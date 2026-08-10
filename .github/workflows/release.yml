@@ -42,7 +42,7 @@ jobs:
 
       - name: Build game for iOS
         run: |
-          git clone --depth 1 --branch 5.0 https://github.com/raysan5/raylib.git raylib-src
+          git clone --depth 1 https://github.com/ghera/raylib-iOS.git raylib-src
           
           # Create GLES2 wrapper headers to fix iOS missing <GLES2/gl2.h> and missing typedefs
           mkdir -p GLES2 GLES3
@@ -336,8 +336,7 @@ jobs:
             dkp-pacman -Syu --noconfirm || true && \
             dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-sdl2 wiiu-sdl2_ttf && \
             mkdir -p wiiu-build && \
-            export PATH=/opt/devkitpro/portlibs/wiiu/bin:/opt/devkitpro/devkitPPC/bin:\$PATH && \
-            wiiu-cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release && \
+            cmake -S wiiu -B wiiu-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/wut/share/wut/cmake/wut.toolchain.cmake && \
             cmake --build wiiu-build --config Release -j\$(nproc) \
           "
 
