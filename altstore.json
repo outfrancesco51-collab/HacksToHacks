@@ -1,0 +1,29 @@
+{
+  "name": "HacksToHacks Source",
+  "identifier": "com.hackstohacks.altstore",
+  "sourceURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/altstore.json",
+  "apps": [
+    {
+      "name": "HacksToHacks",
+      "bundleIdentifier": "com.hackstohacks.game",
+      "developerName": "HacksToHacks Dev",
+      "subtitle": "The Hacker Game – install via AltStore",
+      "localizedDescription": "A retro hacker game where you infiltrate networks, crack passwords, and expose corporate corruption. Supports iPhone and iPad with landscape mode.\n\nInstall via AltStore – no jailbreak required.",
+      "iconURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/assets/icon.png",
+      "tintColor": "00ff41",
+      "screenshotURLs": [],
+      "versions": [
+        {
+          "version": "1.0",
+          "date": "2026-08-10",
+          "localizedDescription": "Initial release with iOS and iPadOS support.",
+          "downloadURL": "https://github.com/outfrancesco51-collab/HacksToHacks/releases/latest/download/HacksToHacks.ipa",
+          "size": 0,
+          "minOSVersion": "13.0"
+        }
+      ],
+      "appPermissions": {}
+    }
+  ],
+  "news": []
+}

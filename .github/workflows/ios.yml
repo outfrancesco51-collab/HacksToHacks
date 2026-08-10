@@ -40,7 +40,7 @@ jobs:
           $CC $CFLAGS -c $RAYLIB_SRC/$f -o raylib-ios-lib/${f%.c}.o
         done
 
-        # There's also rcore_apple.m on some versions - try if present
+        # rcore_apple.m is present in some versions - compile if found
         if [ -f "$RAYLIB_SRC/rcore_apple.m" ]; then
           $CC $CFLAGS -c $RAYLIB_SRC/rcore_apple.m -o raylib-ios-lib/rcore_apple.o
         fi
@@ -91,7 +91,7 @@ jobs:
 
         echo "Executable compiled OK: $(file out-ios/HacksToHacks)"
 
-    - name: Create Info.plist
+    - name: Create Info.plist (iPhone + iPad support)
       run: |
         python3 - << 'PYEOF'
         plist = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -104,6 +104,8 @@ jobs:
     <string>com.hackstohacks.game</string>
     <key>CFBundleName</key>
     <string>HacksToHacks</string>
+    <key>CFBundleDisplayName</key>
+    <string>HacksToHacks</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
@@ -112,22 +114,46 @@ jobs:
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
+    <!-- Support both iPhone (1) and iPad (2) -->
+    <key>UIDeviceFamily</key>
+    <array>
+        <integer>1</integer>
+        <integer>2</integer>
+    </array>
     <key>UIRequiredDeviceCapabilities</key>
     <array>
         <string>arm64</string>
     </array>
+    <!-- iPhone landscape orientations -->
     <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <!-- iPad landscape orientations -->
+    <key>UISupportedInterfaceOrientations~ipad</key>
     <array>
         <string>UIInterfaceOrientationLandscapeLeft</string>
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     <key>MinimumOSVersion</key>
     <string>13.0</string>
+    <!-- Full screen on all devices (no iPad split-view) -->
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <!-- Status bar hidden for full immersion -->
+    <key>UIStatusBarHidden</key>
+    <true/>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
+    <!-- AltStore / sideloading compatibility: no code signing required -->
+    <key>SignerIdentity</key>
+    <string>Apple iPhone OS Application Signing</string>
 </dict>
 </plist>'''
         with open('Info.plist', 'w') as f:
             f.write(plist)
-        print('Info.plist written OK')
+        print('Info.plist written OK (iPhone + iPad support)')
         PYEOF
 
     - name: Create .app bundle and IPA
@@ -143,15 +169,37 @@ jobs:
         cp -r assets $APP_DIR/ 2>/dev/null || true
         cp -r locales $APP_DIR/ 2>/dev/null || true
 
-        # Create IPA
+        # Create IPA (standard AltStore/sideload format)
         mkdir -p Payload
         cp -r $APP_DIR Payload/
         zip -r HacksToHacks.ipa Payload/
 
         echo "IPA created: $(du -sh HacksToHacks.ipa)"
+        echo "App bundle contents:"
+        ls -la $APP_DIR/
 
-    - name: Upload IPA
+    - name: Upload IPA as workflow artifact
       uses: actions/upload-artifact@v4
       with:
         name: HacksToHacks-iOS-IPA
         path: HacksToHacks.ipa
+
+    - name: Create GitHub Release with IPA (on push to main)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ios-latest
+        name: "HacksToHacks iOS (Latest)"
+        body: |
+          ## Install on iPhone / iPad via AltStore
+
+          1. Add this AltStore source: `https://raw.githubusercontent.com/${{ github.repository }}/main/altstore.json`
+          2. In AltStore → Browse → (your source) → install **HacksToHacks**
+
+          Or sideload manually: download `HacksToHacks.ipa` and open with AltStore / Sideloadly / ESign.
+
+          **Requires:** iOS/iPadOS 13.0+, arm64 device (iPhone 6s and later, all iPad models from 2015+)
+        files: HacksToHacks.ipa
+        make_latest: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
