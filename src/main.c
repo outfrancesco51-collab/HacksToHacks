@@ -180,6 +180,7 @@ void InitGame(void)
 #else
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker Typer");
 #endif
+#endif
     InitAudioDevice();
 
     sndKarenError = LoadSound("assets/karen_error.mp3");
