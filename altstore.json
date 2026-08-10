@@ -16,6 +16,7 @@
       "versionDate": "2026-08-10T12:00:00-00:00",
       "versionDescription": "Latest nightly release.",
       "downloadURL": "https://github.com/outfrancesco51-collab/HacksToHacks/releases/download/nightly/HacksToHacks.ipa",
+      "size": 33554432,
       "localizedDescription": "HacksToHacks is a cyberpunk hacking simulation game.",
       "iconURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/assets/ui/hacker_icon.png"
     }
