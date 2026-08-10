@@ -17,8 +17,12 @@
 #define MAX_INPUT_CHARS 15
 #define MAX_FAKE_CODE 2048
 
-typedef enum GameScreen { NAME_INPUT = 0, TITLE, GAMEPLAY, SETTINGS, HACKING_MINIGAME } GameScreen;
-GameScreen currentScreen = NAME_INPUT;
+#include "city3d.h"
+
+#include "cutscene.h"
+
+typedef enum GameScreen { EPILEPSY_WARNING = 0, NAME_INPUT, TITLE, CUTSCENE, GAMEPLAY, SETTINGS, HACKING_MINIGAME } GameScreen;
+GameScreen currentScreen = EPILEPSY_WARNING;
 char currentLang[10] = "it";
 
 // Localizzazione
@@ -70,6 +74,8 @@ NPatchInfo uiPatch;
 Texture2D texBank;
 Texture2D texCCTV;
 Texture2D texPC;
+Texture2D texEpilepsy;
+Texture2D texCutscene1;
 
 // UI
 Rectangle windowMap = { 50, 50, 800, 500 };
@@ -80,8 +86,17 @@ Vector2 dragOffset = {0, 0};
 float titleAnimTime = 0.0f;
 float settingsScrollY = 0.0f;
 float typewriterTime = 0.0f;
+float warningTime = 0.0f;
 int menuSelection = 0; 
 int selectedTarget = 0; // 0=Bank, 1=CCTV, 2=PC
+
+// 3D & Shaders
+Camera3D camera = { 0 };
+Shader glitchShader;
+Shader bloomShader;
+RenderTexture2D target;
+int timeLoc = -1;
+float gameTime = 0.0f;
 
 // Hacker Typer
 char typedCode[MAX_FAKE_CODE] = {0};
@@ -129,7 +144,14 @@ void UpdateDrawFrame(void);
 
 void InitGame(void)
 {
+#if !defined(PLATFORM_WEB) && !defined(PLATFORM_ANDROID) && !defined(PLATFORM_IOS)
+    SetConfigFlags(FLAG_WINDOW_UNDECORATED | FLAG_WINDOW_ALWAYS_RUN);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker Typer");
+    SetWindowPosition(0, 0);
+    // Simple fullscreen simulation, actual Monitor dims can be used in advanced setup
+#else
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "HacksToHacks - Hacker Typer");
+#endif
     InitAudioDevice();
 
     texUI = LoadTexture("assets/ui_1.png");
@@ -137,6 +159,8 @@ void InitGame(void)
     texBank = LoadTexture("assets/face2_1.png"); 
     texCCTV = LoadTexture("assets/target_cctv.png");
     texPC = LoadTexture("assets/target_pc.png");
+    texEpilepsy = LoadTexture("assets/epilepsy.jpg");
+    texCutscene1 = LoadTexture("assets/cutscene1.jpg");
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
     LoadLanguage("it");
@@ -147,10 +171,30 @@ void InitGame(void)
     uiPatch.right = texUI.width / 4;
     uiPatch.bottom = texUI.height / 4;
     uiPatch.layout = NPATCH_NINE_PATCH;
+    
+    // Init 3D Camera
+    camera.position = (Vector3){ 0.0f, 10.0f, 10.0f };
+    camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
+    camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };
+    camera.fovy = 45.0f;
+    camera.projection = CAMERA_PERSPECTIVE;
+    
+    InitCity3D();
+    
+    // Load shaders
+    glitchShader = LoadShader(0, "assets/shaders/glitch.fs");
+    bloomShader = LoadShader(0, "assets/shaders/bloom.fs");
+    timeLoc = GetShaderLocation(glitchShader, "time");
+    target = LoadRenderTexture(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void DestroyGame(void)
 {
+    UnloadCity3D();
+    UnloadShader(glitchShader);
+    UnloadShader(bloomShader);
+    UnloadRenderTexture(target);
+    
     UnloadSound(sndKarenIntro);
     UnloadSound(sndKarenError);
     UnloadSound(sndKarenSuccess);
@@ -160,6 +204,9 @@ void DestroyGame(void)
     UnloadTexture(texCCTV);
     UnloadTexture(texPC);
     UnloadTexture(texNode);
+    UnloadTexture(texEpilepsy);
+    UnloadTexture(texCutscene1);
+    UnloadCutscene();
     if(localeData) cJSON_Delete(localeData);
     
     CloseAudioDevice();
@@ -205,6 +252,13 @@ void UpdateDrawFrame(void)
 
     switch(currentScreen) 
     {
+        case EPILEPSY_WARNING: {
+            warningTime += dt;
+            if (IsKeyPressed(KEY_ENTER) || (clicked && warningTime > 1.0f)) {
+                currentScreen = NAME_INPUT;
+            }
+            break;
+        }
         case NAME_INPUT: {
 #if defined(PLATFORM_ANDROID) || defined(PLATFORM_IOS) || defined(PLATFORM_WEB)
             strcpy(playerName, "HACKER");
@@ -245,7 +299,16 @@ void UpdateDrawFrame(void)
             
             if (clicked) {
                 if (CheckCollisionPointRec(mouse, btnPlay)) {
-                    StopSound(sndKarenIntro); currentScreen = GAMEPLAY;
+                    StopSound(sndKarenIntro); 
+                    currentScreen = CUTSCENE;
+                    static CutsceneFrame frames[2];
+                    frames[0].image = texCutscene1;
+                    frames[0].text = "Hacker: Ok, let's see what Naples has to offer...";
+                    frames[0].timePerChar = 0.05f;
+                    frames[1].image = texCutscene1;
+                    frames[1].text = "Agent A: Try not to crash the entire grid this time.";
+                    frames[1].timePerChar = 0.05f;
+                    PlayCutscene(frames, 2);
                 } else if (CheckCollisionPointRec(mouse, btnOpt)) {
                     StopSound(sndKarenIntro); currentScreen = SETTINGS;
                 } else if (CheckCollisionPointRec(mouse, btnExit)) {
@@ -261,7 +324,17 @@ void UpdateDrawFrame(void)
             
             if (IsKeyPressed(KEY_ENTER)) {
                 StopSound(sndKarenIntro);
-                if (menuSelection == 0) currentScreen = GAMEPLAY;
+                if (menuSelection == 0) {
+                    currentScreen = CUTSCENE;
+                    static CutsceneFrame frames[2];
+                    frames[0].image = texCutscene1;
+                    frames[0].text = "Hacker: Ok, let's see what Naples has to offer...";
+                    frames[0].timePerChar = 0.05f;
+                    frames[1].image = texCutscene1;
+                    frames[1].text = "Agent A: Try not to crash the entire grid this time.";
+                    frames[1].timePerChar = 0.05f;
+                    PlayCutscene(frames, 2);
+                }
                 else if (menuSelection == 1) currentScreen = SETTINGS;
                 else if (menuSelection == 2) {
 #if !defined(PLATFORM_WEB) && !defined(PLATFORM_ANDROID) && !defined(PLATFORM_IOS)
@@ -269,6 +342,13 @@ void UpdateDrawFrame(void)
                     exit(0);
 #endif
                 }
+            }
+            break;
+        }
+        case CUTSCENE: {
+            UpdateDrawCutscene(dt);
+            if (IsCutsceneFinished()) {
+                currentScreen = GAMEPLAY;
             }
             break;
         }
@@ -381,12 +461,23 @@ void UpdateDrawFrame(void)
             break;
         }
     }
+    
+    gameTime += dt;
+    SetShaderValue(glitchShader, timeLoc, &gameTime, SHADER_UNIFORM_FLOAT);
 
-    BeginDrawing();
+    BeginTextureMode(target);
     ClearBackground(DARK_BG);
 
     switch(currentScreen)
     {
+        case EPILEPSY_WARNING:
+            DrawTexturePro(texEpilepsy, (Rectangle){0, 0, texEpilepsy.width, texEpilepsy.height}, (Rectangle){SCREEN_WIDTH/2 - 200, 50, 400, 400}, (Vector2){0,0}, 0.0f, WHITE);
+            DrawTextHacker(">>> WARNING: EPILEPSY <<<", SCREEN_WIDTH/2 - 350, 480, 60, RED);
+            DrawTextHacker("This game contains heavy flashing lights,", SCREEN_WIDTH/2 - 400, 560, 40, WHITE);
+            DrawTextHacker("glitches, and intense visuals.", SCREEN_WIDTH/2 - 350, 610, 40, WHITE);
+            DrawTextHacker("Press ENTER to continue.", SCREEN_WIDTH/2 - 250, 680, 40, HACKER_GREEN);
+            break;
+            
         case NAME_INPUT:
             DrawTextHacker(GetText("NAME_PROMPT"), 350, 300, 50, HACKER_GREEN);
             DrawTextHacker(playerName, 350, 360, 60, WHITE);
@@ -423,7 +514,16 @@ void UpdateDrawFrame(void)
             }
             break;
         }
+        case CUTSCENE:
+            UpdateDrawCutscene(GetFrameTime());
+            break;
+            
         case GAMEPLAY: {
+            BeginMode3D(camera);
+            DrawCity3D();
+            EndMode3D();
+            
+            // Draw UI Overlays
             DrawTextHacker("HACKS TO HACKS - VIRTUAL OS", 10, 10, 20, GRAY);
             DrawTextHacker(TextFormat("USER: %s", playerName), 10, 30, 20, HACKER_GREEN);
             DrawTextHacker("TAP BERSAGLIO O PREMI H PER HACKERARE", 10, 50, 20, WHITE);
@@ -493,5 +593,21 @@ void UpdateDrawFrame(void)
         DrawLine(0, i, SCREEN_WIDTH, i, (Color){0, 10, 0, 70});
     }
 
+    EndTextureMode();
+    
+    // Apply shaders
+    BeginDrawing();
+    ClearBackground(BLACK);
+    
+    // Apply heavy shader in hacking mode
+    if (currentScreen == HACKING_MINIGAME) {
+        BeginShaderMode(glitchShader);
+    } else {
+        BeginShaderMode(bloomShader);
+    }
+    
+    DrawTextureRec(target.texture, (Rectangle){ 0, 0, (float)target.texture.width, (float)-target.texture.height }, (Vector2){ 0, 0 }, WHITE);
+    
+    EndShaderMode();
     EndDrawing();
 }

@@ -18,6 +18,8 @@ add_executable(HacksToHacks
     src/main.c
     src/cJSON.c
     src/tween.c
+    src/city3d.c
+    src/cutscene.c
 )
 
 target_include_directories(HacksToHacks PRIVATE src)
