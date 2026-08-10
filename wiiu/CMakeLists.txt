@@ -55,8 +55,7 @@ target_link_libraries(HacksToHacks_WiiU PRIVATE
 )
 
 # ─── WUT helpers → generates .rpx from ELF ───────────────────────────────────
-find_package(WUT REQUIRED)
-include(WUT)
+# The wut_create_rpx helper is automatically defined by WiiU.cmake toolchain
 wut_create_rpx(HacksToHacks_WiiU)
 
 # Install target: copy .rpx to output/
