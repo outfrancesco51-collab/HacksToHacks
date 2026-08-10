@@ -107,6 +107,9 @@ RenderTexture2D target;
 int timeLoc = -1;
 float gameTime = 0.0f;
 
+// Camera
+Camera3D camera = { 0 };
+
 // Hacker Typer
 char typedCode[MAX_FAKE_CODE] = {0};
 int typedLen = 0;
@@ -422,15 +425,6 @@ void UpdateDrawFrame(void)
 #endif
                 }
             }
-            break;
-        }
-        
-        case FINGERPRINT_MINIGAME: {
-            DrawFingerprintHack(&fpState, windowMap);
-            break;
-        }
-        case WIRES_MINIGAME: {
-            DrawWiresHack(&wiresState, windowMap);
             break;
         }
         case CUTSCENE: {
