@@ -319,6 +319,7 @@ jobs:
       - name: Build Wii U RPX via Docker
         run: |
           docker run --rm -v $PWD:/project -w /project devkitpro/devkitppc:latest /bin/bash -c "\
+            echo 'XferCommand = /usr/bin/curl -C - -L -H \"User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\" -o %o %u' >> /opt/devkitpro/pacman/etc/pacman.conf && \
             dkp-pacman -Syu --noconfirm || true && \
             dkp-pacman -S --noconfirm --needed wiiu-dev wiiu-portlibs wiiu-sdl2 wiiu-sdl2_ttf && \
             mkdir -p wiiu-build && \
