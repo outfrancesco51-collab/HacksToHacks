@@ -1,28 +1,23 @@
 {
-  "name": "HacksToHacks Source",
-  "identifier": "com.hackstohacks.altstore",
-  "sourceURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/altstore.json",
+  "name": "HacksToHacks Repository",
+  "subtitle": "Official AltStore Source for HacksToHacks",
+  "description": "Welcome to the HacksToHacks repository! Here you can install the latest nightly build of the game for iOS and iPadOS.",
+  "website": "https://outfrancesco51-collab.github.io/HacksToHacks",
+  "tintColor": "#00FF00",
+  "featuredApps": [
+    "com.outfrancesco.hackstohacks"
+  ],
   "apps": [
     {
       "name": "HacksToHacks",
-      "bundleIdentifier": "com.hackstohacks.game",
-      "developerName": "HacksToHacks Dev",
-      "subtitle": "The Hacker Game – install via AltStore",
-      "localizedDescription": "A retro hacker game where you infiltrate networks, crack passwords, and expose corporate corruption. Supports iPhone and iPad with landscape mode.\n\nInstall via AltStore – no jailbreak required.",
-      "iconURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/assets/icon.png",
-      "tintColor": "00ff41",
-      "screenshotURLs": [],
-      "versions": [
-        {
-          "version": "1.0",
-          "date": "2026-08-10",
-          "localizedDescription": "Initial release with iOS and iPadOS support.",
-          "downloadURL": "https://github.com/outfrancesco51-collab/HacksToHacks/releases/latest/download/HacksToHacks.ipa",
-          "size": 0,
-          "minOSVersion": "13.0"
-        }
-      ],
-      "appPermissions": {}
+      "bundleIdentifier": "com.outfrancesco.hackstohacks",
+      "developerName": "HacksToHacks Team",
+      "version": "1.0.0",
+      "versionDate": "2026-08-10T12:00:00-00:00",
+      "versionDescription": "Latest nightly release.",
+      "downloadURL": "https://github.com/outfrancesco51-collab/HacksToHacks/releases/download/nightly/HacksToHacks.ipa",
+      "localizedDescription": "HacksToHacks is a cyberpunk hacking simulation game.",
+      "iconURL": "https://raw.githubusercontent.com/outfrancesco51-collab/HacksToHacks/main/assets/ui/hacker_icon.png"
     }
   ],
   "news": []
