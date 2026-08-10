@@ -45,25 +45,17 @@ jobs:
 
       - name: Compile raylib for iOS arm64
         run: |
-          IOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
-          CC="xcrun -sdk iphoneos clang"
-          AR="xcrun -sdk iphoneos ar"
-          RL_SRC=raylib-src/src
-          
-          # Fix for rlgl.h looking for <GLES2/gl2.h> instead of <OpenGLES/ES2/gl.h> on iOS
-          mkdir -p $RL_SRC/GLES2
-          echo '#include <OpenGLES/ES2/gl.h>' > $RL_SRC/GLES2/gl2.h
-          echo '#include <OpenGLES/ES2/glext.h>' > $RL_SRC/GLES2/gl2ext.h
-          
-          CFLAGS="-target arm64-apple-ios13.0 -isysroot $IOS_SDK \
-            -DPLATFORM_IOS -DGRAPHICS_API_OPENGL_ES2 -O2 -fPIC \
-            -I$RL_SRC -mios-version-min=13.0"
-          mkdir -p raylib-ios-lib
-          for f in rcore.c rshapes.c rtextures.c rtext.c rmodels.c raudio.c utils.c; do
-            $CC $CFLAGS -c $RL_SRC/$f -o raylib-ios-lib/${f%.c}.o
-          done
-          [ -f "$RL_SRC/rcore_apple.m" ] && $CC $CFLAGS -c $RL_SRC/rcore_apple.m -o raylib-ios-lib/rcore_apple.o
-          $AR rcs raylib-ios-lib/libraylib.a raylib-ios-lib/*.o
+          mkdir build-raylib
+          cd build-raylib
+          cmake ../raylib-src \
+            -DCMAKE_SYSTEM_NAME=iOS \
+            -DCMAKE_OSX_SYSROOT=iphoneos \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DBUILD_SHARED_LIBS=OFF \
+            -DOPENGL_VERSION=ES2
+          cmake --build . --config Release -j$(sysctl -n hw.logicalcpu)
+          mkdir -p ../raylib-ios-lib
+          cp raylib/libraylib.a ../raylib-ios-lib/
 
       - name: Compile game for iOS
         run: |
@@ -328,19 +320,10 @@ jobs:
     name: 🎮 Build Wii U RPX
     runs-on: ubuntu-latest
     container:
-      image: devkitpro/devkitppc:latest
+      image: devkitpro/wut:latest
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Wii U SDK (WUT + SDL2 + SDL2_ttf)
-        run: |
-          # devkitpro/devkitppc image already has dkp-pacman
-          dkp-pacman -Syu --noconfirm || true
-          dkp-pacman -S --noconfirm --needed \
-            wiiu-dev \
-            wiiu-sdl2 \
-            wiiu-sdl2_ttf
 
       - name: Build Wii U RPX via CMake
         run: |
