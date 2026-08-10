@@ -42,16 +42,21 @@ target_compile_options(HacksToHacks_WiiU PRIVATE
 # ─── Link libraries ───────────────────────────────────────────────────────────
 # Order matters for static linking:
 # SDL2 → SDL2_ttf → wut (provides WUT runtime + system calls)
+target_link_directories(HacksToHacks_WiiU PRIVATE
+    ${WIIU_LIB}
+    ${WUT_LIB}
+)
+
 target_link_libraries(HacksToHacks_WiiU PRIVATE
-    ${WIIU_LIB}/libSDL2.a
-    ${WIIU_LIB}/libSDL2_ttf.a
-    ${WIIU_LIB}/libfreetype.a
-    ${WIIU_LIB}/libbz2.a
-    ${WIIU_LIB}/libpng.a
-    ${WIIU_LIB}/libz.a
-    ${WUT_LIB}/libwut.a
-    ${WIIU_LIB}/libvpad.a
-    ${WIIU_LIB}/libwhb.a
+    -lSDL2
+    -lSDL2_ttf
+    -lfreetype
+    -lbz2
+    -lpng
+    -lz
+    -lwut
+    -lvpad
+    -lwhb
 )
 
 # ─── WUT helpers → generates .rpx from ELF ───────────────────────────────────
