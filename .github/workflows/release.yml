@@ -171,7 +171,7 @@ jobs:
           mkdir -p out-win
           gcc -O2 -Wall \
             -I"$RL/include" -Isrc \
-            src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c src/minigame_fingerprint.c src/minigame_wires.c \
+            src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c src/minigame_fingerprint.c src/minigame_wires.c src/minigame_qte.c \
             -o out-win/HacksToHacks.exe \
             -L"$RL/lib" -lraylib \
             -lgdi32 -lwinmm -lopengl32
@@ -268,6 +268,7 @@ jobs:
           gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/cutscene.c -o out-linux/cutscene.o
           gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/minigame_fingerprint.c -o out-linux/minigame_fingerprint.o
           gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/minigame_wires.c -o out-linux/minigame_wires.o
+          gcc -O2 -Wall -Isrc -DPLATFORM_DESKTOP -I$RL_SRC -c src/minigame_qte.c -o out-linux/minigame_qte.o
 
           # Compile SDL3 platform adapter
           gcc -O2 -Wall \
@@ -278,7 +279,7 @@ jobs:
           # Link everything
           gcc out-linux/main.o out-linux/cJSON.o out-linux/tween.o \
               out-linux/city3d.o out-linux/cutscene.o \
-              out-linux/minigame_fingerprint.o out-linux/minigame_wires.o \
+              out-linux/minigame_fingerprint.o out-linux/minigame_wires.o out-linux/minigame_qte.o \
               out-linux/platform_sdl3.o \
               $RL_LIB/libraylib.a \
               -L$SDL3_LIB -lSDL3 \
