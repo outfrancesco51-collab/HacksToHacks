@@ -22,8 +22,9 @@
 #include "cutscene.h"
 #include "minigame_fingerprint.h"
 #include "minigame_wires.h"
+#include "minigame_qte.h"
 
-typedef enum GameScreen { EPILEPSY_WARNING = 0, NAME_INPUT, TITLE, CUTSCENE, GAMEPLAY, SETTINGS, HACKING_MINIGAME, FINGERPRINT_MINIGAME, WIRES_MINIGAME } GameScreen;
+typedef enum GameScreen { EPILEPSY_WARNING = 0, NAME_INPUT, TITLE, CUTSCENE, GAMEPLAY, SETTINGS, HACKING_MINIGAME, FINGERPRINT_MINIGAME, WIRES_MINIGAME, HACKING_QTE } GameScreen;
 GameScreen currentScreen = EPILEPSY_WARNING;
 char currentLang[10] = "it";
 char pcUsername[128] = "UNKNOWN";
@@ -97,6 +98,7 @@ float titleAnimTime = 0.0f;
 float settingsScrollY = 0.0f;
 float typewriterTime = 0.0f;
 float warningTime = 0.0f;
+float screenShake = 0.0f;
 int menuSelection = 0; 
 int selectedTarget = 0;
 const char* targets[] = { "CENTRAL BANK NAPLES", "CCTV GRID MILAN", "UNKNOWN PC", "ELEVATOR CONTROL (MILAN)", "BROADCAST TOWER (MADRID)", "SMART TV NETWORK (BUENOS AIRES)" };
@@ -323,6 +325,15 @@ void UpdateDrawFrame(void)
             warningTime += dt;
             if (IsKeyPressed(KEY_ENTER) || (clicked && warningTime > 1.0f)) {
                 currentScreen = NAME_INPUT;
+            }
+            if (IsKeyPressed(KEY_F)) {
+                InitFingerprintHack(&fpState, texFingerprint);
+                currentScreen = FINGERPRINT_MINIGAME;
+            }
+            if (IsKeyPressed(KEY_Q)) {
+                InitQTE();
+                currentScreen = HACKING_QTE;
+                screenShake = 1.0f;
             }
             break;
         }
@@ -555,6 +566,14 @@ void UpdateDrawFrame(void)
                 if (grantedTimer > 2.0f) {
                     currentScreen = GAMEPLAY;
                 }
+            }
+            break;
+        }
+        case HACKING_QTE: {
+            UpdateDrawQTE(dt);
+            if (IsQTEFinished()) {
+                currentScreen = GAMEPLAY;
+                PlaySound(sndKarenSuccess);
             }
             break;
         }
