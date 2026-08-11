@@ -107,6 +107,8 @@ jobs:
               <key>UIRequiresFullScreen</key><true/>
               <key>UIStatusBarHidden</key><true/>
               <key>UIViewControllerBasedStatusBarAppearance</key><false/>
+              <key>UIFileSharingEnabled</key><true/>
+              <key>LSSupportsOpeningDocumentsInPlace</key><true/>
           </dict>
           </plist>'''
           with open('Info.plist', 'w') as f: f.write(plist)
@@ -131,8 +133,8 @@ jobs:
           mkdir -p Payload
           cp -r build-ios/HacksToHacks.app Payload/
           
-          # Use -X to strip extra attributes like __MACOSX resource forks which break AltStore
-          zip -X -r HacksToHacks.ipa Payload/
+          # Use strict ZIP format to avoid AltStore signature corruption
+          zip -nw -MM -X -9 -q HacksToHacks.ipa -r Payload/
           echo "IPA size: $(du -sh HacksToHacks.ipa)"
 
       - name: Upload IPA artifact
@@ -395,7 +397,7 @@ jobs:
       - name: Install ARM Cross-Compiler and Raylib Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross libasound2-dev libmesa-dev libgl1-mesa-dev libgles2-mesa-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
+          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross libasound2-dev libgl1-mesa-dev libgles2-mesa-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
 
       - name: Build Raylib and SDL3 for AArch64
         run: |

@@ -825,13 +825,10 @@ void UpdateDrawFrame(void)
             DrawTextHacker("CCTV FEED", 510, 40, 20, WHITE);
             DrawLine(500, 65, 870, 65, HACKER_GREEN);
             
-            // Frame animation for Ruby cutscene
+            // Frame animation for Ruby cutscene (Loop only the 2 new sexy frames)
             Texture2D frame = texRuby1;
-            int frameIdx = ((int)(GetTime() * 1.5f)) % 5;
+            int frameIdx = ((int)(GetTime() * 1.5f)) % 2;
             if (frameIdx == 1) frame = texRuby2;
-            else if (frameIdx == 2) frame = texRuby3;
-            else if (frameIdx == 3) frame = texRuby4;
-            else if (frameIdx == 4) frame = texRuby5;
             
             DrawTexturePro(frame, (Rectangle){0, 0, frame.width, frame.height}, (Rectangle){510, 75, 350, 195}, (Vector2){0,0}, 0.0f, WHITE);
             
