@@ -90,6 +90,11 @@ Texture2D texFingerprint;
 Texture2D texGuard1;
 Texture2D texGuard2;
 Texture2D texGuard3;
+Texture2D texRuby1;
+Texture2D texRuby2;
+Texture2D texRuby3;
+Texture2D texRuby4;
+Texture2D texRuby5;
 Texture2D texMouse;
 Texture2D texWasd;
 Texture2D texAnalog;
@@ -98,12 +103,15 @@ Sound sndTyping;
 Sound sndDenied;
 Sound sndGranted;
 Sound sndGlitch;
+Music musFlow;
+Sound sndAIVoices[10];
 
 cJSON* aiDataset = NULL;
 char aiCurrentLine[512] = "";
 int aiCurrentChar = 0;
 float aiTimer = 0.0f;
 bool aiResponding = false;
+int aiVoiceIndex = -1;
 
 // UI
 Rectangle windowMap = { 50, 50, 800, 500 };
@@ -237,6 +245,11 @@ void InitGame(void)
     texGuard1 = LoadTexture("assets/cutscene_guard_frame1.jpg");
     texGuard2 = LoadTexture("assets/cutscene_guard_frame2.jpg");
     texGuard3 = LoadTexture("assets/cutscene_guard_frame3.jpg");
+    texRuby1 = LoadTexture("assets/cutscene_ruby_1.jpg");
+    texRuby2 = LoadTexture("assets/cutscene_ruby_2.jpg");
+    texRuby3 = LoadTexture("assets/cutscene_ruby_3.jpg");
+    texRuby4 = LoadTexture("assets/cutscene_ruby_4.jpg");
+    texRuby5 = LoadTexture("assets/cutscene_ruby_5.jpg");
     texMouse = LoadTexture("assets/mouse_icon.jpg");
     texWasd = LoadTexture("assets/wasd_keys.jpg");
     texAnalog = LoadTexture("assets/analog_stick.jpg");
@@ -245,6 +258,12 @@ void InitGame(void)
     sndDenied = LoadSound("assets/denied.wav");
     sndGranted = LoadSound("assets/granted.wav");
     sndGlitch = LoadSound("assets/glitch.wav");
+    musFlow = LoadMusicStream("assets/flow_music.wav");
+    PlayMusicStream(musFlow);
+    
+    for(int i=0; i<10; i++) {
+        sndAIVoices[i] = LoadSound(TextFormat("assets/voices/ai_voice_%d.wav", i));
+    }
 
     char *datasetStr = LoadFileText("assets/dataset_ai_hack.json");
     if(datasetStr) {
@@ -350,6 +369,7 @@ int main(void)
 void UpdateDrawFrame(void)
 {
     float dt = GetFrameTime();
+    UpdateMusicStream(musFlow);
     Vector2 mouse = GetMousePosition();
     bool clicked = IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 
@@ -580,6 +600,12 @@ void UpdateDrawFrame(void)
                                     aiCurrentChar = 0;
                                     aiResponding = true;
                                     PlaySound(sndGlitch);
+                                    
+                                    // Play pre-rendered heavy AI voice if available (we mapped first 10)
+                                    if (r < 10) {
+                                        aiVoiceIndex = r;
+                                        PlaySound(sndAIVoices[aiVoiceIndex]);
+                                    }
                                 }
                             }
                         }
@@ -799,11 +825,13 @@ void UpdateDrawFrame(void)
             DrawTextHacker("CCTV FEED", 510, 40, 20, WHITE);
             DrawLine(500, 65, 870, 65, HACKER_GREEN);
             
-            // Frame animation for guard
-            Texture2D frame = texGuard1;
-            int frameIdx = ((int)(GetTime() * 2)) % 4;
-            if (frameIdx == 1) frame = texGuard2;
-            else if (frameIdx >= 2) frame = texGuard3;
+            // Frame animation for Ruby cutscene
+            Texture2D frame = texRuby1;
+            int frameIdx = ((int)(GetTime() * 1.5f)) % 5;
+            if (frameIdx == 1) frame = texRuby2;
+            else if (frameIdx == 2) frame = texRuby3;
+            else if (frameIdx == 3) frame = texRuby4;
+            else if (frameIdx == 4) frame = texRuby5;
             
             DrawTexturePro(frame, (Rectangle){0, 0, frame.width, frame.height}, (Rectangle){510, 75, 350, 195}, (Vector2){0,0}, 0.0f, WHITE);
             

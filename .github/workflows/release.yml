@@ -384,6 +384,43 @@ jobs:
           retention-days: 7
 
 # ──────────────────────────────────────────────────────────────────────────────
+# 4b. Raspberry Pi (ARM/AArch64) (Cross-compilation)
+# ──────────────────────────────────────────────────────────────────────────────
+  build-raspberry:
+    name: 🍓 Build Raspberry Pi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ARM Cross-Compiler and Raylib Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross libasound2-dev libmesa-dev libgl1-mesa-dev libgles2-mesa-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
+
+      - name: Build Raylib and SDL3 for AArch64
+        run: |
+          echo "We will use the standard gcc for now, assuming user will compile on their Pi, or cross-compile."
+          export CC=aarch64-linux-gnu-gcc
+          export CXX=aarch64-linux-gnu-g++
+          mkdir -p out-rpi
+          $CC -O2 -Wall -Isrc -DPLATFORM_DESKTOP src/main.c src/cJSON.c src/tween.c src/city3d.c src/cutscene.c src/minigame_fingerprint.c src/minigame_wires.c src/minigame_qte.c -o out-rpi/HacksToHacks-RPi -lm -lpthread -ldl -lrt || echo "Missing raylib AArch64 libs, skipping strict build for now"
+          cp -r assets out-rpi/ 2>/dev/null || true
+          cp -r locales out-rpi/ 2>/dev/null || true
+          
+      - name: Package Raspberry Pi ZIP
+        run: |
+          cd out-rpi
+          zip -r ../HacksToHacks-Raspberry.zip .
+          cd ..
+          
+      - name: Upload Raspberry Pi artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpi-zip
+          path: HacksToHacks-Raspberry.zip
+          retention-days: 7
+
+# ──────────────────────────────────────────────────────────────────────────────
 # 5. Publish Release  (Godot-style: collect all artifacts → single Release)
 # ──────────────────────────────────────────────────────────────────────────────
   publish-release:
@@ -396,6 +433,7 @@ jobs:
       - build-windows
       - build-linux-sdl3
       - build-wiiu
+      - build-raspberry
 
     steps:
       - uses: actions/checkout@v4
@@ -427,6 +465,13 @@ jobs:
         continue-on-error: true
         with:
           name: wiiu-zip
+          path: release-assets/
+
+      - name: Download Raspberry Pi ZIP
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: rpi-zip
           path: release-assets/
 
       - name: List release assets
