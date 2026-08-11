@@ -199,9 +199,9 @@ void InitGame(void)
         strncpy(pcUsername, userEnv, 127);
     }
 
-    texUI = LoadTexture("assets/ui_1.png");
-    texNode = LoadTexture("assets/node_new.jpg");
-    texBank = LoadTexture("assets/face2_1.png"); 
+    texUI = LoadTexture("assets/ui_retro.jpg");
+    texNode = LoadTexture("assets/item_hack.jpg");
+    texBank = LoadTexture("assets/face_hacker.jpg"); 
     texCCTV = LoadTexture("assets/target_cctv.png");
     texPC = LoadTexture("assets/target_pc.png");
     texEpilepsy = LoadTexture("assets/epilepsy.jpg");

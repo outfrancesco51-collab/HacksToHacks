@@ -115,12 +115,15 @@ jobs:
 
       - name: Package .app → .ipa
         run: |
-          # CMake generates the .app bundle in build-ios/HacksToHacks.app
-          # Overwrite its Info.plist with our custom AltStore one
+          # The custom AltStore Info.plist
           cp Info.plist build-ios/HacksToHacks.app/Info.plist
           
           # Add PkgInfo required by older iOS / AltStore parsers
           echo -n "APPL????" > build-ios/HacksToHacks.app/PkgInfo
+          
+          # Copy assets into the bundle root
+          cp -r assets build-ios/HacksToHacks.app/ 2>/dev/null || true
+          cp -r locales build-ios/HacksToHacks.app/ 2>/dev/null || true
           
           # Ensure executable permissions are strictly set
           chmod +x build-ios/HacksToHacks.app/HacksToHacks
