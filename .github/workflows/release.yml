@@ -127,14 +127,28 @@ jobs:
           cp -r assets build-ios/HacksToHacks.app/ 2>/dev/null || true
           cp -r locales build-ios/HacksToHacks.app/ 2>/dev/null || true
           
-          # Ensure executable permissions are strictly set
-          chmod +x build-ios/HacksToHacks.app/HacksToHacks
-          
           mkdir -p Payload
           cp -r build-ios/HacksToHacks.app Payload/
           
-          # Use strict ZIP format to avoid AltStore signature corruption
-          zip -nw -MM -X -9 -q HacksToHacks.ipa -r Payload/
+          # 1. Strip all Xcode garbage and broken signatures
+          find Payload -name "_CodeSignature" -type d -exec rm -rf {} +
+          find Payload -name ".DS_Store" -type f -delete
+          find Payload -name "embedded.mobileprovision" -type f -delete
+          find Payload -name "__MACOSX" -type d -exec rm -rf {} +
+          
+          # 2. Strict UNIX Permissions (0755 for dirs and exec, 0644 for rest)
+          find Payload -type d -exec chmod 0755 {} \;
+          find Payload -type f -exec chmod 0644 {} \;
+          chmod 0755 Payload/HacksToHacks.app/HacksToHacks
+          
+          # 3. Deterministic Zip creation (no OS metadata)
+          {
+              find Payload -type d -exec printf '%s/\n' {} \;
+              find Payload -type f -print
+          } | LC_ALL=C sort > ipa-entries
+          
+          COPYFILE_DISABLE=1 ZIPOPT= ZIP= zip -nw -MM -X -9 -q "HacksToHacks.ipa" -@ < ipa-entries
+          
           echo "IPA size: $(du -sh HacksToHacks.ipa)"
 
       - name: Upload IPA artifact
