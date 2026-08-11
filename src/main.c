@@ -103,6 +103,11 @@ const char* targets[] = { "CENTRAL BANK NAPLES", "CCTV GRID MILAN", "UNKNOWN PC"
 int numTargets = 6;
 Shader glitchShader;
 Shader bloomShader;
+#define NUM_ADVANCED_SHADERS 104
+Shader advancedShaders[NUM_ADVANCED_SHADERS];
+int currentAdvancedShader = 0;
+float advancedShaderTimer = 0.0f;
+
 RenderTexture2D target;
 int timeLoc = -1;
 float gameTime = 0.0f;
@@ -234,6 +239,11 @@ void InitGame(void)
     glitchShader = LoadShader(0, "assets/shaders/glitch.fs");
     bloomShader = LoadShader(0, "assets/shaders/bloom.fs");
     timeLoc = GetShaderLocation(glitchShader, "time");
+    
+    // Load advanced shaders
+    for(int i = 0; i < NUM_ADVANCED_SHADERS; i++) {
+        advancedShaders[i] = LoadShader(0, TextFormat("assets/shaders/shader_%d.fs", i));
+    }
     target = LoadRenderTexture(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
@@ -242,6 +252,9 @@ void DestroyGame(void)
     UnloadCity3D();
     UnloadShader(glitchShader);
     UnloadShader(bloomShader);
+    for(int i = 0; i < NUM_ADVANCED_SHADERS; i++) {
+        UnloadShader(advancedShaders[i]);
+    }
     UnloadRenderTexture(target);
     
     UnloadSound(sndKarenIntro);
@@ -570,6 +583,14 @@ void UpdateDrawFrame(void)
     
     gameTime += dt;
     SetShaderValue(glitchShader, timeLoc, &gameTime, SHADER_UNIFORM_FLOAT);
+    
+    advancedShaderTimer += dt;
+    if(advancedShaderTimer > 5.0f) {
+        advancedShaderTimer = 0.0f;
+        currentAdvancedShader = GetRandomValue(0, NUM_ADVANCED_SHADERS - 1);
+    }
+    int advTimeLoc = GetShaderLocation(advancedShaders[currentAdvancedShader], "time");
+    SetShaderValue(advancedShaders[currentAdvancedShader], advTimeLoc, &gameTime, SHADER_UNIFORM_FLOAT);
 
     BeginTextureMode(target);
     ClearBackground(DARK_BG);
@@ -752,10 +773,10 @@ void UpdateDrawFrame(void)
     ClearBackground(BLACK);
     
     // Apply heavy shader in hacking mode
-    if (currentScreen == HACKING_MINIGAME) {
+    if (screenShake > 0.0f) {
         BeginShaderMode(glitchShader);
     } else {
-        BeginShaderMode(bloomShader);
+        BeginShaderMode(advancedShaders[currentAdvancedShader]);
     }
     
     DrawTextureRec(target.texture, (Rectangle){ 0, 0, (float)target.texture.width, (float)-target.texture.height }, (Vector2){ 0, 0 }, WHITE);
