@@ -87,6 +87,23 @@ Texture2D texCutscene2;
 Texture2D texSpain;
 Texture2D texArgentina;
 Texture2D texFingerprint;
+Texture2D texGuard1;
+Texture2D texGuard2;
+Texture2D texGuard3;
+Texture2D texMouse;
+Texture2D texWasd;
+Texture2D texAnalog;
+
+Sound sndTyping;
+Sound sndDenied;
+Sound sndGranted;
+Sound sndGlitch;
+
+cJSON* aiDataset = NULL;
+char aiCurrentLine[512] = "";
+int aiCurrentChar = 0;
+float aiTimer = 0.0f;
+bool aiResponding = false;
 
 // UI
 Rectangle windowMap = { 50, 50, 800, 500 };
@@ -217,6 +234,23 @@ void InitGame(void)
     texSpain = LoadTexture("assets/target_spain.jpg");
     texArgentina = LoadTexture("assets/target_argentina.jpg");
     texFingerprint = LoadTexture("assets/fingerprint.jpg");
+    texGuard1 = LoadTexture("assets/cutscene_guard_frame1.jpg");
+    texGuard2 = LoadTexture("assets/cutscene_guard_frame2.jpg");
+    texGuard3 = LoadTexture("assets/cutscene_guard_frame3.jpg");
+    texMouse = LoadTexture("assets/mouse_icon.jpg");
+    texWasd = LoadTexture("assets/wasd_keys.jpg");
+    texAnalog = LoadTexture("assets/analog_stick.jpg");
+    
+    sndTyping = LoadSound("assets/typing.wav");
+    sndDenied = LoadSound("assets/denied.wav");
+    sndGranted = LoadSound("assets/granted.wav");
+    sndGlitch = LoadSound("assets/glitch.wav");
+
+    char *datasetStr = LoadFileText("assets/dataset_ai_hack.json");
+    if(datasetStr) {
+        aiDataset = cJSON_Parse(datasetStr);
+        UnloadFileText(datasetStr);
+    }
     customFont = LoadFontEx("assets/font.ttf", 64, 0, 0);
     
     LoadLanguage("it");
@@ -525,23 +559,56 @@ void UpdateDrawFrame(void)
                             typedLen++;
                         }
                     }
-                    if (charsToAdd > 0) PlaySound(sndHackerUI[GetRandomValue(0, 199)]);
+                    if (charsToAdd > 0) PlaySound(sndTyping);
                     
                     if (typedLen >= strlen(src) - 5) {
                         hackGranted = true;
                         grantedTimer = 0.0f;
-                        PlaySound(sndKarenSuccess);
+                        PlaySound(sndGranted);
+                    }
+                    
+                    // Trigger AI message
+                    if (!aiResponding && GetRandomValue(0, 100) > 90 && aiDataset != NULL) {
+                        cJSON *responses = cJSON_GetObjectItem(aiDataset, "responses");
+                        if (responses && cJSON_IsArray(responses)) {
+                            int cnt = cJSON_GetArraySize(responses);
+                            if (cnt > 0) {
+                                int r = GetRandomValue(0, cnt - 1);
+                                cJSON *item = cJSON_GetArrayItem(responses, r);
+                                if (item && cJSON_IsString(item)) {
+                                    strncpy(aiCurrentLine, item->valuestring, 511);
+                                    aiCurrentChar = 0;
+                                    aiResponding = true;
+                                    PlaySound(sndGlitch);
+                                }
+                            }
+                        }
                     }
                 }
                 
                 if (IsKeyPressed(KEY_BACKSPACE) && !errorPlayed) {
-                    PlaySound(sndKarenError);
+                    PlaySound(sndDenied);
                     errorPlayed = true;
                 }
             } else {
                 grantedTimer += dt;
                 if (grantedTimer > 4.0f) {
                     currentScreen = GAMEPLAY;
+                }
+            }
+            
+            // AI typing effect
+            if (aiResponding) {
+                aiTimer += dt;
+                if (aiTimer > 0.05f) {
+                    aiTimer = 0.0f;
+                    if (aiCurrentChar < strlen(aiCurrentLine)) {
+                        aiCurrentChar++;
+                        if (aiCurrentChar % 3 == 0) PlaySound(sndTyping);
+                    }
+                }
+                if (aiCurrentChar >= strlen(aiCurrentLine) && GetRandomValue(0, 500) == 0) {
+                    aiResponding = false; // clear after a while
                 }
             }
             break;
@@ -705,44 +772,67 @@ void UpdateDrawFrame(void)
             break;
         }
         case HACKING_MINIGAME: {
-            // Background grid
+            // Background
+            ClearBackground((Color){5, 5, 10, 255});
+            
+            // Grid
             for(int i = 0; i < 20; i++) {
-                DrawLine(0, i * 40, SCREEN_WIDTH, i * 40, (Color){0, 50, 0, 100});
-                DrawLine(i * 40, 0, i * 40, SCREEN_HEIGHT, (Color){0, 50, 0, 100});
+                DrawLine(0, i * 40, SCREEN_WIDTH, i * 40, (Color){0, 40, 40, 80});
+                DrawLine(i * 40, 0, i * 40, SCREEN_HEIGHT, (Color){0, 40, 40, 80});
             }
             
-            // Hacker Typer Fake Terminal Layer
-            if (GetRandomValue(0, 100) > 95) {
-                // Glitch block
-                DrawRectangle(GetRandomValue(0, SCREEN_WIDTH), GetRandomValue(0, SCREEN_HEIGHT), GetRandomValue(50, 300), GetRandomValue(10, 50), (Color){0, 255, 0, 150});
-            }
+            // Panel 1: Terminal (Left)
+            DrawRectangle(30, 30, 450, 540, (Color){10, 15, 20, 230});
+            DrawRectangleLines(30, 30, 450, 540, HACKER_GREEN);
+            DrawTextHacker(TextFormat("CMD.EXE - ROOT ACCESS: %s", pcUsername), 40, 40, 20, WHITE);
+            DrawLine(30, 65, 480, 65, HACKER_GREEN);
             
-            // Draw fake terminal window
-            DrawRectangle(50, 50, 700, 500, (Color){10, 10, 10, 230});
-            DrawRectangleLines(50, 50, 700, 500, HACKER_GREEN);
-            DrawTextHacker(TextFormat("CMD.EXE - ROOT ACCESS: %s", pcUsername), 60, 60, 20, WHITE);
-            DrawLine(50, 80, 750, 80, HACKER_GREEN);
-            
-            DrawTextHacker(TextFormat("C:\\Users\\%s\\AppData\\Local>", pcUsername), 60, 100, 30, GRAY);
-            DrawTextHacker("I SEE YOU.", 60, 140, 40, RED);
-            
-            DrawTextHacker(typedCode, 60, 200, 20, HACKER_GREEN);
-            
-            // Blinking cursor
+            int textW = MeasureText(typedCode, 15);
+            DrawText(typedCode, 40, 80, 15, HACKER_GREEN);
             if ((int)(GetTime() * 2) % 2 == 0) {
-                int textW = MeasureText(typedCode, 20);
-                DrawRectangle(60 + textW + 5, 200, 15, 25, HACKER_GREEN);
+                DrawRectangle(40 + textW, 80, 10, 15, HACKER_GREEN);
             }
             
-            Rectangle btnExitHack = {600, 60, 100, 40};
+            // Panel 2: Cutscene / CCTV (Top Right)
+            DrawRectangle(500, 30, 370, 250, (Color){10, 15, 20, 230});
+            DrawRectangleLines(500, 30, 370, 250, HACKER_GREEN);
+            DrawTextHacker("CCTV FEED", 510, 40, 20, WHITE);
+            DrawLine(500, 65, 870, 65, HACKER_GREEN);
+            
+            // Frame animation for guard
+            Texture2D frame = texGuard1;
+            int frameIdx = ((int)(GetTime() * 2)) % 4;
+            if (frameIdx == 1) frame = texGuard2;
+            else if (frameIdx >= 2) frame = texGuard3;
+            
+            DrawTexturePro(frame, (Rectangle){0, 0, frame.width, frame.height}, (Rectangle){510, 75, 350, 195}, (Vector2){0,0}, 0.0f, WHITE);
+            
+            // Panel 3: AI Chat (Bottom Right)
+            DrawRectangle(500, 300, 370, 270, (Color){20, 5, 5, 230});
+            DrawRectangleLines(500, 300, 370, 270, RED);
+            DrawTextHacker("SYSTEM A.I. OVERRIDE", 510, 310, 20, RED);
+            DrawLine(500, 335, 870, 335, RED);
+            
+            if (aiResponding) {
+                char tempStr[512] = {0};
+                strncpy(tempStr, aiCurrentLine, aiCurrentChar);
+                DrawTextEx(customFont, tempStr, (Vector2){510, 350}, 20, 2, RED);
+            } else {
+                DrawTextEx(customFont, "AI IDLE...", (Vector2){510, 350}, 20, 2, GRAY);
+            }
+            
+            // Status overlays
+            if (hackGranted) {
+                DrawRectangle(0, SCREEN_HEIGHT/2 - 50, SCREEN_WIDTH, 100, (Color){0, 255, 0, 100});
+                DrawTextHacker("ACCESS GRANTED", SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2 - 20, 40, WHITE);
+            }
+            if (errorPlayed) {
+                DrawRectangle(0, SCREEN_HEIGHT/2 - 50, SCREEN_WIDTH, 100, (Color){255, 0, 0, 100});
+                DrawTextHacker("ACCESS DENIED", SCREEN_WIDTH/2 - 140, SCREEN_HEIGHT/2 - 20, 40, WHITE);
+            }
+            
+            Rectangle btnExitHack = {30, SCREEN_HEIGHT - 60, 120, 40};
             DrawRectangleRec(btnExitHack, RED); DrawTextHacker("< BACK", btnExitHack.x+10, btnExitHack.y+10, 20, WHITE);
-            
-            // Success / Fail logic
-            if (typedLen > 200 || hackGranted) {
-                DrawTextHacker(">>> ACCESS GRANTED <<<", 60, 450, 40, GREEN);
-                if (!IsSoundPlaying(sndKarenSuccess)) PlaySound(sndKarenSuccess);
-                if (IsKeyPressed(KEY_ENTER)) currentScreen = GAMEPLAY;
-            }
             break;
         }
         
